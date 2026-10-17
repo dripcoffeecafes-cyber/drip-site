@@ -18,4 +18,6 @@ Página estática (HTML, CSS e JS puros), pronta para GitHub Pages com domínio 
 - Todos os links para o site levam UTM (`utm_source=drip-landing`) para separar as vendas vindas da página no relatório da loja.
 
 ## Imagens
-Fotos reais do acervo (drip-acervo), convertidas para WebP. Sem a Termolar (não autorizou uso de imagem) e sem nome de cliente nas legendas.
+- `fotos/`: originais enviados pelo Adriano em 17/10/2026 (mockups "sua marca aqui", fotos da Blooming Club, cenas de IA e fotos reais).
+- `assets/img/`: versões otimizadas em WebP usadas na página. Os mockups dos modelos tiveram o fundo branco removido e foram aplicados no fundo de estúdio da marca.
+- Nenhuma imagem com marca de cliente. Cenas de IA sinalizadas no rodapé como ilustrativas.

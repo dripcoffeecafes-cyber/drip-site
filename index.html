@@ -203,7 +203,7 @@ p{margin:0;max-width:62ch}
 .ficha .nota-sca{border-left:1px solid var(--fio);padding:20px 0 20px 24px;display:grid;align-content:center;text-align:center}
 .ficha .nota-sca b{font:800 clamp(64px,8vw,96px)/.9 var(--display);letter-spacing:-.04em}
 .ficha .nota-sca span{font:600 14px var(--apoio);color:var(--kraft)}
-.cafe img{border-radius:6px;width:100%;aspect-ratio:4/3;object-fit:cover}
+.cafe img{border-radius:6px;width:100%;object-fit:cover}
 @media (max-width:820px){.cafe .wrap{grid-template-columns:1fr}}
 @media (max-width:460px){.ficha{grid-template-columns:1fr}.ficha .nota-sca{border-left:0;border-top:1px solid var(--fio);padding-left:0}}
 
@@ -216,10 +216,23 @@ p{margin:0;max-width:62ch}
 
 /* Quem */
 .quem{border-top:1px solid var(--fio)}
-.quem .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(32px,6vw,88px);align-items:center}
-.quem img{width:100%;max-width:380px;height:auto}
+.quem .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(32px,6vw,88px);align-items:center}
+
 .quem .texto{display:grid;gap:20px;min-width:0}
-@media (max-width:820px){.quem .wrap{grid-template-columns:1fr}.quem img{max-width:260px}}
+@media (max-width:820px){.quem .wrap{grid-template-columns:1fr}}
+
+.foto-cafe{margin:0;display:grid;gap:14px}
+.cafe .foto-cafe img{height:auto;aspect-ratio:4/5;border-radius:999px 999px 6px 6px}
+.fotos-quem{display:grid;grid-template-columns:.8fr 1fr;gap:14px;align-items:end;min-width:0}
+.fotos-quem img{width:100%;max-width:none;height:auto;border-radius:6px;object-fit:cover}
+.fotos-quem .f-alta{aspect-ratio:3/4;border-radius:999px 999px 6px 6px}
+.fotos-quem .f-larga{aspect-ratio:3/2}
+.quem .logo-bl{max-width:240px;width:100%;height:auto}
+.faq .preparo{border-radius:6px;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;margin-top:12px}
+.fecho-grade{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(32px,6vw,88px);align-items:center}
+.fecho-grade .texto{display:grid;gap:28px;min-width:0}
+.ficha-img{width:100%;height:auto;border-radius:10px}
+@media (max-width:820px){.fecho-grade{grid-template-columns:1fr}.fotos-quem{grid-template-columns:1fr 1fr}}
 
 /* Perguntas */
 .faq{padding-top:0}
@@ -237,7 +250,7 @@ p{margin:0;max-width:62ch}
 /* Fecho */
 .fecho{text-align:left}
 .fecho .wrap{display:grid;gap:28px}
-.fecho h2{font-size:clamp(40px,7vw,92px)}
+.fecho h2{font-size:clamp(38px,5.4vw,76px)}
 .fecho .acoes{display:flex;flex-wrap:wrap;gap:12px}
 .contato{display:flex;flex-wrap:wrap;gap:10px 28px;font:600 15px var(--apoio);color:var(--caramelo)}
 .contato a{text-decoration:none}
@@ -289,8 +302,8 @@ footer p{opacity:.75;max-width:60ch}
       </ul>
     </div>
     <figure>
-      <div class="arco"><img src="assets/img/hero-sache.webp" alt="Duas mãos trocando um drip kraft da Drip Coffee Label sobre uma mesa de madeira" width="900" height="1200" fetchpriority="high"></div>
-      <figcaption>O brinde que chega às mãos e vai para a xícara.</figcaption>
+      <div class="arco"><img src="assets/img/hero-sache.webp" alt="Mão segurando um drip kraft da Drip Coffee Label ao lado de uma caneca com o café coando" width="768" height="1024" fetchpriority="high"></div>
+      <figcaption>Abre, encaixa na xícara, despeja a água. Sua marca na mão de quem toma.</figcaption>
     </figure>
   </div>
 </section>
@@ -364,8 +377,8 @@ footer p{opacity:.75;max-width:60ch}
       </div>
     </div>
     <div class="trilho" id="trilho" tabindex="0" aria-label="Ocasiões para dar drip coffee">
-      <figure><img src="assets/img/o1.webp" alt="Equipe conversando num escritório com um drip kraft da Drip Coffee Label na mesa" width="600" height="800" loading="lazy"><figcaption><b>Endomarketing e RH</b><span>Onboarding, SIPAT, aniversário de empresa</span></figcaption></figure>
-      <figure><img src="assets/img/o2.webp" alt="Mão estendendo um drip kraft da Drip Coffee Label num escritório" width="600" height="800" loading="lazy"><figcaption><b>Visita a clientes</b><span>Deixe na mesa depois da reunião</span></figcaption></figure>
+      <figure><img src="assets/img/o1.webp" alt="Drip kraft numa mesa de escritório com a logo da empresa na parede ao fundo" width="600" height="800" loading="lazy"><figcaption><b>Endomarketing e RH</b><span>Onboarding, SIPAT, aniversário de empresa</span></figcaption></figure>
+      <figure><img src="assets/img/o2.webp" alt="Executiva estendendo um drip kraft da Drip Coffee Label num escritório" width="600" height="800" loading="lazy"><figcaption><b>Visita a clientes</b><span>Deixe na mesa depois da reunião</span></figcaption></figure>
       <figure><img src="assets/img/o3.webp" alt="Drip kraft no balcão de uma cafeteria com pessoas conversando ao fundo" width="600" height="800" loading="lazy"><figcaption><b>Confraternizações</b><span>Um por convidado, na mesa ou na saída</span></figcaption></figure>
       <figure><img src="assets/img/o4.webp" alt="Três drips kraft sobre uma pedra ao ar livre com montanhas ao fundo" width="600" height="800" loading="lazy"><figcaption><b>Feiras e eventos externos</b><span>Leve, cabe em qualquer sacola</span></figcaption></figure>
       <figure><img src="assets/img/o5.webp" alt="Drip montado numa caneca com água sendo servida, porta aberta para o jardim" width="600" height="800" loading="lazy"><figcaption><b>Casamentos e formaturas</b><span>Lembrança que vira o café da manhã seguinte</span></figcaption></figure>
@@ -395,7 +408,7 @@ footer p{opacity:.75;max-width:60ch}
     </div>
     <div class="grade">
       <article class="modelo">
-        <div class="foto"><img src="assets/img/p-kraft.webp" alt="Sachê kraft 10 por 12 centímetros com a logo da Drip Coffee Label impressa" width="720" height="960" loading="lazy"></div>
+        <div class="foto"><img src="assets/img/p-kraft.webp" alt="Sachê kraft 10 por 12 centímetros com a arte de exemplo Sua marca aqui" width="720" height="960" loading="lazy"></div>
         <div class="corpo">
           <span class="medida">10 × 12 cm</span>
           <h3>Kraft</h3>
@@ -408,7 +421,7 @@ footer p{opacity:.75;max-width:60ch}
         </div>
       </article>
       <article class="modelo">
-        <div class="foto"><img src="assets/img/p-branco.webp" alt="Sachê branco premium 10 por 15 centímetros com a logo da Drip Coffee Label impressa" width="720" height="960" loading="lazy"></div>
+        <div class="foto"><img src="assets/img/p-branco.webp" alt="Sachê branco premium 10 por 15 centímetros com a arte de exemplo Sua marca aqui" width="720" height="960" loading="lazy"></div>
         <div class="corpo">
           <span class="medida">10 × 15 cm</span>
           <h3>Branco premium</h3>
@@ -421,7 +434,7 @@ footer p{opacity:.75;max-width:60ch}
         </div>
       </article>
       <article class="modelo">
-        <div class="foto"><img src="assets/img/p-kraft-premium.webp" alt="Sachê kraft premium 10 por 15 centímetros com a logo da Drip Coffee Label impressa" width="720" height="960" loading="lazy"></div>
+        <div class="foto"><img src="assets/img/p-kraft-premium.webp" alt="Sachê kraft premium 10 por 15 centímetros com a arte de exemplo Sua marca aqui" width="720" height="960" loading="lazy"></div>
         <div class="corpo">
           <span class="medida">10 × 15 cm</span>
           <h3>Kraft premium</h3>
@@ -514,17 +527,21 @@ footer p{opacity:.75;max-width:60ch}
         <div class="nota-sca"><b>84+</b><span>pontos SCA</span></div>
       </div>
     </div>
-    <figure style="margin:0;display:grid;gap:14px">
-      <img src="assets/img/preparo.webp" alt="Drip coffee montado em uma caneca branca sobre pedra escura, com grãos de café ao redor" width="1200" height="900" loading="lazy">
-      <figcaption class="apoio">Para preparar: abra o sachê, encaixe as abas na borda da xícara, despeje água quente aos poucos e espere coar.</figcaption>
+    <figure class="foto-cafe">
+      <img src="assets/img/cafe-varanda.webp" alt="Mão segurando uma xícara de vidro com café coado, numa varanda com jardim desfocado ao fundo" width="1000" height="1250" loading="lazy">
+      <figcaption class="apoio">Coado no sachê, servido na xícara de sempre.</figcaption>
     </figure>
   </div>
 </section>
 
 <section class="quem cap" aria-labelledby="t-quem">
   <div class="wrap">
-    <img src="assets/img/blooming.png" alt="Blooming Club Cafés Especiais" width="1721" height="445" loading="lazy">
+    <div class="fotos-quem">
+      <img class="f-alta" src="assets/img/blooming-drip.webp" alt="Drip kraft da Blooming Club Cafés Especiais sobre grãos e café moído" width="800" height="1067" loading="lazy">
+      <img class="f-larga" src="assets/img/blooming-caixa.webp" alt="Caixa preta de drip coffee da Blooming Club ao lado de um sachê kraft, com café moído e grãos na mesa" width="1400" height="933" loading="lazy">
+    </div>
     <div class="texto">
+      <img class="logo-bl" src="assets/img/blooming.png" alt="Blooming Club Cafés Especiais" width="1721" height="445" loading="lazy">
       <p class="apoio">Quem está por trás</p>
       <h2 id="t-quem"><b>Uma marca</b> <span>Blooming Club</span></h2>
       <p class="lead">A Drip Coffee Label é a marca de brindes da Blooming Club Cafés Especiais, clube de assinatura de cafés especiais. O café que vai no seu sachê é escolhido pela mesma equipe que seleciona os cafés do clube.</p>
@@ -540,6 +557,7 @@ footer p{opacity:.75;max-width:60ch}
       <h2 id="t-faq"><b>Perguntas</b> <span>frequentes</span></h2>
       <p>Não achou a sua? A resposta mais rápida está no WhatsApp.</p>
       <div><a class="btn btn-zap js-zap" data-origem="faq" href="https://wa.me/5554997048081" target="_blank" rel="noopener">Perguntar no WhatsApp</a></div>
+      <img class="preparo" src="assets/img/preparo.webp" alt="Água sendo despejada de uma chaleira num drip encaixado numa xícara de vidro" width="1100" height="825" loading="lazy">
     </div>
     <div>
       <details><summary>Qual é o pedido mínimo?</summary><p>50 unidades. Você pode pedir em múltiplos de 50, e o preço por drip cai a cada faixa até 300 unidades.</p></details>
@@ -549,6 +567,7 @@ footer p{opacity:.75;max-width:60ch}
       <details><summary>A impressão é colorida?</summary><p>Pode ser em uma cor ou colorida. No sachê branco premium as cores ficam mais vivas; no kraft, o papel dá um tom mais quente à arte.</p></details>
       <details><summary>Vocês emitem nota fiscal?</summary><p>Sim, emitimos nota fiscal para pessoa jurídica.</p></details>
       <details><summary>Como pago?</summary><p>No site, com cartão de crédito. A loja é a da Blooming Club Cafés Especiais, dona da marca Drip Coffee Label. Também dá para fechar o pedido pelo WhatsApp.</p></details>
+      <details><summary>Como se prepara o drip?</summary><p>Abra o sachê pelo picote, abra o filtro e encaixe as abas na borda da xícara. Despeje água quente aos poucos, em duas ou três vezes, e espere coar. Retire o filtro e pronto. Não precisa de cafeteira.</p></details>
       <details><summary>Quanto tempo o café dura?</summary><p>A validade é de 6 meses. Guarde em lugar seco e longe do sol.</p></details>
     </div>
   </div>
@@ -556,6 +575,8 @@ footer p{opacity:.75;max-width:60ch}
 
 <section class="fecho escuro cap" aria-labelledby="t-fecho">
   <div class="wrap">
+   <div class="fecho-grade">
+   <div class="texto">
     <p class="apoio">O próximo brinde</p>
     <h2 id="t-fecho"><b>Que tal um brinde</b><br><span>que ninguém guarda na gaveta?</span></h2>
     <p class="lead">Mande a sua logo e a quantidade. Respondemos com a sugestão de modelo e o valor do pedido.</p>
@@ -568,6 +589,9 @@ footer p{opacity:.75;max-width:60ch}
       <a href="https://www.instagram.com/driplabel.cafes/" target="_blank" rel="noopener">@driplabel.cafes</a>
       <span>cafes@bloomingclub.com.br</span>
     </div>
+   </div>
+   <img class="ficha-img" src="assets/img/ficha.webp" alt="Drip kraft da Drip Coffee Label numa mesa de madeira com os dados: 100% arábica, 10 g, café especial 84 pontos, WhatsApp e Instagram" width="900" height="900" loading="lazy">
+   </div>
   </div>
 </section>
 
@@ -576,7 +600,7 @@ footer p{opacity:.75;max-width:60ch}
 <footer>
   <div class="wrap">
     <div class="marcas"><img src="assets/img/logo-claro.png" alt="Drip Coffee Label" width="605" height="294" loading="lazy"><img src="assets/img/blooming-claro.png" alt="Blooming Club Cafés Especiais" width="1721" height="445" loading="lazy"></div>
-    <p>Drip Coffee Label é uma marca da Blooming Club Cafés Especiais. As compras pelo site são finalizadas na loja Blooming Club. Imagens de ambiente ilustrativas.</p>
+    <p>Drip Coffee Label é uma marca da Blooming Club Cafés Especiais. As compras pelo site são finalizadas na loja Blooming Club. Algumas imagens de ambiente são ilustrativas.</p>
   </div>
 </footer>
 
