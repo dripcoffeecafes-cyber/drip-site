@@ -45,8 +45,8 @@
 <style type="text/tailwindcss">
   html { scroll-behavior: smooth; }
   @layer utilities {
-    .clip-wave { clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%); }
-    .clip-wave-inv { clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%); }
+    .clip-wave { clip-path: polygon(0 0, 100% 0, 100% max(90%, calc(100% - 5rem)), 0 100%); }
+    .clip-wave-inv { clip-path: polygon(0 min(10%, 5rem), 100% 0, 100% 100%, 0 100%); }
     .hide-scrollbar::-webkit-scrollbar { display: none; }
     .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
   }
