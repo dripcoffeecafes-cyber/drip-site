@@ -68,10 +68,6 @@
   .calc-range:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 4px rgba(212,146,74,.45), 0 6px 13px rgba(0,0,0,.12); }
   .calc-range:focus-visible::-moz-range-thumb { box-shadow: 0 0 0 4px rgba(212,146,74,.45), 0 6px 13px rgba(0,0,0,.12); }
 
-  /* Faixas de preço (renderizadas pelo script da calculadora) */
-  .faixas div { padding: .7rem .25rem; border-radius: 14px; font-size: 12px; line-height: 1.35; color: #6e6e73; text-align: center; transition: all .5s cubic-bezier(0.16, 1, 0.3, 1); font-variant-numeric: tabular-nums; }
-  .faixas div.ativa { background: #f5f5f7; color: #1d1d1f; font-weight: 600; box-shadow: inset 0 0 0 1px #1d1d1f; }
-
   details > summary { list-style: none; }
   details > summary::-webkit-details-marker { display: none; }
   :focus-visible { outline: 2px solid #D4924A; outline-offset: 3px; }
@@ -381,68 +377,73 @@
 </section>
 
 <!-- Configurador -->
-<section class="bg-white py-32 md:py-48">
+<section class="bg-white py-24 md:py-48">
   <div class="max-w-6xl mx-auto px-6">
-    <h2 id="t-calc" class="reveal text-[2.75rem] md:text-[4.5rem] font-semibold tracking-tighter leading-[0.95]">Simule seu pedido. <span class="text-mute">Veja o valor na hora.</span></h2>
+    <h2 id="t-calc" class="reveal text-[2.25rem] md:text-[4.5rem] font-semibold tracking-tighter leading-[0.95]">Simule seu pedido. <span class="text-mute">Veja o valor na hora.</span></h2>
 
-    <form id="calc" aria-labelledby="t-calc" onsubmit="return false" class="scroll-mt-24 mt-16 md:mt-24 grid lg:grid-cols-[1fr_380px] gap-16 lg:gap-20 items-start">
+    <!-- No celular, a calculadora inteira cabe numa tela; no desktop, resumo fixo à direita -->
+    <form id="calc" aria-labelledby="t-calc" onsubmit="return false" class="reveal scroll-mt-20 mt-8 md:mt-16 grid lg:grid-cols-[1fr_380px] gap-6 lg:gap-20 items-start">
       <!-- Opções -->
-      <div class="min-w-0 space-y-20">
-        <fieldset class="reveal">
-          <legend class="text-2xl md:text-[1.75rem] font-semibold tracking-tight">Modelo. <span class="text-mute">Qual sachê combina com a sua marca?</span></legend>
-          <div class="mt-8 grid gap-3">
+      <div class="min-w-0 space-y-6 lg:space-y-10">
+        <fieldset>
+          <legend class="text-xs lg:text-sm font-semibold text-mute">Modelo</legend>
+          <div class="mt-3 lg:mt-4 grid grid-cols-3 gap-2 sm:gap-3">
             <label class="block cursor-pointer">
               <input type="radio" name="modelo" id="m-kraft" value="kraft" checked class="peer sr-only">
-              <span class="flex items-center justify-between gap-4 px-6 py-5 rounded-2xl ring-1 ring-line transition-all duration-300 hover:ring-mute peer-checked:ring-2 peer-checked:ring-ink peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-caramelo peer-focus-visible:outline-offset-2">
-                <span><b class="block text-[17px] font-semibold">Kraft Clássico</b><span class="block text-sm text-mute">10 × 12 cm</span></span>
-                <span class="text-right text-sm text-mute tnum">a partir de<br><b class="text-ink font-semibold">R$ 4,90</b></span>
+              <span class="flex flex-col items-center justify-center h-full text-center px-2 py-3 lg:py-5 rounded-2xl ring-1 ring-line transition-all duration-300 hover:ring-mute peer-checked:ring-2 peer-checked:ring-ink peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-caramelo peer-focus-visible:outline-offset-2">
+                <b class="text-sm sm:text-[17px] font-semibold leading-tight">Kraft Clássico</b>
+                <span class="mt-1 text-xs sm:text-sm text-mute">10 × 12 cm</span>
               </span>
             </label>
             <label class="block cursor-pointer">
               <input type="radio" name="modelo" id="m-branco" value="branco" class="peer sr-only">
-              <span class="flex items-center justify-between gap-4 px-6 py-5 rounded-2xl ring-1 ring-line transition-all duration-300 hover:ring-mute peer-checked:ring-2 peer-checked:ring-ink peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-caramelo peer-focus-visible:outline-offset-2">
-                <span><b class="block text-[17px] font-semibold">Branco Premium</b><span class="block text-sm text-mute">10 × 15 cm</span></span>
-                <span class="text-right text-sm text-mute tnum">a partir de<br><b class="text-ink font-semibold">R$ 5,90</b></span>
+              <span class="flex flex-col items-center justify-center h-full text-center px-2 py-3 lg:py-5 rounded-2xl ring-1 ring-line transition-all duration-300 hover:ring-mute peer-checked:ring-2 peer-checked:ring-ink peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-caramelo peer-focus-visible:outline-offset-2">
+                <b class="text-sm sm:text-[17px] font-semibold leading-tight">Branco Premium</b>
+                <span class="mt-1 text-xs sm:text-sm text-mute">10 × 15 cm</span>
               </span>
             </label>
             <label class="block cursor-pointer">
               <input type="radio" name="modelo" id="m-kraftp" value="kraftp" class="peer sr-only">
-              <span class="flex items-center justify-between gap-4 px-6 py-5 rounded-2xl ring-1 ring-line transition-all duration-300 hover:ring-mute peer-checked:ring-2 peer-checked:ring-ink peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-caramelo peer-focus-visible:outline-offset-2">
-                <span><b class="block text-[17px] font-semibold">Kraft Premium</b><span class="block text-sm text-mute">10 × 15 cm</span></span>
-                <span class="text-right text-sm text-mute tnum">a partir de<br><b class="text-ink font-semibold">R$ 5,90</b></span>
+              <span class="flex flex-col items-center justify-center h-full text-center px-2 py-3 lg:py-5 rounded-2xl ring-1 ring-line transition-all duration-300 hover:ring-mute peer-checked:ring-2 peer-checked:ring-ink peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-caramelo peer-focus-visible:outline-offset-2">
+                <b class="text-sm sm:text-[17px] font-semibold leading-tight">Kraft Premium</b>
+                <span class="mt-1 text-xs sm:text-sm text-mute">10 × 15 cm</span>
               </span>
             </label>
           </div>
         </fieldset>
 
-        <fieldset class="reveal">
-          <legend class="text-2xl md:text-[1.75rem] font-semibold tracking-tight">Quantidade. <span class="text-mute">Em múltiplos de 50; o preço cai a cada faixa.</span></legend>
-          <div class="mt-10 flex items-center justify-between gap-6">
-            <button type="button" id="menos" aria-label="Menos 50 unidades" class="w-12 h-12 shrink-0 rounded-full bg-canvas text-2xl text-ink grid place-items-center hover:bg-line transition-colors">&minus;</button>
+        <fieldset>
+          <legend class="text-xs lg:text-sm font-semibold text-mute">Quantidade</legend>
+          <div class="mt-3 lg:mt-6 flex items-center justify-between gap-6">
+            <button type="button" id="menos" aria-label="Menos 50 unidades" class="w-11 h-11 lg:w-12 lg:h-12 shrink-0 rounded-full bg-canvas text-2xl text-ink grid place-items-center hover:bg-line transition-colors">&minus;</button>
             <div class="text-center">
-              <output id="q" for="faixa" aria-live="polite" class="block text-[3.5rem] md:text-[4.5rem] font-semibold tracking-tighter leading-none tnum">100</output>
-              <span class="block mt-2 text-sm text-mute">unidades</span>
+              <output id="q" for="faixa" aria-live="polite" class="block text-[2.75rem] lg:text-[4.5rem] font-semibold tracking-tighter leading-none tnum">100</output>
+              <span class="block mt-1 lg:mt-2 text-xs lg:text-sm text-mute">unidades</span>
             </div>
-            <button type="button" id="mais" aria-label="Mais 50 unidades" class="w-12 h-12 shrink-0 rounded-full bg-canvas text-2xl text-ink grid place-items-center hover:bg-line transition-colors">+</button>
+            <button type="button" id="mais" aria-label="Mais 50 unidades" class="w-11 h-11 lg:w-12 lg:h-12 shrink-0 rounded-full bg-canvas text-2xl text-ink grid place-items-center hover:bg-line transition-colors">+</button>
           </div>
-          <input type="range" id="faixa" min="50" max="1000" step="50" value="100" aria-label="Quantidade de drips" class="calc-range mt-10">
+          <input type="range" id="faixa" min="50" max="1000" step="50" value="100" aria-label="Quantidade de drips" class="calc-range mt-5 lg:mt-8">
           <div class="mt-2 flex justify-between text-xs text-mute tnum" aria-hidden="true"><span>50</span><span>1.000</span></div>
-          <div id="faixas" aria-hidden="true" class="faixas mt-8 grid grid-cols-3 sm:grid-cols-6 gap-2">
-            <!-- Renderizado via JS -->
-          </div>
+          <p id="proxima-faixa" aria-live="polite" class="mt-3 lg:mt-5 text-sm lg:text-[15px] text-kraft tnum">Com 150 unidades, cada drip sai por R$ 5,50.</p>
         </fieldset>
       </div>
 
-      <!-- Resumo fixo -->
-      <aside class="reveal d1 lg:sticky lg:top-32">
-        <span class="block text-sm font-semibold text-mute">Investimento estimado</span>
-        <div id="total" class="mt-3 text-[2.75rem] sm:text-[3.25rem] font-semibold tracking-tighter leading-none tnum">R$ 570,00</div>
-        <div id="un" class="mt-3 text-[17px] text-mute tnum">R$ 5,70 por drip</div>
-        <div class="mt-10 pt-10 border-t border-black/10 grid gap-3">
-          <a id="calc-zap" href="https://wa.me/5554997048081?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Drip%20Coffee%20Label%20e%20quero%20um%20or%C3%A7amento%20de%20drip%20personalizado." target="_blank" rel="noopener" class="flex items-center justify-center h-12 rounded-full bg-ink text-white text-[15px] font-medium hover:bg-black transition-colors">Pedir via WhatsApp</a>
-          <a id="calc-site" href="https://www.bloomingclub.com.br/personalizados" target="_blank" rel="noopener" class="flex items-center justify-center h-12 rounded-full bg-canvas text-ink text-[15px] font-medium hover:bg-line transition-colors">Comprar no site</a>
+      <!-- Resumo (fixo à direita no desktop) -->
+      <aside class="pt-5 border-t border-black/10 lg:pt-0 lg:border-0 lg:sticky lg:top-32">
+        <div class="flex items-baseline justify-between gap-4 lg:block">
+          <span class="hidden lg:inline text-sm font-semibold text-mute">Investimento estimado</span>
+          <span id="resumo" class="text-xs font-semibold text-mute tnum lg:hidden">100 unidades · Kraft Clássico</span>
         </div>
-        <p id="nota-calc" class="mt-6 text-xs leading-relaxed text-mute">
+        <div class="mt-1 lg:mt-3 flex items-baseline justify-between gap-4 lg:block">
+          <div id="total" class="text-[2rem] sm:text-[2.75rem] lg:text-[3.25rem] font-semibold tracking-tighter leading-none tnum">R$ 570,00</div>
+          <div id="un" class="text-[15px] lg:text-[17px] text-mute tnum lg:mt-3 whitespace-nowrap">R$ 5,70 por drip</div>
+        </div>
+        <div id="resumo-desk" class="hidden lg:block mt-1 text-[15px] text-mute tnum">100 unidades · Kraft Clássico</div>
+        <div class="mt-5 lg:mt-10 lg:pt-10 lg:border-t lg:border-black/10 grid grid-cols-2 lg:grid-cols-1 gap-2 lg:gap-3">
+          <a id="calc-zap" href="https://wa.me/5554997048081?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Drip%20Coffee%20Label%20e%20quero%20um%20or%C3%A7amento%20de%20drip%20personalizado." target="_blank" rel="noopener" class="flex items-center justify-center h-12 px-2 rounded-full bg-ink text-white text-sm lg:text-[15px] font-medium hover:bg-black transition-colors">Pedir via WhatsApp</a>
+          <a id="calc-site" href="https://www.bloomingclub.com.br/personalizados" target="_blank" rel="noopener" class="flex items-center justify-center h-12 px-2 rounded-full bg-canvas text-ink text-sm lg:text-[15px] font-medium hover:bg-line transition-colors">Comprar no site</a>
+        </div>
+        <p id="nota-calc" class="mt-3 lg:mt-6 text-[11px] lg:text-xs leading-relaxed text-mute">
           Valor de referência. O desconto entra na finalização do pedido. Acima de 1.000 unidades, fale com a gente.
         </p>
       </aside>
@@ -633,7 +634,7 @@
   </div>
 </footer>
 
-<!-- Lógica Original Preservada -->
+<!-- Lógica da calculadora e dos links (preços, mensagens e UTMs inalterados) -->
 <script>
 (function(){
   var ZAP='5554997048081';
@@ -659,7 +660,7 @@
     a.href=zap(MSG_ORC);
   });
 
-  var faixa=document.getElementById('faixa'),q=document.getElementById('q'),faixas=document.getElementById('faixas');
+  var faixa=document.getElementById('faixa'),q=document.getElementById('q');
   var tier=function(n){return Math.min(Math.floor(n/50)-1,5)};
   function atual(){return document.querySelector('input[name=modelo]:checked').value}
   function render(){
@@ -667,7 +668,8 @@
     q.value=n;q.textContent=n;
     document.getElementById('total').textContent=brl(p*n);
     document.getElementById('un').textContent=brl(p)+' por drip';
-    faixas.innerHTML=['50','100','150','200','250','300+'].map(function(r,i){return '<div class="'+(i===t?'ativa':'')+'">'+r+'<br>'+brl(m.precos[i]).replace('R$ ','R$ ')+'</div>'}).join('');
+    var rs=n.toLocaleString('pt-BR')+' unidades · '+m.nome;document.getElementById('resumo').textContent=rs;document.getElementById('resumo-desk').textContent=rs;
+    document.getElementById('proxima-faixa').textContent=t<5?'Com '+(t+2)*50+' unidades, cada drip sai por '+brl(m.precos[t+1])+'.':'Você já tem o menor preço por drip.';
     document.getElementById('calc-zap').href=zap(base+'. Simulei '+n+' unidades do '+m.nome+' ('+brlCurto(p*n)+') e quero seguir com o pedido.');
     document.getElementById('calc-site').href=link(m.url,'calculadora');
   }
