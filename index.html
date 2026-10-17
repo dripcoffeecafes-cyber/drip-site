@@ -376,18 +376,27 @@
         
         <fieldset class="mb-5 md:mb-10">
           <legend class="font-body font-bold text-xs tracking-widest text-kraft uppercase mb-3 md:mb-4">Selecione o Modelo</legend>
-          <div class="flex flex-wrap gap-2 md:gap-3">
-            <label class="relative cursor-pointer group">
+          <div class="grid grid-cols-3 gap-2 md:gap-3">
+            <label class="relative cursor-pointer block">
               <input type="radio" name="modelo" id="m-kraft" value="kraft" checked class="peer sr-only">
-              <span class="block px-3 md:px-6 py-2.5 md:py-3 rounded-full border-2 border-tinta/20 text-tinta font-semibold text-xs md:text-sm transition-all peer-checked:bg-tinta peer-checked:border-tinta peer-checked:text-creme peer-focus-visible:ring-4 ring-caramelo/50 hover:border-tinta">Kraft 10×12</span>
+              <span class="flex flex-col items-center justify-center text-center h-full px-2 py-3 md:py-4 rounded-2xl border-2 border-tinta/20 text-tinta transition-all peer-checked:bg-tinta peer-checked:border-tinta peer-checked:text-creme peer-focus-visible:ring-4 ring-caramelo/50 hover:border-tinta">
+                <b class="font-display font-black text-sm md:text-base uppercase leading-tight">Kraft</b>
+                <span class="font-body text-[11px] md:text-xs font-medium opacity-70 mt-0.5 leading-tight">10×12 cm</span>
+              </span>
             </label>
-            <label class="relative cursor-pointer group">
+            <label class="relative cursor-pointer block">
               <input type="radio" name="modelo" id="m-branco" value="branco" class="peer sr-only">
-              <span class="block px-3 md:px-6 py-2.5 md:py-3 rounded-full border-2 border-tinta/20 text-tinta font-semibold text-xs md:text-sm transition-all peer-checked:bg-tinta peer-checked:border-tinta peer-checked:text-creme peer-focus-visible:ring-4 ring-caramelo/50 hover:border-tinta">Branco Premium</span>
+              <span class="flex flex-col items-center justify-center text-center h-full px-2 py-3 md:py-4 rounded-2xl border-2 border-tinta/20 text-tinta transition-all peer-checked:bg-tinta peer-checked:border-tinta peer-checked:text-creme peer-focus-visible:ring-4 ring-caramelo/50 hover:border-tinta">
+                <b class="font-display font-black text-sm md:text-base uppercase leading-tight">Branco</b>
+                <span class="font-body text-[11px] md:text-xs font-medium opacity-70 mt-0.5 leading-tight">Premium 10×15</span>
+              </span>
             </label>
-            <label class="relative cursor-pointer group">
+            <label class="relative cursor-pointer block">
               <input type="radio" name="modelo" id="m-kraftp" value="kraftp" class="peer sr-only">
-              <span class="block px-3 md:px-6 py-2.5 md:py-3 rounded-full border-2 border-tinta/20 text-tinta font-semibold text-xs md:text-sm transition-all peer-checked:bg-tinta peer-checked:border-tinta peer-checked:text-creme peer-focus-visible:ring-4 ring-caramelo/50 hover:border-tinta">Kraft Premium</span>
+              <span class="flex flex-col items-center justify-center text-center h-full px-2 py-3 md:py-4 rounded-2xl border-2 border-tinta/20 text-tinta transition-all peer-checked:bg-tinta peer-checked:border-tinta peer-checked:text-creme peer-focus-visible:ring-4 ring-caramelo/50 hover:border-tinta">
+                <b class="font-display font-black text-sm md:text-base uppercase leading-tight">Kraft</b>
+                <span class="font-body text-[11px] md:text-xs font-medium opacity-70 mt-0.5 leading-tight">Premium 10×15</span>
+              </span>
             </label>
           </div>
         </fieldset>
