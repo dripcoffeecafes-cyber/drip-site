@@ -377,12 +377,16 @@
 </section>
 
 <!-- Configurador -->
-<section class="bg-white py-24 md:py-48">
+<section class="relative bg-white py-24 md:py-48">
+  <!-- Ponto transparente: o botão "Simular meu pedido" para aqui (o título fica 4rem abaixo do menu). Para ajustar, mude top-8 / md:top-32. -->
+  <span id="calc" aria-hidden="true" class="absolute left-0 top-8 md:top-32 w-px h-px opacity-0 pointer-events-none"></span>
   <div class="max-w-6xl mx-auto px-6">
-    <h2 id="t-calc" class="reveal text-[2.25rem] md:text-[4.5rem] font-semibold tracking-tighter leading-[0.95]">Simule seu pedido. <span class="text-mute">Veja o valor na hora.</span></h2>
+    <h2 id="t-calc" class="text-[2.25rem] md:text-[4.5rem] font-semibold tracking-tighter leading-[0.95]">Simule seu pedido. <span class="text-mute">Veja o valor na hora.</span></h2>
 
     <!-- No celular, a calculadora inteira cabe numa tela; no desktop, resumo fixo à direita -->
-    <form id="calc" aria-labelledby="t-calc" onsubmit="return false" class="reveal scroll-mt-20 mt-8 md:mt-16 grid lg:grid-cols-[1fr_380px] gap-6 lg:gap-20 items-start">
+    <!-- A calculadora não tem animação de entrada: fica sempre visível e no lugar -->
+    <div class="mt-8 md:mt-16">
+    <form id="calc-form" aria-labelledby="t-calc" onsubmit="return false" class="grid lg:grid-cols-[1fr_380px] gap-6 lg:gap-20 items-start">
       <!-- Opções -->
       <div class="min-w-0 space-y-6 lg:space-y-10">
         <fieldset>
@@ -448,6 +452,7 @@
         </p>
       </aside>
     </form>
+    </div>
   </div>
 </section>
 
@@ -727,6 +732,23 @@
     faixa.addEventListener('input',preencher);
     ['menos','mais'].forEach(function(id){var b=document.getElementById(id);if(b)b.addEventListener('click',preencher)});
     preencher();
+  }
+
+  // "Simular meu pedido": rola até a calculadora descontando o menu fixo e corrige a posição
+  // se algo acima mudar de altura durante a rolagem (imagens carregando no celular)
+  var alvo=document.getElementById('calc');
+  if(alvo){
+    var suave=!window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var destino=function(){var h=document.querySelector('header');return Math.max(0,alvo.getBoundingClientRect().top+window.pageYOffset-(h?h.offsetHeight:0))};
+    document.querySelectorAll('a[href="#calc"]').forEach(function(a){
+      a.addEventListener('click',function(e){
+        e.preventDefault();
+        window.scrollTo({top:destino(),behavior:suave?'smooth':'auto'});
+        [900,1600,2600].forEach(function(t){setTimeout(function(){
+          if(Math.abs(destino()-window.pageYOffset)>4) window.scrollTo({top:destino(),behavior:suave?'smooth':'auto'});
+        },t)});
+      });
+    });
   }
 
   // Revela os elementos ao entrar na tela
