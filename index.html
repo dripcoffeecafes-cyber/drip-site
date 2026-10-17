@@ -445,7 +445,11 @@
     <!-- Grade de Produtos -->
     <div class="grid md:grid-cols-3 gap-8 mt-16 md:mt-32">
       <!-- Kraft -->
-      <article class="bg-papel rounded-[3rem] p-6 pb-8 flex flex-col hover:shadow-2xl transition-all duration-500 border border-tinta/5">
+      <article class="bg-papel rounded-[3rem] p-6 pb-8 flex flex-col hover:shadow-2xl transition-all duration-500 md:-translate-y-8 border-2 border-caramelo/70 shadow-xl relative">
+        <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 z-10 inline-flex items-center gap-1.5 whitespace-nowrap bg-tinta text-creme text-[11px] font-bold uppercase tracking-[0.18em] pl-3 pr-4 py-1.5 rounded-full shadow-lg">
+          <svg viewBox="0 0 20 20" class="w-3.5 h-3.5 fill-caramelo" aria-hidden="true"><path d="M10 1.5l2.6 5.5 6 .8-4.4 4.2 1.1 6L10 15.1 4.7 18l1.1-6L1.4 7.8l6-.8z"/></svg>
+          Mais pedido
+        </div>
         <div class="rounded-t-[2.5rem] rounded-b-2xl overflow-hidden aspect-square mb-8 bg-white">
           <img src="assets/img/p-kraft.webp" alt="Sachê kraft" class="w-full h-full object-cover" loading="lazy" width="900" height="900">
         </div>
@@ -458,15 +462,14 @@
             <span class="text-sm font-medium text-kraft">A partir de R$ 4,90 (+300 un.)</span>
           </div>
           <div class="space-y-3">
-            <a class="block w-full text-center bg-tinta text-creme py-4 rounded-full font-bold text-sm uppercase tracking-wide hover:bg-caramelo hover:text-tinta transition-colors" data-produto="kraft" href="#">Comprar no site</a>
+            <a class="block w-full text-center bg-caramelo text-tinta py-4 rounded-full font-bold text-sm uppercase tracking-wide hover:bg-tinta hover:text-creme transition-colors" data-produto="kraft" href="#">Comprar no site</a>
             <a class="js-zap block w-full text-center border-2 border-tinta/20 text-tinta py-4 rounded-full font-bold text-sm uppercase tracking-wide hover:border-tinta transition-colors" data-origem="modelo-kraft" data-msg="Quero o drip Kraft 10x12." href="https://wa.me/5554997048081" target="_blank" rel="noopener">Dúvidas?</a>
           </div>
         </div>
       </article>
 
       <!-- Branco Premium -->
-      <article class="bg-papel rounded-[3rem] p-6 pb-8 flex flex-col hover:shadow-2xl transition-all duration-500 transform md:-translate-y-8 border border-tinta/5 shadow-lg relative">
-        <div class="absolute -top-4 -right-4 bg-caramelo text-tinta text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-full rotate-3 shadow-md z-10">Mais pedido</div>
+      <article class="bg-papel rounded-[3rem] p-6 pb-8 flex flex-col hover:shadow-2xl transition-all duration-500 border border-tinta/5">
         <div class="rounded-t-[2.5rem] rounded-b-2xl overflow-hidden aspect-square mb-8 bg-white">
           <img src="assets/img/p-branco.webp" alt="Sachê branco premium" class="w-full h-full object-cover" loading="lazy" width="900" height="900">
         </div>
@@ -479,7 +482,7 @@
             <span class="text-sm font-medium text-kraft">A partir de R$ 5,90 (+300 un.)</span>
           </div>
           <div class="space-y-3">
-            <a class="block w-full text-center bg-caramelo text-tinta py-4 rounded-full font-bold text-sm uppercase tracking-wide hover:bg-tinta hover:text-creme transition-colors" data-produto="branco" href="#">Comprar no site</a>
+            <a class="block w-full text-center bg-tinta text-creme py-4 rounded-full font-bold text-sm uppercase tracking-wide hover:bg-caramelo hover:text-tinta transition-colors" data-produto="branco" href="#">Comprar no site</a>
             <a class="js-zap block w-full text-center border-2 border-tinta/20 text-tinta py-4 rounded-full font-bold text-sm uppercase tracking-wide hover:border-tinta transition-colors" data-origem="modelo-branco" data-msg="Quero o drip Branco premium 10x15." href="https://wa.me/5554997048081" target="_blank" rel="noopener">Dúvidas?</a>
           </div>
         </div>
