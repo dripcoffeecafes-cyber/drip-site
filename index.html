@@ -65,13 +65,18 @@
 </head>
 <body class="bg-chao text-tinta font-body antialiased selection:bg-caramelo selection:text-creme flex flex-col min-h-screen">
 
-<!-- Topo Glassmorphism -->
+<!-- Topo: assinatura Drip by Blooming -->
 <header class="sticky top-0 z-50 bg-chao/80 backdrop-blur-lg border-b border-tinta/10 transition-all">
-  <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-    <a href="#inicio" aria-label="Drip Coffee Label, início" class="transform transition hover:scale-105">
-      <!-- Imagem original com fallback visual -->
-      <img src="assets/img/logo.png" alt="Drip Coffee Label" class="h-10 w-auto" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between gap-4">
+    <a href="#inicio" aria-label="Drip Coffee Label, uma marca Blooming Club. Início" class="flex items-center gap-3 sm:gap-4 group">
+      <img src="assets/img/logo.png" alt="Drip Coffee Label" class="h-9 sm:h-10 w-auto transition-transform duration-300 group-hover:scale-[1.03]" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
       <span class="hidden font-display font-black text-xl tracking-tighter text-tinta">DRIP COFFEE</span>
+      <span class="h-7 w-px bg-tinta/20" aria-hidden="true"></span>
+      <span class="flex items-center gap-1.5 sm:gap-2">
+        <span class="font-accent italic text-kraft text-sm sm:text-[15px] leading-none -translate-y-px">by</span>
+        <img src="assets/img/blooming-sem-xicara.svg" alt="Blooming Club" class="h-[22px] sm:h-6 w-auto opacity-75 group-hover:opacity-100 transition-opacity" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <span class="hidden font-display font-bold text-sm text-tinta">BLOOMING CLUB</span>
+      </span>
     </a>
     <nav aria-label="Principal" class="hidden md:flex items-center gap-8 font-body font-semibold text-sm uppercase tracking-widest text-kraft">
       <a href="#como-funciona" class="hover:text-caramelo transition-colors">Como funciona</a>
@@ -749,7 +754,7 @@
       <img src="assets/img/logo-claro.png" alt="Drip Coffee Label" class="h-8" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
       <span class="hidden font-display font-bold">DRIP COFFEE LABEL</span>
       
-      <img src="assets/img/blooming-claro.png" alt="Blooming Club" class="h-6" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+      <img src="assets/img/blooming-claro-sem-xicara.svg" alt="Blooming Club" class="h-6 w-auto" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
       <span class="hidden font-display font-bold">BLOOMING CLUB</span>
     </div>
     <p class="font-body text-xs max-w-lg font-light leading-relaxed">
