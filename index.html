@@ -3,7 +3,399 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<link rel="icon" href="assets/img/logo.png" onerror="this.href='https://placehold.co/100x100/1C1917/F7F5F0?text=Drip'">
+<link rel="icon" href="assets/img/logo.png" onerror="this.<!doctype html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="assets/img/logo.png">
+<title>Drip Coffee Label | Experiência Premium</title>
+
+<!-- Tipografia: Inter (A fonte gratuita mais parecida com a San Francisco da Apple) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          applebg: '#f5f5f7',
+          appledark: '#1d1d1f',
+          appleblue: '#0066cc',
+          caramelo: '#C28446',
+        },
+        fontFamily: {
+          sans: ['Inter', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  body { background-color: #f5f5f7; color: #1d1d1f; overflow-x: hidden; }
+  
+  /* Esconde Scrollbar */
+  ::-webkit-scrollbar { display: none; }
+  * { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* --- O SEGREDO DO MOVIMENTO FLUIDO (Estilo Apple) --- */
+  .reveal {
+    opacity: 0;
+    transform: translateY(80px);
+    transition: all 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .reveal-scale {
+    opacity: 0;
+    transform: scale(0.9) translateY(40px);
+    transition: all 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .reveal-scale.active {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+
+  .delay-100 { transition-delay: 100ms; }
+  .delay-200 { transition-delay: 200ms; }
+  .delay-300 { transition-delay: 300ms; }
+
+  /* Customizando a Calculadora para parecer configurações da Apple */
+  input[type=range] {
+    -webkit-appearance: none; width: 100%; background: transparent; height: 30px;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none; height: 28px; width: 28px; border-radius: 50%;
+    background: #ffffff; cursor: pointer; margin-top: -12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.05);
+    transition: transform 0.2s;
+  }
+  input[type=range]::-webkit-slider-thumb:active { transform: scale(1.1); }
+  input[type=range]::-webkit-slider-runnable-track {
+    width: 100%; height: 6px; cursor: pointer; background: #d2d2d7; border-radius: 3px;
+  }
+
+  /* Seleção de Modelos estilo "Pill" */
+  input[type="radio"]:checked + div {
+    border-color: #1d1d1f;
+    box-shadow: 0 0 0 1px #1d1d1f;
+  }
+</style>
+</head>
+<body class="font-sans antialiased text-appledark">
+
+<!-- NAVEGAÇÃO FLUTUANTE (Estilo Dynamic Island / Blur) -->
+<nav class="fixed top-0 w-full z-50 bg-applebg/70 backdrop-blur-xl border-b border-appledark/5 transition-all duration-500">
+  <div class="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between text-xs font-medium tracking-wide text-appledark/80">
+    <a href="#inicio" class="flex items-center gap-2 hover:text-appledark transition-colors">
+      <img src="assets/img/logo-claro.png" alt="Drip" class="h-4 invert opacity-80" onerror="this.style.display='none';">
+      <span class="hidden sm:block">Drip Coffee Label</span>
+    </a>
+    <div class="flex gap-6">
+      <a href="#pro" class="hover:text-appledark transition-colors">Benefícios</a>
+      <a href="#config" class="hover:text-appledark transition-colors">Comprar</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO SECTION (Tipografia Gigante) -->
+<section id="inicio" class="pt-40 pb-20 px-6 min-h-[90vh] flex flex-col items-center justify-center text-center">
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-[12vw] md:text-[8rem] leading-[0.9] font-semibold tracking-tighter text-appledark reveal">
+      Sua marca.
+    </h1>
+    <h2 class="text-[10vw] md:text-[6rem] leading-[0.9] font-medium tracking-tight text-appledark/40 reveal delay-100 mt-2">
+      Na pausa do café.
+    </h2>
+    <p class="mt-8 text-xl md:text-2xl font-medium text-appledark/60 max-w-2xl mx-auto reveal delay-200 tracking-tight">
+      Drip coffee com sua logo impressa no sachê. Café 80+ pontos. Um brinde corporativo que ninguém esquece na gaveta.
+    </p>
+    <div class="mt-12 reveal delay-300">
+      <a href="#config" class="bg-appledark text-white rounded-full px-8 py-4 font-medium text-lg hover:scale-105 transition-transform inline-block">
+        Personalizar agora
+      </a>
+    </div>
+  </div>
+  
+  <div class="w-full max-w-6xl mx-auto mt-20 reveal-scale delay-200">
+    <!-- Sem bordas, apenas a imagem flutuando limpa -->
+    <img src="assets/img/hero-sache.webp" alt="Drip" class="w-full h-auto rounded-3xl object-cover aspect-video md:aspect-[21/9]" onerror="this.src='https://placehold.co/1200x600/e5e5ea/1d1d1f?text=Drip+em+Acao'">
+  </div>
+</section>
+
+<!-- SECTION: O PROBLEMA DA GAVETA (Fundo Preto para Impacto) -->
+<section id="pro" class="bg-black text-white py-40 px-6 overflow-hidden">
+  <div class="max-w-5xl mx-auto text-center">
+    <h2 class="text-5xl md:text-7xl font-semibold tracking-tighter leading-tight reveal">
+      A gaveta é o cemitério<br>dos brindes.
+    </h2>
+    <p class="mt-8 text-xl md:text-2xl text-white/50 font-medium max-w-3xl mx-auto reveal delay-100 tracking-tight">
+      Canetas e squeezes são esquecidos. Um drip de café especial vai direto para a xícara do seu cliente. Ele prepara, sente o aroma, e lembra de você na melhor hora do dia.
+    </p>
+  </div>
+
+  <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-20 mt-32">
+    <div class="reveal-scale">
+      <video src="assets/video/serra.mp4" poster="assets/video/serra-poster.jpg" autoplay muted loop playsinline class="w-full rounded-3xl aspect-[4/5] object-cover"></video>
+    </div>
+    <div class="flex flex-col justify-center gap-16">
+      <div class="reveal">
+        <h3 class="text-3xl font-semibold mb-2">Sem etiquetas coladas.</h3>
+        <p class="text-xl text-white/50">Impressão direta na embalagem premium. O acabamento perfeito que a sua marca exige.</p>
+      </div>
+      <div class="reveal delay-100">
+        <h3 class="text-3xl font-semibold mb-2">Nós criamos o design.</h3>
+        <p class="text-xl text-white/50">Envie a logo e nossa equipe prepara a arte digital para sua aprovação final antes da produção.</p>
+      </div>
+      <div class="reveal delay-200">
+        <h3 class="text-3xl font-semibold mb-2">A partir de 50 unidades.</h3>
+        <p class="text-xl text-white/50">Você não precisa estocar milhares. Peça o ideal para o seu time ou para o próximo evento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA IMERSIVA SEM CAIXAS -->
+<section class="py-40 bg-applebg overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 mb-20">
+    <h2 class="text-5xl md:text-7xl font-semibold tracking-tighter text-appledark reveal">
+      Feito para impressionar.
+    </h2>
+    <p class="text-2xl text-appledark/50 font-medium mt-4 reveal delay-100">Deslize para ver ocasiões de uso.</p>
+  </div>
+
+  <!-- Scroll nativo, sem botões visíveis, bem solto -->
+  <div class="flex gap-10 overflow-x-auto hide-scrollbar px-6 md:px-[calc((100vw-80rem)/2)] pb-10 cursor-grab reveal-scale delay-200">
+    <div class="shrink-0 w-[80vw] md:w-[400px]">
+      <img src="assets/img/o1.webp" class="w-full rounded-3xl aspect-[4/5] object-cover mb-6 shadow-2xl shadow-black/10" onerror="this.src='https://placehold.co/800x1000/e5e5ea/1d1d1f?text=Endomarketing'">
+      <h3 class="text-2xl font-semibold">Endomarketing</h3>
+      <p class="text-appledark/50 text-lg">Onboarding e aniversários.</p>
+    </div>
+    <div class="shrink-0 w-[80vw] md:w-[400px]">
+      <img src="assets/img/o2.webp" class="w-full rounded-3xl aspect-[4/5] object-cover mb-6 shadow-2xl shadow-black/10" onerror="this.src='https://placehold.co/800x1000/e5e5ea/1d1d1f?text=Visitas'">
+      <h3 class="text-2xl font-semibold">Visitas a Clientes</h3>
+      <p class="text-appledark/50 text-lg">Surpreenda após a reunião.</p>
+    </div>
+    <div class="shrink-0 w-[80vw] md:w-[400px]">
+      <img src="assets/img/o4.webp" class="w-full rounded-3xl aspect-[4/5] object-cover mb-6 shadow-2xl shadow-black/10" onerror="this.src='https://placehold.co/800x1000/e5e5ea/1d1d1f?text=Eventos'">
+      <h3 class="text-2xl font-semibold">Eventos</h3>
+      <p class="text-appledark/50 text-lg">Leve, cabe na sacola da feira.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONFIGURADOR DE COMPRA (O "Comprar um iPhone") -->
+<section id="config" class="py-40 bg-white">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="text-center mb-20">
+      <h2 class="text-5xl md:text-7xl font-semibold tracking-tighter text-appledark reveal">
+        Configure seu pedido.
+      </h2>
+    </div>
+
+    <form onsubmit="return false" class="grid md:grid-cols-[1fr_400px] gap-20">
+      
+      <!-- Lado Esquerdo: Passos -->
+      <div class="space-y-20">
+        
+        <!-- Passo 1 -->
+        <div class="reveal">
+          <h3 class="text-2xl font-semibold mb-8"><span class="text-appledark/30 mr-2">1.</span> Modelo da Embalagem</h3>
+          
+          <div class="grid gap-4">
+            <label class="relative cursor-pointer block">
+              <input type="radio" name="modelo" value="kraft" checked class="peer sr-only">
+              <div class="p-6 rounded-2xl border-2 border-transparent bg-applebg transition-all hover:bg-gray-200 flex justify-between items-center">
+                <div>
+                  <span class="block text-xl font-semibold">Kraft Clássico</span>
+                  <span class="block text-appledark/50 mt-1">10×12 cm. Tom terroso, estética orgânica.</span>
+                </div>
+                <span class="text-sm font-medium opacity-0 peer-checked:opacity-100 transition-opacity">Selecionado</span>
+              </div>
+            </label>
+            
+            <label class="relative cursor-pointer block">
+              <input type="radio" name="modelo" value="branco" class="peer sr-only">
+              <div class="p-6 rounded-2xl border-2 border-transparent bg-applebg transition-all hover:bg-gray-200 flex justify-between items-center">
+                <div>
+                  <span class="block text-xl font-semibold">Branco Premium</span>
+                  <span class="block text-appledark/50 mt-1">10×15 cm. Contraste absoluto para sua logo.</span>
+                </div>
+                <span class="text-sm font-medium opacity-0 peer-checked:opacity-100 transition-opacity">Selecionado</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Passo 2 -->
+        <div class="reveal delay-100">
+          <h3 class="text-2xl font-semibold mb-8"><span class="text-appledark/30 mr-2">2.</span> Quantidade</h3>
+          
+          <div class="bg-applebg p-8 rounded-3xl">
+            <div class="text-center mb-10">
+              <output id="q" class="text-8xl font-semibold tracking-tighter">100</output>
+              <span class="block text-lg font-medium text-appledark/50 mt-2">unidades</span>
+            </div>
+            
+            <div class="flex items-center gap-6">
+              <button type="button" id="menos" class="w-12 h-12 rounded-full bg-white shadow flex items-center justify-center text-2xl hover:scale-105 transition-transform">&minus;</button>
+              <input type="range" id="faixa" min="50" max="1000" step="50" value="100" class="flex-grow">
+              <button type="button" id="mais" class="w-12 h-12 rounded-full bg-white shadow flex items-center justify-center text-2xl hover:scale-105 transition-transform">+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lado Direito: Resumo Fixo (Sticky) -->
+      <div class="reveal-scale delay-200">
+        <div class="sticky top-32 bg-applebg p-10 rounded-3xl">
+          <h3 class="text-xl font-semibold mb-2">Resumo do Pedido</h3>
+          <div class="h-px bg-appledark/10 w-full my-6"></div>
+          
+          <div class="mb-8">
+            <span class="block text-4xl font-semibold tracking-tight" id="total">R$ 570,00</span>
+            <span class="block text-appledark/50 mt-2 font-medium" id="un">R$ 5,70 / unidade</span>
+          </div>
+          
+          <div class="space-y-3">
+            <a id="calc-zap" href="#" target="_blank" class="block w-full text-center bg-appledark text-white py-4 rounded-full font-medium text-lg hover:scale-105 transition-transform">
+              Pedir via WhatsApp
+            </a>
+            <a id="calc-site" href="#" target="_blank" class="block w-full text-center bg-white text-appledark py-4 rounded-full font-medium text-lg hover:scale-105 transition-transform">
+              Comprar no Site
+            </a>
+          </div>
+          
+          <p class="text-sm text-appledark/40 text-center mt-6">
+            Descontos automáticos aplicados na quantidade.
+          </p>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER LIMPO -->
+<footer class="bg-applebg py-20 border-t border-appledark/10 text-center">
+  <div class="max-w-4xl mx-auto px-6">
+    <img src="assets/img/blooming.png" alt="Blooming Club" class="h-10 mx-auto opacity-50 grayscale mb-6" onerror="this.style.display='none';">
+    <p class="text-appledark/50 font-medium">Drip Coffee Label é uma marca Blooming Club.<br>Cafés Especiais da Região Vulcânica.</p>
+  </div>
+</footer>
+
+<!-- SCRIPT DE ANIMAÇÃO E LÓGICA -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  
+  // 1. ENGINE DE REVELAÇÃO NO SCROLL (A mágica do movimento)
+  const observerOptions = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.15 // Dispara quando 15% do elemento aparece
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        observer.unobserve(entry.target); // Anima apenas uma vez
+      }
+    });
+  }, observerOptions);
+
+  // Observa todos os elementos com as classes de animação
+  document.querySelectorAll('.reveal, .reveal-scale').forEach((el) => {
+    observer.observe(el);
+  });
+
+  // Gatilho inicial para os elementos visíveis antes do scroll
+  setTimeout(() => {
+    document.querySelectorAll('.reveal, .reveal-scale').forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight) {
+        el.classList.add('active');
+      }
+    });
+  }, 100);
+
+  // 2. SCROLL HORIZONTAL COM ARRASTE (Para a Galeria)
+  const sliders = document.querySelectorAll('.overflow-x-auto');
+  sliders.forEach(slider => {
+    let isDown = false, startX, scrollLeft;
+    slider.addEventListener('mousedown', (e) => {
+      isDown = true;
+      startX = e.pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+    });
+    slider.addEventListener('mouseleave', () => isDown = false);
+    slider.addEventListener('mouseup', () => isDown = false);
+    slider.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - slider.offsetLeft;
+      const walk = (x - startX) * 2;
+      slider.scrollLeft = scrollLeft - walk;
+    });
+  });
+
+  // 3. LÓGICA DA CALCULADORA PRESERVADA
+  const ZAP = '5554997048081';
+  const MODELOS = {
+    kraft:  { nome: 'Kraft Clássico', precos: [5.9, 5.7, 5.5, 5.3, 5.1, 4.9], url: 'https://www.bloomingclub.com.br/personalizado-kraft-kit' },
+    branco: { nome: 'Branco Premium', precos: [6.9, 6.7, 6.5, 6.3, 6.1, 5.9], url: 'https://www.bloomingclub.com.br/personalizado-branco' }
+  };
+  
+  const brl = v => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  const zapLink = msg => `https://wa.me/${ZAP}?text=${encodeURIComponent(msg)}`;
+
+  const faixa = document.getElementById('faixa');
+  const qOut = document.getElementById('q');
+  const valTotal = document.getElementById('total');
+  const valUn = document.getElementById('un');
+  const btnZap = document.getElementById('calc-zap');
+  const btnSite = document.getElementById('calc-site');
+
+  function getTier(n) { return Math.min(Math.floor(n/50)-1, 5); }
+  function getModel() { return document.querySelector('input[name=modelo]:checked').value; }
+
+  function renderizar() {
+    const n = parseInt(faixa.value);
+    const mod = getModel();
+    const config = MODELOS[mod] || MODELOS['branco']; 
+    const t = getTier(n);
+    const precoUn = config.precos[t];
+    const total = precoUn * n;
+
+    qOut.textContent = n;
+    valTotal.textContent = brl(total);
+    valUn.textContent = brl(precoUn) + ' / unidade';
+    
+    const msg = `Olá! Vim pelo site da Drip. Simulei ${n} unidades do ${config.nome} (${brl(total)}) e quero configurar o pedido.`;
+    btnZap.href = zapLink(msg);
+    btnSite.href = config.url;
+  }
+
+  if (faixa) {
+    faixa.addEventListener('input', renderizar);
+    document.querySelectorAll('input[name=modelo]').forEach(r => r.addEventListener('change', renderizar));
+    document.getElementById('menos').onclick = () => { faixa.value = Math.max(50, parseInt(faixa.value)-50); renderizar(); };
+    document.getElementById('mais').onclick = () => { faixa.value = Math.min(1000, parseInt(faixa.value)+50); renderizar(); };
+    renderizar();
+  }
+});
+</script>
+
+</body>
+</html>
+='https://placehold.co/100x100/1C1917/F7F5F0?text=Drip'">
 <title>Drip Coffee Label | Arquitetura do Café</title>
 <meta name="description" content="Drip coffee personalizado com a sua logo impressa no sachê e café especial de origem única. Brindes corporativos e eventos a partir de 50 unidades.">
 
