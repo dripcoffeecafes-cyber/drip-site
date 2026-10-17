@@ -5,9 +5,9 @@ Página estática (HTML, CSS e JS puros), pronta para GitHub Pages com domínio 
 ## Publicar no GitHub Pages
 1. Suba o conteúdo desta pasta na raiz de um repositório (index.html, assets/, .nojekyll).
 2. No repositório: Settings > Pages > Source: Deploy from a branch > main / (root).
-3. Em Custom domain, informe driplabel.cafes.bloomingclub.com.br (o arquivo CNAME já está na raiz do repositório).
+3. Em Custom domain, informe driplabel.bloomingclub.com.br (o arquivo CNAME já está na raiz do repositório).
 4. No DNS do domínio bloomingclub.com.br, crie um registro CNAME:
-   - Nome: driplabel.cafes
+   - Nome: driplabel
    - Valor: dripcoffeecafes-cyber.github.io
 5. Depois que o DNS propagar, marque Enforce HTTPS.
 
