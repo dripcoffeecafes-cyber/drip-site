@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<link rel="icon" href="assets/img/logo.png" onerror="this.href='https://placehold.co/100x100/1E1410/F0EAE2?text=Drip'">
 <title>Drip Coffee Label | Arquitetura do Café</title>
 <meta name="description" content="Drip coffee personalizado com a sua logo impressa no sachê e café especial de origem única. Brindes corporativos e eventos a partir de 50 unidades.">
+<link rel="icon" href="assets/img/logo.png">
+<script>document.documentElement.classList.add('js')</script>
 
-<!-- Tipografia Monumental e Fluida -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Lora:ital,wght@1,400;1,500&family=Poppins:wght@600;700&family=Montserrat:wght@300;800;900&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <script src="https://cdn.tailwindcss.com/3.4.17"></script>
 <script>
@@ -18,577 +18,474 @@
     theme: {
       extend: {
         colors: {
-          chao: '#D9D8CF',
-          papel: '#E7E6DF',
-          tinta: '#1E1410',
-          espresso: '#2E1D14',
+          canvas: '#f5f5f7',   /* fundo principal */
+          ink: '#1d1d1f',      /* texto principal */
+          mute: '#6e6e73',     /* texto secundário */
+          line: '#d2d2d7',     /* fios e trilhos */
+          caramelo: '#D4924A', /* acento da marca, usado com parcimônia */
+          kraft: '#8A6A4A',    /* links de texto (contraste legível no claro) */
           creme: '#F0EAE2',
-          caramelo: '#D4924A',
-          kraft: '#8A6A4A',
         },
         fontFamily: {
-          display: ['Montserrat', 'sans-serif'],
-          accent: ['Playfair Display', 'serif'],
-          body: ['Inter', 'sans-serif'],
-          'emb-sans': ['Poppins', 'Montserrat', 'sans-serif'],
-          'emb-serif': ['Lora', 'Playfair Display', 'serif'],
-        },
-        borderRadius: {
-          'organic-1': '40% 60% 70% 30% / 40% 50% 60% 50%',
-          'organic-2': '50% 50% 30% 70% / 60% 40% 60% 40%',
-          'arch': '12rem 12rem 0 0',
-          'arch-b': '0 0 12rem 12rem',
+          sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Helvetica', 'Arial', 'sans-serif'],
         }
       }
     }
   }
 </script>
 
-<style type="text/tailwindcss">
-  html { scroll-behavior: smooth; }
-  @layer utilities {
-    .clip-wave { clip-path: polygon(0 0, 100% 0, 100% max(90%, calc(100% - 5rem)), 0 100%); }
-    .clip-wave-inv { clip-path: polygon(0 min(10%, 5rem), 100% 0, 100% 100%, 0 100%); }
-    .hide-scrollbar::-webkit-scrollbar { display: none; }
-    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+<style>
+  html { background: #f5f5f7; }
+  body { background: #f5f5f7; color: #1d1d1f; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3 { text-wrap: balance; }
+  .tnum { font-variant-numeric: tabular-nums; }
+
+  /* Movimento: deslizar e surgir (curva da Apple). O estado escondido só vale com JavaScript ativo. */
+  .reveal, .reveal-scale { transition: all 1.4s cubic-bezier(0.16, 1, 0.3, 1); }
+  .js .reveal { opacity: 0; transform: translateY(80px); }
+  .js .reveal-scale { opacity: 0; transform: scale(0.9) translateY(40px); }
+  .js .reveal.active, .js .reveal-scale.active { opacity: 1; transform: none; }
+  .d1 { transition-delay: .12s; } .d2 { transition-delay: .24s; } .d3 { transition-delay: .36s; } .d4 { transition-delay: .48s; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .reveal-scale { transition: none; }
+    .js .reveal, .js .reveal-scale { opacity: 1; transform: none; }
   }
 
-  /* Componentes customizados baseados nas restrições da calculadora e carrosel */
-  .calc-range { @apply w-full accent-tinta h-2 bg-tinta/15 rounded-full appearance-none outline-none; }
-  .faixas div.ativa { @apply bg-caramelo text-tinta font-bold scale-110 transition-transform shadow-md; }
-  .faixas div { @apply p-2 rounded-xl transition-all duration-300 font-body text-xs text-kraft text-center; }
-  
+  /* Trilho da galeria */
+  .hide-scrollbar::-webkit-scrollbar { display: none; }
+  .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .trilho-pad { padding-inline: max(1.5rem, calc((100% - 80rem) / 2 + 1.5rem)); scroll-padding-inline: max(1.5rem, calc((100% - 80rem) / 2 + 1.5rem)); }
+
+  /* Controle deslizante fino, com thumb branco e sombra suave */
+  .calc-range { -webkit-appearance: none; appearance: none; width: 100%; height: 4px; border-radius: 999px; outline: none; cursor: pointer;
+    background: linear-gradient(to right, #1d1d1f 0 var(--p, 5.26%), #d2d2d7 var(--p, 5.26%) 100%); }
+  .calc-range::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 28px; height: 28px; border-radius: 50%; background: #fff;
+    border: .5px solid rgba(0,0,0,.04); box-shadow: 0 .5px 4px rgba(0,0,0,.12), 0 6px 13px rgba(0,0,0,.12); transition: transform .2s; }
+  .calc-range::-moz-range-thumb { width: 28px; height: 28px; border-radius: 50%; background: #fff;
+    border: .5px solid rgba(0,0,0,.04); box-shadow: 0 .5px 4px rgba(0,0,0,.12), 0 6px 13px rgba(0,0,0,.12); }
+  .calc-range::-moz-range-track { background: transparent; }
+  .calc-range:active::-webkit-slider-thumb { transform: scale(1.08); }
+  .calc-range:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 4px rgba(212,146,74,.45), 0 6px 13px rgba(0,0,0,.12); }
+  .calc-range:focus-visible::-moz-range-thumb { box-shadow: 0 0 0 4px rgba(212,146,74,.45), 0 6px 13px rgba(0,0,0,.12); }
+
+  /* Faixas de preço (renderizadas pelo script da calculadora) */
+  .faixas div { padding: .7rem .25rem; border-radius: 14px; font-size: 12px; line-height: 1.35; color: #6e6e73; text-align: center; transition: all .5s cubic-bezier(0.16, 1, 0.3, 1); font-variant-numeric: tabular-nums; }
+  .faixas div.ativa { background: #f5f5f7; color: #1d1d1f; font-weight: 600; box-shadow: inset 0 0 0 1px #1d1d1f; }
+
   details > summary { list-style: none; }
   details > summary::-webkit-details-marker { display: none; }
-  
-  /* Animações suaves de hover nas imagens */
-  .img-hover-zoom { @apply transition-transform duration-700 hover:scale-105; }
+  :focus-visible { outline: 2px solid #D4924A; outline-offset: 3px; }
 </style>
 </head>
-<body class="bg-chao text-tinta font-body antialiased selection:bg-caramelo selection:text-creme flex flex-col min-h-screen">
+<body class="font-sans bg-canvas text-ink antialiased selection:bg-caramelo selection:text-white">
 
-<!-- Topo: assinatura Drip by Blooming (cabeçalho escuro) -->
-<header class="sticky top-0 z-50 bg-tinta/95 backdrop-blur-lg border-b border-creme/10 transition-all">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between gap-4">
-    <a href="#inicio" aria-label="Drip Coffee Label, uma marca Blooming Club. Início" class="flex items-center gap-3 sm:gap-4 group">
-      <img src="assets/img/logo-claro.png" alt="Drip Coffee Label" class="h-9 sm:h-10 w-auto transition-transform duration-300 group-hover:scale-[1.03]" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-      <span class="hidden font-display font-black text-xl tracking-tighter text-creme">DRIP COFFEE</span>
-      <span class="h-7 w-px bg-creme/25" aria-hidden="true"></span>
-      <span class="flex items-center gap-1.5 sm:gap-2">
-        <span class="font-accent italic text-caramelo text-sm sm:text-[15px] leading-none -translate-y-px">by</span>
-        <img src="assets/img/blooming-claro-sem-xicara.svg" alt="Blooming Club" class="h-[22px] sm:h-6 w-auto opacity-75 group-hover:opacity-100 transition-opacity" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-        <span class="hidden font-display font-bold text-sm text-creme">BLOOMING CLUB</span>
+<!-- Navegação: barra translúcida fixa no topo -->
+<header class="sticky z-50 bg-canvas/75 backdrop-blur-xl backdrop-saturate-150 border-b border-black/[0.06]" style="top: env(safe-area-inset-top, 0px)">
+  <div class="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between gap-4">
+    <a href="#inicio" aria-label="Drip Coffee Label, uma marca Blooming Club. Início" class="flex items-center gap-3">
+      <img src="assets/img/logo.png" alt="Drip Coffee Label" class="h-7 w-auto">
+      <span class="h-5 w-px bg-black/15" aria-hidden="true"></span>
+      <span class="flex items-center gap-1.5">
+        <span class="text-[11px] font-medium text-mute leading-none">by</span>
+        <img src="assets/img/blooming-sem-xicara.svg" alt="Blooming Club" class="h-[18px] w-auto opacity-80">
       </span>
     </a>
-    <div class="flex items-center gap-1 sm:gap-6 md:gap-8">
-      <nav aria-label="Principal" class="hidden md:flex items-center gap-8 font-body font-semibold text-sm uppercase tracking-widest text-creme/70">
-        <a href="#como-funciona" class="hover:text-caramelo transition-colors">Como funciona</a>
-        <a href="#modelos" class="hover:text-caramelo transition-colors">Modelos</a>
-        <a href="#perguntas" class="hover:text-caramelo transition-colors">Perguntas</a>
-        <a class="js-zap px-6 py-2.5 rounded-full border border-creme/60 text-creme hover:bg-creme hover:text-tinta transition-all duration-300" data-origem="topo" href="https://wa.me/5554997048081?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Drip%20Coffee%20Label%20e%20quero%20um%20or%C3%A7amento%20de%20drip%20personalizado." target="_blank" rel="noopener">
-          WhatsApp
-        </a>
+    <div class="flex items-center gap-1 md:gap-7">
+      <nav aria-label="Principal" class="hidden md:flex items-center gap-7 text-[13px] text-ink/80">
+        <a href="#como-funciona" class="hover:text-ink transition-colors">Como funciona</a>
+        <a href="#modelos" class="hover:text-ink transition-colors">Modelos</a>
+        <a href="#perguntas" class="hover:text-ink transition-colors">Perguntas</a>
+        <a class="js-zap px-4 py-1.5 rounded-full bg-ink text-white text-[13px] font-medium hover:bg-black transition-colors" data-origem="topo" href="https://wa.me/5554997048081?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Drip%20Coffee%20Label%20e%20quero%20um%20or%C3%A7amento%20de%20drip%20personalizado." target="_blank" rel="noopener">WhatsApp</a>
       </nav>
-      <!-- Atalhos para a loja Blooming Club -->
-      <div class="flex items-center gap-1 md:border-l md:border-creme/15 md:pl-6">
-        <a href="https://www.bloomingclub.com.br/account" target="_blank" rel="noopener" data-origem="topo-conta" aria-label="Minha conta ou cadastro na loja Blooming Club" title="Minha conta" class="grid place-items-center w-10 h-10 rounded-full text-creme/75 hover:text-caramelo hover:bg-creme/5 transition-colors">
-          <svg viewBox="0 0 24 24" class="w-[22px] h-[22px] fill-none stroke-current" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3.75"/><path d="M4.75 20c.9-3.6 3.8-5.5 7.25-5.5s6.35 1.9 7.25 5.5"/></svg>
+      <div class="flex items-center">
+        <a href="https://www.bloomingclub.com.br/account" target="_blank" rel="noopener" data-origem="topo-conta" aria-label="Minha conta ou cadastro na loja Blooming Club" title="Minha conta" class="grid place-items-center w-10 h-10 rounded-full text-ink/70 hover:text-ink transition-colors">
+          <svg viewBox="0 0 24 24" class="w-5 h-5 fill-none stroke-current" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3.75"/><path d="M4.75 20c.9-3.6 3.8-5.5 7.25-5.5s6.35 1.9 7.25 5.5"/></svg>
         </a>
-        <a href="https://www.bloomingclub.com.br/checkout/cart" target="_blank" rel="noopener" data-origem="topo-carrinho" aria-label="Carrinho na loja Blooming Club" title="Carrinho" class="grid place-items-center w-10 h-10 rounded-full text-creme/75 hover:text-caramelo hover:bg-creme/5 transition-colors">
-          <svg viewBox="0 0 24 24" class="w-[22px] h-[22px] fill-none stroke-current" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 8h13l-1 12.25H6.5L5.5 8Z"/><path d="M9 10.5V7a3 3 0 0 1 6 0v3.5"/></svg>
+        <a href="https://www.bloomingclub.com.br/checkout/cart" target="_blank" rel="noopener" data-origem="topo-carrinho" aria-label="Carrinho na loja Blooming Club" title="Carrinho" class="grid place-items-center w-10 h-10 rounded-full text-ink/70 hover:text-ink transition-colors">
+          <svg viewBox="0 0 24 24" class="w-5 h-5 fill-none stroke-current" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 8h13l-1 12.25H6.5L5.5 8Z"/><path d="M9 10.5V7a3 3 0 0 1 6 0v3.5"/></svg>
         </a>
       </div>
     </div>
   </div>
 </header>
 
-<main id="inicio" class="flex-grow">
+<main id="inicio">
 
-<!-- Herói: foto de fundo, garantias em lista -->
-<section class="relative isolate overflow-hidden bg-chao text-tinta">
-  <div class="max-w-7xl mx-auto px-6 pt-5 md:pt-14 md:pb-40">
-    <div class="md:max-w-[44%] lg:max-w-[40%]">
-      <!-- Mesma composição da embalagem: "sua" / MARCA / "aqui." -->
-      <h1 class="inline-flex flex-col text-[clamp(3.5rem,19vw,4.75rem)] md:text-[4.25rem] lg:text-[5.5rem] xl:text-[6.5rem]">
-        <span class="font-emb-serif italic font-medium text-[0.82em] leading-[0.95] tracking-normal">sua</span>
-        <span class="font-emb-sans font-bold uppercase leading-[0.95] tracking-[0.01em]">Marca</span>
-        <span class="self-end font-emb-serif italic font-normal text-[0.42em] leading-tight tracking-normal text-kraft mt-[0.12em]">na pausa do café.</span>
-      </h1>
-      <p class="mt-7 md:mt-9 text-[17px] md:text-lg leading-relaxed text-tinta/75 font-body font-light">
-        Drip coffee com a sua logo impressa direto no sachê e café especial de origem única dentro. O brinde corporativo que a pessoa abre, prepara e lembra de quem deu. <strong class="font-semibold text-tinta">A partir de 50 unidades.</strong>
-      </p>
-
-      <div class="mt-8 md:mt-10 grid grid-cols-2 sm:flex sm:flex-wrap gap-3">
-        <a href="#calc" class="col-span-2 sm:col-span-1 flex items-center justify-center h-14 px-8 rounded-full bg-tinta text-creme font-body font-semibold text-sm uppercase tracking-wide hover:bg-espresso transition-colors">Simular meu pedido</a>
-        <a class="js-zap flex items-center justify-center h-14 px-4 sm:px-6 rounded-full bg-caramelo text-tinta font-body font-semibold text-xs sm:text-sm uppercase tracking-wide hover:bg-tinta hover:text-creme transition-colors" data-origem="heroi" href="https://wa.me/5554997048081?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Drip%20Coffee%20Label%20e%20quero%20um%20or%C3%A7amento%20de%20drip%20personalizado." target="_blank" rel="noopener">Orçamento</a>
-        <a class="flex items-center justify-center h-14 px-4 sm:px-6 rounded-full border border-tinta/30 text-tinta font-body font-semibold text-xs sm:text-sm uppercase tracking-wide hover:bg-tinta hover:text-creme transition-colors" href="https://www.bloomingclub.com.br/personalizados" target="_blank" rel="noopener">Comprar no site</a>
-      </div>
-
-      <!-- Garantias: lista com fios finos, sem caixas -->
-      <dl class="relative z-10 mt-8 md:mt-14 border-t border-tinta/15 divide-y divide-tinta/15">
-        <div class="py-4 md:py-5 flex items-center gap-5">
-          <dt class="font-display font-black leading-none tracking-tighter text-caramelo w-20 md:w-24 shrink-0 text-5xl">80<span class="text-3xl align-top">+</span></dt>
-          <dd>
-            <span class="block font-display font-extrabold uppercase text-[15px] md:text-base leading-tight">Pontos SCA, café especial</span>
-            <span class="block mt-1 font-accent italic text-[15px] md:text-base text-kraft">Laudos disponíveis de cada café</span>
-          </dd>
-        </div>
-        <div class="py-4 md:py-5 flex items-center gap-5">
-          <dt class="w-20 md:w-24 shrink-0">
-            <img src="assets/img/regiao-vulcanica-compacta.svg" alt="Cafés da Região Vulcânica" class="w-full h-auto">
-          </dt>
-          <dd>
-            <span class="block font-display font-extrabold uppercase text-[15px] md:text-base leading-tight">Origem única</span>
-            <span class="block mt-1 font-accent italic text-[15px] md:text-base text-kraft">Região Vulcânica, Sul de Minas</span>
-          </dd>
-        </div>
-        <div class="py-4 md:py-5 flex items-center gap-5">
-          <dt class="w-20 md:w-24 shrink-0 font-display font-black text-xs uppercase tracking-[0.2em] text-caramelo">Sem<br>surpresa</dt>
-          <dd>
-            <span class="block font-display font-extrabold uppercase text-[15px] md:text-base leading-tight">Arte aprovada por você</span>
-            <span class="block mt-1 font-accent italic text-[15px] md:text-base text-kraft">e nota fiscal PJ</span>
-          </dd>
-        </div>
-      </dl>
+<!-- Herói -->
+<section class="pt-20 md:pt-32 pb-28 md:pb-40">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <p class="reveal text-sm md:text-base font-semibold text-kraft">Drip Coffee Label</p>
+    <h1 class="reveal d1 mt-4 font-semibold tracking-tighter leading-[0.9] text-[3.4rem] sm:text-[4.75rem] md:text-[6rem] lg:text-[8rem]">
+      Sua marca<br><span class="text-mute">na pausa do café.</span>
+    </h1>
+    <p class="reveal d2 mt-8 md:mt-10 max-w-2xl mx-auto text-lg md:text-2xl leading-snug tracking-tight text-mute font-medium">
+      Drip coffee com a sua logo impressa direto no sachê e café especial de origem única dentro. O brinde que a pessoa abre, prepara e lembra de quem deu. <span class="text-ink">A partir de 50 unidades.</span>
+    </p>
+    <div class="reveal d3 mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
+      <a href="#calc" class="inline-flex items-center h-12 px-7 rounded-full bg-ink text-white text-[15px] font-medium hover:bg-black transition-colors">Simular meu pedido</a>
+      <a class="js-zap inline-flex items-center gap-1 text-[17px] text-kraft hover:underline underline-offset-4" data-origem="heroi" href="https://wa.me/5554997048081?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Drip%20Coffee%20Label%20e%20quero%20um%20or%C3%A7amento%20de%20drip%20personalizado." target="_blank" rel="noopener">Pedir orçamento <span aria-hidden="true">›</span></a>
+      <a class="inline-flex items-center gap-1 text-[17px] text-kraft hover:underline underline-offset-4" href="https://www.bloomingclub.com.br/personalizados" target="_blank" rel="noopener">Comprar no site <span aria-hidden="true">›</span></a>
     </div>
-  </div>
 
-  <!-- Foto: abaixo do texto no celular, à direita no desktop -->
-  <div class="relative -z-10 -mt-28 h-[115vw] max-h-[560px] md:absolute md:mt-0 md:inset-y-0 md:right-0 md:left-[44%] lg:left-[40%] md:h-auto">
-    <img src="assets/img/hero-sache.webp" alt="Água quente sendo despejada num drip encaixado numa caneca, com vista para o mar ao fundo"
-         class="absolute inset-0 w-full h-full object-cover object-[50%_80%] md:object-[50%_60%]">
-    <div class="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-chao via-chao/70 to-transparent md:hidden"></div>
-    <div class="hidden md:block absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-chao to-transparent"></div>
+    <div class="reveal-scale d2 mt-16 md:mt-24 mx-auto max-w-[560px]">
+      <img src="assets/img/hero-sache.webp" alt="Água quente sendo despejada num drip encaixado numa caneca, com vista para o mar ao fundo" width="900" height="1350"
+           class="w-full aspect-[4/5] object-cover object-[50%_70%] rounded-[2.5rem]">
+    </div>
+
+    <!-- Garantias -->
+    <dl class="mt-20 md:mt-28 grid sm:grid-cols-3 gap-12 sm:gap-8 max-w-5xl mx-auto">
+      <div class="reveal flex flex-col items-center">
+        <dt class="order-1 text-[3.5rem] leading-none font-semibold tracking-tighter text-caramelo">80+</dt>
+        <dd class="order-2 mt-4 text-[17px] font-semibold">Pontos SCA, café especial</dd>
+        <dd class="order-3 mt-1 text-[15px] text-mute">Laudos disponíveis de cada café</dd>
+      </div>
+      <div class="reveal d1 flex flex-col items-center">
+        <dt class="h-14 flex items-center"><img src="assets/img/regiao-vulcanica-compacta.svg" alt="Cafés da Região Vulcânica" class="h-14 w-auto"></dt>
+        <dd class="mt-4 text-[17px] font-semibold">Origem única</dd>
+        <dd class="mt-1 text-[15px] text-mute">Região Vulcânica, Sul de Minas</dd>
+      </div>
+      <div class="reveal d2 flex flex-col items-center">
+        <dt class="h-14 flex items-center text-[2rem] font-semibold tracking-tighter leading-none">Sem surpresa</dt>
+        <dd class="mt-4 text-[17px] font-semibold">Arte aprovada por você</dd>
+        <dd class="mt-1 text-[15px] text-mute">e nota fiscal PJ</dd>
+      </div>
+    </dl>
   </div>
 </section>
 
-<!-- Capítulo 1: A Gaveta -->
-<section class="-mt-16 md:-mt-24 py-24 bg-papel rounded-t-[4rem] md:rounded-t-[8rem] relative z-20">
+<!-- Contraste: a gaveta -->
+<section class="bg-black text-white py-32 md:py-48">
   <div class="max-w-7xl mx-auto px-6">
-    <div class="max-w-3xl mb-16">
-      <span class="font-body font-bold text-sm tracking-widest text-kraft uppercase">Você já viu essa história</span>
-      <h2 class="font-display font-black text-4xl md:text-6xl text-tinta uppercase leading-none mt-4">
-        Todo ano <span class="font-accent font-normal italic text-kraft normal-case tracking-normal block mt-2">o brinde termina na gaveta</span>
-      </h2>
-    </div>
+    <p class="reveal text-sm md:text-base font-semibold text-caramelo">Você já viu essa história</p>
+    <h2 class="reveal d1 mt-4 max-w-5xl text-[2.75rem] md:text-[5rem] lg:text-[6rem] font-semibold tracking-tighter leading-[0.95]">
+      A gaveta é o cemitério dos brindes.
+    </h2>
+    <p class="reveal d2 mt-8 max-w-2xl text-lg md:text-2xl leading-snug tracking-tight text-white/55 font-medium">
+      Todo ano é igual. Muito trabalho, pouco orçamento, e no fim a sua marca vai parar no fundo de uma gaveta.
+    </p>
 
-    <div class="grid md:grid-cols-4 gap-8 md:gap-12 relative">
-      <!-- Linha fluida de fundo (visível no desktop) -->
-      <div class="hidden md:block absolute top-12 left-0 w-full h-[1px] bg-tinta/20"></div>
-      
-      <!-- Passos -->
-      <div class="relative pt-8 md:pt-16">
-        <div class="absolute top-0 left-0 w-3 h-3 bg-caramelo rounded-full md:-mt-[5px]"></div>
-        <span class="font-body font-bold text-caramelo text-sm uppercase tracking-widest block mb-4">Outubro</span>
-        <h3 class="font-display font-black text-xl text-tinta uppercase leading-tight mb-3">O pedido</h3>
-        <p class="text-tinta/70 font-light">Pouco orçamento, prazo apertado e a missão de agradar a todos com uma coisa só.</p>
-      </div>
-      <div class="relative pt-8 md:pt-16">
-        <div class="absolute top-0 left-0 w-3 h-3 bg-tinta rounded-full md:-mt-[5px]"></div>
-        <span class="font-body font-bold text-kraft text-sm uppercase tracking-widest block mb-4">Novembro</span>
-        <h3 class="font-display font-black text-xl text-tinta uppercase leading-tight mb-3">A mesmice</h3>
-        <p class="text-tinta/70 font-light">Caneta, caneca, squeeze. Mínimo de mil unidades, logo num adesivo.</p>
-      </div>
-      <div class="relative pt-8 md:pt-16">
-        <div class="absolute top-0 left-0 w-3 h-3 bg-tinta rounded-full md:-mt-[5px]"></div>
-        <span class="font-body font-bold text-kraft text-sm uppercase tracking-widest block mb-4">Dezembro</span>
-        <h3 class="font-display font-black text-xl text-tinta uppercase leading-tight mb-3">A entrega</h3>
-        <p class="text-tinta/70 font-light">As pessoas agradecem com educação. A caixa vai para a mochila sem emoção.</p>
-      </div>
-      <div class="relative pt-8 md:pt-16">
-        <div class="absolute top-0 left-0 w-3 h-3 bg-tinta/20 rounded-full md:-mt-[5px]"></div>
-        <span class="font-body font-bold text-tinta/40 text-sm uppercase tracking-widest block mb-4">Janeiro</span>
-        <h3 class="font-display font-black text-xl text-tinta/40 uppercase leading-tight mb-3">O esquecimento</h3>
-        <p class="text-tinta/40 font-light">A sua marca está na gaveta. O dinheiro foi gasto e ninguém lembra.</p>
-      </div>
-    </div>
+    <ol class="mt-24 md:mt-32 grid sm:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-14">
+      <li class="reveal">
+        <span class="block text-sm font-semibold text-caramelo">Outubro</span>
+        <h3 class="mt-3 text-2xl font-semibold tracking-tight">O pedido</h3>
+        <p class="mt-2 text-[17px] leading-relaxed text-white/60">Pouco orçamento, prazo apertado e a missão de agradar a todos com uma coisa só.</p>
+      </li>
+      <li class="reveal d1">
+        <span class="block text-sm font-semibold text-white/60">Novembro</span>
+        <h3 class="mt-3 text-2xl font-semibold tracking-tight">A mesmice</h3>
+        <p class="mt-2 text-[17px] leading-relaxed text-white/60">Caneta, caneca, squeeze. Mínimo de mil unidades, logo num adesivo.</p>
+      </li>
+      <li class="reveal d2">
+        <span class="block text-sm font-semibold text-white/60">Dezembro</span>
+        <h3 class="mt-3 text-2xl font-semibold tracking-tight">A entrega</h3>
+        <p class="mt-2 text-[17px] leading-relaxed text-white/60">As pessoas agradecem com educação. A caixa vai para a mochila sem emoção.</p>
+      </li>
+      <li class="reveal d3">
+        <span class="block text-sm font-semibold text-white/30">Janeiro</span>
+        <h3 class="mt-3 text-2xl font-semibold tracking-tight text-white/35">O esquecimento</h3>
+        <p class="mt-2 text-[17px] leading-relaxed text-white/30">A sua marca está na gaveta. O dinheiro foi gasto e ninguém lembra.</p>
+      </li>
+    </ol>
   </div>
 </section>
 
-<!-- Capítulo 2: A Manhã (Fundo Escuro Arquitetônico) -->
-<section class="bg-espresso text-creme py-32 relative overflow-hidden clip-wave-inv -mt-16 z-30">
-  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
-    <!-- Imagem com forma orgânica -->
-    <div class="order-2 md:order-1 relative aspect-[4/5] max-w-md mx-auto w-full">
-      <div class="absolute inset-0 bg-tinta rounded-organic-1 overflow-hidden">
-        <img src="assets/img/manha.webp" alt="Mão segurando um drip kraft da Drip Coffee Label ao lado de uma caneca com o café coando" class="w-full h-full object-cover opacity-90 img-hover-zoom mix-blend-luminosity hover:mix-blend-normal transition-all duration-700" loading="lazy" onerror="this.src='https://placehold.co/800x1000/2E1D14/D4924A?text=Experiencia+Matinal'">
-      </div>
+<!-- A manhã -->
+<section class="bg-white py-32 md:py-48">
+  <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+    <div class="reveal-scale order-2 lg:order-1">
+      <img src="assets/img/manha.webp" alt="Mão segurando um drip kraft da Drip Coffee Label ao lado de uma caneca com o café coando" width="900" height="1115" loading="lazy"
+           class="w-full max-w-[520px] mx-auto aspect-[4/5] object-cover rounded-[2.5rem]">
     </div>
-    
-    <div class="order-1 md:order-2">
-      <span class="font-body font-bold text-caramelo text-sm tracking-widest uppercase">A mesma história, com café</span>
-      <div class="font-display font-black text-8xl md:text-[8rem] text-creme/10 leading-none -ml-2 my-6 tracking-tighter" aria-hidden="true">7h40</div>
-      <h2 class="font-display font-black text-5xl md:text-6xl uppercase leading-none mb-8">
-        Segunda-feira<br>
-        <span class="font-accent font-normal italic text-4xl md:text-5xl text-caramelo normal-case tracking-normal block mt-2">no escritório do seu cliente</span>
+    <div class="order-1 lg:order-2 min-w-0">
+      <p class="reveal text-sm md:text-base font-semibold text-kraft">A mesma história, com café</p>
+      <div class="reveal d1 mt-4 text-[5rem] md:text-[8rem] font-semibold tracking-tighter leading-[0.85] text-line tnum" aria-hidden="true">7h40</div>
+      <h2 class="reveal d2 mt-4 text-[2.5rem] md:text-[3.75rem] font-semibold tracking-tighter leading-[0.95]">
+        Segunda-feira, <span class="text-mute">no escritório do seu cliente.</span>
       </h2>
-      <div class="space-y-6 font-body font-light text-lg md:text-xl text-creme/80">
+      <div class="reveal d3 mt-8 space-y-5 text-lg md:text-xl leading-relaxed text-mute max-w-xl">
         <p>Ele abre o sachê, encaixa as abas na xícara e despeja a água devagar. Enquanto o café coa, a sua marca está na mão dele. Ele toma, gosta, guarda o próximo para amanhã.</p>
-        <p class="text-creme font-medium">Um drip não vai para a gaveta. Ele é usado, e quem usa lembra de quem deu.</p>
+        <p class="text-ink font-medium">Um drip não vai para a gaveta. Ele é usado, e quem usa lembra de quem deu.</p>
       </div>
-      
-      <!-- Dados -->
-      <div class="mt-12 grid grid-cols-2 gap-8 border-t border-creme/10 pt-10">
-        <div>
-          <b class="font-display font-light text-5xl text-caramelo block mb-2">85%</b>
-          <p class="font-light text-sm text-creme/70">das pessoas lembram da empresa que deu o brinde.</p>
+      <div class="mt-14 grid grid-cols-2 gap-10 max-w-xl">
+        <div class="reveal">
+          <b class="block text-[3.5rem] md:text-[4.5rem] font-semibold tracking-tighter leading-none tnum">85%</b>
+          <p class="mt-3 text-[15px] text-mute">das pessoas lembram da empresa que deu o brinde.</p>
         </div>
-        <div>
-          <b class="font-display font-light text-5xl text-caramelo block mb-2">78%</b>
-          <p class="font-light text-sm text-creme/70">guardam um brinde porque ele é útil.</p>
+        <div class="reveal d1">
+          <b class="block text-[3.5rem] md:text-[4.5rem] font-semibold tracking-tighter leading-none tnum">78%</b>
+          <p class="mt-3 text-[15px] text-mute">guardam um brinde porque ele é útil.</p>
         </div>
-        <small class="col-span-2 text-xs font-body font-semibold text-creme/40 tracking-wider uppercase mt-4">Fonte: ASI Global Advertising Impressions Study</small>
+        <small class="col-span-2 text-xs text-mute/80">Fonte: ASI Global Advertising Impressions Study</small>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Capítulo 3: O que trava -->
-<section id="como-funciona" class="py-32 bg-chao relative z-20">
+<!-- O que costuma dar errado -->
+<section class="py-32 md:py-48">
   <div class="max-w-7xl mx-auto px-6">
-    <div class="text-center max-w-3xl mx-auto mb-20">
-      <span class="font-body font-bold text-sm tracking-widest text-kraft uppercase">Para quem compra</span>
-      <h2 class="font-display font-black text-4xl md:text-5xl text-tinta uppercase leading-none mt-4">
-        O que costuma dar errado <span class="font-accent font-normal italic text-kraft normal-case tracking-normal block mt-2">e como resolvemos</span>
+    <p class="reveal text-sm md:text-base font-semibold text-kraft">Para quem compra</p>
+    <h2 class="reveal d1 mt-4 text-[2.75rem] md:text-[4.5rem] font-semibold tracking-tighter leading-[0.95] max-w-4xl">
+      O que costuma dar errado. <span class="text-mute">E como resolvemos.</span>
+    </h2>
+
+    <div class="mt-20 md:mt-28">
+      <div class="reveal grid md:grid-cols-[1fr_1fr_1.6fr] gap-2 md:gap-10 py-8 md:py-10 border-t border-black/10">
+        <span class="text-[17px] text-mute line-through decoration-mute/50">Mínimo de 1.000 un.</span>
+        <strong class="text-2xl font-semibold tracking-tight">A partir de 50.</strong>
+        <p class="text-[17px] leading-relaxed text-mute">De 50 em 50, com preço menor a cada faixa. Perfeito para equipes ou eventos menores.</p>
+      </div>
+      <div class="reveal grid md:grid-cols-[1fr_1fr_1.6fr] gap-2 md:gap-10 py-8 md:py-10 border-t border-black/10">
+        <span class="text-[17px] text-mute line-through decoration-mute/50">A arte é problema seu</span>
+        <strong class="text-2xl font-semibold tracking-tight">Criamos com você.</strong>
+        <p class="text-[17px] leading-relaxed text-mute">Você manda a logo, nós montamos a arte do sachê. Produção só após sua aprovação.</p>
+      </div>
+      <div class="reveal grid md:grid-cols-[1fr_1fr_1.6fr] gap-2 md:gap-10 py-8 md:py-10 border-t border-black/10">
+        <span class="text-[17px] text-mute line-through decoration-mute/50">Adesivo que descola</span>
+        <strong class="text-2xl font-semibold tracking-tight">Impressão direta.</strong>
+        <p class="text-[17px] leading-relaxed text-mute">A arte é impressa direto na embalagem. Acabamento premium sem etiquetas tortas.</p>
+      </div>
+      <div class="reveal grid md:grid-cols-[1fr_1fr_1.6fr] gap-2 md:gap-10 py-8 md:py-10 border-t border-black/10">
+        <span class="text-[17px] text-mute line-through decoration-mute/50">Vários fornecedores, prazos soltos</span>
+        <strong class="text-2xl font-semibold tracking-tight">Tudo num lugar só.</strong>
+        <p class="text-[17px] leading-relaxed text-mute">Café, arte, impressão, envase e selagem com a mesma equipe. Você acompanha tudo por uma conversa no WhatsApp.</p>
+      </div>
+      <div class="reveal grid md:grid-cols-[1fr_1fr_1.6fr] gap-2 md:gap-10 py-8 md:py-10 border-y border-black/10">
+        <span class="text-[17px] text-mute line-through decoration-mute/50">Café ruim queima o filme</span>
+        <strong class="text-2xl font-semibold tracking-tight">Café especial <span class="text-caramelo">80+</span>.</strong>
+        <p class="text-[17px] leading-relaxed text-mute">Sul de Minas, nunca blend. O mesmo café de alta pontuação do nosso clube.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Galeria de usos -->
+<section class="bg-white py-32 md:py-48 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 flex flex-wrap items-end justify-between gap-8">
+    <div>
+      <p class="reveal text-sm md:text-base font-semibold text-kraft">Galeria de usos</p>
+      <h2 class="reveal d1 mt-4 text-[2.75rem] md:text-[4.5rem] font-semibold tracking-tighter leading-[0.95]">
+        Um café <span class="text-mute">para cada ocasião.</span>
       </h2>
     </div>
+    <div class="reveal d2 flex gap-3">
+      <button type="button" data-dir="-1" aria-label="Ver anteriores" class="w-11 h-11 rounded-full bg-canvas text-ink grid place-items-center hover:bg-line transition-colors"><svg viewBox="0 0 24 24" class="w-5 h-5" aria-hidden="true"><path d="M14.5 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <button type="button" data-dir="1" aria-label="Ver próximos" class="w-11 h-11 rounded-full bg-canvas text-ink grid place-items-center hover:bg-line transition-colors"><svg viewBox="0 0 24 24" class="w-5 h-5" aria-hidden="true"><path d="M9.5 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
+  </div>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-      <!-- Cards fluidos em vez de tabela -->
-      <div class="bg-papel p-8 rounded-[2.5rem] rounded-tr-none hover:shadow-xl transition-shadow duration-300">
-        <span class="text-tinta/50 font-semibold text-sm line-through block mb-4">Mínimo de 1.000 un.</span>
-        <strong class="font-display font-black text-xl text-tinta uppercase block mb-3">A partir de 50</strong>
-        <p class="font-light text-tinta/80">De 50 em 50, com preço menor a cada faixa. Perfeito para equipes ou eventos menores.</p>
-      </div>
-      <div class="bg-papel p-8 rounded-[2.5rem] rounded-tl-none hover:shadow-xl transition-shadow duration-300">
-        <span class="text-tinta/50 font-semibold text-sm line-through block mb-4">A arte é problema seu</span>
-        <strong class="font-display font-black text-xl text-tinta uppercase block mb-3">Criamos com você</strong>
-        <p class="font-light text-tinta/80">Você manda a logo, nós montamos a arte do sachê. Produção só após sua aprovação.</p>
-      </div>
-      <div class="bg-papel p-8 rounded-[2.5rem] rounded-br-none hover:shadow-xl transition-shadow duration-300">
-        <span class="text-tinta/50 font-semibold text-sm line-through block mb-4">Adesivo que descola</span>
-        <strong class="font-display font-black text-xl text-tinta uppercase block mb-3">Impressão direta</strong>
-        <p class="font-light text-tinta/80">A arte é impressa direto na embalagem. Acabamento premium sem etiquetas tortas.</p>
-      </div>
-      <div class="bg-papel p-8 rounded-[2.5rem] hover:shadow-xl transition-shadow duration-300 lg:col-span-2">
-        <span class="text-tinta/50 font-semibold text-sm line-through block mb-4">Vários fornecedores, prazos soltos</span>
-        <strong class="font-display font-black text-xl text-tinta uppercase block mb-3">Tudo num lugar só</strong>
-        <p class="font-light text-tinta/80">Café, arte, impressão, envase e selagem com a mesma equipe. Você acompanha tudo por uma conversa no WhatsApp.</p>
-      </div>
-      <div class="bg-caramelo text-tinta p-8 rounded-[2.5rem] hover:shadow-xl transition-shadow duration-300">
-        <span class="text-tinta/60 font-semibold text-sm line-through block mb-4">Café ruim queima o filme</span>
-        <strong class="font-display font-black text-xl uppercase block mb-3">Café Especial 80+</strong>
-        <p class="font-medium text-tinta/90">Sul de Minas, nunca blend. O mesmo café de alta pontuação do nosso clube.</p>
-      </div>
+  <div class="reveal-scale d2 mt-14 md:mt-20">
+    <div id="trilho" class="trilho-pad flex gap-5 md:gap-6 overflow-x-auto hide-scrollbar snap-x snap-mandatory pb-4 cursor-grab active:cursor-grabbing select-none">
+      <figure class="snap-start shrink-0 w-[72vw] sm:w-[340px]">
+        <img src="assets/img/o1.webp" alt="Drip coffee personalizado em ação de endomarketing" class="w-full aspect-[3/4] object-cover rounded-[1.75rem] pointer-events-none" loading="lazy" width="900" height="1204">
+        <figcaption class="mt-5"><b class="block text-xl font-semibold tracking-tight">Endomarketing</b><span class="block mt-1 text-[15px] text-mute">Onboarding, SIPAT, aniversários</span></figcaption>
+      </figure>
+      <figure class="snap-start shrink-0 w-[72vw] sm:w-[340px]">
+        <img src="assets/img/o2.webp" alt="Drip coffee deixado na mesa após visita a cliente" class="w-full aspect-[3/4] object-cover rounded-[1.75rem] pointer-events-none" loading="lazy" width="900" height="1204">
+        <figcaption class="mt-5"><b class="block text-xl font-semibold tracking-tight">Visita a clientes</b><span class="block mt-1 text-[15px] text-mute">Deixe na mesa após a reunião</span></figcaption>
+      </figure>
+      <figure class="snap-start shrink-0 w-[72vw] sm:w-[340px]">
+        <img src="assets/img/o3.webp" alt="Drip coffee em confraternização" class="w-full aspect-[3/4] object-cover rounded-[1.75rem] pointer-events-none" loading="lazy" width="900" height="1204">
+        <figcaption class="mt-5"><b class="block text-xl font-semibold tracking-tight">Confraternizações</b><span class="block mt-1 text-[15px] text-mute">Um por convidado, na saída</span></figcaption>
+      </figure>
+      <figure class="snap-start shrink-0 w-[72vw] sm:w-[340px]">
+        <img src="assets/img/o4.webp" alt="Drip coffee em feira e evento" class="w-full aspect-[3/4] object-cover rounded-[1.75rem] pointer-events-none" loading="lazy" width="900" height="1204">
+        <figcaption class="mt-5"><b class="block text-xl font-semibold tracking-tight">Feiras e eventos</b><span class="block mt-1 text-[15px] text-mute">Leve, cabe em qualquer sacola</span></figcaption>
+      </figure>
+      <figure class="snap-start shrink-0 w-[72vw] sm:w-[340px]">
+        <img src="assets/img/o5.webp" alt="Drip coffee como lembrança de casamento" class="w-full aspect-[3/4] object-cover rounded-[1.75rem] pointer-events-none" loading="lazy" width="900" height="1204">
+        <figcaption class="mt-5"><b class="block text-xl font-semibold tracking-tight">Casamentos</b><span class="block mt-1 text-[15px] text-mute">O café da manhã seguinte</span></figcaption>
+      </figure>
+      <figure class="snap-start shrink-0 w-[72vw] sm:w-[340px]">
+        <img src="assets/img/o6.webp" alt="Drip coffee em clínica ou consultório" class="w-full aspect-[3/4] object-cover rounded-[1.75rem] pointer-events-none" loading="lazy" width="900" height="1204">
+        <figcaption class="mt-5"><b class="block text-xl font-semibold tracking-tight">Clínicas</b><span class="block mt-1 text-[15px] text-mute">Mimo para pacientes e clientes</span></figcaption>
+      </figure>
+      <figure class="snap-start shrink-0 w-[72vw] sm:w-[340px]">
+        <img src="assets/img/o7.webp" alt="Drip coffee no home office" class="w-full aspect-[3/4] object-cover rounded-[1.75rem] pointer-events-none" loading="lazy" width="900" height="1204">
+        <figcaption class="mt-5"><b class="block text-xl font-semibold tracking-tight">Home office</b><span class="block mt-1 text-[15px] text-mute">Vai pelo correio junto com o kit</span></figcaption>
+      </figure>
+      <figure class="snap-start shrink-0 w-[72vw] sm:w-[340px]">
+        <img src="assets/img/o8.webp" alt="Drip coffee em kit de fim de ano" class="w-full aspect-[3/4] object-cover rounded-[1.75rem] pointer-events-none" loading="lazy" width="900" height="1204">
+        <figcaption class="mt-5"><b class="block text-xl font-semibold tracking-tight">Kits de fim de ano</b><span class="block mt-1 text-[15px] text-mute">Com chocolate, cartão ou caneca</span></figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- Em eventos -->
+  <div class="max-w-7xl mx-auto px-6 mt-32 md:mt-48 grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+    <div class="reveal-scale">
+      <img src="assets/img/evento.webp" alt="Drip kraft premium em mesa de evento" width="900" height="1204" loading="lazy" class="w-full max-w-[520px] mx-auto aspect-[3/4] object-cover rounded-[2.5rem]">
+    </div>
+    <div class="min-w-0">
+      <p class="reveal text-sm md:text-base font-semibold text-kraft">Em eventos</p>
+      <h2 class="reveal d1 mt-4 text-[2.75rem] md:text-[5rem] font-semibold tracking-tighter leading-[0.95]">De mão <span class="text-mute">em mão.</span></h2>
+      <p class="reveal d2 mt-8 text-lg md:text-xl leading-relaxed text-mute max-w-xl">
+        Na mesa do evento, no kit de boas-vindas, na sacola da feira. O drip é leve, tem presença e leva a sua mensagem junto: um agradecimento, um QR code, o tema do encontro.
+      </p>
     </div>
   </div>
 </section>
 
-<!-- Parede de Sachês (Carrossel) -->
-<section class="py-24 bg-papel overflow-hidden border-t border-tinta/10">
-  <div class="max-w-[1400px] mx-auto px-6">
-    <div class="flex flex-wrap justify-between items-end gap-8 mb-12">
-      <div>
-        <span class="font-body font-bold text-sm tracking-widest text-kraft uppercase">Galeria de usos</span>
-        <h2 class="font-display font-black text-4xl md:text-5xl text-tinta uppercase leading-none mt-4">
-          Um café <span class="font-accent font-normal italic text-kraft normal-case tracking-normal block mt-2">para cada ocasião</span>
-        </h2>
-      </div>
-      <div class="flex gap-4">
-        <button type="button" data-dir="-1" aria-label="Ver anteriores" class="w-14 h-14 rounded-full border-2 border-tinta flex items-center justify-center text-tinta hover:bg-tinta hover:text-creme transition-colors"><svg viewBox="0 0 24 24" class="w-6 h-6"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
-        <button type="button" data-dir="1" aria-label="Ver próximos" class="w-14 h-14 rounded-full border-2 border-tinta flex items-center justify-center text-tinta hover:bg-tinta hover:text-creme transition-colors"><svg viewBox="0 0 24 24" class="w-6 h-6"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
-      </div>
-    </div>
-
-    <!-- Trilho Horizontal -->
-    <div id="trilho" class="flex gap-6 overflow-x-auto hide-scrollbar snap-x snap-mandatory pb-8 pt-4 -mx-6 px-6 cursor-grab active:cursor-grabbing">
-      <figure class="snap-start shrink-0 w-[70vw] md:w-[320px] group">
-        <div class="overflow-hidden rounded-t-[8rem] rounded-b-3xl aspect-[3/4] mb-6 shadow-lg bg-chao">
-          <img src="assets/img/o1.webp" alt="Endomarketing" class="w-full h-full object-cover img-hover-zoom" loading="lazy" onerror="this.src='https://placehold.co/600x800/E7E6DF/1E1410?text=RH'">
-        </div>
-        <figcaption class="text-center">
-          <b class="font-display font-bold text-lg text-tinta uppercase block mb-1">Endomarketing</b>
-          <span class="font-body text-sm text-kraft block">Onboarding, SIPAT, aniversários</span>
-        </figcaption>
-      </figure>
-      <figure class="snap-start shrink-0 w-[70vw] md:w-[320px] group">
-        <div class="overflow-hidden rounded-t-[8rem] rounded-b-3xl aspect-[3/4] mb-6 shadow-lg bg-chao">
-          <img src="assets/img/o2.webp" alt="Visitas" class="w-full h-full object-cover img-hover-zoom" loading="lazy" onerror="this.src='https://placehold.co/600x800/E7E6DF/1E1410?text=Visitas'">
-        </div>
-        <figcaption class="text-center">
-          <b class="font-display font-bold text-lg text-tinta uppercase block mb-1">Visita a clientes</b>
-          <span class="font-body text-sm text-kraft block">Deixe na mesa após a reunião</span>
-        </figcaption>
-      </figure>
-      <figure class="snap-start shrink-0 w-[70vw] md:w-[320px] group">
-        <div class="overflow-hidden rounded-t-[8rem] rounded-b-3xl aspect-[3/4] mb-6 shadow-lg bg-chao">
-          <img src="assets/img/o3.webp" alt="Confraternizações" class="w-full h-full object-cover img-hover-zoom" loading="lazy" onerror="this.src='https://placehold.co/600x800/E7E6DF/1E1410?text=Eventos'">
-        </div>
-        <figcaption class="text-center">
-          <b class="font-display font-bold text-lg text-tinta uppercase block mb-1">Confraternizações</b>
-          <span class="font-body text-sm text-kraft block">Um por convidado, na saída</span>
-        </figcaption>
-      </figure>
-      <figure class="snap-start shrink-0 w-[70vw] md:w-[320px] group">
-        <div class="overflow-hidden rounded-t-[8rem] rounded-b-3xl aspect-[3/4] mb-6 shadow-lg bg-chao">
-          <img src="assets/img/o4.webp" alt="Feiras" class="w-full h-full object-cover img-hover-zoom" loading="lazy" onerror="this.src='https://placehold.co/600x800/E7E6DF/1E1410?text=Feiras'">
-        </div>
-        <figcaption class="text-center">
-          <b class="font-display font-bold text-lg text-tinta uppercase block mb-1">Feiras e eventos</b>
-          <span class="font-body text-sm text-kraft block">Leve, cabe em qualquer sacola</span>
-        </figcaption>
-      </figure>
-      <figure class="snap-start shrink-0 w-[70vw] md:w-[320px] group">
-        <div class="overflow-hidden rounded-t-[8rem] rounded-b-3xl aspect-[3/4] mb-6 shadow-lg bg-chao">
-          <img src="assets/img/o5.webp" alt="Casamentos" class="w-full h-full object-cover img-hover-zoom" loading="lazy" onerror="this.src='https://placehold.co/600x800/E7E6DF/1E1410?text=Casamentos'">
-        </div>
-        <figcaption class="text-center">
-          <b class="font-display font-bold text-lg text-tinta uppercase block mb-1">Casamentos</b>
-          <span class="font-body text-sm text-kraft block">O café da manhã seguinte</span>
-        </figcaption>
-      </figure>
-      <figure class="snap-start shrink-0 w-[70vw] md:w-[320px] group">
-        <div class="overflow-hidden rounded-t-[8rem] rounded-b-3xl aspect-[3/4] mb-6 shadow-lg bg-chao">
-          <img src="assets/img/o6.webp" alt="Clínicas e consultórios" class="w-full h-full object-cover img-hover-zoom" loading="lazy" onerror="this.src='https://placehold.co/600x800/E7E6DF/1E1410?text=Clinicas'">
-        </div>
-        <figcaption class="text-center">
-          <b class="font-display font-bold text-lg text-tinta uppercase block mb-1">Clínicas</b>
-          <span class="font-body text-sm text-kraft block">Mimo para pacientes e clientes</span>
-        </figcaption>
-      </figure>
-      <figure class="snap-start shrink-0 w-[70vw] md:w-[320px] group">
-        <div class="overflow-hidden rounded-t-[8rem] rounded-b-3xl aspect-[3/4] mb-6 shadow-lg bg-chao">
-          <img src="assets/img/o7.webp" alt="Home office" class="w-full h-full object-cover img-hover-zoom" loading="lazy" onerror="this.src='https://placehold.co/600x800/E7E6DF/1E1410?text=Home+office'">
-        </div>
-        <figcaption class="text-center">
-          <b class="font-display font-bold text-lg text-tinta uppercase block mb-1">Home office</b>
-          <span class="font-body text-sm text-kraft block">Vai pelo correio junto com o kit</span>
-        </figcaption>
-      </figure>
-      <figure class="snap-start shrink-0 w-[70vw] md:w-[320px] group">
-        <div class="overflow-hidden rounded-t-[8rem] rounded-b-3xl aspect-[3/4] mb-6 shadow-lg bg-chao">
-          <img src="assets/img/o8.webp" alt="Kits de fim de ano" class="w-full h-full object-cover img-hover-zoom" loading="lazy" onerror="this.src='https://placehold.co/600x800/E7E6DF/1E1410?text=Kits'">
-        </div>
-        <figcaption class="text-center">
-          <b class="font-display font-bold text-lg text-tinta uppercase block mb-1">Kits de fim de ano</b>
-          <span class="font-body text-sm text-kraft block">Com chocolate, cartão ou caneca</span>
-        </figcaption>
-      </figure>
-    </div>
-
-    <!-- Evento Destacado -->
-    <div class="mt-32 grid md:grid-cols-[1fr_1.2fr] gap-12 lg:gap-24 items-center">
-      <div class="rounded-[4rem] rounded-tr-none overflow-hidden shadow-2xl bg-chao aspect-[3/4]">
-        <img src="assets/img/evento.webp" alt="Drip kraft premium em mesa de evento" class="w-full h-full object-cover" loading="lazy" onerror="this.src='https://placehold.co/900x1200/D9D8CF/1E1410?text=Experiencia'">
-      </div>
-      <div>
-        <span class="font-body font-bold text-sm tracking-widest text-kraft uppercase">Em Eventos</span>
-        <h2 class="font-display font-black text-5xl md:text-7xl text-tinta uppercase leading-none mt-4 mb-8">
-          De mão <span class="font-accent font-normal italic text-caramelo normal-case tracking-normal block mt-2">em mão</span>
-        </h2>
-        <p class="text-xl font-light text-tinta/80 leading-relaxed mb-8">
-          Na mesa do evento, no kit de boas-vindas, na sacola da feira. O drip é leve, tem presença e leva a sua mensagem junto: um agradecimento, um QR code, o tema do encontro.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Modelos e Calculadora -->
-<section id="modelos" class="py-16 md:py-32 bg-chao relative">
+<!-- Modelos -->
+<section id="modelos" class="scroll-mt-14 py-32 md:py-48">
   <div class="max-w-7xl mx-auto px-6">
-    <div class="text-center max-w-3xl mx-auto mb-20">
-      <span class="font-body font-bold text-sm tracking-widest text-kraft uppercase">Três sachês, o mesmo café</span>
-      <h2 class="font-display font-black text-4xl md:text-5xl text-tinta uppercase leading-none mt-4">
-        Escolha <span class="font-accent font-normal italic text-kraft normal-case tracking-normal block mt-2">o seu modelo</span>
-      </h2>
+    <div class="text-center">
+      <p class="reveal text-sm md:text-base font-semibold text-kraft">Três sachês, o mesmo café</p>
+      <h2 class="reveal d1 mt-4 text-[2.75rem] md:text-[5rem] font-semibold tracking-tighter leading-[0.95]">Escolha o seu modelo.</h2>
     </div>
 
-    <!-- Interface da Calculadora Arquitetônica -->
-    <form id="calc" aria-labelledby="t-calc" onsubmit="return false" class="scroll-mt-24 bg-papel rounded-[2rem] md:rounded-[3rem] shadow-2xl overflow-hidden grid md:grid-cols-[1.3fr_1fr] border border-tinta/5">
-      <!-- Controles -->
-      <div class="p-5 md:p-16 flex flex-col justify-center">
-        <h3 id="t-calc" class="font-display font-black text-2xl md:text-3xl uppercase text-tinta mb-5 md:mb-10">Simule seu pedido</h3>
-        
-        <fieldset class="mb-5 md:mb-10">
-          <legend class="font-body font-bold text-xs tracking-widest text-kraft uppercase mb-3 md:mb-4">Selecione o Modelo</legend>
-          <div class="grid grid-cols-3 gap-2 md:gap-3">
-            <label class="relative cursor-pointer block">
+    <div class="mt-20 md:mt-28 grid md:grid-cols-3 gap-16 md:gap-10">
+      <article class="reveal flex flex-col text-center">
+        <img src="assets/img/p-kraft.webp" alt="Sachê kraft" width="900" height="900" loading="lazy" class="w-full max-w-[380px] mx-auto aspect-square object-cover rounded-[2rem]">
+        <span class="mt-8 text-xs font-semibold text-caramelo">Mais pedido</span>
+        <h3 class="mt-2 text-[1.75rem] font-semibold tracking-tight">Kraft Clássico</h3>
+        <span class="mt-1 text-[15px] text-mute">10 × 12 cm</span>
+        <p class="mt-5 text-[17px] leading-relaxed text-mute max-w-xs mx-auto flex-grow">Papel kraft artesanal, perfeito para marcas com tons terrosos e impressão minimalista.</p>
+        <p class="mt-6 text-[17px] font-semibold tnum">R$ 5,90 <span class="font-normal text-mute">a unidade em 50</span></p>
+        <p class="mt-1 text-[15px] text-mute tnum">A partir de R$ 4,90 (+300 un.)</p>
+        <div class="mt-6 flex items-center justify-center gap-6">
+          <a class="inline-flex items-center h-10 px-5 rounded-full bg-ink text-white text-sm font-medium hover:bg-black transition-colors" data-produto="kraft" href="https://www.bloomingclub.com.br/personalizado-kraft-kit" target="_blank" rel="noopener">Comprar no site</a>
+          <a class="js-zap text-[15px] text-kraft hover:underline underline-offset-4" data-origem="modelo-kraft" href="https://wa.me/5554997048081?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Drip%20Coffee%20Label%20e%20quero%20um%20or%C3%A7amento%20de%20drip%20personalizado." target="_blank" rel="noopener">Dúvidas? ›</a>
+        </div>
+      </article>
+
+      <article class="reveal d1 flex flex-col text-center">
+        <img src="assets/img/p-branco.webp" alt="Sachê branco premium" width="900" height="900" loading="lazy" class="w-full max-w-[380px] mx-auto aspect-square object-cover rounded-[2rem]">
+        <span class="mt-8 text-xs font-semibold text-transparent select-none" aria-hidden="true">.</span>
+        <h3 class="mt-2 text-[1.75rem] font-semibold tracking-tight">Branco Premium</h3>
+        <span class="mt-1 text-[15px] text-mute">10 × 15 cm</span>
+        <p class="mt-5 text-[17px] leading-relaxed text-mute max-w-xs mx-auto flex-grow">Maior e imaculado. O preto ganha contraste máximo e sobra área para a sua mensagem.</p>
+        <p class="mt-6 text-[17px] font-semibold tnum">R$ 6,90 <span class="font-normal text-mute">a unidade em 50</span></p>
+        <p class="mt-1 text-[15px] text-mute tnum">A partir de R$ 5,90 (+300 un.)</p>
+        <div class="mt-6 flex items-center justify-center gap-6">
+          <a class="inline-flex items-center h-10 px-5 rounded-full bg-ink text-white text-sm font-medium hover:bg-black transition-colors" data-produto="branco" href="https://www.bloomingclub.com.br/personalizado-branco" target="_blank" rel="noopener">Comprar no site</a>
+          <a class="js-zap text-[15px] text-kraft hover:underline underline-offset-4" data-origem="modelo-branco" href="https://wa.me/5554997048081?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Drip%20Coffee%20Label%20e%20quero%20um%20or%C3%A7amento%20de%20drip%20personalizado." target="_blank" rel="noopener">Dúvidas? ›</a>
+        </div>
+      </article>
+
+      <article class="reveal d2 flex flex-col text-center">
+        <img src="assets/img/p-kraft-premium.webp" alt="Sachê kraft premium" width="900" height="900" loading="lazy" class="w-full max-w-[380px] mx-auto aspect-square object-cover rounded-[2rem]">
+        <span class="mt-8 text-xs font-semibold text-transparent select-none" aria-hidden="true">.</span>
+        <h3 class="mt-2 text-[1.75rem] font-semibold tracking-tight">Kraft Premium</h3>
+        <span class="mt-1 text-[15px] text-mute">10 × 15 cm</span>
+        <p class="mt-5 text-[17px] leading-relaxed text-mute max-w-xs mx-auto flex-grow">O tamanho do premium com o papel kraft liso. Impressão nítida e acabamento de luxo.</p>
+        <p class="mt-6 text-[17px] font-semibold tnum">R$ 6,90 <span class="font-normal text-mute">a unidade em 50</span></p>
+        <p class="mt-1 text-[15px] text-mute tnum">A partir de R$ 5,90 (+300 un.)</p>
+        <div class="mt-6 flex items-center justify-center gap-6">
+          <a class="inline-flex items-center h-10 px-5 rounded-full bg-ink text-white text-sm font-medium hover:bg-black transition-colors" data-produto="kraftp" href="https://www.bloomingclub.com.br/personalizado-kraft-premium" target="_blank" rel="noopener">Comprar no site</a>
+          <a class="js-zap text-[15px] text-kraft hover:underline underline-offset-4" data-origem="modelo-kraft-premium" href="https://wa.me/5554997048081?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Drip%20Coffee%20Label%20e%20quero%20um%20or%C3%A7amento%20de%20drip%20personalizado." target="_blank" rel="noopener">Dúvidas? ›</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Configurador -->
+<section class="bg-white py-32 md:py-48">
+  <div class="max-w-6xl mx-auto px-6">
+    <h2 id="t-calc" class="reveal text-[2.75rem] md:text-[4.5rem] font-semibold tracking-tighter leading-[0.95]">Simule seu pedido. <span class="text-mute">Veja o valor na hora.</span></h2>
+
+    <form id="calc" aria-labelledby="t-calc" onsubmit="return false" class="scroll-mt-24 mt-16 md:mt-24 grid lg:grid-cols-[1fr_380px] gap-16 lg:gap-20 items-start">
+      <!-- Opções -->
+      <div class="min-w-0 space-y-20">
+        <fieldset class="reveal">
+          <legend class="text-2xl md:text-[1.75rem] font-semibold tracking-tight">Modelo. <span class="text-mute">Qual sachê combina com a sua marca?</span></legend>
+          <div class="mt-8 grid gap-3">
+            <label class="block cursor-pointer">
               <input type="radio" name="modelo" id="m-kraft" value="kraft" checked class="peer sr-only">
-              <span class="flex flex-col items-center justify-center text-center h-full px-2 py-3 md:py-4 rounded-2xl border-2 border-tinta/20 text-tinta transition-all peer-checked:bg-tinta peer-checked:border-tinta peer-checked:text-creme peer-focus-visible:ring-4 ring-caramelo/50 hover:border-tinta">
-                <b class="font-display font-black text-sm md:text-base uppercase leading-tight">Kraft</b>
-                <span class="font-body text-[11px] md:text-xs font-medium opacity-70 mt-0.5 leading-tight">10×12 cm</span>
+              <span class="flex items-center justify-between gap-4 px-6 py-5 rounded-2xl ring-1 ring-line transition-all duration-300 hover:ring-mute peer-checked:ring-2 peer-checked:ring-ink peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-caramelo peer-focus-visible:outline-offset-2">
+                <span><b class="block text-[17px] font-semibold">Kraft Clássico</b><span class="block text-sm text-mute">10 × 12 cm</span></span>
+                <span class="text-right text-sm text-mute tnum">a partir de<br><b class="text-ink font-semibold">R$ 4,90</b></span>
               </span>
             </label>
-            <label class="relative cursor-pointer block">
+            <label class="block cursor-pointer">
               <input type="radio" name="modelo" id="m-branco" value="branco" class="peer sr-only">
-              <span class="flex flex-col items-center justify-center text-center h-full px-2 py-3 md:py-4 rounded-2xl border-2 border-tinta/20 text-tinta transition-all peer-checked:bg-tinta peer-checked:border-tinta peer-checked:text-creme peer-focus-visible:ring-4 ring-caramelo/50 hover:border-tinta">
-                <b class="font-display font-black text-sm md:text-base uppercase leading-tight">Branco</b>
-                <span class="font-body text-[11px] md:text-xs font-medium opacity-70 mt-0.5 leading-tight">Premium 10×15</span>
+              <span class="flex items-center justify-between gap-4 px-6 py-5 rounded-2xl ring-1 ring-line transition-all duration-300 hover:ring-mute peer-checked:ring-2 peer-checked:ring-ink peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-caramelo peer-focus-visible:outline-offset-2">
+                <span><b class="block text-[17px] font-semibold">Branco Premium</b><span class="block text-sm text-mute">10 × 15 cm</span></span>
+                <span class="text-right text-sm text-mute tnum">a partir de<br><b class="text-ink font-semibold">R$ 5,90</b></span>
               </span>
             </label>
-            <label class="relative cursor-pointer block">
+            <label class="block cursor-pointer">
               <input type="radio" name="modelo" id="m-kraftp" value="kraftp" class="peer sr-only">
-              <span class="flex flex-col items-center justify-center text-center h-full px-2 py-3 md:py-4 rounded-2xl border-2 border-tinta/20 text-tinta transition-all peer-checked:bg-tinta peer-checked:border-tinta peer-checked:text-creme peer-focus-visible:ring-4 ring-caramelo/50 hover:border-tinta">
-                <b class="font-display font-black text-sm md:text-base uppercase leading-tight">Kraft</b>
-                <span class="font-body text-[11px] md:text-xs font-medium opacity-70 mt-0.5 leading-tight">Premium 10×15</span>
+              <span class="flex items-center justify-between gap-4 px-6 py-5 rounded-2xl ring-1 ring-line transition-all duration-300 hover:ring-mute peer-checked:ring-2 peer-checked:ring-ink peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-caramelo peer-focus-visible:outline-offset-2">
+                <span><b class="block text-[17px] font-semibold">Kraft Premium</b><span class="block text-sm text-mute">10 × 15 cm</span></span>
+                <span class="text-right text-sm text-mute tnum">a partir de<br><b class="text-ink font-semibold">R$ 5,90</b></span>
               </span>
             </label>
           </div>
         </fieldset>
 
-        <fieldset>
-          <legend class="font-body font-bold text-xs tracking-widest text-kraft uppercase mb-3 md:mb-6">Quantidade (Múltiplos de 50)</legend>
-          <div class="flex items-center justify-center md:justify-start gap-4 md:gap-6 mb-3 md:mb-8">
-            <button type="button" id="menos" aria-label="Menos 50 unidades" class="w-11 h-11 md:w-14 md:h-14 rounded-full border-2 border-tinta/20 flex items-center justify-center text-2xl md:text-3xl text-tinta hover:bg-tinta hover:text-creme hover:border-tinta transition-all">&minus;</button>
-            <div class="flex flex-col items-center min-w-[90px] md:min-w-[100px]">
-              <output id="q" for="faixa" aria-live="polite" class="font-display font-black text-4xl md:text-6xl text-tinta tracking-tighter">100</output>
-              <span class="font-body text-xs font-bold text-kraft uppercase tracking-widest">Unidades</span>
+        <fieldset class="reveal">
+          <legend class="text-2xl md:text-[1.75rem] font-semibold tracking-tight">Quantidade. <span class="text-mute">Em múltiplos de 50; o preço cai a cada faixa.</span></legend>
+          <div class="mt-10 flex items-center justify-between gap-6">
+            <button type="button" id="menos" aria-label="Menos 50 unidades" class="w-12 h-12 shrink-0 rounded-full bg-canvas text-2xl text-ink grid place-items-center hover:bg-line transition-colors">&minus;</button>
+            <div class="text-center">
+              <output id="q" for="faixa" aria-live="polite" class="block text-[3.5rem] md:text-[4.5rem] font-semibold tracking-tighter leading-none tnum">100</output>
+              <span class="block mt-2 text-sm text-mute">unidades</span>
             </div>
-            <button type="button" id="mais" aria-label="Mais 50 unidades" class="w-11 h-11 md:w-14 md:h-14 rounded-full border-2 border-tinta/20 flex items-center justify-center text-2xl md:text-3xl text-tinta hover:bg-tinta hover:text-creme hover:border-tinta transition-all">+</button>
+            <button type="button" id="mais" aria-label="Mais 50 unidades" class="w-12 h-12 shrink-0 rounded-full bg-canvas text-2xl text-ink grid place-items-center hover:bg-line transition-colors">+</button>
           </div>
-          <input type="range" id="faixa" min="50" max="1000" step="50" value="100" aria-label="Quantidade de drips" class="calc-range mb-0 md:mb-6">
-          <div id="faixas" aria-hidden="true" class="hidden md:grid md:grid-cols-6 gap-2 faixas">
+          <input type="range" id="faixa" min="50" max="1000" step="50" value="100" aria-label="Quantidade de drips" class="calc-range mt-10">
+          <div class="mt-2 flex justify-between text-xs text-mute tnum" aria-hidden="true"><span>50</span><span>1.000</span></div>
+          <div id="faixas" aria-hidden="true" class="faixas mt-8 grid grid-cols-3 sm:grid-cols-6 gap-2">
             <!-- Renderizado via JS -->
           </div>
         </fieldset>
       </div>
 
-      <!-- Total e Checkout -->
-      <div class="bg-espresso text-creme p-5 md:p-16 flex flex-col justify-center">
-        <div class="mb-auto flex items-end justify-between gap-4 md:block">
-          <span class="font-body font-bold text-caramelo tracking-widest uppercase text-xs md:text-sm block mb-0 md:mb-4 md:w-auto w-24 leading-tight">Investimento Estimado</span>
-          <div class="text-right md:text-left">
-          <div class="font-display font-black text-4xl md:text-7xl tracking-tighter md:mb-2 text-right md:text-left" id="total">R$ 570,00</div>
-          <div class="font-body text-sm md:text-lg text-creme/70 block text-right md:text-left" id="un">R$ 5,70 por drip</div>
+      <!-- Resumo fixo -->
+      <aside class="reveal d1 lg:sticky lg:top-32">
+        <span class="block text-sm font-semibold text-mute">Investimento estimado</span>
+        <div id="total" class="mt-3 text-[2.75rem] sm:text-[3.25rem] font-semibold tracking-tighter leading-none tnum">R$ 570,00</div>
+        <div id="un" class="mt-3 text-[17px] text-mute tnum">R$ 5,70 por drip</div>
+        <div class="mt-10 pt-10 border-t border-black/10 grid gap-3">
+          <a id="calc-zap" href="https://wa.me/5554997048081?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Drip%20Coffee%20Label%20e%20quero%20um%20or%C3%A7amento%20de%20drip%20personalizado." target="_blank" rel="noopener" class="flex items-center justify-center h-12 rounded-full bg-ink text-white text-[15px] font-medium hover:bg-black transition-colors">Pedir via WhatsApp</a>
+          <a id="calc-site" href="https://www.bloomingclub.com.br/personalizados" target="_blank" rel="noopener" class="flex items-center justify-center h-12 rounded-full bg-canvas text-ink text-[15px] font-medium hover:bg-line transition-colors">Comprar no site</a>
         </div>
-        </div>
-        
-        <div class="mt-4 md:mt-12 grid grid-cols-2 md:grid-cols-1 gap-3 md:gap-4">
-          <a id="calc-zap" href="https://wa.me/5554997048081?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Drip%20Coffee%20Label%20e%20quero%20um%20or%C3%A7amento%20de%20drip%20personalizado." target="_blank" rel="noopener" class="block w-full text-center bg-caramelo text-tinta py-5 rounded-full font-bold text-sm uppercase tracking-widest hover:bg-creme transition-colors shadow-lg !py-3.5 md:!py-5 !px-2 !text-xs md:!text-sm">
-            Pedir no WhatsApp
-          </a>
-          <a id="calc-site" href="https://www.bloomingclub.com.br/personalizados" target="_blank" rel="noopener" class="block w-full text-center border-2 border-creme/20 text-creme py-5 rounded-full font-bold text-sm uppercase tracking-widest hover:border-creme transition-colors !py-3.5 md:!py-5 !px-2 !text-xs md:!text-sm">
-            Comprar no Site
-          </a>
-        </div>
-        <p id="nota-calc" class="mt-3 md:mt-8 font-light text-[11px] md:text-xs text-creme/40 leading-relaxed text-center">
+        <p id="nota-calc" class="mt-6 text-xs leading-relaxed text-mute">
           Valor de referência. O desconto entra na finalização do pedido. Acima de 1.000 unidades, fale com a gente.
         </p>
-      </div>
+      </aside>
     </form>
-
-    <!-- Grade de Produtos -->
-    <div class="grid md:grid-cols-3 gap-8 mt-16 md:mt-32">
-      <!-- Kraft -->
-      <article class="bg-papel rounded-[3rem] p-6 pb-8 flex flex-col hover:shadow-2xl transition-all duration-500 md:-translate-y-8 border-2 border-caramelo/70 shadow-xl relative">
-        <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 z-10 inline-flex items-center gap-1.5 whitespace-nowrap bg-tinta text-creme text-[11px] font-bold uppercase tracking-[0.18em] pl-3 pr-4 py-1.5 rounded-full shadow-lg">
-          <svg viewBox="0 0 20 20" class="w-3.5 h-3.5 fill-caramelo" aria-hidden="true"><path d="M10 1.5l2.6 5.5 6 .8-4.4 4.2 1.1 6L10 15.1 4.7 18l1.1-6L1.4 7.8l6-.8z"/></svg>
-          Mais pedido
-        </div>
-        <div class="rounded-t-[2.5rem] rounded-b-2xl overflow-hidden aspect-square mb-8 bg-white">
-          <img src="assets/img/p-kraft.webp" alt="Sachê kraft" class="w-full h-full object-cover" loading="lazy" width="900" height="900">
-        </div>
-        <div class="flex-grow flex flex-col">
-          <span class="font-body text-xs font-bold tracking-widest text-kraft uppercase mb-2">10 × 12 cm</span>
-          <h3 class="font-display font-black text-2xl text-tinta uppercase mb-4">Kraft Clássico</h3>
-          <p class="font-light text-tinta/70 mb-8 flex-grow">Papel kraft artesanal, perfeito para marcas com tons terrosos e impressão minimalista.</p>
-          <div class="border-t border-tinta/10 pt-6 mb-8">
-            <span class="block font-display font-black text-4xl text-tinta tracking-tighter mb-1">R$ 5,90<span class="text-base font-body font-light text-tinta/60 tracking-normal ml-2">unid. em 50</span></span>
-            <span class="text-sm font-medium text-kraft">A partir de R$ 4,90 (+300 un.)</span>
-          </div>
-          <div class="space-y-3">
-            <a class="block w-full text-center bg-caramelo text-tinta py-4 rounded-full font-bold text-sm uppercase tracking-wide hover:bg-tinta hover:text-creme transition-colors" data-produto="kraft" href="https://www.bloomingclub.com.br/personalizado-kraft-kit" target="_blank" rel="noopener">Comprar no site</a>
-            <a class="js-zap block w-full text-center border-2 border-tinta/20 text-tinta py-4 rounded-full font-bold text-sm uppercase tracking-wide hover:border-tinta transition-colors" data-origem="modelo-kraft" href="https://wa.me/5554997048081?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Drip%20Coffee%20Label%20e%20quero%20um%20or%C3%A7amento%20de%20drip%20personalizado." target="_blank" rel="noopener">Dúvidas?</a>
-          </div>
-        </div>
-      </article>
-
-      <!-- Branco Premium -->
-      <article class="bg-papel rounded-[3rem] p-6 pb-8 flex flex-col hover:shadow-2xl transition-all duration-500 border border-tinta/5">
-        <div class="rounded-t-[2.5rem] rounded-b-2xl overflow-hidden aspect-square mb-8 bg-white">
-          <img src="assets/img/p-branco.webp" alt="Sachê branco premium" class="w-full h-full object-cover" loading="lazy" width="900" height="900">
-        </div>
-        <div class="flex-grow flex flex-col">
-          <span class="font-body text-xs font-bold tracking-widest text-kraft uppercase mb-2">10 × 15 cm</span>
-          <h3 class="font-display font-black text-2xl text-tinta uppercase mb-4">Branco Premium</h3>
-          <p class="font-light text-tinta/70 mb-8 flex-grow">Maior e imaculado. O preto ganha contraste máximo e sobra área para a sua mensagem.</p>
-          <div class="border-t border-tinta/10 pt-6 mb-8">
-            <span class="block font-display font-black text-4xl text-tinta tracking-tighter mb-1">R$ 6,90<span class="text-base font-body font-light text-tinta/60 tracking-normal ml-2">unid. em 50</span></span>
-            <span class="text-sm font-medium text-kraft">A partir de R$ 5,90 (+300 un.)</span>
-          </div>
-          <div class="space-y-3">
-            <a class="block w-full text-center bg-tinta text-creme py-4 rounded-full font-bold text-sm uppercase tracking-wide hover:bg-caramelo hover:text-tinta transition-colors" data-produto="branco" href="https://www.bloomingclub.com.br/personalizado-branco" target="_blank" rel="noopener">Comprar no site</a>
-            <a class="js-zap block w-full text-center border-2 border-tinta/20 text-tinta py-4 rounded-full font-bold text-sm uppercase tracking-wide hover:border-tinta transition-colors" data-origem="modelo-branco" href="https://wa.me/5554997048081?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Drip%20Coffee%20Label%20e%20quero%20um%20or%C3%A7amento%20de%20drip%20personalizado." target="_blank" rel="noopener">Dúvidas?</a>
-          </div>
-        </div>
-        </article>
-
-      <!-- Kraft Premium -->
-      <article class="bg-papel rounded-[3rem] p-6 pb-8 flex flex-col hover:shadow-2xl transition-all duration-500 border border-tinta/5">
-        <div class="rounded-t-[2.5rem] rounded-b-2xl overflow-hidden aspect-square mb-8 bg-white">
-          <img src="assets/img/p-kraft-premium.webp" alt="Sachê kraft premium" class="w-full h-full object-cover" loading="lazy" width="900" height="900">
-        </div>
-        <div class="flex-grow flex flex-col">
-          <span class="font-body text-xs font-bold tracking-widest text-kraft uppercase mb-2">10 × 15 cm</span>
-          <h3 class="font-display font-black text-2xl text-tinta uppercase mb-4">Kraft Premium</h3>
-          <p class="font-light text-tinta/70 mb-8 flex-grow">O tamanho do premium com o papel kraft liso. Impressão nítida e acabamento de luxo.</p>
-          <div class="border-t border-tinta/10 pt-6 mb-8">
-            <span class="block font-display font-black text-4xl text-tinta tracking-tighter mb-1">R$ 6,90<span class="text-base font-body font-light text-tinta/60 tracking-normal ml-2">unid. em 50</span></span>
-            <span class="text-sm font-medium text-kraft">A partir de R$ 5,90 (+300 un.)</span>
-          </div>
-          <div class="space-y-3">
-            <a class="block w-full text-center bg-tinta text-creme py-4 rounded-full font-bold text-sm uppercase tracking-wide hover:bg-caramelo hover:text-tinta transition-colors" data-produto="kraftp" href="https://www.bloomingclub.com.br/personalizado-kraft-premium" target="_blank" rel="noopener">Comprar no site</a>
-            <a class="js-zap block w-full text-center border-2 border-tinta/20 text-tinta py-4 rounded-full font-bold text-sm uppercase tracking-wide hover:border-tinta transition-colors" data-origem="modelo-kraft-premium" href="https://wa.me/5554997048081?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Drip%20Coffee%20Label%20e%20quero%20um%20or%C3%A7amento%20de%20drip%20personalizado." target="_blank" rel="noopener">Dúvidas?</a>
-          </div>
-        </div>
-      </article>
-    </div>
   </div>
 </section>
 
-<!-- Processo Fabril (Dark) -->
-<section class="py-32 bg-tinta text-creme relative overflow-hidden clip-wave -mt-10 pt-48 z-10">
+<!-- Como funciona -->
+<section id="como-funciona" class="scroll-mt-14 py-32 md:py-48">
   <div class="max-w-7xl mx-auto px-6">
-    <div class="mb-20">
-      <span class="font-body font-bold text-sm tracking-widest text-kraft uppercase">Do pedido à caixa</span>
-      <h2 class="font-display font-black text-5xl md:text-6xl uppercase leading-none mt-4">
-        Como <span class="font-accent font-normal italic text-caramelo normal-case tracking-normal block mt-2">funciona</span>
-      </h2>
-    </div>
+    <p class="reveal text-sm md:text-base font-semibold text-kraft">Do pedido à caixa</p>
+    <h2 class="reveal d1 mt-4 text-[2.75rem] md:text-[5rem] font-semibold tracking-tighter leading-[0.95]">Como funciona.</h2>
 
-    <!-- Passos em Grid Monolítico -->
-    <ol class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 border-t border-creme/20 pt-16 mb-32">
-      <li class="relative">
-        <span class="font-display font-light text-8xl text-creme/10 absolute -top-12 -left-4 pointer-events-none">1</span>
-        <h3 class="font-display font-bold text-xl uppercase mb-4 relative z-10 text-caramelo">Escolha e Pague</h3>
-        <p class="font-light text-creme/70 leading-relaxed relative z-10">Pelo site, com cartão, ou fechando pelo WhatsApp. Mínimo de 50 un.</p>
+    <ol class="mt-20 md:mt-28 grid sm:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-16">
+      <li class="reveal">
+        <span class="block text-[4rem] font-semibold tracking-tighter leading-none text-line tnum">1</span>
+        <h3 class="mt-6 text-2xl font-semibold tracking-tight">Escolha e pague</h3>
+        <p class="mt-3 text-[17px] leading-relaxed text-mute">Pelo site, com cartão, ou fechando pelo WhatsApp. Mínimo de 50 un.</p>
       </li>
-      <li class="relative">
-        <span class="font-display font-light text-8xl text-creme/10 absolute -top-12 -left-4 pointer-events-none">2</span>
-        <h3 class="font-display font-bold text-xl uppercase mb-4 relative z-10 text-caramelo">Sua Logo</h3>
-        <p class="font-light text-creme/70 leading-relaxed relative z-10">Envie em vetor (AI, EPS, SVG ou PDF vetorial) ou PNG em alta resolução. Adicione frases ou QR codes se desejar.</p>
+      <li class="reveal d1">
+        <span class="block text-[4rem] font-semibold tracking-tighter leading-none text-line tnum">2</span>
+        <h3 class="mt-6 text-2xl font-semibold tracking-tight">Sua logo</h3>
+        <p class="mt-3 text-[17px] leading-relaxed text-mute">Envie em vetor (AI, EPS, SVG ou PDF vetorial) ou PNG em alta resolução. Adicione frases ou QR codes se desejar.</p>
       </li>
-      <li class="relative">
-        <span class="font-display font-light text-8xl text-creme/10 absolute -top-12 -left-4 pointer-events-none">3</span>
-        <h3 class="font-display font-bold text-xl uppercase mb-4 relative z-10 text-caramelo">Aprove a Arte</h3>
-        <p class="font-light text-creme/70 leading-relaxed relative z-10">Montamos e enviamos a prova digital. Ajustamos até ficar perfeito.</p>
+      <li class="reveal d2">
+        <span class="block text-[4rem] font-semibold tracking-tighter leading-none text-line tnum">3</span>
+        <h3 class="mt-6 text-2xl font-semibold tracking-tight">Aprove a arte</h3>
+        <p class="mt-3 text-[17px] leading-relaxed text-mute">Montamos e enviamos a prova digital. Ajustamos até ficar perfeito.</p>
       </li>
-      <li class="relative">
-        <span class="font-display font-light text-8xl text-creme/10 absolute -top-12 -left-4 pointer-events-none">4</span>
-        <h3 class="font-display font-bold text-xl uppercase mb-4 relative z-10 text-caramelo">Receba</h3>
-        <p class="font-light text-creme/70 leading-relaxed relative z-10">Aprovado? Imprimimos, enchemos, selamos e despachamos para você.</p>
+      <li class="reveal d3">
+        <span class="block text-[4rem] font-semibold tracking-tighter leading-none text-line tnum">4</span>
+        <h3 class="mt-6 text-2xl font-semibold tracking-tight">Receba</h3>
+        <p class="mt-3 text-[17px] leading-relaxed text-mute">Aprovado? Imprimimos, enchemos, selamos e despachamos para você.</p>
       </li>
     </ol>
 
-    <!-- Bastidor -->
-    <div class="grid md:grid-cols-[auto_1fr] gap-12 items-center bg-espresso rounded-[4rem] p-6 md:p-12 border border-creme/5">
-      <div class="rounded-t-[10rem] rounded-b-3xl overflow-hidden w-full max-w-[280px] mx-auto shadow-2xl">
-        <video src="assets/video/serra.mp4" poster="assets/video/serra-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Drip sendo preparado numa varanda de serra, com a água coando no copo" class="w-full aspect-[9/16] object-cover bg-black"></video>
+    <div class="mt-32 md:mt-48 grid md:grid-cols-[auto_1fr] gap-12 md:gap-24 items-center">
+      <div class="reveal-scale w-full max-w-[320px] mx-auto">
+        <video src="assets/video/serra.mp4" poster="assets/video/serra-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Drip sendo preparado numa varanda de serra, com a água coando no copo" class="w-full aspect-[9/16] object-cover rounded-[2.5rem] bg-black"></video>
       </div>
-      <div class="max-w-xl">
-        <h3 class="font-display font-black text-4xl uppercase mb-6">Do sachê à xícara</h3>
-        <p class="font-light text-xl text-creme/80 leading-relaxed">
+      <div class="min-w-0 max-w-xl">
+        <h3 class="reveal text-[2.5rem] md:text-[3.75rem] font-semibold tracking-tighter leading-[0.95]">Do sachê <span class="text-mute">à xícara.</span></h3>
+        <p class="reveal d1 mt-8 text-lg md:text-xl leading-relaxed text-mute">
           Abre, encaixa as abas na xícara e despeja a água. Poucos minutos depois, café especial coado na hora, sem máquina e sem complicação.
         </p>
       </div>
@@ -596,200 +493,141 @@
   </div>
 </section>
 
-<!-- O Café e A Marca -->
-<section class="py-32 bg-chao relative z-20">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="grid lg:grid-cols-2 gap-20 items-start mb-40">
-      <div>
-        <span class="font-body font-bold text-sm tracking-widest text-kraft uppercase">O que vai dentro</span>
-        <h2 class="font-display font-black text-5xl md:text-6xl text-tinta uppercase leading-none mt-4 mb-8">
-          O café <span class="font-accent font-normal italic text-kraft normal-case tracking-normal block mt-2">também fala por você</span>
-        </h2>
-        <p class="text-xl font-light text-tinta/80 leading-relaxed mb-12">
-          Trabalhamos exclusivamente com cafés especiais de origem única. Grãos do Sul de Minas, da Região Vulcânica, com Indicação Geográfica e laudo de Q-Grader. Sem blends, sem concessões.
-        </p>
-        
-        <!-- Ficha Técnica Arquitetônica -->
-        <div class="grid grid-cols-[1fr_auto] gap-8 items-center border-y-2 border-tinta py-8">
-          <dl class="grid grid-cols-[auto_1fr] gap-x-6 gap-y-4 font-body text-base">
-            <dt class="font-bold text-tinta uppercase tracking-wider text-xs self-center">Origem</dt>
-            <dd class="text-tinta/80">Sul de Minas, Reg. Vulcânica</dd>
-            
-            <dt class="font-bold text-tinta uppercase tracking-wider text-xs self-center">Espécie</dt>
-            <dd class="text-tinta/80">100% Arábica</dd>
-            
-            <dt class="font-bold text-tinta uppercase tracking-wider text-xs self-center">Torra</dt>
-            <dd class="text-tinta/80">Média</dd>
-            
-            <dt class="font-bold text-tinta uppercase tracking-wider text-xs self-center">Dose</dt>
-            <dd class="text-tinta/80">10 g por sachê</dd>
-          </dl>
-          <div class="border-l-2 border-tinta/20 pl-8 text-center">
-            <b class="font-display font-black text-6xl md:text-7xl text-caramelo leading-none block tracking-tighter">80+</b>
-            <span class="font-body font-bold text-xs uppercase tracking-widest text-kraft mt-2 block">Pontos SCA</span>
-          </div>
-        </div>
-      </div>
-      
-      <figure class="relative">
-        <div class="rounded-[4rem] rounded-tr-none overflow-hidden aspect-[4/5] shadow-2xl">
-          <img src="assets/img/cafe-varanda.webp" alt="Café coado na xícara" class="w-full h-full object-cover img-hover-zoom" loading="lazy" onerror="this.src='https://placehold.co/1000x1250/2E1D14/D4924A?text=Cafe+Especial'">
-        </div>
-        <figcaption class="mt-6 font-accent italic text-tinta/60 text-lg text-center">Coado no sachê, servido na sua xícara favorita.</figcaption>
-      </figure>
-    </div>
-
-    <!-- Quem está por trás -->
-    <div class="grid lg:grid-cols-[1fr_1.2fr] gap-20 items-center border-t border-tinta/10 pt-32">
-      <div class="grid grid-cols-[0.8fr_1fr] gap-4 items-end order-2 lg:order-1">
-        <img src="assets/img/blooming-drip.webp" alt="Blooming Club" class="w-full aspect-[3/4] object-cover rounded-[3rem] rounded-bl-none shadow-lg" loading="lazy" onerror="this.src='https://placehold.co/800x1067/E7E6DF/1E1410?text=Blooming'">
-        <img src="assets/img/blooming-caixa.webp" alt="Caixa Blooming" class="w-full aspect-[3/2] object-cover rounded-[3rem] rounded-tr-none shadow-xl transform translate-y-8" loading="lazy" onerror="this.src='https://placehold.co/1400x933/E7E6DF/1E1410?text=Caixa'">
-      </div>
-      <div class="order-1 lg:order-2">
-        <img src="assets/img/blooming.png" alt="Blooming Club Cafés Especiais" class="w-48 mb-8" loading="lazy" onerror="this.style.display='none';">
-        <span class="font-body font-bold text-sm tracking-widest text-kraft uppercase">A Assinatura</span>
-        <h2 class="font-display font-black text-4xl md:text-5xl text-tinta uppercase leading-none mt-4 mb-8">
-          Uma marca <span class="font-accent font-normal italic text-kraft normal-case tracking-normal block mt-2">Blooming Club</span>
-        </h2>
-        <p class="text-lg font-light text-tinta/80 leading-relaxed mb-10">
-          A Drip Coffee Label é a vertente corporativa da Blooming Club, um clube de assinatura dedicado à curadoria de cafés especiais. A excelência que vai na xícara do nosso assinante é a mesma que enche o seu sachê.
-        </p>
-        <a class="inline-block px-8 py-4 rounded-full border-2 border-tinta text-tinta font-bold text-sm uppercase tracking-wide hover:bg-tinta hover:text-creme transition-colors" href="https://www.bloomingclub.com.br/?utm_source=drip-landing&utm_medium=site&utm_campaign=brindes&utm_content=quem" target="_blank" rel="noopener">
-          Visitar Blooming Club
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ Minimalista -->
-<section id="perguntas" class="py-32 bg-papel">
-  <div class="max-w-5xl mx-auto px-6 grid md:grid-cols-[0.8fr_1.2fr] gap-16">
-    <div>
-      <span class="font-body font-bold text-sm tracking-widest text-kraft uppercase">Tire suas dúvidas</span>
-      <h2 class="font-display font-black text-4xl text-tinta uppercase leading-none mt-4 mb-8">
-        Perguntas <span class="font-accent font-normal italic text-kraft normal-case tracking-normal block mt-2">Frequentes</span>
-      </h2>
-      <p class="font-light text-tinta/70 mb-8">Resposta mais rápida? Fale direto no WhatsApp.</p>
-      <a class="js-zap inline-flex items-center gap-2 px-6 py-3 rounded-full bg-tinta text-creme font-bold text-xs uppercase tracking-widest hover:bg-caramelo transition-colors" data-origem="faq" href="https://wa.me/5554997048081?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Drip%20Coffee%20Label%20e%20quero%20um%20or%C3%A7amento%20de%20drip%20personalizado." target="_blank" rel="noopener">
-        Perguntar via WhatsApp
-      </a>
-      <img src="assets/img/preparo.webp" alt="Preparo" class="w-full aspect-[4/3] object-cover rounded-[2rem] mt-12 shadow-lg" loading="lazy" onerror="this.src='https://placehold.co/800x600/D9D8CF/1E1410?text=Preparo'">
-    </div>
-
-    <!-- Accordion CSS Nativo com estilo -->
-    <div class="divide-y divide-tinta/10">
-      <details class="group py-6 first:pt-0" name="faq">
-        <summary class="font-display font-bold text-lg cursor-pointer flex justify-between items-center text-tinta group-open:text-caramelo transition-colors">
-          Qual é o pedido mínimo?
-          <span class="text-2xl font-light transform group-open:rotate-45 transition-transform duration-300">+</span>
-        </summary>
-        <p class="font-light text-tinta/70 pt-4 leading-relaxed">50 unidades. Você pode pedir em múltiplos de 50, e o preço por drip cai a cada faixa até 300 unidades.</p>
-      </details>
-      <details class="group py-6" name="faq">
-        <summary class="font-display font-bold text-lg cursor-pointer flex justify-between items-center text-tinta group-open:text-caramelo transition-colors">
-          Vocês criam a arte?
-          <span class="text-2xl font-light transform group-open:rotate-45 transition-transform duration-300">+</span>
-        </summary>
-        <p class="font-light text-tinta/70 pt-4 leading-relaxed">Sim. Você envia a logo e montamos a arte do sachê. Só produzimos após sua aprovação absoluta.</p>
-      </details>
-      <details class="group py-6" name="faq">
-        <summary class="font-display font-bold text-lg cursor-pointer flex justify-between items-center text-tinta group-open:text-caramelo transition-colors">
-          Em que formato envio a logo?
-          <span class="text-2xl font-light transform group-open:rotate-45 transition-transform duration-300">+</span>
-        </summary>
-        <p class="font-light text-tinta/70 pt-4 leading-relaxed">De preferência em vetor: AI, EPS, SVG ou PDF vetorial, com os textos convertidos em curvas. Se não tiver, envie PNG em alta resolução (300 dpi no tamanho de impressão), de preferência com fundo transparente. JPG, print de tela e imagens pequenas perdem nitidez na impressão.</p>
-      </details>
-      <details class="group py-6" name="faq">
-        <summary class="font-display font-bold text-lg cursor-pointer flex justify-between items-center text-tinta group-open:text-caramelo transition-colors">
-          Mais de uma arte no mesmo pedido?
-          <span class="text-2xl font-light transform group-open:rotate-45 transition-transform duration-300">+</span>
-        </summary>
-        <p class="font-light text-tinta/70 pt-4 leading-relaxed">Cada lote de 50 unidades sai com uma arte. Comprando 150, você pode ter três artes diferentes, por exemplo.</p>
-      </details>
-      <details class="group py-6" name="faq">
-        <summary class="font-display font-bold text-lg cursor-pointer flex justify-between items-center text-tinta group-open:text-caramelo transition-colors">
-          Qual é o prazo?
-          <span class="text-2xl font-light transform group-open:rotate-45 transition-transform duration-300">+</span>
-        </summary>
-        <p class="font-light text-tinta/70 pt-4 leading-relaxed">Conta a partir da aprovação da arte. Informe a data do seu evento no WhatsApp e confirmamos a viabilidade.</p>
-      </details>
-      <details class="group py-6" name="faq">
-        <summary class="font-display font-bold text-lg cursor-pointer flex justify-between items-center text-tinta group-open:text-caramelo transition-colors">
-          A impressão é colorida?
-          <span class="text-2xl font-light transform group-open:rotate-45 transition-transform duration-300">+</span>
-        </summary>
-        <p class="font-light text-tinta/70 pt-4 leading-relaxed">O padrão é impressão em 1 cor, em preto sólido, que garante nitidez em todos os modelos. Pequenos detalhes em cor na logo ou na arte são possíveis e passam pela avaliação da produção antes de imprimir. Precisa de uma arte colorida? Peça no WhatsApp e avaliamos o seu caso.</p>
-      </details>
-      <details class="group py-6" name="faq">
-        <summary class="font-display font-bold text-lg cursor-pointer flex justify-between items-center text-tinta group-open:text-caramelo transition-colors">
-          Emitem nota fiscal?
-          <span class="text-2xl font-light transform group-open:rotate-45 transition-transform duration-300">+</span>
-        </summary>
-        <p class="font-light text-tinta/70 pt-4 leading-relaxed">Sim, emitimos nota fiscal para pessoa jurídica (PJ).</p>
-      </details>
-      <details class="group py-6" name="faq">
-        <summary class="font-display font-bold text-lg cursor-pointer flex justify-between items-center text-tinta group-open:text-caramelo transition-colors">
-          Como se prepara o drip?
-          <span class="text-2xl font-light transform group-open:rotate-45 transition-transform duration-300">+</span>
-        </summary>
-        <p class="font-light text-tinta/70 pt-4 leading-relaxed">Abra o sachê, encaixe as abas na xícara, despeje água quente aos poucos. Espere coar e pronto. Sem cafeteiras, apenas uma xícara e água quente.</p>
-      </details>
-    </div>
-  </div>
-</section>
-
-<!-- Fechamento Monumental (Dark) -->
-<section class="bg-espresso text-creme py-32 md:py-48 relative overflow-hidden rounded-t-[4rem] md:rounded-t-[8rem] -mt-16 z-20">
-  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-[1fr_0.8fr] gap-16 items-center">
-    <div>
-      <span class="font-body font-bold text-caramelo tracking-widest text-sm uppercase">O seu próximo passo</span>
-      <h2 class="font-display font-black text-5xl md:text-7xl lg:text-[5.5rem] uppercase leading-none mt-6 mb-8 tracking-tighter">
-        Um brinde <br>
-        <span class="font-accent font-normal italic text-4xl md:text-6xl text-creme/50 normal-case tracking-normal block mt-2">fora da gaveta</span>
-      </h2>
-      <p class="text-xl font-light text-creme/80 mb-12 max-w-lg">
-        Envie sua logo e a quantidade. Nós retornamos com o modelo ideal e o design do seu próximo projeto.
+<!-- O café -->
+<section class="bg-white py-32 md:py-48">
+  <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+    <div class="min-w-0">
+      <p class="reveal text-sm md:text-base font-semibold text-kraft">O que vai dentro</p>
+      <h2 class="reveal d1 mt-4 text-[2.75rem] md:text-[4.5rem] font-semibold tracking-tighter leading-[0.95]">O café <span class="text-mute">também fala por você.</span></h2>
+      <p class="reveal d2 mt-8 text-lg md:text-xl leading-relaxed text-mute max-w-xl">
+        Trabalhamos exclusivamente com cafés especiais de origem única. Grãos do Sul de Minas, da Região Vulcânica, com Indicação Geográfica e laudo de Q-Grader. Sem blends, sem concessões.
       </p>
-      
-      <div class="flex flex-wrap gap-4 mb-16">
-        <a class="js-zap px-8 py-5 rounded-full bg-caramelo text-tinta font-bold text-sm uppercase tracking-wide hover:bg-creme transition-colors shadow-2xl" data-origem="fecho" href="https://wa.me/5554997048081?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Drip%20Coffee%20Label%20e%20quero%20um%20or%C3%A7amento%20de%20drip%20personalizado." target="_blank" rel="noopener">
-          Pedir orçamento
-        </a>
-        <a class="px-8 py-5 rounded-full border-2 border-creme/20 text-creme font-bold text-sm uppercase tracking-wide hover:border-creme transition-colors" href="#modelos">
-          Ver Modelos
-        </a>
-      </div>
 
-      <div class="flex flex-wrap gap-x-8 gap-y-4 font-body font-bold text-sm tracking-widest text-caramelo uppercase">
-        <span>(54) 99704-8081</span>
-        <a href="https://www.instagram.com/driplabel.cafes/" target="_blank" rel="noopener" class="hover:text-creme transition-colors">@driplabel.cafes</a>
-        <span>cafes@bloomingclub.com.br</span>
+      <div class="reveal d3 mt-14 flex flex-wrap items-end gap-x-14 gap-y-10">
+        <div>
+          <b class="block text-[5rem] md:text-[6.5rem] font-semibold tracking-tighter leading-[0.85] text-caramelo">80+</b>
+          <span class="block mt-3 text-sm font-semibold text-mute">Pontos SCA</span>
+        </div>
+        <dl class="grid grid-cols-[auto_1fr] gap-x-8 text-[15px] min-w-[240px] flex-1 max-w-sm">
+          <dt class="py-3 border-t border-black/10 text-mute">Origem</dt><dd class="py-3 border-t border-black/10">Sul de Minas, Reg. Vulcânica</dd>
+          <dt class="py-3 border-t border-black/10 text-mute">Espécie</dt><dd class="py-3 border-t border-black/10">100% Arábica</dd>
+          <dt class="py-3 border-t border-black/10 text-mute">Torra</dt><dd class="py-3 border-t border-black/10">Média</dd>
+          <dt class="py-3 border-y border-black/10 text-mute">Dose</dt><dd class="py-3 border-y border-black/10">10 g por sachê</dd>
+        </dl>
       </div>
     </div>
-    
-    <div class="relative w-full aspect-square md:aspect-auto md:h-full max-h-[600px]">
-      <div class="absolute inset-0 rounded-full border-4 border-creme/5 scale-110"></div>
-      <div class="absolute inset-0 rounded-full border border-caramelo/20 scale-105"></div>
-      <img src="assets/img/ficha.webp" alt="Detalhes do Drip" class="w-full h-full object-cover rounded-full shadow-2xl z-10 relative img-hover-zoom" loading="lazy" onerror="this.src='https://placehold.co/900x900/1E1410/D4924A?text=Arte'">
+    <figure class="reveal-scale">
+      <img src="assets/img/cafe-varanda.webp" alt="Café coado na xícara" width="1000" height="1250" loading="lazy" class="w-full max-w-[520px] mx-auto aspect-[4/5] object-cover rounded-[2.5rem]">
+      <figcaption class="mt-5 text-center text-[15px] text-mute">Coado no sachê, servido na sua xícara favorita.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- Uma marca Blooming Club -->
+<section class="py-32 md:py-48">
+  <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-[1fr_1.1fr] gap-16 lg:gap-24 items-center">
+    <div class="reveal-scale grid grid-cols-[0.8fr_1fr] gap-4 items-end order-2 lg:order-1">
+      <img src="assets/img/blooming-drip.webp" alt="Drip coffee da Blooming Club" width="800" height="1067" loading="lazy" class="w-full aspect-[3/4] object-cover rounded-[2rem]">
+      <img src="assets/img/blooming-caixa.webp" alt="Caixa de assinatura da Blooming Club" width="1400" height="933" loading="lazy" class="w-full aspect-[3/2] object-cover rounded-[2rem] translate-y-8">
+    </div>
+    <div class="min-w-0 order-1 lg:order-2">
+      <img src="assets/img/blooming.png" alt="Blooming Club Cafés Especiais" class="reveal w-44 h-auto" loading="lazy">
+      <p class="reveal d1 mt-10 text-sm md:text-base font-semibold text-kraft">A assinatura</p>
+      <h2 class="reveal d1 mt-4 text-[2.75rem] md:text-[4.5rem] font-semibold tracking-tighter leading-[0.95]">Uma marca <span class="text-mute">Blooming Club.</span></h2>
+      <p class="reveal d2 mt-8 text-lg md:text-xl leading-relaxed text-mute max-w-xl">
+        A Drip Coffee Label é a vertente corporativa da Blooming Club, um clube de assinatura dedicado à curadoria de cafés especiais. A excelência que vai na xícara do nosso assinante é a mesma que enche o seu sachê.
+      </p>
+      <a class="reveal d3 inline-flex items-center gap-1 mt-8 text-[17px] text-kraft hover:underline underline-offset-4" href="https://www.bloomingclub.com.br/?utm_source=drip-landing&utm_medium=site&utm_campaign=brindes&utm_content=quem" target="_blank" rel="noopener">Visitar Blooming Club <span aria-hidden="true">›</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- Perguntas -->
+<section id="perguntas" class="scroll-mt-14 bg-white py-32 md:py-48">
+  <div class="max-w-6xl mx-auto px-6 grid lg:grid-cols-[0.8fr_1.2fr] gap-16 lg:gap-24">
+    <div class="min-w-0">
+      <p class="reveal text-sm md:text-base font-semibold text-kraft">Tire suas dúvidas</p>
+      <h2 class="reveal d1 mt-4 text-[2.75rem] md:text-[4rem] font-semibold tracking-tighter leading-[0.95]">Perguntas frequentes.</h2>
+      <p class="reveal d2 mt-6 text-[17px] text-mute">Resposta mais rápida? Fale direto no WhatsApp.</p>
+      <a class="reveal d2 js-zap inline-flex items-center gap-1 mt-3 text-[17px] text-kraft hover:underline underline-offset-4" data-origem="faq" href="https://wa.me/5554997048081?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Drip%20Coffee%20Label%20e%20quero%20um%20or%C3%A7amento%20de%20drip%20personalizado." target="_blank" rel="noopener">Perguntar via WhatsApp <span aria-hidden="true">›</span></a>
+      <img src="assets/img/preparo.webp" alt="Preparo do drip coffee na xícara" width="1100" height="825" loading="lazy" class="reveal-scale hidden lg:block mt-14 w-full aspect-[4/3] object-cover rounded-[2rem]">
+    </div>
+
+    <div class="reveal d1 min-w-0 border-t border-black/10">
+      <details class="group border-b border-black/10" name="faq">
+        <summary class="py-6 cursor-pointer flex justify-between items-center gap-6 text-lg md:text-xl font-semibold tracking-tight">Qual é o pedido mínimo?<span class="shrink-0 text-2xl font-light text-mute transition-transform duration-500 group-open:rotate-45" aria-hidden="true">+</span></summary>
+        <p class="pb-7 -mt-1 text-[17px] leading-relaxed text-mute">50 unidades. Você pode pedir em múltiplos de 50, e o preço por drip cai a cada faixa até 300 unidades.</p>
+      </details>
+      <details class="group border-b border-black/10" name="faq">
+        <summary class="py-6 cursor-pointer flex justify-between items-center gap-6 text-lg md:text-xl font-semibold tracking-tight">Vocês criam a arte?<span class="shrink-0 text-2xl font-light text-mute transition-transform duration-500 group-open:rotate-45" aria-hidden="true">+</span></summary>
+        <p class="pb-7 -mt-1 text-[17px] leading-relaxed text-mute">Sim. Você envia a logo e montamos a arte do sachê. Só produzimos após sua aprovação absoluta.</p>
+      </details>
+      <details class="group border-b border-black/10" name="faq">
+        <summary class="py-6 cursor-pointer flex justify-between items-center gap-6 text-lg md:text-xl font-semibold tracking-tight">Em que formato envio a logo?<span class="shrink-0 text-2xl font-light text-mute transition-transform duration-500 group-open:rotate-45" aria-hidden="true">+</span></summary>
+        <p class="pb-7 -mt-1 text-[17px] leading-relaxed text-mute">De preferência em vetor: AI, EPS, SVG ou PDF vetorial, com os textos convertidos em curvas. Se não tiver, envie PNG em alta resolução (300 dpi no tamanho de impressão), de preferência com fundo transparente. JPG, print de tela e imagens pequenas perdem nitidez na impressão.</p>
+      </details>
+      <details class="group border-b border-black/10" name="faq">
+        <summary class="py-6 cursor-pointer flex justify-between items-center gap-6 text-lg md:text-xl font-semibold tracking-tight">Mais de uma arte no mesmo pedido?<span class="shrink-0 text-2xl font-light text-mute transition-transform duration-500 group-open:rotate-45" aria-hidden="true">+</span></summary>
+        <p class="pb-7 -mt-1 text-[17px] leading-relaxed text-mute">Cada lote de 50 unidades sai com uma arte. Comprando 150, você pode ter três artes diferentes, por exemplo.</p>
+      </details>
+      <details class="group border-b border-black/10" name="faq">
+        <summary class="py-6 cursor-pointer flex justify-between items-center gap-6 text-lg md:text-xl font-semibold tracking-tight">Qual é o prazo?<span class="shrink-0 text-2xl font-light text-mute transition-transform duration-500 group-open:rotate-45" aria-hidden="true">+</span></summary>
+        <p class="pb-7 -mt-1 text-[17px] leading-relaxed text-mute">Conta a partir da aprovação da arte. Informe a data do seu evento no WhatsApp e confirmamos a viabilidade.</p>
+      </details>
+      <details class="group border-b border-black/10" name="faq">
+        <summary class="py-6 cursor-pointer flex justify-between items-center gap-6 text-lg md:text-xl font-semibold tracking-tight">A impressão é colorida?<span class="shrink-0 text-2xl font-light text-mute transition-transform duration-500 group-open:rotate-45" aria-hidden="true">+</span></summary>
+        <p class="pb-7 -mt-1 text-[17px] leading-relaxed text-mute">O padrão é impressão em 1 cor, em preto sólido, que garante nitidez em todos os modelos. Pequenos detalhes em cor na logo ou na arte são possíveis e passam pela avaliação da produção antes de imprimir. Precisa de uma arte colorida? Peça no WhatsApp e avaliamos o seu caso.</p>
+      </details>
+      <details class="group border-b border-black/10" name="faq">
+        <summary class="py-6 cursor-pointer flex justify-between items-center gap-6 text-lg md:text-xl font-semibold tracking-tight">Emitem nota fiscal?<span class="shrink-0 text-2xl font-light text-mute transition-transform duration-500 group-open:rotate-45" aria-hidden="true">+</span></summary>
+        <p class="pb-7 -mt-1 text-[17px] leading-relaxed text-mute">Sim, emitimos nota fiscal para pessoa jurídica (PJ).</p>
+      </details>
+      <details class="group border-b border-black/10" name="faq">
+        <summary class="py-6 cursor-pointer flex justify-between items-center gap-6 text-lg md:text-xl font-semibold tracking-tight">Como se prepara o drip?<span class="shrink-0 text-2xl font-light text-mute transition-transform duration-500 group-open:rotate-45" aria-hidden="true">+</span></summary>
+        <p class="pb-7 -mt-1 text-[17px] leading-relaxed text-mute">Abra o sachê, encaixe as abas na xícara, despeje água quente aos poucos. Espere coar e pronto. Sem cafeteiras, apenas uma xícara e água quente.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- Fechamento -->
+<section class="py-32 md:py-48">
+  <div class="max-w-7xl mx-auto px-6 text-center">
+    <p class="reveal text-sm md:text-base font-semibold text-kraft">O seu próximo passo</p>
+    <h2 class="reveal d1 mt-4 font-semibold tracking-tighter leading-[0.9] text-[3.25rem] sm:text-[4.5rem] md:text-[6rem] lg:text-[7.5rem]">
+      Um brinde<br><span class="text-mute">fora da gaveta.</span>
+    </h2>
+    <p class="reveal d2 mt-8 max-w-xl mx-auto text-lg md:text-xl leading-relaxed text-mute">
+      Envie sua logo e a quantidade. Nós retornamos com o modelo ideal e o design do seu próximo projeto.
+    </p>
+    <div class="reveal d3 mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
+      <a class="js-zap inline-flex items-center h-12 px-7 rounded-full bg-ink text-white text-[15px] font-medium hover:bg-black transition-colors" data-origem="fecho" href="https://wa.me/5554997048081?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Drip%20Coffee%20Label%20e%20quero%20um%20or%C3%A7amento%20de%20drip%20personalizado." target="_blank" rel="noopener">Pedir orçamento</a>
+      <a class="inline-flex items-center gap-1 text-[17px] text-kraft hover:underline underline-offset-4" href="#modelos">Ver modelos <span aria-hidden="true">›</span></a>
+    </div>
+
+    <div class="reveal-scale d2 mt-20 md:mt-28 mx-auto max-w-[420px]">
+      <img src="assets/img/ficha.webp" alt="Detalhes do drip coffee personalizado" width="900" height="900" loading="lazy" class="w-full aspect-square object-cover rounded-full">
+    </div>
+
+    <div class="reveal mt-16 flex flex-wrap justify-center gap-x-10 gap-y-3 text-[15px] text-mute">
+      <span class="tnum">(54) 99704-8081</span>
+      <a href="https://www.instagram.com/driplabel.cafes/" target="_blank" rel="noopener" class="hover:text-ink transition-colors">@driplabel.cafes</a>
+      <span>cafes@bloomingclub.com.br</span>
     </div>
   </div>
 </section>
 
 </main>
 
-<!-- Footer Minimalista -->
-<footer class="bg-tinta text-creme/60 py-12 border-t border-creme/10">
-  <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
-    <div class="flex gap-8 items-center opacity-50 grayscale">
-      <!-- Fallbacks de texto caso a imagem não carregue -->
-      <img src="assets/img/logo-claro.png" alt="Drip Coffee Label" class="h-8" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-      <span class="hidden font-display font-bold">DRIP COFFEE LABEL</span>
-      
-      <img src="assets/img/blooming-claro-sem-xicara.svg" alt="Blooming Club" class="h-6 w-auto" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-      <span class="hidden font-display font-bold">BLOOMING CLUB</span>
+<!-- Rodapé -->
+<footer class="border-t border-black/10">
+  <div class="max-w-7xl mx-auto px-6 py-10 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+    <div class="flex items-center gap-5 opacity-60">
+      <img src="assets/img/logo.png" alt="Drip Coffee Label" class="h-6 w-auto" loading="lazy">
+      <span class="h-4 w-px bg-black/20" aria-hidden="true"></span>
+      <img src="assets/img/blooming-sem-xicara.svg" alt="Blooming Club" class="h-4 w-auto" loading="lazy">
     </div>
-    <p class="font-body text-xs max-w-lg font-light leading-relaxed">
+    <p class="text-xs leading-relaxed text-mute max-w-lg">
       Drip Coffee Label é uma marca da Blooming Club Cafés Especiais. As compras pelo site são finalizadas na loja Blooming Club. Imagens ilustrativas.
     </p>
   </div>
@@ -870,6 +708,38 @@
 
   var v=document.querySelector('video');
   if(v&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){v.removeAttribute('autoplay');v.pause();v.controls=true}
+})();
+</script>
+
+<!-- Interface: animações de entrada e preenchimento do controle deslizante -->
+<script>
+(function(){
+  // Preenche o trilho do controle deslizante até o thumb (só visual; não altera a calculadora)
+  var faixa=document.getElementById('faixa');
+  function preencher(){
+    if(!faixa) return;
+    var p=(faixa.value-faixa.min)/(faixa.max-faixa.min)*100;
+    faixa.style.setProperty('--p',p+'%');
+  }
+  if(faixa){
+    faixa.addEventListener('input',preencher);
+    ['menos','mais'].forEach(function(id){var b=document.getElementById(id);if(b)b.addEventListener('click',preencher)});
+    preencher();
+  }
+
+  // Revela os elementos ao entrar na tela
+  var els=document.querySelectorAll('.reveal,.reveal-scale');
+  var semMovimento=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(!('IntersectionObserver' in window)||semMovimento){
+    els.forEach(function(el){el.classList.add('active')});
+    return;
+  }
+  var io=new IntersectionObserver(function(entradas){
+    entradas.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('active');io.unobserve(e.target)}
+    });
+  },{threshold:0.12,rootMargin:'0px 0px -6% 0px'});
+  els.forEach(function(el){io.observe(el)});
 })();
 </script>
 
