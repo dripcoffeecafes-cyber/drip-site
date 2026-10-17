@@ -91,54 +91,64 @@
 
 <main id="inicio" class="flex-grow">
 
-<!-- Herói Monumental -->
-<section class="relative pt-20 pb-32 md:pt-32 md:pb-48 overflow-hidden">
-  <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-[1.2fr_0.8fr] gap-12 lg:gap-20 items-center">
-    <div class="relative z-10">
-      <h1 class="font-display font-black text-6xl md:text-8xl lg:text-[7.5rem] leading-[0.85] tracking-tighter text-tinta uppercase">
-        Sua marca <br>
-        <span class="font-accent font-normal italic text-5xl md:text-7xl lg:text-[6rem] text-kraft normal-case tracking-normal mt-4 block">na pausa do café</span>
+<!-- Herói: foto de fundo, garantias em lista -->
+<section class="relative isolate overflow-hidden bg-tinta text-creme">
+  <div class="max-w-7xl mx-auto px-6 pt-16 md:pt-28 md:pb-40">
+    <div class="md:max-w-[44%] lg:max-w-[40%]">
+      <h1 class="font-display font-black text-6xl lg:text-8xl leading-[0.85] tracking-tighter uppercase">
+        Sua marca
+        <span class="font-accent font-normal italic text-5xl lg:text-7xl text-caramelo normal-case tracking-normal mt-4 block">na pausa do café</span>
       </h1>
-      <p class="mt-8 text-lg md:text-xl leading-relaxed text-tinta/80 max-w-xl font-body font-light">
-        Drip coffee com a sua logo impressa direto no sachê e café especial de origem única dentro. O brinde corporativo que a pessoa abre, prepara e lembra de quem deu. <strong class="font-semibold text-tinta">A partir de 50 unidades.</strong>
+      <p class="mt-8 text-lg leading-relaxed text-creme/80 font-body font-light">
+        Drip coffee com a sua logo impressa direto no sachê e café especial de origem única dentro. O brinde corporativo que a pessoa abre, prepara e lembra de quem deu. <strong class="font-semibold text-creme">A partir de 50 unidades.</strong>
       </p>
-      
-      <div class="mt-10 grid grid-cols-2 sm:flex sm:flex-wrap gap-3 sm:gap-4 sm:items-center">
-        <a href="#calc" class="col-span-2 sm:col-span-1 group flex items-center justify-center gap-3 h-14 px-8 sm:px-6 rounded-full bg-tinta text-creme font-body font-semibold text-sm uppercase tracking-wide shadow-xl hover:bg-espresso transition-all duration-300">
-          <svg viewBox="0 0 24 24" class="w-5 h-5 fill-none stroke-current shrink-0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M8.5 7.5h7M8.5 12h.01M12 12h.01M15.5 12h.01M8.5 16h.01M12 16h.01M15.5 16h.01"/></svg>
-          Simular meu pedido
-          <svg viewBox="0 0 24 24" class="w-4 h-4 fill-none stroke-current shrink-0 transition-transform duration-300 group-hover:translate-y-0.5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
-        </a>
-        <a class="js-zap flex items-center justify-center gap-2.5 h-14 px-4 sm:px-6 rounded-full bg-caramelo text-tinta font-body font-semibold text-xs sm:text-sm uppercase tracking-wide hover:bg-tinta hover:text-creme transition-all duration-300" data-origem="heroi" href="https://wa.me/5554997048081" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24" class="w-5 h-5 fill-current shrink-0" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4a.5.5 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3Z"/></svg>
-          <span>Orçamento</span>
-        </a>
-        <a class="flex items-center justify-center h-14 px-4 sm:px-6 rounded-full border-2 border-tinta/25 text-tinta font-body font-semibold text-xs sm:text-sm uppercase tracking-wide hover:border-tinta hover:bg-tinta hover:text-creme transition-all duration-300" data-categoria="heroi" href="https://www.bloomingclub.com.br/personalizados" target="_blank" rel="noopener">
-          Comprar no site
-        </a>
+
+      <div class="mt-10 grid grid-cols-2 sm:flex sm:flex-wrap gap-3">
+        <a href="#calc" class="col-span-2 sm:col-span-1 flex items-center justify-center h-14 px-8 rounded-full bg-creme text-tinta font-body font-semibold text-sm uppercase tracking-wide hover:bg-caramelo transition-colors">Simular meu pedido</a>
+        <a class="js-zap flex items-center justify-center h-14 px-4 sm:px-6 rounded-full bg-caramelo text-tinta font-body font-semibold text-xs sm:text-sm uppercase tracking-wide hover:bg-creme transition-colors" data-origem="heroi" href="https://wa.me/5554997048081" target="_blank" rel="noopener">Orçamento</a>
+        <a class="flex items-center justify-center h-14 px-4 sm:px-6 rounded-full border border-creme/40 text-creme font-body font-semibold text-xs sm:text-sm uppercase tracking-wide hover:bg-creme hover:text-tinta transition-colors" href="https://www.bloomingclub.com.br/personalizados" target="_blank" rel="noopener">Comprar no site</a>
       </div>
 
-      <ul class="mt-12 flex flex-col sm:flex-row flex-wrap gap-x-8 gap-y-4 font-body font-semibold text-sm text-kraft">
-        <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-caramelo block"></span>Café especial, 84+ SCA</li>
-        <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-caramelo block"></span>Arte aprovada por você</li>
-        <li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-caramelo block"></span>Nota fiscal PJ</li>
-      </ul>
+      <!-- Garantias: lista com fios finos, sem caixas -->
+      <dl class="mt-14 border-t border-creme/15 divide-y divide-creme/15">
+        <div class="py-5 flex items-center gap-5">
+          <dt class="font-display font-black text-5xl leading-none tracking-tighter text-caramelo w-24 shrink-0">80<span class="text-3xl align-top">+</span></dt>
+          <dd>
+            <span class="block font-display font-extrabold uppercase text-base leading-tight">Pontos SCA, café especial</span>
+            <span class="block mt-1 font-accent italic text-creme/70">Laudos disponíveis de cada café</span>
+          </dd>
+        </div>
+        <div class="py-5 flex items-center gap-5">
+          <dt class="w-24 shrink-0">
+            <img src="assets/img/regiao-vulcanica-compacta-claro.svg" alt="Cafés da Região Vulcânica" class="w-full h-auto">
+          </dt>
+          <dd>
+            <span class="block font-display font-extrabold uppercase text-base leading-tight">Origem única</span>
+            <span class="block mt-1 font-accent italic text-creme/70">Região Vulcânica, Sul de Minas</span>
+          </dd>
+        </div>
+        <div class="py-5 flex items-center gap-5">
+          <dt class="w-24 shrink-0 font-display font-black text-xs uppercase tracking-[0.2em] text-caramelo">Sem<br>surpresa</dt>
+          <dd>
+            <span class="block font-display font-extrabold uppercase text-base leading-tight">Arte aprovada por você</span>
+            <span class="block mt-1 font-accent italic text-creme/70">e nota fiscal PJ</span>
+          </dd>
+        </div>
+      </dl>
     </div>
+  </div>
 
-    <!-- Máscara Orgânica -->
-    <div class="relative w-full aspect-[4/5] md:aspect-auto md:h-[80vh]">
-      <div class="absolute inset-0 bg-papel rounded-t-[15rem] rounded-b-[3rem] md:rounded-t-[25rem] md:rounded-bl-[15rem] md:rounded-br-[5rem] overflow-hidden shadow-2xl transform transition-transform duration-1000 hover:-translate-y-2">
-        <img src="assets/img/hero-sache.webp" alt="Água quente sendo despejada num drip encaixado numa caneca, com vista para o mar ao fundo" class="w-full h-full object-cover img-hover-zoom" onerror="this.src='https://placehold.co/800x1200/8A6A4A/F0EAE2?text=Sua+Marca+no+Cafe'">
-      </div>
-      <div class="absolute -bottom-6 -left-6 bg-creme p-6 rounded-3xl shadow-lg border border-tinta/5 max-w-xs hidden md:block">
-        <p class="font-accent italic text-tinta text-lg leading-snug">"Abre, encaixa na xícara, despeja a água. Sua marca na mão de quem toma."</p>
-      </div>
-    </div>
+  <!-- Foto: abaixo do texto no celular, à direita no desktop -->
+  <div class="relative -z-10 -mt-20 h-[125vw] md:absolute md:mt-0 md:inset-y-0 md:right-0 md:left-[46%] lg:left-[44%] md:h-auto">
+    <img src="assets/img/hero-sache.webp" alt="Água quente sendo despejada num drip encaixado numa caneca, com vista para o mar ao fundo"
+         class="absolute inset-0 w-full h-full object-cover object-[50%_75%] md:object-[50%_60%]">
+    <div class="absolute inset-x-0 top-0 h-2/5 bg-gradient-to-b from-tinta to-transparent md:hidden"></div>
+    <div class="hidden md:block absolute inset-y-0 left-0 w-2/5 bg-gradient-to-r from-tinta to-transparent"></div>
   </div>
 </section>
 
 <!-- Capítulo 1: A Gaveta -->
-<section class="py-24 bg-papel rounded-t-[4rem] md:rounded-t-[8rem] relative z-20">
+<section class="-mt-16 md:-mt-24 py-24 bg-papel rounded-t-[4rem] md:rounded-t-[8rem] relative z-20">
   <div class="max-w-7xl mx-auto px-6">
     <div class="max-w-3xl mb-16">
       <span class="font-body font-bold text-sm tracking-widest text-kraft uppercase">Você já viu essa história</span>
@@ -252,7 +262,7 @@
       </div>
       <div class="bg-caramelo text-tinta p-8 rounded-[2.5rem] hover:shadow-xl transition-shadow duration-300">
         <span class="text-tinta/60 font-semibold text-sm line-through block mb-4">Café ruim queima o filme</span>
-        <strong class="font-display font-black text-xl uppercase block mb-3">Café Especial 84+</strong>
+        <strong class="font-display font-black text-xl uppercase block mb-3">Café Especial 80+</strong>
         <p class="font-medium text-tinta/90">Sul de Minas, nunca blend. O mesmo café de alta pontuação do nosso clube.</p>
       </div>
     </div>
@@ -600,7 +610,7 @@
             <dd class="text-tinta/80">10 g por sachê</dd>
           </dl>
           <div class="border-l-2 border-tinta/20 pl-8 text-center">
-            <b class="font-display font-black text-6xl md:text-7xl text-caramelo leading-none block tracking-tighter">84+</b>
+            <b class="font-display font-black text-6xl md:text-7xl text-caramelo leading-none block tracking-tighter">80+</b>
             <span class="font-body font-bold text-xs uppercase tracking-widest text-kraft mt-2 block">Pontos SCA</span>
           </div>
         </div>
