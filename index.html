@@ -314,6 +314,13 @@
   details > summary::-webkit-details-marker { display: none; }
   :focus-visible { outline: 2px solid #D4924A; outline-offset: 3px; }
 </style>
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1636404041306148');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1636404041306148&ev=PageView&noscript=1"></noscript>
 </head>
 <body class="font-sans bg-canvas text-ink antialiased selection:bg-caramelo selection:text-white">
 
@@ -963,6 +970,31 @@
 
   var v=document.querySelector('video');
   if(v&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){v.removeAttribute('autoplay');v.pause();v.controls=true}
+})();
+</script>
+
+<!-- Meta Pixel: eventos de clique (não altera a calculadora, os links nem as mensagens) -->
+<script>
+(function(){
+  function ev(nome,dados){try{if(window.fbq)fbq('track',nome,dados||{})}catch(e){}}
+  function reais(t){var n=parseFloat(String(t||'').replace(/[^\d,]/g,'').replace(',','.'));return isNaN(n)?undefined:n}
+  function simulacao(){
+    var r=document.querySelector('input[name=modelo]:checked'),f=document.getElementById('faixa'),t=document.getElementById('total');
+    var d={content_type:'product',currency:'BRL'};
+    if(r){d.content_ids=[r.value]}
+    if(f){d.num_items=+f.value}
+    var v=reais(t&&t.textContent);if(v!==undefined){d.value=v}
+    return d;
+  }
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a');
+    if(!a) return;
+    if(a.id==='calc-zap'){var d=simulacao();d.content_name='calculadora';ev('Lead',d)}
+    else if(a.classList.contains('js-zap')){ev('Contact',{content_name:a.getAttribute('data-origem')||'whatsapp'})}
+    else if(a.id==='calc-site'){var s=simulacao();s.content_name='calculadora';ev('InitiateCheckout',s)}
+    else if(a.hasAttribute('data-produto')){ev('InitiateCheckout',{content_type:'product',content_ids:[a.getAttribute('data-produto')],content_name:'card-'+a.getAttribute('data-produto')})}
+    else if(/bloomingclub\.com\.br\/personalizados/.test(a.href)){ev('InitiateCheckout',{content_name:'heroi'})}
+  },true);
 })();
 </script>
 
