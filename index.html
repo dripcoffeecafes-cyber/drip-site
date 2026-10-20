@@ -989,7 +989,7 @@ fbq('track','PageView');
   document.addEventListener('click',function(e){
     var a=e.target.closest&&e.target.closest('a');
     if(!a) return;
-    if(a.id==='calc-zap'){var d=simulacao();d.content_name='calculadora';ev('Lead',d)}
+    if(a.id==='calc-zap'){var d=simulacao();d.content_name='calculadora';ev('Lead',d);var c=simulacao();c.content_name='calculadora';ev('Contact',c)}
     else if(a.classList.contains('js-zap')){ev('Contact',{content_name:a.getAttribute('data-origem')||'whatsapp'})}
     else if(a.id==='calc-site'){var s=simulacao();s.content_name='calculadora';ev('InitiateCheckout',s)}
     else if(a.hasAttribute('data-produto')){ev('InitiateCheckout',{content_type:'product',content_ids:[a.getAttribute('data-produto')],content_name:'card-'+a.getAttribute('data-produto')})}
