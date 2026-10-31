@@ -320,10 +320,11 @@
 <!-- Meta Pixel -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init','1636404041306148');
+fbq('init','1636404041306148'); // Pixel_DripCoffee (portfólio Drip Coffee Label): sai depois da troca para a loja Nuvemshop
+fbq('init','29552796950978987'); // Pixel_Nuvem (Grupo Blooming): pixel único do grupo, o mesmo da loja
 fbq('track','PageView');
 </script>
-<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1636404041306148&ev=PageView&noscript=1"></noscript>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1636404041306148&ev=PageView&noscript=1"><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=29552796950978987&ev=PageView&noscript=1"></noscript>
 </head>
 <body class="font-sans bg-canvas text-ink antialiased selection:bg-caramelo selection:text-white">
 
@@ -982,7 +983,12 @@ fbq('track','PageView');
 <!-- Meta Pixel: eventos de clique (não altera a calculadora, os links nem as mensagens) -->
 <script>
 (function(){
-  function ev(nome,dados){try{if(window.fbq)fbq('track',nome,dados||{})}catch(e){}}
+  // Os dois pixels recebem tudo, menos o clique para a loja: no Pixel_Nuvem ele vira IrParaLoja,
+  // porque o checkout da Nuvemshop já envia o InitiateCheckout e contaria em dobro.
+  var PX_DRIP='1636404041306148', PX_NUVEM='29552796950978987';
+  function ev(nome,dados){try{if(!window.fbq)return;dados=dados||{};
+    if(nome==='InitiateCheckout'){fbq('trackSingle',PX_DRIP,nome,dados);fbq('trackSingleCustom',PX_NUVEM,'IrParaLoja',dados)}
+    else{fbq('track',nome,dados)}}catch(e){}}
   function reais(t){var n=parseFloat(String(t||'').replace(/[^\d,]/g,'').replace(',','.'));return isNaN(n)?undefined:n}
   function simulacao(){
     var r=document.querySelector('input[name=modelo]:checked'),f=document.getElementById('faixa'),t=document.getElementById('total');

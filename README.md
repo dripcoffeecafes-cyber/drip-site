@@ -20,3 +20,8 @@ Página estática (HTML, CSS e JS puros), pronta para GitHub Pages com domínio 
 - `fotos/`: originais enviados pelo Adriano em 17/10/2026 (mockups "sua marca aqui", fotos da Blooming Club, cenas de IA e fotos reais).
 - `assets/img/`: versões otimizadas em WebP usadas na página. Os mockups dos modelos tiveram o fundo branco removido e foram aplicados no fundo de estúdio da marca.
 - Nenhuma imagem com marca de cliente. Cenas de IA sinalizadas no rodapé como ilustrativas.
+
+## Medição (Meta)
+- Dois pixels durante a troca: Pixel_DripCoffee (1636404041306148, portfólio Drip Coffee Label) e Pixel_Nuvem (29552796950978987, Grupo Blooming), o pixel único do grupo, o mesmo da loja Nuvemshop.
+- O clique para a loja vai como InitiateCheckout só no Pixel_DripCoffee; no Pixel_Nuvem vira o evento próprio IrParaLoja, porque o checkout da Nuvemshop já envia o InitiateCheckout.
+- O Pixel_DripCoffee sai 2 a 3 semanas depois de as compras da Drip aparecerem no Pixel_Nuvem.
