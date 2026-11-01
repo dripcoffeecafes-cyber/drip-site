@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR" class="scroll-smooth">
+<html lang="pt-BR">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -88,7 +88,7 @@
       "name": "Drip coffee personalizado Kraft Clássico (10 × 12 cm)",
       "description": "Sachê de papel kraft 10 × 12 cm com a logo do cliente impressa, com café especial de origem única dentro. Pedido mínimo de 50 unidades.",
       "image": [
-        "https://driplabel.bloomingclub.com.br/assets/img/p-kraft.webp"
+        "https://driplabel.bloomingclub.com.br/assets/img/p-kraft-cut.webp"
       ],
       "brand": {
         "@type": "Brand",
@@ -113,7 +113,7 @@
       "name": "Drip coffee personalizado Branco Premium (10 × 15 cm)",
       "description": "Sachê branco premium 10 × 15 cm com a logo do cliente impressa, com café especial de origem única dentro. Pedido mínimo de 50 unidades.",
       "image": [
-        "https://driplabel.bloomingclub.com.br/assets/img/p-branco.webp"
+        "https://driplabel.bloomingclub.com.br/assets/img/p-branco-cut.webp"
       ],
       "brand": {
         "@type": "Brand",
@@ -138,7 +138,7 @@
       "name": "Drip coffee personalizado Kraft Premium (10 × 15 cm)",
       "description": "Sachê kraft premium 10 × 15 cm com a logo do cliente impressa, com café especial de origem única dentro. Pedido mínimo de 50 unidades.",
       "image": [
-        "https://driplabel.bloomingclub.com.br/assets/img/p-kraft-premium.webp"
+        "https://driplabel.bloomingclub.com.br/assets/img/p-kraft-premium-cut.webp"
       ],
       "brand": {
         "@type": "Brand",
@@ -234,88 +234,248 @@
 <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="assets/img/favicon-192.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<script>document.documentElement.classList.add('js')</script>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<script src="https://cdn.tailwindcss.com/3.4.17"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          canvas: '#f5f5f7',   /* fundo principal */
-          ink: '#1d1d1f',      /* texto principal */
-          mute: '#6e6e73',     /* texto secundário */
-          line: '#d2d2d7',     /* fios e trilhos */
-          caramelo: '#D4924A', /* acento da marca, usado com parcimônia */
-          kraft: '#8A6A4A',    /* links de texto (contraste legível no claro) */
-          creme: '#F0EAE2',
-        },
-        fontFamily: {
-          sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Helvetica', 'Arial', 'sans-serif'],
-        }
-      }
-    }
-  }
-</script>
-
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-  html { background: #f5f5f7; }
-  body { background: #f5f5f7; color: #1d1d1f; -webkit-font-smoothing: antialiased; }
-  h1, h2, h3 { text-wrap: balance; }
-  .tnum { font-variant-numeric: tabular-nums; }
+  /* Paleta do kit de marca do clube (tokens do Blooming Club). Acento: cafe-canela, o tom do logo da Drip. */
+  :root{--ink:#1D1D1B;--texto:#3F3D3B;--apoio:#716F6E;--borda:#CDCCCC;--fundo:#F0EEEC;--papel:#F9F6F4;--escuro:#2A2927;--apoio-escuro:#A9A6A2;--cafe:#854734;--cafe-esc:#6E3A2A;--cafe-claro:#D6917B;--amarelo:#EEBC4A;--r:20px}
+  *,*::before,*::after{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:#fff;color:var(--texto);font:400 15px/1.6 'Open Sans',Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  img,video{display:block;max-width:100%;height:auto}
+  a{color:inherit;text-decoration:none}
+  h1,h2,h3,p{margin:0}
+  h1,h2,h3,b{color:var(--ink)}
+  .tnum{font-variant-numeric:tabular-nums}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+  .sec{padding:56px 0}
+  @media (min-width:1024px){.sec{padding:88px 0}}
+  .cinza{background:var(--fundo);--apoio:#3F3D3B}
+  .caminho,.passos li,.faq details,.tabela{--apoio:#716F6E}
+  .cab{text-align:center;max-width:620px;margin:0 auto 28px}
+  @media (min-width:1024px){.cab{margin-bottom:40px}}
+  .olho{display:block;font-size:12px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--cafe)}
+  .cab h2{margin-top:10px;font:800 26px/1.2 'Open Sans',sans-serif;letter-spacing:-.01em}
+  @media (min-width:1024px){.cab h2{font-size:36px}}
+  .cab p{margin-top:12px;color:var(--apoio)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:52px;padding:0 30px;border-radius:999px;font:700 15px/1 'Open Sans',sans-serif;border:0;cursor:pointer;transition:background-color .15s,transform .15s}
+  .btn:active{transform:scale(.98)}
+  .btn-cafe{background:var(--ink);color:#fff}.btn-cafe:hover{background:#000}
+  .btn-linha{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}.btn-linha:hover{background:var(--papel)}
+  .btn-ink{background:var(--ink);color:#fff}.btn-ink:hover{background:#000}
+  .btn-branco{background:#fff;color:var(--ink)}.btn-branco:hover{background:#f0efec}
 
-  /* Movimento: deslizar e surgir (curva da Apple). O estado escondido só vale com JavaScript ativo. */
-  .reveal, .reveal-scale { transition: all 1.4s cubic-bezier(0.16, 1, 0.3, 1); }
-  .js .reveal { opacity: 0; transform: translateY(80px); }
-  .js .reveal-scale { opacity: 0; transform: scale(0.9) translateY(40px); }
-  .js .reveal.active, .js .reveal-scale.active { opacity: 1; transform: none; }
-  .d1 { transition-delay: .12s; } .d2 { transition-delay: .24s; } .d3 { transition-delay: .36s; } .d4 { transition-delay: .48s; }
-  @media (prefers-reduced-motion: reduce) {
-    .reveal, .reveal-scale { transition: none; }
-    .js .reveal, .js .reveal-scale { opacity: 1; transform: none; }
-  }
+  /* Aviso e cabeçalho */
+  .aviso{background:var(--amarelo);color:var(--ink);text-align:center;font-size:12.5px;font-weight:600;padding:9px 14px}
+  .aviso a{text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+  header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.94);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+  header .in{display:flex;align-items:center;justify-content:space-between;height:64px}
+  header .logo img{height:34px;width:auto}
+  @media (min-width:1024px){header .logo img{height:42px}}
+  .marcas{display:flex;align-items:center;gap:0;--g:18px}
+  @media (min-width:1024px){.marcas{--g:22px}}
+  .by{display:flex;align-items:center;gap:var(--g);padding-left:var(--g)}
+  .by small{font:italic 400 14px/1 'Open Sans',sans-serif;color:#844C29}
+  .by img{height:33px;width:auto}
+  @media (min-width:1024px){.by img{height:38px}.by small{font-size:16px}}
+  header nav{display:none;gap:28px;font-size:14px;font-weight:600}
+  header nav a:hover{color:var(--cafe)}
+  @media (min-width:960px){header nav{display:flex}}
+  header .btn{height:40px;padding:0 18px;font-size:13.5px}
+  @media (max-width:374px){header .logo img{height:31px}.marcas{--g:15px}.by img{height:30px}}
+  .acoes{display:flex;align-items:center;gap:2px}
+  .ico{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;color:var(--texto);transition:background-color .15s,color .15s}
+  .ico:hover{background:var(--fundo);color:var(--ink)}
+  .ico svg{width:23px;height:23px}
+  .acoes .btn{margin-left:8px}
+  @media (max-width:639px){.acoes .btn{display:none}}
 
-  /* Trilho da galeria */
-  .hide-scrollbar::-webkit-scrollbar { display: none; }
-  .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-  .trilho-pad { padding-inline: max(1.5rem, calc((100% - 80rem) / 2 + 1.5rem)); scroll-padding-inline: max(1.5rem, calc((100% - 80rem) / 2 + 1.5rem)); }
+  /* Herói */
+  .heroi{background:radial-gradient(120% 70% at 50% 0%,#fff 0%,var(--papel) 75%);text-align:center;padding:24px 0 56px}
+  @media (min-width:1024px){.heroi{padding:32px 0 80px}}
+  .heroi .foto{width:100%;max-width:560px;margin:0 auto}
+  .heroi .prova{margin-top:14px;font-size:13.5px;color:var(--apoio)}
+  .heroi .prova b{font-weight:700}
+  .heroi h1{margin:12px auto 0;max-width:15em;font:800 32px/1.12 'Open Sans',sans-serif;letter-spacing:-.02em}
+  .heroi h1 span{display:block;color:var(--cafe)}
+  @media (min-width:1024px){.heroi h1{font-size:52px}}
+  .heroi .sub{margin:14px auto 0;max-width:30rem;color:var(--apoio);font-size:16px}
+  .ctas{margin:24px auto 0;display:grid;gap:10px;max-width:340px}
+  @media (min-width:640px){.ctas{grid-template-columns:1fr 1fr;max-width:460px}}
+  .chips{margin:22px auto 0;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;max-width:640px}
+  .chips span{padding:7px 14px;border:1px solid var(--borda);border-radius:999px;background:#fff;font-size:12.5px;font-weight:600;color:var(--apoio)}
 
-  /* Controle deslizante fino, com thumb branco e sombra suave */
-  .calc-range { -webkit-appearance: none; appearance: none; width: 100%; height: 4px; border-radius: 999px; outline: none; cursor: pointer;
-    background: linear-gradient(to right, #1d1d1f 0 var(--p, 5.26%), #d2d2d7 var(--p, 5.26%) 100%); }
-  .calc-range::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 28px; height: 28px; border-radius: 50%; background: #fff;
-    border: .5px solid rgba(0,0,0,.04); box-shadow: 0 .5px 4px rgba(0,0,0,.12), 0 6px 13px rgba(0,0,0,.12); transition: transform .2s; }
-  .calc-range::-moz-range-thumb { width: 28px; height: 28px; border-radius: 50%; background: #fff;
-    border: .5px solid rgba(0,0,0,.04); box-shadow: 0 .5px 4px rgba(0,0,0,.12), 0 6px 13px rgba(0,0,0,.12); }
-  .calc-range::-moz-range-track { background: transparent; }
-  .calc-range:active::-webkit-slider-thumb { transform: scale(1.08); }
-  .calc-range:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 4px rgba(212,146,74,.45), 0 6px 13px rgba(0,0,0,.12); }
-  .calc-range:focus-visible::-moz-range-thumb { box-shadow: 0 0 0 4px rgba(212,146,74,.45), 0 6px 13px rgba(0,0,0,.12); }
+  /* Cases reais */
+  .trilho{display:grid;grid-auto-flow:column;grid-auto-columns:76%;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 20px 6px;margin:0 -20px;scrollbar-width:none}
+  .trilho::-webkit-scrollbar{display:none}
+  .trilho>*{scroll-snap-align:center}
+  @media (min-width:900px){.trilho.quatro{grid-auto-flow:row;grid-template-columns:repeat(4,1fr);overflow:visible;padding:0;margin:0;gap:20px}}
+  /* Clientes: sachês reais sem fundo, pequenos, inclinados em 3D e flutuando devagar (4 por linha no celular, 8 no computador) */
+  #clientes{overflow-x:clip}
+  .leque{display:grid;grid-template-columns:repeat(4,1fr);align-items:end;gap:26px clamp(8px,3vw,22px);max-width:420px;margin:0 auto;padding:8px 4px 6px;perspective:1100px}
+  @media (min-width:900px){.leque{grid-template-columns:repeat(8,1fr);max-width:1060px;gap:0 26px}}
+  .leque .caso{margin:0;display:flex;flex-direction:column;align-items:center;transform:rotateY(var(--ry)) rotate(var(--rz)) translateY(var(--y));transition:transform .35s ease}
+  .leque .flut{width:100%;animation:flutua 6s ease-in-out infinite;animation-delay:var(--d)}
+  .leque img{width:100%;height:auto;filter:drop-shadow(0 6px 8px rgba(29,29,27,.16)) drop-shadow(0 1px 2px rgba(29,29,27,.12))}
+  /* sombra no chão: encolhe e clareia quando o sachê sobe (mesmo ritmo da flutuação) */
+  .leque .chao{display:block;width:78%;height:12px;margin-top:8px;border-radius:50%;background:radial-gradient(closest-side,rgba(29,29,27,.34),rgba(29,29,27,0));animation:chao 6s ease-in-out infinite;animation-delay:var(--d)}
+  @keyframes chao{0%,100%{transform:scaleX(1);opacity:1}50%{transform:scaleX(.72);opacity:.5}}
+  .leque .nome{margin-top:4px;color:var(--ink);font-size:11px;font-weight:700;line-height:1.3;white-space:nowrap}
+  @media (min-width:900px){.leque .nome{font-size:13px;margin-top:8px}}
+  @media (hover:hover){.leque .caso:hover{transform:rotateY(0) rotate(0) translateY(-8px) scale(1.08);z-index:10}}
+  @keyframes flutua{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+  @media (prefers-reduced-motion:reduce){.leque .flut,.leque .chao{animation:none}}
+  .dica-rolar{margin-top:14px;text-align:center;font-size:12.5px;color:var(--apoio)}
+  @media (min-width:900px){.dica-rolar.some{display:none}}
 
-  /* Botão flutuante do WhatsApp: sempre visível, no canto inferior direito */
-  .zap-flutuante { position: fixed; z-index: 60; right: calc(16px + env(safe-area-inset-right, 0px)); bottom: calc(16px + env(safe-area-inset-bottom, 0px));
-    display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: 56px; min-width: 56px; padding: 0; border-radius: 999px;
-    background: #25D366; color: #fff; font-size: 15px; font-weight: 500; letter-spacing: -.01em; text-decoration: none;
-    box-shadow: 0 2px 6px rgba(0,0,0,.12), 0 10px 28px rgba(0,0,0,.2);
-    transition: transform .3s cubic-bezier(0.16, 1, 0.3, 1), opacity .3s ease, background-color .2s; }
-  .zap-flutuante:hover { background: #1ebe5a; transform: scale(1.04); }
-  .zap-flutuante:active { transform: scale(.97); }
-  .zap-flutuante svg { width: 26px; height: 26px; fill: currentColor; flex: none; }
-  .zap-flutuante .zap-txt { display: none; }
-  @media (min-width: 768px) { .zap-flutuante { padding: 0 24px 0 20px; } .zap-flutuante .zap-txt { display: inline; } }
-  /* No celular, some enquanto a calculadora está na tela, para não cobrir os botões dela */
-  @media (max-width: 1023px) { .zap-flutuante.oculto { opacity: 0; transform: translateY(12px) scale(.9); pointer-events: none; } }
-  /* Reserva espaço no fim do rodapé para o botão não cobrir o texto */
-  @media (max-width: 767px) { footer { padding-bottom: 4.5rem; } }
-  @media (prefers-reduced-motion: reduce) { .zap-flutuante { transition: none; } }
+  /* Produtos */
+  /* Vitrine aberta: sem cartão, o sachê solto no fundo e as informações embaixo */
+  .produtos{display:grid;gap:56px}
+  @media (min-width:860px){.produtos{grid-template-columns:repeat(3,1fr);gap:40px}}
+  .prod{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:34px}
+  .prod>*{order:2}
+  .prod .img{order:0;height:250px;display:grid;place-items:end center;transition:transform .35s ease}
+  .prod .img img{max-height:250px;width:auto}
+  @media (hover:hover){.prod:hover .img{transform:translateY(-6px) rotate(-1.5deg)}}
+  /* Vitrine 3D (padrão do Kraft Clássico aprovado em 1º/11): sachê em perspectiva, círculo em degradê e sombra no chão.
+     Cada modelo tem o seu ângulo (--ry --rx --rz) e o seu degradê (--g1 --g2 --g3). */
+  .prod.d3 .img{position:relative;perspective:900px}
+  .prod.d3 .img::before{content:"";position:absolute;left:50%;top:50%;width:250px;height:250px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle at 50% 115%,rgba(29,29,27,.22),rgba(29,29,27,0) 60%),linear-gradient(150deg,var(--g1) 0%,var(--g2) 35%,var(--g3) 100%);z-index:0}
+  .prod.d3 .img::after{content:"";position:absolute;left:50%;bottom:-6px;width:190px;height:26px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(29,29,27,.32),rgba(29,29,27,0));filter:blur(2px);z-index:0}
+  .prod.d3 .img img{position:relative;z-index:1;transform:rotateY(var(--ry)) rotateX(var(--rx)) rotate(var(--rz));transform-origin:50% 60%;animation:d3 7s ease-in-out infinite;animation-delay:var(--d,0s)}
+  @keyframes d3{0%,100%{transform:rotateY(var(--ry)) rotateX(var(--rx)) rotate(var(--rz)) translateY(0)}50%{transform:rotateY(calc(var(--ry)*.72)) rotateX(calc(var(--rx)*.75)) rotate(calc(var(--rz)*.75)) translateY(-8px)}}
+  @media (prefers-reduced-motion:reduce){.prod.d3 .img img{animation:none}}
+  @media (max-width:420px){.prod.d3 .img::before{width:230px;height:230px}}
+  .prod[data-modelo="kraft"]{--ry:-22deg;--rx:8deg;--rz:-4deg;--g1:#F3CF7A;--g2:#EEBC4A;--g3:#D6917B;--d:0s}
+  .prod[data-modelo="branco"]{--ry:18deg;--rx:7deg;--rz:3deg;--g1:#5A5856;--g2:#3F3D3B;--g3:#1D1D1B;--d:-2.3s}
+  .prod[data-modelo="kraftp"]{--ry:-16deg;--rx:9deg;--rz:-2deg;--g1:#D6917B;--g2:#A6684F;--g3:#854734;--d:-4.6s}
+  .prod .selo{position:absolute;top:0;left:50%;transform:translateX(-50%);padding:4px 11px;border-radius:999px;background:var(--amarelo);color:var(--ink);font-size:11.5px;font-weight:700}
+  .prod h3{margin-top:18px;font:800 21px/1.25 'Open Sans',sans-serif}
+  .prod .med{margin-top:2px;font-size:13px;font-weight:600;color:var(--apoio)}
+  .prod .desc{margin-top:8px;font-size:14px;color:var(--apoio);max-width:20rem}
+  .prod .preco{margin-top:16px;font:800 26px/1.1 'Open Sans',sans-serif}
+  .prod .preco small{font-size:15px;font-weight:600;color:var(--apoio)}
+  .prod .min{margin-top:6px;font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--apoio)}
+  .prod .faixa{margin-top:4px;font-size:13px;font-weight:600;color:var(--cafe)}
+  .qtd{margin-top:18px;display:flex;align-items:center;justify-content:center;gap:18px}
+  .stepper{display:flex;align-items:center;gap:6px}
+  .stepper button{width:36px;height:36px;border-radius:50%;border:0;background:#fff;box-shadow:0 1px 3px rgba(29,29,27,.12);font-size:18px;line-height:1;color:var(--ink);cursor:pointer}
+  .stepper button:disabled{opacity:.35;cursor:default}
+  .stepper output{min-width:84px;text-align:center;font-weight:700;font-size:14px}
+  .qtd .tot{text-align:left;font-size:12px;color:var(--apoio);line-height:1.3}
+  .qtd .tot b{display:block;color:var(--ink);font-size:17px}
+  .prod .btn{margin-top:16px;width:100%;max-width:300px}
+  .prod .duv{margin-top:10px;font-size:13px;font-weight:600;color:var(--apoio)}
+  .prod .duv:hover{color:var(--cafe)}
 
-  details > summary { list-style: none; }
-  details > summary::-webkit-details-marker { display: none; }
-  :focus-visible { outline: 2px solid #D4924A; outline-offset: 3px; }
+  /* Caminhos */
+  .caminhos{display:grid;gap:14px;margin-top:40px}
+  @media (min-width:860px){.caminhos{grid-template-columns:1fr 1fr;gap:20px;margin-top:56px}}
+  .caminho{border-radius:var(--r);padding:26px 22px;background:#fff;border:1px solid var(--borda);display:flex;flex-direction:column}
+  .caminho.escuro{background:var(--ink);border-color:var(--ink);color:#fff}
+  .caminho .olho{font-size:11px;letter-spacing:.16em}
+  .caminho.escuro .olho{color:var(--cafe-claro)}
+  .caminho.escuro h3{color:#fff}
+  .caminho h3{margin-top:10px;font:800 21px/1.25 'Open Sans',sans-serif}
+  .caminho p{margin-top:8px;font-size:14.5px;color:var(--apoio);flex:1}
+  .caminho.escuro p{color:var(--apoio-escuro)}
+  .caminho .btn{margin-top:20px;width:100%}
+
+  /* Ocasiões */
+  .ocasioes{grid-auto-columns:64%}
+  @media (min-width:640px){.ocasioes{grid-auto-columns:38%}}
+  @media (min-width:1024px){.ocasioes{grid-auto-columns:calc((100% - 42px)/4);padding:0;margin:0}}
+  .ocasiao img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:var(--r)}
+  .ocasiao b{display:block;margin-top:12px;font-size:15px}
+  .ocasiao span{display:block;font-size:13.5px;color:var(--apoio)}
+  .nota-il{margin-top:16px;text-align:center;font-size:12px;color:var(--apoio)}
+  .setas{display:none;justify-content:center;gap:10px;margin-top:20px}
+  @media (min-width:1024px){.setas{display:flex}}
+  .setas button{width:44px;height:44px;border-radius:50%;border:1px solid var(--borda);background:#fff;font-size:20px;line-height:1;color:var(--ink);cursor:pointer}
+  .setas button:hover{border-color:var(--ink)}
+  @media (min-width:1024px){.dica-rolar.oc{display:none}}
+
+  /* Feito por nós */
+  .raiz{background:var(--ink);color:#fff}
+  .raiz .in{display:grid;gap:32px;align-items:center}
+  @media (min-width:900px){.raiz .in{grid-template-columns:1fr 320px;gap:72px}}
+  .raiz .olho{color:var(--cafe-claro)}
+  .raiz h2{color:#fff}
+  .raiz h2{margin-top:10px;font:800 28px/1.2 'Open Sans',sans-serif;letter-spacing:-.01em}
+  @media (min-width:1024px){.raiz h2{font-size:38px}}
+  .raiz p{margin-top:14px;color:var(--apoio-escuro);max-width:30rem}
+  .raiz{overflow:hidden}
+  .selagem{position:relative;width:min(100%,300px);margin:12px auto 0}
+  .selagem::before{content:"";position:absolute;z-index:0;width:74%;aspect-ratio:1;left:-10%;top:-5%;border-radius:50%;background:radial-gradient(circle at 50% 115%,rgba(0,0,0,.25),rgba(0,0,0,0) 60%),linear-gradient(150deg,#D6917B 0%,#A6684F 40%,#854734 100%)}
+  .selagem .janela{position:relative;z-index:1;aspect-ratio:3/4;border-radius:999px 999px 0 0;overflow:hidden;background:var(--escuro);-webkit-mask-image:linear-gradient(#000 56%,transparent 96%);mask-image:linear-gradient(#000 56%,transparent 96%)}
+  .selagem video{width:100%;height:100%;object-fit:cover}
+
+  /* O café */
+  .cafe-grid{display:grid;gap:32px;align-items:center}
+  @media (min-width:900px){.cafe-grid{grid-template-columns:1fr 1fr;gap:64px}}
+  .selo-sca{width:150px;height:150px;margin:0 auto;border-radius:50%;background:var(--cafe);color:#fff;display:grid;place-content:center;text-align:center}
+  .selo-sca b{font:800 46px/1 'Open Sans',sans-serif;color:#fff}
+  .selo-sca span{margin-top:4px;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+  .ficha{list-style:none;margin:0;padding:0}
+  .ficha li{display:grid;grid-template-columns:36px 1fr;gap:4px 10px;padding:14px 0;border-bottom:1px solid var(--borda)}
+  .ficha li:first-child{border-top:1px solid var(--borda)}
+  .ficha .n{grid-row:span 2;font-size:13px;font-weight:600;color:var(--cafe)}
+  .ficha small{font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--apoio)}
+  .ficha span{font-size:15px}
+
+  /* Passos */
+  .passos{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+  @media (min-width:900px){.passos{grid-template-columns:repeat(4,1fr);gap:16px}}
+  .passos li{background:#fff;border:1px solid var(--borda);border-radius:var(--r);padding:20px}
+  .passos .n{font-size:12px;font-weight:700;letter-spacing:.16em;color:var(--cafe)}
+  .passos h3{margin-top:6px;font:800 17px/1.3 'Open Sans',sans-serif}
+  .passos p{margin-top:6px;font-size:14px;color:var(--apoio)}
+
+  /* Preços */
+  .tabela{max-width:760px;margin:0 auto;border:1px solid var(--borda);border-radius:var(--r);overflow:hidden;background:#fff}
+  .rolar{overflow-x:auto}
+  .tabela table{width:100%;border-collapse:collapse;font-size:14px}
+  .tabela th,.tabela td{padding:12px 10px;text-align:right;border-bottom:1px solid var(--borda);white-space:nowrap}
+  @media (max-width:479px){.tabela table{font-size:13px}.tabela th,.tabela td{padding:11px 8px}}
+  .tabela thead th{line-height:1.3}
+  .tabela th:first-child,.tabela td:first-child{text-align:left;font-weight:700}
+  .tabela thead th{background:var(--fundo);font-size:12px;font-weight:700}
+  .tabela tbody tr:last-child td{border-bottom:0}
+  .nota-precos{max-width:760px;margin:14px auto 0;text-align:center;font-size:13px;color:var(--apoio)}
+
+  /* Chamada final */
+  .fecho{background:var(--cafe);color:#fff;text-align:center;border-radius:28px;padding:44px 22px}
+  @media (min-width:900px){.fecho{padding:64px 40px}}
+  .fecho .olho{color:rgba(255,255,255,.75)}
+  .fecho h2{color:#fff;margin:12px auto 0;max-width:16em;font:800 28px/1.2 'Open Sans',sans-serif}
+  @media (min-width:1024px){.fecho h2{font-size:38px}}
+  .fecho p{margin:12px auto 0;max-width:30rem;color:rgba(255,255,255,.85)}
+  .fecho .btn{margin-top:24px;min-width:260px}
+  .fecho .loja{display:inline-block;margin-top:16px;font-size:14px;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+
+  /* Dúvidas */
+  .faq{max-width:760px;margin:0 auto;display:grid;gap:10px}
+  .faq details{background:#fff;border:1px solid var(--borda);border-radius:16px}
+  .faq summary{list-style:none;cursor:pointer;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;gap:16px;font-weight:700;font-size:15px}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"";flex:none;width:9px;height:9px;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:rotate(-45deg);transition:transform .2s}
+  .faq details[open] summary::after{transform:rotate(45deg)}
+  .faq details p{padding:0 20px 18px;color:var(--apoio)}
+
+  /* Rodapé */
+  footer{background:var(--papel);border-top:1px solid var(--borda);font-size:14px;color:var(--apoio)}
+  footer .cols{display:grid;gap:28px;padding-top:44px;padding-bottom:28px}
+  @media (min-width:900px){footer .cols{grid-template-columns:1.4fr 1fr 1fr}}
+  footer h4{margin:0 0 10px;font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
+  footer ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+  footer a:hover{color:var(--cafe)}
+  footer .legal{border-top:1px solid var(--borda);color:var(--apoio);padding-top:18px;padding-bottom:96px;font-size:12px}
+  @media (min-width:900px){footer .legal{padding-bottom:24px}}
+
+  /* WhatsApp flutuante */
+  .zap-fixo{position:fixed;right:18px;bottom:18px;z-index:50;display:grid;place-items:center;width:58px;height:58px;border-radius:50%;background:#25D366;box-shadow:0 0 0 8px rgba(37,211,102,.18),0 8px 20px rgba(0,0,0,.18)}
+  .zap-fixo svg{width:30px;height:30px;fill:#fff}
 </style>
 <!-- Meta Pixel -->
 <script>
@@ -326,776 +486,283 @@ fbq('track','PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1636404041306148&ev=PageView&noscript=1"><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=29552796950978987&ev=PageView&noscript=1"></noscript>
 </head>
-<body class="font-sans bg-canvas text-ink antialiased selection:bg-caramelo selection:text-white">
+<body>
 
-<!-- Navegação: barra translúcida fixa no topo -->
-<header class="sticky z-50 bg-canvas/75 backdrop-blur-xl backdrop-saturate-150 border-b border-black/[0.06]" style="top: env(safe-area-inset-top, 0px)">
-  <div class="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between gap-4">
-    <a href="#inicio" aria-label="Drip Coffee Label, uma marca Blooming Club. Início" class="flex items-center gap-3">
-      <img src="assets/img/logo.png" alt="Drip Coffee Label" class="h-7 w-auto">
-      <span class="h-5 w-px bg-black/15" aria-hidden="true"></span>
-      <span class="flex items-center gap-1.5">
-        <span class="text-[11px] font-medium text-mute leading-none">by</span>
-        <img src="assets/img/blooming-sem-xicara.svg" alt="Blooming Club" class="h-[18px] w-auto opacity-80">
-      </span>
-    </a>
-    <div class="flex items-center gap-1 md:gap-7">
-      <nav aria-label="Principal" class="hidden md:flex items-center gap-7 text-[13px] text-ink/80">
-        <a href="#como-funciona" class="hover:text-ink transition-colors">Como funciona</a>
-        <a href="#modelos" class="hover:text-ink transition-colors">Modelos</a>
-        <a href="#perguntas" class="hover:text-ink transition-colors">Perguntas</a>
-        <a class="js-zap px-4 py-1.5 rounded-full bg-ink text-white text-[13px] font-medium hover:bg-black transition-colors" data-origem="topo" href="https://wa.me/5554997081666?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Drip%20Coffee%20Label%20e%20quero%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20drip%20personalizado." target="_blank" rel="noopener">WhatsApp</a>
-      </nav>
-      <div class="flex items-center">
-        <a href="https://clube.bloomingclub.com.br/account/" target="_blank" rel="noopener" data-origem="topo-conta" aria-label="Minha conta ou cadastro na loja Blooming Club" title="Minha conta" class="grid place-items-center w-10 h-10 rounded-full text-ink/70 hover:text-ink transition-colors">
-          <svg viewBox="0 0 24 24" class="w-5 h-5 fill-none stroke-current" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3.75"/><path d="M4.75 20c.9-3.6 3.8-5.5 7.25-5.5s6.35 1.9 7.25 5.5"/></svg>
-        </a>
-        <a href="https://clube.bloomingclub.com.br/comprar/" target="_blank" rel="noopener" data-origem="topo-carrinho" aria-label="Carrinho na loja Blooming Club" title="Carrinho" class="grid place-items-center w-10 h-10 rounded-full text-ink/70 hover:text-ink transition-colors">
-          <svg viewBox="0 0 24 24" class="w-5 h-5 fill-none stroke-current" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 8h13l-1 12.25H6.5L5.5 8Z"/><path d="M9 10.5V7a3 3 0 0 1 6 0v3.5"/></svg>
-        </a>
-      </div>
+<div class="aviso">Pedido mínimo de 50 sachês · Você aprova a arte antes da impressão · <a href="#modelos">Ver preços</a></div>
+
+<header>
+  <div class="wrap in">
+    <div class="marcas">
+      <a class="logo" href="#"><img src="assets/img/logo.png" alt="Drip Coffee Label" width="605" height="294"></a>
+      <span class="by"><small>by</small><img src="assets/img/blooming.webp?v=2" alt="Blooming Club Cafés Especiais" width="860" height="222"></span>
+    </div>
+    <nav aria-label="Menu">
+      <a href="#modelos">Modelos</a>
+      <a href="#clientes">Clientes</a>
+      <a href="#ocasioes">Ocasiões</a>
+      <a href="#precos">Preços</a>
+      <a href="#duvidas">Dúvidas</a>
+    </nav>
+    <div class="acoes">
+      <a class="ico" href="https://clube.bloomingclub.com.br/account/" target="_blank" rel="noopener" data-origem="topo-conta" aria-label="Minha conta ou cadastro na loja Blooming Club" title="Minha conta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3.75"/><path d="M4.75 20c.9-3.6 3.8-5.5 7.25-5.5s6.35 1.9 7.25 5.5"/></svg></a>
+      <a class="ico" href="https://clube.bloomingclub.com.br/comprar/" target="_blank" rel="noopener" data-origem="topo-carrinho" aria-label="Carrinho na loja Blooming Club" title="Carrinho"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 8h13l-1 12.25H6.5L5.5 8Z"/><path d="M9 10.5V7a3 3 0 0 1 6 0v3.5"/></svg></a>
+      <a class="btn btn-ink js-zap" data-origem="topo" href="#" target="_blank" rel="noopener">Fale com a gente</a>
     </div>
   </div>
 </header>
 
-<main id="inicio">
-
 <!-- Herói -->
-<section class="pt-20 md:pt-32 pb-28 md:pb-40">
-  <div class="max-w-7xl mx-auto px-6 text-center">
-    <p class="reveal text-sm md:text-base font-semibold text-kraft">Drip Coffee Label</p>
-    <h1 class="reveal d1 mt-4 font-semibold tracking-tighter leading-[0.9] text-[3.4rem] sm:text-[4.75rem] md:text-[6rem] lg:text-[8rem]">
-      Sua marca<br><span class="text-mute">na pausa do café.</span>
-    </h1>
-    <p class="reveal d2 mt-8 md:mt-10 max-w-2xl mx-auto text-lg md:text-2xl leading-snug tracking-tight text-mute font-medium">
-      Drip coffee com a sua logo impressa direto no sachê e café especial de origem única dentro. O brinde que a pessoa abre, prepara e lembra de quem deu. <span class="text-ink">A partir de 50 unidades.</span>
-    </p>
-    <div class="reveal d3 mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
-      <a href="#calc" class="inline-flex items-center h-12 px-7 rounded-full bg-ink text-white text-[15px] font-medium hover:bg-black transition-colors">Simular meu pedido</a>
-      <a class="js-zap inline-flex items-center gap-1 text-[17px] text-kraft hover:underline underline-offset-4" data-origem="heroi" href="https://wa.me/5554997081666?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Drip%20Coffee%20Label%20e%20quero%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20drip%20personalizado." target="_blank" rel="noopener">Pedir orçamento <span aria-hidden="true">›</span></a>
-      <a class="inline-flex items-center gap-1 text-[17px] text-kraft hover:underline underline-offset-4" href="#modelos">Ver modelos <span aria-hidden="true">›</span></a>
+<section class="heroi">
+  <div class="wrap">
+    <img class="foto" src="assets/img/hero-drips.webp?v=3" alt="Três modelos de drip coffee com a área para a sua marca: branco, kraft clássico e kraft premium" width="1250" height="892" fetchpriority="high">
+    <p class="prova">Escolhido por <b>Unimed, Termolar, Uniprime e Brastelha</b></p>
+    <h1>Sua marca na pausa do café. <span>A partir de 50 sachês.</span></h1>
+    <p class="sub">Drip coffee com a sua logo impressa direto no sachê e café especial dentro. Para brindes, eventos e casamentos.</p>
+    <div class="ctas">
+      <a class="btn btn-cafe" href="#modelos">Comprar</a>
+      <a class="btn btn-linha js-zap" data-origem="heroi" href="#" target="_blank" rel="noopener">Pedir orçamento</a>
     </div>
-
-    <div class="reveal-scale d2 mt-16 md:mt-24 mx-auto max-w-[560px]">
-      <img src="assets/img/hero-sache.webp" alt="Água quente sendo despejada num drip encaixado numa caneca, com vista para o mar ao fundo" width="900" height="1350"
-           class="w-full aspect-[4/5] object-cover object-[50%_70%] rounded-[2.5rem]">
-    </div>
-
-    <!-- Garantias -->
-    <dl class="mt-20 md:mt-28 grid sm:grid-cols-3 gap-12 sm:gap-8 max-w-5xl mx-auto">
-      <div class="reveal flex flex-col items-center">
-        <dt class="order-1 text-[3.5rem] leading-none font-semibold tracking-tighter text-caramelo">80+</dt>
-        <dd class="order-2 mt-4 text-[17px] font-semibold">Pontos SCA, café especial</dd>
-        <dd class="order-3 mt-1 text-[15px] text-mute">Laudos disponíveis de cada café</dd>
-      </div>
-      <div class="reveal d1 flex flex-col items-center">
-        <dt class="h-14 flex items-center"><img src="assets/img/regiao-vulcanica-compacta.svg" alt="Cafés da Região Vulcânica" class="h-14 w-auto"></dt>
-        <dd class="mt-4 text-[17px] font-semibold">Origem única</dd>
-        <dd class="mt-1 text-[15px] text-mute">Região Vulcânica, Sul de Minas</dd>
-      </div>
-      <div class="reveal d2 flex flex-col items-center">
-        <dt class="h-14 flex items-center text-[2rem] font-semibold tracking-tighter leading-none">Sem surpresa</dt>
-        <dd class="mt-4 text-[17px] font-semibold">Arte aprovada por você</dd>
-        <dd class="mt-1 text-[15px] text-mute">e nota fiscal PJ</dd>
-      </div>
-    </dl>
+    <div class="chips"><span>80+ pontos SCA</span><span>Impressão direta, sem adesivo</span><span>Pix, boleto ou cartão</span><span>Nota fiscal PJ</span></div>
   </div>
 </section>
 
-<!-- Contraste: a gaveta -->
-<section class="bg-black text-white py-32 md:py-48">
-  <div class="max-w-7xl mx-auto px-6">
-    <p class="reveal text-sm md:text-base font-semibold text-caramelo">Você já viu essa história</p>
-    <h2 class="reveal d1 mt-4 max-w-5xl text-[2.75rem] md:text-[5rem] lg:text-[6rem] font-semibold tracking-tighter leading-[0.95]">
-      A gaveta é o cemitério dos brindes.
-    </h2>
-    <p class="reveal d2 mt-8 max-w-2xl text-lg md:text-2xl leading-snug tracking-tight text-white/55 font-medium">
-      Todo ano é igual. Muito trabalho, pouco orçamento, e no fim a sua marca vai parar no fundo de uma gaveta.
-    </p>
-
-    <ol class="mt-24 md:mt-32 grid sm:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-14">
-      <li class="reveal">
-        <span class="block text-sm font-semibold text-caramelo">Outubro</span>
-        <h3 class="mt-3 text-2xl font-semibold tracking-tight">O pedido</h3>
-        <p class="mt-2 text-[17px] leading-relaxed text-white/60">Pouco orçamento, prazo apertado e a missão de agradar a todos com uma coisa só.</p>
-      </li>
-      <li class="reveal d1">
-        <span class="block text-sm font-semibold text-white/60">Novembro</span>
-        <h3 class="mt-3 text-2xl font-semibold tracking-tight">A mesmice</h3>
-        <p class="mt-2 text-[17px] leading-relaxed text-white/60">Caneta, caneca, squeeze. Mínimo de mil unidades, logo num adesivo.</p>
-      </li>
-      <li class="reveal d2">
-        <span class="block text-sm font-semibold text-white/60">Dezembro</span>
-        <h3 class="mt-3 text-2xl font-semibold tracking-tight">A entrega</h3>
-        <p class="mt-2 text-[17px] leading-relaxed text-white/60">As pessoas agradecem com educação. A caixa vai para a mochila sem emoção.</p>
-      </li>
-      <li class="reveal d3">
-        <span class="block text-sm font-semibold text-white/30">Janeiro</span>
-        <h3 class="mt-3 text-2xl font-semibold tracking-tight text-white/35">O esquecimento</h3>
-        <p class="mt-2 text-[17px] leading-relaxed text-white/30">A sua marca está na gaveta. O dinheiro foi gasto e ninguém lembra.</p>
-      </li>
-    </ol>
+<!-- Clientes -->
+<section class="sec" id="clientes">
+  <div class="wrap">
+    <div class="cab"><h2>Empresas que já servem a própria marca no café</h2></div>
+    <div class="leque">
+      <figure class="caso" style="--ry:10deg;--rz:-5deg;--y:6px;--d:-0.0s"><div class="flut"><img src="assets/img/cli-termolar.webp?v=2" alt="Drip kraft com a logo da Termolar" width="300" height="381" loading="lazy"></div><span class="chao" aria-hidden="true"></span><figcaption class="nome">Termolar</figcaption></figure>
+      <figure class="caso" style="--ry:4deg;--rz:3deg;--y:0px;--d:-0.8s"><div class="flut"><img src="assets/img/cli-conceito.webp" alt="Drip branco da Conceito Joias e Acessórios" width="300" height="449" loading="lazy"></div><span class="chao" aria-hidden="true"></span><figcaption class="nome">Conceito</figcaption></figure>
+      <figure class="caso" style="--ry:-4deg;--rz:-3deg;--y:8px;--d:-1.6s"><div class="flut"><img src="assets/img/cli-uniprime.webp" alt="Drip kraft com a logo da Uniprime" width="300" height="383" loading="lazy"></div><span class="chao" aria-hidden="true"></span><figcaption class="nome">Uniprime</figcaption></figure>
+      <figure class="caso" style="--ry:-10deg;--rz:5deg;--y:0px;--d:-2.4s"><div class="flut"><img src="assets/img/cli-brastelha.webp" alt="Drip kraft da Brastelha: Uma boa conversa começa com café" width="300" height="373" loading="lazy"></div><span class="chao" aria-hidden="true"></span><figcaption class="nome">Brastelha</figcaption></figure>
+      <figure class="caso" style="--ry:10deg;--rz:-4deg;--y:0px;--d:-3.2s"><div class="flut"><img src="assets/img/cli-nieto.webp" alt="Drip kraft da Nieto Atelier de Molduras" width="300" height="446" loading="lazy"></div><span class="chao" aria-hidden="true"></span><figcaption class="nome">Nieto</figcaption></figure>
+      <figure class="caso" style="--ry:4deg;--rz:2deg;--y:8px;--d:-4.0s"><div class="flut"><img src="assets/img/cli-moido.webp" alt="Drip kraft da Moído: O dia pede coisas boas" width="300" height="374" loading="lazy"></div><span class="chao" aria-hidden="true"></span><figcaption class="nome">Moído</figcaption></figure>
+      <figure class="caso" style="--ry:-4deg;--rz:-3deg;--y:0px;--d:-4.8s"><div class="flut"><img src="assets/img/cli-glfibra.webp?v=2" alt="Drip kraft da GL Fibra" width="300" height="378" loading="lazy"></div><span class="chao" aria-hidden="true"></span><figcaption class="nome">GL Fibra</figcaption></figure>
+      <figure class="caso" style="--ry:-10deg;--rz:4deg;--y:6px;--d:-5.6s"><div class="flut"><img src="assets/img/cli-unimed.webp" alt="Drip kraft da Unimed Erechim, Saúde Ocupacional" width="300" height="378" loading="lazy"></div><span class="chao" aria-hidden="true"></span><figcaption class="nome">Unimed</figcaption></figure>
+    </div>
   </div>
 </section>
 
-<!-- A manhã -->
-<section class="bg-white py-32 md:py-48">
-  <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-    <div class="reveal-scale order-2 lg:order-1">
-      <img src="assets/img/manha.webp" alt="Mão segurando um drip kraft da Drip Coffee Label ao lado de uma caneca com o café coando" width="900" height="1115" loading="lazy"
-           class="w-full max-w-[520px] mx-auto aspect-[4/5] object-cover rounded-[2.5rem]">
+<!-- Produtos -->
+<section class="sec cinza" id="modelos">
+  <div class="wrap">
+    <div class="cab"><span class="olho">Nossos produtos</span><h2>Três sachês, o mesmo café especial</h2><p>Escolha o modelo e a quantidade e compre direto na loja. O desconto por quantidade entra sozinho no carrinho.</p></div>
+    <div class="produtos">
+      <article class="prod d3" data-modelo="kraft">
+        <span class="selo">Mais vendido</span>
+        <div class="img"><img src="assets/img/p-kraft-cut.webp?v=3" alt="Drip Kraft Clássico com a sua marca" width="456" height="558" loading="lazy"></div>
+        <h3>Kraft Clássico</h3>
+        <p class="med">10 × 12 cm · papel kraft</p>
+        <p class="desc">Tom terroso e natural. Combina com marcas de impressão simples.</p>
+        <p class="preco tnum"><span class="js-un">R$ 5,90</span><small>/sachê</small></p>
+        <p class="min">Mínimo: 50 sachês</p>
+        <p class="faixa">A partir de R$ 4,90 com 300 ou mais</p>
+        <div class="qtd"><div class="stepper"><button type="button" data-passo="-1" aria-label="Menos 50 sachês">−</button><output class="js-n tnum">50 sachês</output><button type="button" data-passo="1" aria-label="Mais 50 sachês">+</button></div><div class="tot">Total<b class="js-tot tnum">R$ 295,00</b></div></div>
+        <a class="btn btn-cafe js-comprar" data-produto="kraft" href="#" target="_blank" rel="noopener">Comprar</a>
+        <a class="duv js-zap" data-origem="modelo-kraft" href="#" target="_blank" rel="noopener">Dúvidas? Fale com a gente</a>
+      </article>
+      <article class="prod d3" data-modelo="branco">
+        <div class="img"><img src="assets/img/p-branco-cut.webp?v=3" alt="Drip Branco Premium com a sua marca" width="416" height="605" loading="lazy"></div>
+        <h3>Branco Premium</h3>
+        <p class="med">10 × 15 cm · papel branco</p>
+        <p class="desc">Maior, com contraste máximo para a logo e espaço para uma mensagem.</p>
+        <p class="preco tnum"><span class="js-un">R$ 6,90</span><small>/sachê</small></p>
+        <p class="min">Mínimo: 50 sachês</p>
+        <p class="faixa">A partir de R$ 5,90 com 300 ou mais</p>
+        <div class="qtd"><div class="stepper"><button type="button" data-passo="-1" aria-label="Menos 50 sachês">−</button><output class="js-n tnum">50 sachês</output><button type="button" data-passo="1" aria-label="Mais 50 sachês">+</button></div><div class="tot">Total<b class="js-tot tnum">R$ 345,00</b></div></div>
+        <a class="btn btn-cafe js-comprar" data-produto="branco" href="#" target="_blank" rel="noopener">Comprar</a>
+        <a class="duv js-zap" data-origem="modelo-branco" href="#" target="_blank" rel="noopener">Dúvidas? Fale com a gente</a>
+      </article>
+      <article class="prod d3" data-modelo="kraftp">
+        <div class="img"><img src="assets/img/p-kraft-premium-cut.webp?v=3" alt="Drip Kraft Premium com a sua marca" width="417" height="606" loading="lazy"></div>
+        <h3>Kraft Premium</h3>
+        <p class="med">10 × 15 cm · kraft liso</p>
+        <p class="desc">O tamanho do premium com o kraft liso. Impressão mais nítida.</p>
+        <p class="preco tnum"><span class="js-un">R$ 6,90</span><small>/sachê</small></p>
+        <p class="min">Mínimo: 50 sachês</p>
+        <p class="faixa">A partir de R$ 5,90 com 300 ou mais</p>
+        <div class="qtd"><div class="stepper"><button type="button" data-passo="-1" aria-label="Menos 50 sachês">−</button><output class="js-n tnum">50 sachês</output><button type="button" data-passo="1" aria-label="Mais 50 sachês">+</button></div><div class="tot">Total<b class="js-tot tnum">R$ 345,00</b></div></div>
+        <a class="btn btn-cafe js-comprar" data-produto="kraftp" href="#" target="_blank" rel="noopener">Comprar</a>
+        <a class="duv js-zap" data-origem="modelo-kraft-premium" href="#" target="_blank" rel="noopener">Dúvidas? Fale com a gente</a>
+      </article>
     </div>
-    <div class="order-1 lg:order-2 min-w-0">
-      <p class="reveal text-sm md:text-base font-semibold text-kraft">A mesma história, com café</p>
-      <div class="reveal d1 mt-4 text-[5rem] md:text-[8rem] font-semibold tracking-tighter leading-[0.85] text-line tnum" aria-hidden="true">7h40</div>
-      <h2 class="reveal d2 mt-4 text-[2.5rem] md:text-[3.75rem] font-semibold tracking-tighter leading-[0.95]">
-        Segunda-feira, <span class="text-mute">no escritório do seu cliente.</span>
-      </h2>
-      <div class="reveal d3 mt-8 space-y-5 text-lg md:text-xl leading-relaxed text-mute max-w-xl">
-        <p>Ele abre o sachê, encaixa as abas na xícara e despeja a água devagar. Enquanto o café coa, a sua marca está na mão dele. Ele toma, gosta, guarda o próximo para amanhã.</p>
-        <p class="text-ink font-medium">Um drip não vai para a gaveta. Ele é usado, e quem usa lembra de quem deu.</p>
+
+    <div class="cab" style="margin-top:64px;margin-bottom:0"><span class="olho">Como comprar</span><h2>Qual caminho é o seu?</h2></div>
+    <div class="caminhos" style="margin-top:24px">
+      <div class="caminho">
+        <span class="olho">Kit pronto · a partir de 50 sachês</span>
+        <h3>Escolha, pague e envie a sua logo.</h3>
+        <p>Compra na loja com Pix, boleto ou cartão. Montamos a arte e só imprimimos depois da sua aprovação.</p>
+        <a class="btn btn-cafe" href="#modelos">Comprar</a>
       </div>
-      <div class="mt-14 grid grid-cols-2 gap-10 max-w-xl">
-        <div class="reveal">
-          <b class="block text-[3.5rem] md:text-[4.5rem] font-semibold tracking-tighter leading-none tnum">85%</b>
-          <p class="mt-3 text-[15px] text-mute">das pessoas lembram da empresa que deu o brinde.</p>
-        </div>
-        <div class="reveal d1">
-          <b class="block text-[3.5rem] md:text-[4.5rem] font-semibold tracking-tighter leading-none tnum">78%</b>
-          <p class="mt-3 text-[15px] text-mute">guardam um brinde porque ele é útil.</p>
-        </div>
-        <small class="col-span-2 text-xs text-mute/80">Fonte: ASI Global Advertising Impressions Study</small>
+      <div class="caminho escuro">
+        <span class="olho">Casamento, evento ou grande volume</span>
+        <h3>Pedido especial ou acima de 1.000 sachês.</h3>
+        <p>Fale com a gente pelo WhatsApp e combinamos modelo, arte, quantidade e prazo.</p>
+        <a class="btn btn-branco js-zap" data-origem="caminho" href="#" target="_blank" rel="noopener">Pedir orçamento</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- O que costuma dar errado -->
-<section class="py-32 md:py-48">
-  <div class="max-w-7xl mx-auto px-6">
-    <p class="reveal text-sm md:text-base font-semibold text-kraft">Para quem compra</p>
-    <h2 class="reveal d1 mt-4 text-[2.75rem] md:text-[4.5rem] font-semibold tracking-tighter leading-[0.95] max-w-4xl">
-      O que costuma dar errado. <span class="text-mute">E como resolvemos.</span>
-    </h2>
-
-    <div class="mt-20 md:mt-28">
-      <div class="reveal grid md:grid-cols-[1fr_1fr_1.6fr] gap-2 md:gap-10 py-8 md:py-10 border-t border-black/10">
-        <span class="text-[17px] text-mute line-through decoration-mute/50">Mínimo de 1.000 un.</span>
-        <strong class="text-2xl font-semibold tracking-tight">A partir de 50.</strong>
-        <p class="text-[17px] leading-relaxed text-mute">De 50 em 50, com preço menor a cada faixa. Perfeito para equipes ou eventos menores.</p>
-      </div>
-      <div class="reveal grid md:grid-cols-[1fr_1fr_1.6fr] gap-2 md:gap-10 py-8 md:py-10 border-t border-black/10">
-        <span class="text-[17px] text-mute line-through decoration-mute/50">A arte é problema seu</span>
-        <strong class="text-2xl font-semibold tracking-tight">Criamos com você.</strong>
-        <p class="text-[17px] leading-relaxed text-mute">Você manda a logo, nós montamos a arte do sachê. Produção só após sua aprovação.</p>
-      </div>
-      <div class="reveal grid md:grid-cols-[1fr_1fr_1.6fr] gap-2 md:gap-10 py-8 md:py-10 border-t border-black/10">
-        <span class="text-[17px] text-mute line-through decoration-mute/50">Adesivo que descola</span>
-        <strong class="text-2xl font-semibold tracking-tight">Impressão direta.</strong>
-        <p class="text-[17px] leading-relaxed text-mute">A arte é impressa direto na embalagem. Acabamento premium sem etiquetas tortas.</p>
-      </div>
-      <div class="reveal grid md:grid-cols-[1fr_1fr_1.6fr] gap-2 md:gap-10 py-8 md:py-10 border-t border-black/10">
-        <span class="text-[17px] text-mute line-through decoration-mute/50">Vários fornecedores, prazos soltos</span>
-        <strong class="text-2xl font-semibold tracking-tight">Tudo num lugar só.</strong>
-        <p class="text-[17px] leading-relaxed text-mute">Café, arte, impressão, envase e selagem com a mesma equipe. Você acompanha tudo por uma conversa no WhatsApp.</p>
-      </div>
-      <div class="reveal grid md:grid-cols-[1fr_1fr_1.6fr] gap-2 md:gap-10 py-8 md:py-10 border-y border-black/10">
-        <span class="text-[17px] text-mute line-through decoration-mute/50">Café ruim queima o filme</span>
-        <strong class="text-2xl font-semibold tracking-tight">Café especial <span class="text-caramelo">80+</span>.</strong>
-        <p class="text-[17px] leading-relaxed text-mute">Sul de Minas, nunca blend. O mesmo café de alta pontuação do nosso clube.</p>
-      </div>
+<!-- Ocasiões -->
+<section class="sec" id="ocasioes">
+  <div class="wrap">
+    <div class="cab"><span class="olho">Para cada ocasião</span><h2>Onde a sua marca aparece</h2><p>Leve, útil e aberto na hora. O drip não vai para a gaveta.</p></div>
+    <div class="trilho ocasioes" id="ocasioes-trilho">
+      <a class="ocasiao" href="#modelos"><img src="assets/img/o1.webp" alt="Drip com a sua marca na mesa do escritório" width="900" height="1204" loading="lazy"><b>Endomarketing</b><span>Onboarding, SIPAT, aniversários</span></a>
+      <a class="ocasiao" href="#modelos"><img src="assets/img/o2.webp" alt="Drip entregue em reunião com cliente" width="900" height="1204" loading="lazy"><b>Visita a clientes</b><span>Deixe na mesa após a reunião</span></a>
+      <a class="ocasiao" href="#modelos"><img src="assets/img/o4.webp" alt="Drips com a sua marca em estande de feira" width="900" height="1204" loading="lazy"><b>Feiras e eventos</b><span>Cabe em qualquer sacola</span></a>
+      <a class="ocasiao" href="#modelos"><img src="assets/img/o5.webp" alt="Drip com a marca do casal no prato do casamento" width="900" height="1204" loading="lazy"><b>Casamentos</b><span>O café da manhã seguinte</span></a>
+      <a class="ocasiao" href="#modelos"><img src="assets/img/o6.webp" alt="Bandeja de drips na recepção" width="900" height="1204" loading="lazy"><b>Clínicas e recepções</b><span>Mimo para pacientes e clientes</span></a>
+      <a class="ocasiao" href="#modelos"><img src="assets/img/o8.webp" alt="Drips com a sua marca em kit de fim de ano" width="900" height="1204" loading="lazy"><b>Fim de ano</b><span>Com chocolate, cartão ou caneca</span></a>
+      <a class="ocasiao" href="#modelos"><img src="assets/img/o7.webp" alt="Drip em caixa enviada para quem trabalha em casa" width="900" height="1204" loading="lazy"><b>Home office</b><span>Vai pelo correio junto com o kit</span></a>
     </div>
+    <div class="setas"><button type="button" data-dir="-1" aria-label="Anterior">‹</button><button type="button" data-dir="1" aria-label="Próxima">›</button></div>
+    <p class="dica-rolar oc">Arraste para ver mais</p>
+    <p class="nota-il">*Imagens ilustrativas. A sua marca entra no lugar de “sua marca aqui”.</p>
   </div>
 </section>
 
-<!-- Galeria de usos -->
-<section class="bg-white py-32 md:py-48 overflow-hidden">
-  <div class="max-w-7xl mx-auto px-6 flex flex-wrap items-end justify-between gap-8">
+<!-- Feito por nós -->
+<section class="sec raiz">
+  <div class="wrap in">
     <div>
-      <p class="reveal text-sm md:text-base font-semibold text-kraft">Galeria de usos</p>
-      <h2 class="reveal d1 mt-4 text-[2.75rem] md:text-[4.5rem] font-semibold tracking-tighter leading-[0.95]">
-        Um café <span class="text-mute">para cada ocasião.</span>
-      </h2>
+      <span class="olho">Feito por nós</span>
+      <h2>Do café à selagem, tudo na mesma casa.</h2>
+      <p>Café, arte, impressão, envase e selagem com a mesma equipe. Sem etiqueta colada: a arte é impressa direto no sachê. Você acompanha tudo por uma conversa no WhatsApp.</p>
+      <p>A Drip Coffee Label é a vertente corporativa do Blooming Club, clube de assinatura de cafés especiais. O café que vai no seu sachê é o mesmo dos nossos assinantes.</p>
     </div>
-    <div class="reveal d2 flex gap-3">
-      <button type="button" data-dir="-1" aria-label="Ver anteriores" class="w-11 h-11 rounded-full bg-canvas text-ink grid place-items-center hover:bg-line transition-colors"><svg viewBox="0 0 24 24" class="w-5 h-5" aria-hidden="true"><path d="M14.5 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-      <button type="button" data-dir="1" aria-label="Ver próximos" class="w-11 h-11 rounded-full bg-canvas text-ink grid place-items-center hover:bg-line transition-colors"><svg viewBox="0 0 24 24" class="w-5 h-5" aria-hidden="true"><path d="M9.5 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-    </div>
-  </div>
-
-  <div class="reveal-scale d2 mt-14 md:mt-20">
-    <div id="trilho" class="trilho-pad flex gap-5 md:gap-6 overflow-x-auto hide-scrollbar snap-x snap-mandatory pb-4 cursor-grab active:cursor-grabbing select-none">
-      <figure class="snap-start shrink-0 w-[72vw] sm:w-[340px]">
-        <img src="assets/img/o1.webp" alt="Drip coffee personalizado em ação de endomarketing" class="w-full aspect-[3/4] object-cover rounded-[1.75rem] pointer-events-none" loading="lazy" width="900" height="1204">
-        <figcaption class="mt-5"><b class="block text-xl font-semibold tracking-tight">Endomarketing</b><span class="block mt-1 text-[15px] text-mute">Onboarding, SIPAT, aniversários</span></figcaption>
+    <div>
+      <figure class="selagem">
+        <div class="janela"><video src="assets/video/momentos-marcas.mp4" poster="assets/video/momentos-marcas-poster.jpg" width="600" height="800" muted loop playsinline autoplay preload="metadata"></video></div>
       </figure>
-      <figure class="snap-start shrink-0 w-[72vw] sm:w-[340px]">
-        <img src="assets/img/o2.webp" alt="Drip coffee deixado na mesa após visita a cliente" class="w-full aspect-[3/4] object-cover rounded-[1.75rem] pointer-events-none" loading="lazy" width="900" height="1204">
-        <figcaption class="mt-5"><b class="block text-xl font-semibold tracking-tight">Visita a clientes</b><span class="block mt-1 text-[15px] text-mute">Deixe na mesa após a reunião</span></figcaption>
-      </figure>
-      <figure class="snap-start shrink-0 w-[72vw] sm:w-[340px]">
-        <img src="assets/img/o3.webp" alt="Drip coffee em confraternização" class="w-full aspect-[3/4] object-cover rounded-[1.75rem] pointer-events-none" loading="lazy" width="900" height="1204">
-        <figcaption class="mt-5"><b class="block text-xl font-semibold tracking-tight">Confraternizações</b><span class="block mt-1 text-[15px] text-mute">Um por convidado, na saída</span></figcaption>
-      </figure>
-      <figure class="snap-start shrink-0 w-[72vw] sm:w-[340px]">
-        <img src="assets/img/o4.webp" alt="Drip coffee em feira e evento" class="w-full aspect-[3/4] object-cover rounded-[1.75rem] pointer-events-none" loading="lazy" width="900" height="1204">
-        <figcaption class="mt-5"><b class="block text-xl font-semibold tracking-tight">Feiras e eventos</b><span class="block mt-1 text-[15px] text-mute">Leve, cabe em qualquer sacola</span></figcaption>
-      </figure>
-      <figure class="snap-start shrink-0 w-[72vw] sm:w-[340px]">
-        <img src="assets/img/o5.webp" alt="Drip coffee como lembrança de casamento" class="w-full aspect-[3/4] object-cover rounded-[1.75rem] pointer-events-none" loading="lazy" width="900" height="1204">
-        <figcaption class="mt-5"><b class="block text-xl font-semibold tracking-tight">Casamentos</b><span class="block mt-1 text-[15px] text-mute">O café da manhã seguinte</span></figcaption>
-      </figure>
-      <figure class="snap-start shrink-0 w-[72vw] sm:w-[340px]">
-        <img src="assets/img/o6.webp" alt="Drip coffee em clínica ou consultório" class="w-full aspect-[3/4] object-cover rounded-[1.75rem] pointer-events-none" loading="lazy" width="900" height="1204">
-        <figcaption class="mt-5"><b class="block text-xl font-semibold tracking-tight">Clínicas</b><span class="block mt-1 text-[15px] text-mute">Mimo para pacientes e clientes</span></figcaption>
-      </figure>
-      <figure class="snap-start shrink-0 w-[72vw] sm:w-[340px]">
-        <img src="assets/img/o7.webp" alt="Drip coffee no home office" class="w-full aspect-[3/4] object-cover rounded-[1.75rem] pointer-events-none" loading="lazy" width="900" height="1204">
-        <figcaption class="mt-5"><b class="block text-xl font-semibold tracking-tight">Home office</b><span class="block mt-1 text-[15px] text-mute">Vai pelo correio junto com o kit</span></figcaption>
-      </figure>
-      <figure class="snap-start shrink-0 w-[72vw] sm:w-[340px]">
-        <img src="assets/img/o8.webp" alt="Drip coffee em kit de fim de ano" class="w-full aspect-[3/4] object-cover rounded-[1.75rem] pointer-events-none" loading="lazy" width="900" height="1204">
-        <figcaption class="mt-5"><b class="block text-xl font-semibold tracking-tight">Kits de fim de ano</b><span class="block mt-1 text-[15px] text-mute">Com chocolate, cartão ou caneca</span></figcaption>
-      </figure>
-    </div>
-  </div>
-
-  <!-- Em eventos -->
-  <div class="max-w-7xl mx-auto px-6 mt-32 md:mt-48 grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-    <div class="reveal-scale">
-      <img src="assets/img/evento.webp" alt="Drip kraft premium em mesa de evento" width="900" height="1204" loading="lazy" class="w-full max-w-[520px] mx-auto aspect-[3/4] object-cover rounded-[2.5rem]">
-    </div>
-    <div class="min-w-0">
-      <p class="reveal text-sm md:text-base font-semibold text-kraft">Em eventos</p>
-      <h2 class="reveal d1 mt-4 text-[2.75rem] md:text-[5rem] font-semibold tracking-tighter leading-[0.95]">De mão <span class="text-mute">em mão.</span></h2>
-      <p class="reveal d2 mt-8 text-lg md:text-xl leading-relaxed text-mute max-w-xl">
-        Na mesa do evento, no kit de boas-vindas, na sacola da feira. O drip é leve, tem presença e leva a sua mensagem junto: um agradecimento, um QR code, o tema do encontro.
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- Modelos -->
-<section id="modelos" class="scroll-mt-14 py-32 md:py-48">
-  <div class="max-w-7xl mx-auto px-6">
-    <div class="text-center">
-      <p class="reveal text-sm md:text-base font-semibold text-kraft">Três sachês, o mesmo café</p>
-      <h2 class="reveal d1 mt-4 text-[2.75rem] md:text-[5rem] font-semibold tracking-tighter leading-[0.95]">Escolha o seu modelo.</h2>
-    </div>
-
-    <div class="mt-20 md:mt-28 grid md:grid-cols-3 gap-16 md:gap-10">
-      <article class="reveal flex flex-col text-center">
-        <img src="assets/img/p-kraft.webp" alt="Sachê de drip coffee kraft clássico 10 × 12 cm com logo personalizada" width="900" height="900" loading="lazy" class="w-full max-w-[380px] mx-auto aspect-square object-cover rounded-[2rem]">
-        <span class="mt-8 text-xs font-semibold text-caramelo">Mais pedido</span>
-        <h3 class="mt-2 text-[1.75rem] font-semibold tracking-tight">Kraft Clássico</h3>
-        <span class="mt-1 text-[15px] text-mute">10 × 12 cm</span>
-        <p class="mt-5 text-[17px] leading-relaxed text-mute max-w-xs mx-auto flex-grow">Papel kraft artesanal, perfeito para marcas com tons terrosos e impressão minimalista.</p>
-        <p class="mt-6 text-[17px] font-semibold tnum">R$ 5,90 <span class="font-normal text-mute">a unidade em 50</span></p>
-        <p class="mt-1 text-[15px] text-mute tnum">A partir de R$ 4,90 (+300 un.)</p>
-        <div class="js-qtd mt-6 flex items-center justify-center gap-3" data-modelo="kraft">
-          <button type="button" data-passo="-1" aria-label="Menos 50 unidades" class="grid place-items-center w-10 h-10 rounded-full bg-canvas text-ink text-lg hover:bg-line transition-colors disabled:opacity-40">−</button>
-          <span class="min-w-[9rem] text-[15px] tnum" aria-live="polite"><span class="js-un font-semibold">50 unidades</span><br><span class="js-tot text-mute">R$ 295,00</span></span>
-          <button type="button" data-passo="1" aria-label="Mais 50 unidades" class="grid place-items-center w-10 h-10 rounded-full bg-canvas text-ink text-lg hover:bg-line transition-colors disabled:opacity-40">+</button>
-        </div>
-        <div class="mt-5 flex items-center justify-center gap-6">
-          <a class="inline-flex items-center h-10 px-5 rounded-full bg-ink text-white text-sm font-medium hover:bg-black transition-colors" data-produto="kraft" href="https://clube.bloomingclub.com.br/cart-link/1630810245-1" target="_blank" rel="noopener">Comprar no site</a>
-          <a class="js-zap text-[15px] text-kraft hover:underline underline-offset-4" data-origem="modelo-kraft" href="https://wa.me/5554997081666?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Drip%20Coffee%20Label%20e%20quero%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20drip%20personalizado." target="_blank" rel="noopener">Dúvidas? ›</a>
-        </div>
-      </article>
-
-      <article class="reveal d1 flex flex-col text-center">
-        <img src="assets/img/p-branco.webp" alt="Sachê de drip coffee branco premium 10 × 15 cm com logo personalizada" width="900" height="900" loading="lazy" class="w-full max-w-[380px] mx-auto aspect-square object-cover rounded-[2rem]">
-        <span class="mt-8 text-xs font-semibold text-transparent select-none" aria-hidden="true">.</span>
-        <h3 class="mt-2 text-[1.75rem] font-semibold tracking-tight">Branco Premium</h3>
-        <span class="mt-1 text-[15px] text-mute">10 × 15 cm</span>
-        <p class="mt-5 text-[17px] leading-relaxed text-mute max-w-xs mx-auto flex-grow">Maior e imaculado. O preto ganha contraste máximo e sobra área para a sua mensagem.</p>
-        <p class="mt-6 text-[17px] font-semibold tnum">R$ 6,90 <span class="font-normal text-mute">a unidade em 50</span></p>
-        <p class="mt-1 text-[15px] text-mute tnum">A partir de R$ 5,90 (+300 un.)</p>
-        <div class="js-qtd mt-6 flex items-center justify-center gap-3" data-modelo="branco">
-          <button type="button" data-passo="-1" aria-label="Menos 50 unidades" class="grid place-items-center w-10 h-10 rounded-full bg-canvas text-ink text-lg hover:bg-line transition-colors disabled:opacity-40">−</button>
-          <span class="min-w-[9rem] text-[15px] tnum" aria-live="polite"><span class="js-un font-semibold">50 unidades</span><br><span class="js-tot text-mute">R$ 295,00</span></span>
-          <button type="button" data-passo="1" aria-label="Mais 50 unidades" class="grid place-items-center w-10 h-10 rounded-full bg-canvas text-ink text-lg hover:bg-line transition-colors disabled:opacity-40">+</button>
-        </div>
-        <div class="mt-5 flex items-center justify-center gap-6">
-          <a class="inline-flex items-center h-10 px-5 rounded-full bg-ink text-white text-sm font-medium hover:bg-black transition-colors" data-produto="branco" href="https://clube.bloomingclub.com.br/cart-link/1630819984-1" target="_blank" rel="noopener">Comprar no site</a>
-          <a class="js-zap text-[15px] text-kraft hover:underline underline-offset-4" data-origem="modelo-branco" href="https://wa.me/5554997081666?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Drip%20Coffee%20Label%20e%20quero%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20drip%20personalizado." target="_blank" rel="noopener">Dúvidas? ›</a>
-        </div>
-      </article>
-
-      <article class="reveal d2 flex flex-col text-center">
-        <img src="assets/img/p-kraft-premium.webp" alt="Sachê de drip coffee kraft premium 10 × 15 cm com logo personalizada" width="900" height="900" loading="lazy" class="w-full max-w-[380px] mx-auto aspect-square object-cover rounded-[2rem]">
-        <span class="mt-8 text-xs font-semibold text-transparent select-none" aria-hidden="true">.</span>
-        <h3 class="mt-2 text-[1.75rem] font-semibold tracking-tight">Kraft Premium</h3>
-        <span class="mt-1 text-[15px] text-mute">10 × 15 cm</span>
-        <p class="mt-5 text-[17px] leading-relaxed text-mute max-w-xs mx-auto flex-grow">O tamanho do premium com o papel kraft liso. Impressão nítida e acabamento de luxo.</p>
-        <p class="mt-6 text-[17px] font-semibold tnum">R$ 6,90 <span class="font-normal text-mute">a unidade em 50</span></p>
-        <p class="mt-1 text-[15px] text-mute tnum">A partir de R$ 5,90 (+300 un.)</p>
-        <div class="js-qtd mt-6 flex items-center justify-center gap-3" data-modelo="kraftp">
-          <button type="button" data-passo="-1" aria-label="Menos 50 unidades" class="grid place-items-center w-10 h-10 rounded-full bg-canvas text-ink text-lg hover:bg-line transition-colors disabled:opacity-40">−</button>
-          <span class="min-w-[9rem] text-[15px] tnum" aria-live="polite"><span class="js-un font-semibold">50 unidades</span><br><span class="js-tot text-mute">R$ 295,00</span></span>
-          <button type="button" data-passo="1" aria-label="Mais 50 unidades" class="grid place-items-center w-10 h-10 rounded-full bg-canvas text-ink text-lg hover:bg-line transition-colors disabled:opacity-40">+</button>
-        </div>
-        <div class="mt-5 flex items-center justify-center gap-6">
-          <a class="inline-flex items-center h-10 px-5 rounded-full bg-ink text-white text-sm font-medium hover:bg-black transition-colors" data-produto="kraftp" href="https://clube.bloomingclub.com.br/cart-link/1630823691-1" target="_blank" rel="noopener">Comprar no site</a>
-          <a class="js-zap text-[15px] text-kraft hover:underline underline-offset-4" data-origem="modelo-kraft-premium" href="https://wa.me/5554997081666?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Drip%20Coffee%20Label%20e%20quero%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20drip%20personalizado." target="_blank" rel="noopener">Dúvidas? ›</a>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- Configurador -->
-<section class="relative bg-white py-24 md:py-48">
-  <!-- Ponto transparente: o botão "Simular meu pedido" para aqui (o título fica 4rem abaixo do menu). Para ajustar, mude top-8 / md:top-32. -->
-  <span id="calc" aria-hidden="true" class="absolute left-0 top-8 md:top-32 w-px h-px opacity-0 pointer-events-none"></span>
-  <div class="max-w-6xl mx-auto px-6">
-    <h2 id="t-calc" class="text-[2.25rem] md:text-[4.5rem] font-semibold tracking-tighter leading-[0.95]">Simule seu pedido. <span class="text-mute">Veja o valor na hora.</span></h2>
-
-    <!-- No celular, a calculadora inteira cabe numa tela; no desktop, resumo fixo à direita -->
-    <!-- A calculadora não tem animação de entrada: fica sempre visível e no lugar -->
-    <div class="mt-8 md:mt-16">
-    <form id="calc-form" aria-labelledby="t-calc" onsubmit="return false" class="grid lg:grid-cols-[1fr_380px] gap-6 lg:gap-20 items-start">
-      <!-- Opções -->
-      <div class="min-w-0 space-y-6 lg:space-y-10">
-        <fieldset>
-          <legend class="text-xs lg:text-sm font-semibold text-mute">Modelo</legend>
-          <div class="mt-3 lg:mt-4 grid grid-cols-3 gap-2 sm:gap-3">
-            <label class="relative block cursor-pointer">
-              <input type="radio" name="modelo" id="m-kraft" value="kraft" checked class="peer sr-only">
-              <span class="flex flex-col items-center justify-center h-full text-center px-2 py-3 lg:py-5 rounded-2xl ring-1 ring-line transition-all duration-300 hover:ring-mute peer-checked:ring-2 peer-checked:ring-ink peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-caramelo peer-focus-visible:outline-offset-2">
-                <b class="text-sm sm:text-[17px] font-semibold leading-tight">Kraft Clássico</b>
-                <span class="mt-1 text-xs sm:text-sm text-mute">10 × 12 cm</span>
-              </span>
-              <span aria-hidden="true" class="pointer-events-none absolute left-1/2 -translate-x-1/2 -top-2.5 bg-white px-1 leading-none"><svg viewBox="0 0 15 19" width="15" height="19" class="block"><path d="M1.5 1.5h12v16a1.5 1.5 0 0 1-1.5 1.5H3a1.5 1.5 0 0 1-1.5-1.5z" fill="#D8B48A" stroke="#8A6A4A" stroke-width="1.2" stroke-linejoin="round"/><path d="M1.5 5.5h12" stroke="#8A6A4A" stroke-width="1" opacity=".7"/><rect x="4.0" y="10" width="7" height="2" rx="1" fill="#1d1d1f"/></svg></span>
-            </label>
-            <label class="relative block cursor-pointer">
-              <input type="radio" name="modelo" id="m-branco" value="branco" class="peer sr-only">
-              <span class="flex flex-col items-center justify-center h-full text-center px-2 py-3 lg:py-5 rounded-2xl ring-1 ring-line transition-all duration-300 hover:ring-mute peer-checked:ring-2 peer-checked:ring-ink peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-caramelo peer-focus-visible:outline-offset-2">
-                <b class="text-sm sm:text-[17px] font-semibold leading-tight">Branco Premium</b>
-                <span class="mt-1 text-xs sm:text-sm text-mute">10 × 15 cm</span>
-              </span>
-              <span aria-hidden="true" class="pointer-events-none absolute left-1/2 -translate-x-1/2 -top-2.5 bg-white px-1 leading-none"><svg viewBox="0 0 15 23" width="15" height="23" class="block"><path d="M1.5 1.5h12v20a1.5 1.5 0 0 1-1.5 1.5H3a1.5 1.5 0 0 1-1.5-1.5z" fill="#ffffff" stroke="#9a9a9f" stroke-width="1.2" stroke-linejoin="round"/><path d="M1.5 5.5h12" stroke="#9a9a9f" stroke-width="1" opacity=".7"/><rect x="4.0" y="14" width="7" height="2" rx="1" fill="#1d1d1f"/></svg></span>
-            </label>
-            <label class="relative block cursor-pointer">
-              <input type="radio" name="modelo" id="m-kraftp" value="kraftp" class="peer sr-only">
-              <span class="flex flex-col items-center justify-center h-full text-center px-2 py-3 lg:py-5 rounded-2xl ring-1 ring-line transition-all duration-300 hover:ring-mute peer-checked:ring-2 peer-checked:ring-ink peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-caramelo peer-focus-visible:outline-offset-2">
-                <b class="text-sm sm:text-[17px] font-semibold leading-tight">Kraft Premium</b>
-                <span class="mt-1 text-xs sm:text-sm text-mute">10 × 15 cm</span>
-              </span>
-              <span aria-hidden="true" class="pointer-events-none absolute left-1/2 -translate-x-1/2 -top-2.5 bg-white px-1 leading-none"><svg viewBox="0 0 15 23" width="15" height="23" class="block"><path d="M1.5 1.5h12v20a1.5 1.5 0 0 1-1.5 1.5H3a1.5 1.5 0 0 1-1.5-1.5z" fill="#C49A6B" stroke="#6f5236" stroke-width="1.2" stroke-linejoin="round"/><path d="M1.5 5.5h12" stroke="#6f5236" stroke-width="1" opacity=".7"/><rect x="4.0" y="14" width="7" height="2" rx="1" fill="#1d1d1f"/></svg></span>
-            </label>
-          </div>
-        </fieldset>
-
-        <fieldset>
-          <legend class="text-xs lg:text-sm font-semibold text-mute">Quantidade</legend>
-          <div class="mt-3 lg:mt-6 flex items-center justify-between gap-6">
-            <button type="button" id="menos" aria-label="Menos 50 unidades" class="w-11 h-11 lg:w-12 lg:h-12 shrink-0 rounded-full bg-canvas text-2xl text-ink grid place-items-center hover:bg-line transition-colors">&minus;</button>
-            <div class="text-center">
-              <output id="q" for="faixa" aria-live="polite" class="block text-[2.75rem] lg:text-[4.5rem] font-semibold tracking-tighter leading-none tnum">100</output>
-              <span class="block mt-1 lg:mt-2 text-xs lg:text-sm text-mute">unidades</span>
-            </div>
-            <button type="button" id="mais" aria-label="Mais 50 unidades" class="w-11 h-11 lg:w-12 lg:h-12 shrink-0 rounded-full bg-canvas text-2xl text-ink grid place-items-center hover:bg-line transition-colors">+</button>
-          </div>
-          <input type="range" id="faixa" min="50" max="1000" step="50" value="100" aria-label="Quantidade de drips" class="calc-range mt-5 lg:mt-8">
-          <div class="mt-2 flex justify-between text-xs text-mute tnum" aria-hidden="true"><span>50</span><span>1.000</span></div>
-          <p id="proxima-faixa" aria-live="polite" class="mt-3 lg:mt-5 text-sm lg:text-[15px] text-kraft tnum">Com 150 unidades, cada drip sai por R$ 5,50.</p>
-        </fieldset>
-      </div>
-
-      <!-- Resumo (fixo à direita no desktop) -->
-      <aside class="pt-5 border-t border-black/10 lg:pt-0 lg:border-0 lg:sticky lg:top-32">
-        <div class="flex items-baseline justify-between gap-4 lg:block">
-          <span class="hidden lg:inline text-sm font-semibold text-mute">Investimento estimado</span>
-          <span id="resumo" class="text-xs font-semibold text-mute tnum lg:hidden">100 unidades · Kraft Clássico</span>
-        </div>
-        <div class="mt-1 lg:mt-3 flex items-baseline justify-between gap-4 lg:block">
-          <div id="total" class="text-[2rem] sm:text-[2.75rem] lg:text-[3.25rem] font-semibold tracking-tighter leading-none tnum">R$ 570,00</div>
-          <div id="un" class="text-[15px] lg:text-[17px] text-mute tnum lg:mt-3 whitespace-nowrap">R$ 5,70 por drip</div>
-        </div>
-        <div id="resumo-desk" class="hidden lg:block mt-1 text-[15px] text-mute tnum">100 unidades · Kraft Clássico</div>
-        <div class="mt-5 lg:mt-10 lg:pt-10 lg:border-t lg:border-black/10 grid grid-cols-2 lg:grid-cols-1 gap-2 lg:gap-3">
-          <a id="calc-zap" href="https://wa.me/5554997081666?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Drip%20Coffee%20Label%20e%20quero%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20drip%20personalizado." target="_blank" rel="noopener" class="flex items-center justify-center h-12 px-2 rounded-full bg-ink text-white text-sm lg:text-[15px] font-medium hover:bg-black transition-colors">Pedir via WhatsApp</a>
-          <a id="calc-site" href="https://clube.bloomingclub.com.br/cart-link/1630810245-2" target="_blank" rel="noopener" class="flex items-center justify-center h-12 px-2 rounded-full bg-canvas text-ink text-sm lg:text-[15px] font-medium hover:bg-line transition-colors">Comprar no site</a>
-        </div>
-        <p id="nota-calc" class="mt-3 lg:mt-6 text-[11px] lg:text-xs leading-relaxed text-mute">
-          Valor de referência. O desconto por quantidade entra sozinho no carrinho. Acima de 1.000 unidades, fale com a gente.
-        </p>
-      </aside>
-    </form>
-    </div>
-  </div>
-</section>
-
-<!-- Como funciona -->
-<section id="como-funciona" class="scroll-mt-14 py-32 md:py-48">
-  <div class="max-w-7xl mx-auto px-6">
-    <p class="reveal text-sm md:text-base font-semibold text-kraft">Do pedido à caixa</p>
-    <h2 class="reveal d1 mt-4 text-[2.75rem] md:text-[5rem] font-semibold tracking-tighter leading-[0.95]">Como funciona.</h2>
-
-    <ol class="mt-20 md:mt-28 grid sm:grid-cols-2 lg:grid-cols-4 gap-x-10 gap-y-16">
-      <li class="reveal">
-        <span class="block text-[4rem] font-semibold tracking-tighter leading-none text-line tnum">1</span>
-        <h3 class="mt-6 text-2xl font-semibold tracking-tight">Escolha e pague</h3>
-        <p class="mt-3 text-[17px] leading-relaxed text-mute">Pelo site, com cartão, Pix ou boleto, ou fechando pelo WhatsApp. Mínimo de 50 un.</p>
-      </li>
-      <li class="reveal d1">
-        <span class="block text-[4rem] font-semibold tracking-tighter leading-none text-line tnum">2</span>
-        <h3 class="mt-6 text-2xl font-semibold tracking-tight">Sua logo</h3>
-        <p class="mt-3 text-[17px] leading-relaxed text-mute">Envie só em vetor (AI, EPS, SVG ou PDF vetorial, com os textos em curvas). Adicione frases ou QR codes se desejar.</p>
-      </li>
-      <li class="reveal d2">
-        <span class="block text-[4rem] font-semibold tracking-tighter leading-none text-line tnum">3</span>
-        <h3 class="mt-6 text-2xl font-semibold tracking-tight">Aprove a arte</h3>
-        <p class="mt-3 text-[17px] leading-relaxed text-mute">Montamos e enviamos a prova digital. Ajustamos até ficar perfeito.</p>
-      </li>
-      <li class="reveal d3">
-        <span class="block text-[4rem] font-semibold tracking-tighter leading-none text-line tnum">4</span>
-        <h3 class="mt-6 text-2xl font-semibold tracking-tight">Receba</h3>
-        <p class="mt-3 text-[17px] leading-relaxed text-mute">Aprovado? Imprimimos, enchemos, selamos e despachamos para você.</p>
-      </li>
-    </ol>
-
-    <div class="mt-32 md:mt-48 grid md:grid-cols-[auto_1fr] gap-12 md:gap-24 items-center">
-      <div class="reveal-scale w-full max-w-[320px] mx-auto">
-        <video src="assets/video/serra.mp4" poster="assets/video/serra-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Drip sendo preparado numa varanda de serra, com a água coando no copo" class="w-full aspect-[9/16] object-cover rounded-[2.5rem] bg-black"></video>
-      </div>
-      <div class="min-w-0 max-w-xl">
-        <h3 class="reveal text-[2.5rem] md:text-[3.75rem] font-semibold tracking-tighter leading-[0.95]">Do sachê <span class="text-mute">à xícara.</span></h3>
-        <p class="reveal d1 mt-8 text-lg md:text-xl leading-relaxed text-mute">
-          Abre, encaixa as abas na xícara e despeja a água. Poucos minutos depois, café especial coado na hora, sem máquina e sem complicação.
-        </p>
-      </div>
     </div>
   </div>
 </section>
 
 <!-- O café -->
-<section class="bg-white py-32 md:py-48">
-  <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-    <div class="min-w-0">
-      <p class="reveal text-sm md:text-base font-semibold text-kraft">O que vai dentro</p>
-      <h2 class="reveal d1 mt-4 text-[2.75rem] md:text-[4.5rem] font-semibold tracking-tighter leading-[0.95]">O café <span class="text-mute">também fala por você.</span></h2>
-      <p class="reveal d2 mt-8 text-lg md:text-xl leading-relaxed text-mute max-w-xl">
-        Trabalhamos exclusivamente com cafés especiais de origem única. Grãos do Sul de Minas, da Região Vulcânica, com laudo de Q-Grader. Sem blends, sem concessões.
-      </p>
-
-      <div class="reveal d3 mt-14 flex flex-wrap items-end gap-x-14 gap-y-10">
-        <div>
-          <b class="block text-[5rem] md:text-[6.5rem] font-semibold tracking-tighter leading-[0.85] text-caramelo">80+</b>
-          <span class="block mt-3 text-sm font-semibold text-mute">Pontos SCA</span>
-        </div>
-        <dl class="grid grid-cols-[auto_1fr] gap-x-8 text-[15px] min-w-[240px] flex-1 max-w-sm">
-          <dt class="py-3 border-t border-black/10 text-mute">Origem</dt><dd class="py-3 border-t border-black/10">Sul de Minas, Reg. Vulcânica</dd>
-          <dt class="py-3 border-t border-black/10 text-mute">Espécie</dt><dd class="py-3 border-t border-black/10">100% Arábica</dd>
-          <dt class="py-3 border-t border-black/10 text-mute">Torra</dt><dd class="py-3 border-t border-black/10">Média</dd>
-          <dt class="py-3 border-y border-black/10 text-mute">Dose</dt><dd class="py-3 border-y border-black/10">10 g por sachê</dd>
-        </dl>
-      </div>
+<section class="sec">
+  <div class="wrap cafe-grid">
+    <div style="text-align:center">
+      <div class="selo-sca"><b>80+</b><span>Pontos SCA</span></div>
+      <div class="cab" style="margin:24px auto 0"><span class="olho">O que vai dentro</span><h2>Café especial de origem única, nunca blend</h2><p>O café também fala por você. Por isso cada lote passa por avaliação de Q-Grader.</p></div>
     </div>
-    <figure class="reveal-scale">
-      <img src="assets/img/cafe-varanda.webp" alt="Café coado na xícara" width="1000" height="1250" loading="lazy" class="w-full max-w-[520px] mx-auto aspect-[4/5] object-cover rounded-[2.5rem]">
-      <figcaption class="mt-5 text-center text-[15px] text-mute">Coado no sachê, servido na sua xícara favorita.</figcaption>
-    </figure>
+    <ol class="ficha">
+      <li><span class="n">01</span><small>Pontuação</small><span>80+ pontos SCA, café especial</span></li>
+      <li><span class="n">02</span><small>Origem</small><span>Sul de Minas, Região Vulcânica</span></li>
+      <li><span class="n">03</span><small>Espécie</small><span>100% Arábica</span></li>
+      <li><span class="n">04</span><small>Torra</small><span>Média</span></li>
+      <li><span class="n">05</span><small>Dose</small><span>10 g por sachê</span></li>
+      <li><span class="n">06</span><small>Laudo</small><span>Laudo de Q-Grader de cada café</span></li>
+    </ol>
   </div>
 </section>
 
-<!-- Uma marca Blooming Club -->
-<section class="py-32 md:py-48">
-  <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-[1fr_1.1fr] gap-16 lg:gap-24 items-center">
-    <div class="reveal-scale grid grid-cols-[0.8fr_1fr] gap-4 items-end order-2 lg:order-1">
-      <img src="assets/img/blooming-drip.webp" alt="Drip coffee da Blooming Club" width="800" height="1067" loading="lazy" class="w-full aspect-[3/4] object-cover rounded-[2rem]">
-      <img src="assets/img/blooming-caixa.webp" alt="Caixa de assinatura da Blooming Club" width="1400" height="933" loading="lazy" class="w-full aspect-[3/2] object-cover rounded-[2rem] translate-y-8">
-    </div>
-    <div class="min-w-0 order-1 lg:order-2">
-      <img src="assets/img/blooming.png" alt="Blooming Club Cafés Especiais" class="reveal w-44 h-auto" loading="lazy">
-      <p class="reveal d1 mt-10 text-sm md:text-base font-semibold text-kraft">A assinatura</p>
-      <h2 class="reveal d1 mt-4 text-[2.75rem] md:text-[4.5rem] font-semibold tracking-tighter leading-[0.95]">Uma marca <span class="text-mute">Blooming Club.</span></h2>
-      <p class="reveal d2 mt-8 text-lg md:text-xl leading-relaxed text-mute max-w-xl">
-        A Drip Coffee Label é a vertente corporativa da Blooming Club, um clube de assinatura dedicado à curadoria de cafés especiais. A excelência que vai na xícara do nosso assinante é a mesma que enche o seu sachê.
-      </p>
-      <a class="reveal d3 inline-flex items-center gap-1 mt-8 text-[17px] text-kraft hover:underline underline-offset-4" href="https://www.bloomingclub.com.br/?utm_source=drip-landing&utm_medium=site&utm_campaign=brindes&utm_content=quem" target="_blank" rel="noopener">Visitar Blooming Club <span aria-hidden="true">›</span></a>
-    </div>
+<!-- Como funciona -->
+<section class="sec cinza">
+  <div class="wrap">
+    <div class="cab"><span class="olho">Como funciona</span><h2>Do pedido à caixa em 4 passos</h2></div>
+    <ol class="passos">
+      <li><span class="n">01</span><h3>Escolha e pague</h3><p>Modelo e quantidade na loja, com Pix, boleto ou cartão.</p></li>
+      <li><span class="n">02</span><h3>Envie a sua logo</h3><p>Em vetor (AI, EPS, SVG ou PDF), pelo WhatsApp. Frase ou QR code, se quiser.</p></li>
+      <li><span class="n">03</span><h3>Aprove a arte</h3><p>Mandamos a prova digital e ajustamos até ficar do seu jeito.</p></li>
+      <li><span class="n">04</span><h3>Receba</h3><p>Produção em 5 dias úteis depois da aprovação, mais o prazo da entrega.</p></li>
+    </ol>
   </div>
 </section>
 
-<!-- Perguntas -->
-<section id="perguntas" class="scroll-mt-14 bg-white py-32 md:py-48">
-  <div class="max-w-6xl mx-auto px-6 grid lg:grid-cols-[0.8fr_1.2fr] gap-16 lg:gap-24">
-    <div class="min-w-0">
-      <p class="reveal text-sm md:text-base font-semibold text-kraft">Tire suas dúvidas</p>
-      <h2 class="reveal d1 mt-4 text-[2.75rem] md:text-[4rem] font-semibold tracking-tighter leading-[0.95]">Perguntas frequentes.</h2>
-      <p class="reveal d2 mt-6 text-[17px] text-mute">Resposta mais rápida? Fale direto no WhatsApp.</p>
-      <a class="reveal d2 js-zap inline-flex items-center gap-1 mt-3 text-[17px] text-kraft hover:underline underline-offset-4" data-origem="faq" href="https://wa.me/5554997081666?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Drip%20Coffee%20Label%20e%20quero%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20drip%20personalizado." target="_blank" rel="noopener">Perguntar via WhatsApp <span aria-hidden="true">›</span></a>
-      <img src="assets/img/preparo.webp" alt="Preparo do drip coffee na xícara" width="1100" height="825" loading="lazy" class="reveal-scale hidden lg:block mt-14 w-full aspect-[4/3] object-cover rounded-[2rem]">
-    </div>
+<!-- Preços -->
+<section class="sec" id="precos">
+  <div class="wrap">
+    <div class="cab"><span class="olho">Preço por quantidade</span><h2>Quanto mais, menor o preço</h2><p>Preço por sachê. Cada lote de 50 pode ter uma arte diferente.</p></div>
+    <div class="tabela"><div class="rolar">
+      <table class="tnum">
+        <thead><tr><th>Sachês</th><th>Kraft<br>Clássico</th><th>Branco<br>Premium</th><th>Kraft<br>Premium</th></tr></thead>
+        <tbody id="tabela"></tbody>
+      </table>
+    </div></div>
+    <p class="nota-precos">O desconto entra sozinho no carrinho. Frete calculado pelo CEP antes do pagamento. Acima de 1.000 sachês, fale com a gente.</p>
+  </div>
+</section>
 
-    <div class="reveal d1 min-w-0 border-t border-black/10">
-      <details class="group border-b border-black/10" name="faq">
-        <summary class="py-6 cursor-pointer flex justify-between items-center gap-6 text-lg md:text-xl font-semibold tracking-tight">Qual é o pedido mínimo?<span class="shrink-0 text-2xl font-light text-mute transition-transform duration-500 group-open:rotate-45" aria-hidden="true">+</span></summary>
-        <p class="pb-7 -mt-1 text-[17px] leading-relaxed text-mute">50 unidades. Você pode pedir em múltiplos de 50, e o preço por drip cai a cada faixa até 300 unidades.</p>
-      </details>
-      <details class="group border-b border-black/10" name="faq">
-        <summary class="py-6 cursor-pointer flex justify-between items-center gap-6 text-lg md:text-xl font-semibold tracking-tight">Vocês criam a arte?<span class="shrink-0 text-2xl font-light text-mute transition-transform duration-500 group-open:rotate-45" aria-hidden="true">+</span></summary>
-        <p class="pb-7 -mt-1 text-[17px] leading-relaxed text-mute">Sim. Você envia a logo e montamos a arte do sachê. Só produzimos após sua aprovação absoluta.</p>
-      </details>
-      <details class="group border-b border-black/10" name="faq">
-        <summary class="py-6 cursor-pointer flex justify-between items-center gap-6 text-lg md:text-xl font-semibold tracking-tight">Em que formato envio a logo?<span class="shrink-0 text-2xl font-light text-mute transition-transform duration-500 group-open:rotate-45" aria-hidden="true">+</span></summary>
-        <p class="pb-7 -mt-1 text-[17px] leading-relaxed text-mute">Só em vetor: AI, EPS, SVG ou PDF vetorial, com os textos convertidos em curvas. PNG, JPG, print de tela e imagens pequenas perdem nitidez na impressão e não são aceitos. Não tem a logo em vetor? Fale no WhatsApp.</p>
-      </details>
-      <details class="group border-b border-black/10" name="faq">
-        <summary class="py-6 cursor-pointer flex justify-between items-center gap-6 text-lg md:text-xl font-semibold tracking-tight">Mais de uma arte no mesmo pedido?<span class="shrink-0 text-2xl font-light text-mute transition-transform duration-500 group-open:rotate-45" aria-hidden="true">+</span></summary>
-        <p class="pb-7 -mt-1 text-[17px] leading-relaxed text-mute">Cada lote de 50 unidades sai com uma arte. Comprando 150, você pode ter três artes diferentes, por exemplo.</p>
-      </details>
-      <details class="group border-b border-black/10" name="faq">
-        <summary class="py-6 cursor-pointer flex justify-between items-center gap-6 text-lg md:text-xl font-semibold tracking-tight">Qual é o prazo?<span class="shrink-0 text-2xl font-light text-mute transition-transform duration-500 group-open:rotate-45" aria-hidden="true">+</span></summary>
-        <p class="pb-7 -mt-1 text-[17px] leading-relaxed text-mute">Produzimos em 5 dias úteis depois da aprovação da arte. Em seguida vem o prazo da transportadora. Informe a data do seu evento no WhatsApp e confirmamos a viabilidade.</p>
-      </details>
-      <details class="group border-b border-black/10" name="faq">
-        <summary class="py-6 cursor-pointer flex justify-between items-center gap-6 text-lg md:text-xl font-semibold tracking-tight">A impressão é colorida?<span class="shrink-0 text-2xl font-light text-mute transition-transform duration-500 group-open:rotate-45" aria-hidden="true">+</span></summary>
-        <p class="pb-7 -mt-1 text-[17px] leading-relaxed text-mute">O padrão é impressão em 1 cor, em preto sólido, que garante nitidez em todos os modelos. Pequenos detalhes em cor na logo ou na arte são possíveis e passam pela avaliação da produção antes de imprimir. Precisa de uma arte colorida? Peça no WhatsApp e avaliamos o seu caso.</p>
-      </details>
-      <details class="group border-b border-black/10" name="faq">
-        <summary class="py-6 cursor-pointer flex justify-between items-center gap-6 text-lg md:text-xl font-semibold tracking-tight">Emitem nota fiscal?<span class="shrink-0 text-2xl font-light text-mute transition-transform duration-500 group-open:rotate-45" aria-hidden="true">+</span></summary>
-        <p class="pb-7 -mt-1 text-[17px] leading-relaxed text-mute">Sim, emitimos nota fiscal para pessoa jurídica (PJ).</p>
-      </details>
-      <details class="group border-b border-black/10" name="faq">
-        <summary class="py-6 cursor-pointer flex justify-between items-center gap-6 text-lg md:text-xl font-semibold tracking-tight">Como se prepara o drip?<span class="shrink-0 text-2xl font-light text-mute transition-transform duration-500 group-open:rotate-45" aria-hidden="true">+</span></summary>
-        <p class="pb-7 -mt-1 text-[17px] leading-relaxed text-mute">Abra o sachê, encaixe as abas na xícara, despeje água quente aos poucos. Espere coar e pronto. Sem cafeteiras, apenas uma xícara e água quente.</p>
-      </details>
+<!-- Chamada final -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="fecho">
+      <span class="olho">Vamos conversar</span>
+      <h2>Leve a sua marca para a pausa do café</h2>
+      <p>Casamento, evento ou pedido grande? Conte o que precisa e respondemos pelo WhatsApp.</p>
+      <a class="btn btn-branco js-zap" data-origem="fecho" href="#" target="_blank" rel="noopener">Falar no WhatsApp</a><br>
+      <a class="loja" href="#modelos">Pedido a partir de 50 sachês? Escolha o modelo →</a>
     </div>
   </div>
 </section>
 
-<!-- Fechamento -->
-<section class="py-32 md:py-48">
-  <div class="max-w-7xl mx-auto px-6 text-center">
-    <p class="reveal text-sm md:text-base font-semibold text-kraft">O seu próximo passo</p>
-    <h2 class="reveal d1 mt-4 font-semibold tracking-tighter leading-[0.9] text-[3.25rem] sm:text-[4.5rem] md:text-[6rem] lg:text-[7.5rem]">
-      Um brinde<br><span class="text-mute">fora da gaveta.</span>
-    </h2>
-    <p class="reveal d2 mt-8 max-w-xl mx-auto text-lg md:text-xl leading-relaxed text-mute">
-      Envie sua logo e a quantidade. Nós retornamos com o modelo ideal e o design do seu próximo projeto.
-    </p>
-    <div class="reveal d3 mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
-      <a class="js-zap inline-flex items-center h-12 px-7 rounded-full bg-ink text-white text-[15px] font-medium hover:bg-black transition-colors" data-origem="fecho" href="https://wa.me/5554997081666?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Drip%20Coffee%20Label%20e%20quero%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20drip%20personalizado." target="_blank" rel="noopener">Pedir orçamento</a>
-      <a class="inline-flex items-center gap-1 text-[17px] text-kraft hover:underline underline-offset-4" href="#modelos">Ver modelos <span aria-hidden="true">›</span></a>
-    </div>
-
-    <div class="reveal-scale d2 mt-20 md:mt-28 mx-auto max-w-[420px]">
-      <img src="assets/img/ficha.webp" alt="Detalhes do drip coffee personalizado" width="900" height="900" loading="lazy" class="w-full aspect-square object-cover rounded-full">
-    </div>
-
-    <div class="reveal mt-16 flex flex-wrap justify-center gap-x-10 gap-y-3 text-[15px] text-mute">
-      <span class="tnum">(54) 99708-1666</span>
-      <a href="https://www.instagram.com/driplabel.cafes/" target="_blank" rel="noopener" class="hover:text-ink transition-colors">@driplabel.cafes</a>
-      <span>dripcoffee@bloomingclub.com.br</span>
+<!-- Dúvidas -->
+<section class="sec cinza" id="duvidas">
+  <div class="wrap">
+    <div class="cab"><span class="olho">Perguntas frequentes</span><h2>O que você precisa saber antes de pedir</h2></div>
+    <div class="faq">
+      <details><summary>Qual é o pedido mínimo?</summary><p>50 sachês. Você pede em múltiplos de 50, e o preço por sachê cai a cada faixa até 300.</p></details>
+      <details><summary>Vocês criam a arte?</summary><p>Sim. Você envia a logo e montamos a arte do sachê. Só produzimos depois da sua aprovação.</p></details>
+      <details><summary>Em que formato envio a logo?</summary><p>Só em vetor: AI, EPS, SVG ou PDF vetorial, com os textos em curvas. Não tem a logo em vetor? Fale no WhatsApp.</p></details>
+      <details><summary>Posso ter mais de uma arte no mesmo pedido?</summary><p>Sim. Cada lote de 50 sai com uma arte. Com 150 sachês, você pode ter três artes diferentes.</p></details>
+      <details><summary>Qual é o prazo?</summary><p>Produzimos em 5 dias úteis depois da aprovação da arte. Em seguida vem o prazo da transportadora.</p></details>
+      <details><summary>Quanto custa o frete?</summary><p>É calculado pelo CEP no carrinho, antes do pagamento.</p></details>
+      <details><summary>A impressão é colorida?</summary><p>O padrão é 1 cor, em preto. Detalhes em cor passam pela avaliação da produção; peça no WhatsApp.</p></details>
+      <details><summary>Emitem nota fiscal?</summary><p>Sim, para pessoa jurídica.</p></details>
     </div>
   </div>
 </section>
 
-</main>
-
-<!-- Rodapé -->
-<footer class="border-t border-black/10">
-  <div class="max-w-7xl mx-auto px-6 py-10 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
-    <div class="flex items-center gap-5 opacity-60">
-      <img src="assets/img/logo.png" alt="Drip Coffee Label" class="h-6 w-auto" loading="lazy">
-      <span class="h-4 w-px bg-black/20" aria-hidden="true"></span>
-      <img src="assets/img/blooming-sem-xicara.svg" alt="Blooming Club" class="h-4 w-auto" loading="lazy">
-    </div>
-    <p class="text-xs leading-relaxed text-mute max-w-lg">
-      Drip Coffee Label é uma marca da Blooming Club Cafés Especiais. As compras pelo site são finalizadas na loja Blooming Club. Imagens ilustrativas.
-    </p>
+<footer>
+  <div class="wrap cols">
+    <div><img src="assets/img/logo.png" alt="Drip Coffee Label" width="605" height="294" style="height:30px;width:auto"><p style="margin-top:14px;max-width:24rem">Drip coffee personalizado com café especial de origem única, do Sul de Minas. Uma marca Blooming Club.</p></div>
+    <div><h4>Navegação</h4><ul><li><a href="#modelos">Modelos</a></li><li><a href="#clientes">Clientes</a></li><li><a href="#ocasioes">Ocasiões</a></li><li><a href="#precos">Preços</a></li><li><a href="#duvidas">Dúvidas</a></li></ul></div>
+    <div><h4>Contato</h4><ul><li><a class="js-zap" data-origem="rodape" href="#" target="_blank" rel="noopener">WhatsApp (54) 99708-1666</a></li><li>dripcoffee@bloomingclub.com.br</li><li><a href="https://www.instagram.com/driplabel.cafes/" target="_blank" rel="noopener">@driplabel.cafes</a></li></ul></div>
   </div>
+  <div class="wrap legal">Blooming Club Cafés Especiais Ltda · CNPJ 62.660.408/0001-47 · Compras finalizadas na loja Blooming Club. Cenas com “sua marca aqui” são ilustrativas.</div>
 </footer>
 
-<!-- Botão flutuante do WhatsApp -->
-<a class="js-zap zap-flutuante" id="zap-flutuante" data-origem="flutuante" aria-label="Falar no WhatsApp" href="https://wa.me/5554997081666?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Drip%20Coffee%20Label%20e%20quero%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20drip%20personalizado." target="_blank" rel="noopener">
-  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-  <span class="zap-txt">WhatsApp</span>
-</a>
+<a class="zap-fixo js-zap" data-origem="flutuante" href="#" target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45c6.55 0 11.89-5.34 11.89-11.89A11.82 11.82 0 0 0 12.05 0Zm6.98 16.9c-.29.82-1.7 1.57-2.37 1.62-.6.05-1.19.27-4.03-.84-3.4-1.34-5.57-4.83-5.74-5.06-.17-.22-1.37-1.83-1.37-3.49 0-1.66.87-2.48 1.18-2.82.3-.33.67-.42.89-.42h.64c.2 0 .48-.08.75.57.29.69.97 2.37 1.05 2.54.09.17.14.37.03.6-.11.22-.17.36-.33.56-.17.2-.35.44-.5.59-.17.17-.34.35-.15.68.2.33.87 1.43 1.86 2.32 1.28 1.14 2.36 1.5 2.69 1.66.33.17.53.14.72-.08.2-.22.84-.98 1.06-1.31.22-.33.44-.28.75-.17.3.11 1.95.92 2.28 1.09.33.17.55.25.64.39.08.14.08.82-.2 1.63Z"/></svg></a>
 
-<!-- Lógica da calculadora e dos links (preços, mensagens e UTMs inalterados) -->
 <script>
 (function(){
-  var ZAP='5554997081666';
-  var MODELOS={
-    kraft:{nome:'Kraft Clássico',precos:[5.9,5.7,5.5,5.3,5.1,4.9],variante:'1630810245'},
-    branco:{nome:'Branco Premium',precos:[6.9,6.7,6.5,6.3,6.1,5.9],variante:'1630819984'},
-    kraftp:{nome:'Kraft Premium',precos:[6.9,6.7,6.5,6.3,6.1,5.9],variante:'1630823691'}
-  };
-  var brl=function(v){return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'})};
-  var brlCurto=function(v){v=Math.round(v*100)/100;return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL',minimumFractionDigits:v%1?2:0})};
+  var M={kraft:{n:'Kraft Clássico',p:[5.9,5.7,5.5,5.3,5.1,4.9],v:'1630810245'},
+         branco:{n:'Branco Premium',p:[6.9,6.7,6.5,6.3,6.1,5.9],v:'1630819984'},
+         kraftp:{n:'Kraft Premium',p:[6.9,6.7,6.5,6.3,6.1,5.9],v:'1630823691'}};
   var UTM='utm_source=drip-landing&utm_medium=site&utm_campaign=brindes';
-  var link=function(url,origem){return url+(url.indexOf('?')<0?'?':'&')+UTM+'&utm_content='+origem};
-  var zap=function(msg){return 'https://wa.me/'+ZAP+'?text='+encodeURIComponent(msg)};
-  var base='Olá! Vim pelo site da Drip Coffee Label';
-  var MSG_ORC=base+' e quero saber mais informações sobre o drip personalizado.';
-
-  // Compra: link do carrinho da loja Nuvemshop, que soma os kits ao carrinho e abre a página do carrinho (/cart-link/VARIANTE-KITS; 1 kit = 50 drips).
-  var LOJA='https://clube.bloomingclub.com.br/cart-link/';
-  var carrinho=function(m,kits){return LOJA+m.variante+'-'+kits};
-  // Cards: escolha de quantidade em kits de 50 (1 a 20 kits, mesmo limite da calculadora); o botão leva os kits escolhidos ao pagamento.
-  document.querySelectorAll('[data-produto]').forEach(function(a){
-    var m=MODELOS[a.dataset.produto];a.href=link(carrinho(m,1),'card-'+a.dataset.produto);a.target='_blank';a.rel='noopener';
-  });
-  document.querySelectorAll('.js-qtd').forEach(function(box){
-    var id=box.dataset.modelo,m=MODELOS[id],kits=1;
-    var a=document.querySelector('[data-produto="'+id+'"]'),menos=box.querySelector('[data-passo="-1"]'),mais=box.querySelector('[data-passo="1"]');
-    function mostra(){
-      var n=kits*50,p=m.precos[Math.min(kits-1,5)];
-      box.querySelector('.js-un').textContent=n.toLocaleString('pt-BR')+' unidades';
-      box.querySelector('.js-tot').textContent=brl(p*n);
-      menos.disabled=kits<=1;mais.disabled=kits>=20;
-      a.href=link(carrinho(m,kits),'card-'+id);a.dataset.kits=kits;
-    }
-    box.addEventListener('click',function(e){var b=e.target.closest('[data-passo]');if(!b)return;kits=Math.max(1,Math.min(20,kits+(+b.dataset.passo)));mostra()});
+  var ZAP='https://wa.me/5554997081666?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Drip%20Coffee%20Label%20e%20quero%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20drip%20personalizado.';
+  var brl=function(v){return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'})};
+  document.querySelectorAll('.js-zap').forEach(function(a){a.href=ZAP});
+  // Vitrine: quantidade em kits de 50, preço da faixa e link direto para o carrinho
+  document.querySelectorAll('.prod').forEach(function(c){
+    var m=M[c.dataset.modelo],k=1,menos=c.querySelector('[data-passo="-1"]'),mais=c.querySelector('[data-passo="1"]');
+    function mostra(){var p=m.p[Math.min(k-1,5)],n=k*50;
+      c.querySelector('.js-n').textContent=n+' sachês';c.querySelector('.js-tot').textContent=brl(p*n);c.querySelector('.js-un').textContent=brl(p);
+      menos.disabled=k<=1;mais.disabled=k>=20;
+      c.querySelector('.js-comprar').href='https://clube.bloomingclub.com.br/cart-link/'+m.v+'-'+k+'?'+UTM+'&utm_content=card-'+c.dataset.modelo;}
+    c.addEventListener('click',function(e){var b=e.target.closest('[data-passo]');if(!b)return;k=Math.max(1,Math.min(20,k+(+b.dataset.passo)));mostra()});
     mostra();
   });
-  document.querySelectorAll('.js-zap').forEach(function(a){
-    a.href=zap(MSG_ORC);
-  });
-
-  var faixa=document.getElementById('faixa'),q=document.getElementById('q');
-  var tier=function(n){return Math.min(Math.floor(n/50)-1,5)};
-  function atual(){return document.querySelector('input[name=modelo]:checked').value}
-  function render(){
-    var n=+faixa.value,m=MODELOS[atual()],t=tier(n),p=m.precos[t];
-    q.value=n;q.textContent=n;
-    document.getElementById('total').textContent=brl(p*n);
-    document.getElementById('un').textContent=brl(p)+' por drip';
-    var rs=n.toLocaleString('pt-BR')+' unidades · '+m.nome;document.getElementById('resumo').textContent=rs;document.getElementById('resumo-desk').textContent=rs;
-    document.getElementById('proxima-faixa').textContent=t<5?'Com '+(t+2)*50+' unidades, cada drip sai por '+brl(m.precos[t+1])+'.':'Você já tem o menor preço por drip.';
-    document.getElementById('calc-zap').href=zap(base+'. Simulei '+n+' unidades do '+m.nome+' ('+brlCurto(p*n)+') e quero seguir com o pedido.');
-    document.getElementById('calc-site').href=link(carrinho(m,n/50),'calculadora');
-  }
-  
-  if(faixa){
-    faixa.addEventListener('input',render);
-    document.querySelectorAll('input[name=modelo]').forEach(function(r){r.addEventListener('change',render)});
-    document.getElementById('menos').onclick=function(){faixa.value=Math.max(50,+faixa.value-50);render()};
-    document.getElementById('mais').onclick=function(){faixa.value=Math.min(1000,+faixa.value+50);render()};
-    render();
-  }
-
-  var trilho=document.getElementById('trilho');
-  if(trilho){
-    document.querySelectorAll('[data-dir]').forEach(function(b){
-      b.onclick=function(){trilho.scrollBy({left:+b.dataset.dir*trilho.clientWidth*.8,behavior:'smooth'})};
-    });
-    
-    // Drag to scroll extra utility for desktop smoothness
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-    trilho.addEventListener('mousedown', (e) => {
-      isDown = true;
-      startX = e.pageX - trilho.offsetLeft;
-      scrollLeft = trilho.scrollLeft;
-    });
-    trilho.addEventListener('mouseleave', () => { isDown = false; });
-    trilho.addEventListener('mouseup', () => { isDown = false; });
-    trilho.addEventListener('mousemove', (e) => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - trilho.offsetLeft;
-      const walk = (x - startX) * 2; // scroll-fast
-      trilho.scrollLeft = scrollLeft - walk;
-    });
-  }
-
-  var v=document.querySelector('video');
-  if(v&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){v.removeAttribute('autoplay');v.pause();v.controls=true}
-})();
-</script>
-
-<!-- Meta Pixel: eventos de clique (não altera a calculadora, os links nem as mensagens) -->
-<script>
-(function(){
-  // Os dois pixels recebem tudo, menos o clique para a loja: no Pixel_Nuvem ele vira IrParaLoja,
-  // porque o checkout da Nuvemshop já envia o InitiateCheckout e contaria em dobro.
-  var PX_DRIP='1636404041306148', PX_NUVEM='29552796950978987';
+  // Tabela de preços
+  var h='';for(var i=0;i<6;i++){h+='<tr><td>'+(i<5?(i+1)*50:'300 ou mais')+'</td><td>'+brl(M.kraft.p[i])+'</td><td>'+brl(M.branco.p[i])+'</td><td>'+brl(M.kraftp.p[i])+'</td></tr>'}
+  document.getElementById('tabela').innerHTML=h;
+  // Setas das ocasiões (computador)
+  var tr=document.getElementById('ocasioes-trilho');
+  document.querySelectorAll('.setas button').forEach(function(b){b.onclick=function(){tr.scrollBy({left:(+b.dataset.dir)*tr.clientWidth/2,behavior:'smooth'})}});
+  // Pixel: os dois pixels recebem tudo, menos o clique para a loja, que no Pixel_Nuvem vira IrParaLoja
+  var PX_DRIP='1636404041306148',PX_NUVEM='29552796950978987';
   function ev(nome,dados){try{if(!window.fbq)return;dados=dados||{};
     if(nome==='InitiateCheckout'){fbq('trackSingle',PX_DRIP,nome,dados);fbq('trackSingleCustom',PX_NUVEM,'IrParaLoja',dados)}
     else{fbq('track',nome,dados)}}catch(e){}}
-  function reais(t){var n=parseFloat(String(t||'').replace(/[^\d,]/g,'').replace(',','.'));return isNaN(n)?undefined:n}
-  function simulacao(){
-    var r=document.querySelector('input[name=modelo]:checked'),f=document.getElementById('faixa'),t=document.getElementById('total');
-    var d={content_type:'product',currency:'BRL'};
-    if(r){d.content_ids=[r.value]}
-    if(f){d.num_items=+f.value}
-    var v=reais(t&&t.textContent);if(v!==undefined){d.value=v}
-    return d;
-  }
   document.addEventListener('click',function(e){
-    var a=e.target.closest&&e.target.closest('a');
-    if(!a) return;
-    if(a.id==='calc-zap'){var d=simulacao();d.content_name='calculadora';ev('Lead',d);var c=simulacao();c.content_name='calculadora';ev('Contact',c)}
-    else if(a.classList.contains('js-zap')){ev('Contact',{content_name:a.getAttribute('data-origem')||'whatsapp'})}
-    else if(a.id==='calc-site'){var s=simulacao();s.content_name='calculadora';ev('InitiateCheckout',s)}
+    var a=e.target.closest&&e.target.closest('a');if(!a)return;
+    if(a.classList.contains('js-zap')){ev('Contact',{content_name:a.getAttribute('data-origem')||'whatsapp'})}
     else if(a.hasAttribute('data-produto')){ev('InitiateCheckout',{content_type:'product',content_ids:[a.getAttribute('data-produto')],content_name:'card-'+a.getAttribute('data-produto')})}
   },true);
 })();
 </script>
-
-<!-- Interface: animações de entrada e preenchimento do controle deslizante -->
-<script>
-(function(){
-  // Preenche o trilho do controle deslizante até o thumb (só visual; não altera a calculadora)
-  var faixa=document.getElementById('faixa');
-  function preencher(){
-    if(!faixa) return;
-    var p=(faixa.value-faixa.min)/(faixa.max-faixa.min)*100;
-    faixa.style.setProperty('--p',p+'%');
-  }
-  if(faixa){
-    faixa.addEventListener('input',preencher);
-    ['menos','mais'].forEach(function(id){var b=document.getElementById(id);if(b)b.addEventListener('click',preencher)});
-    preencher();
-  }
-
-  // "Simular meu pedido": rola até a calculadora descontando o menu fixo e corrige a posição
-  // se algo acima mudar de altura durante a rolagem (imagens carregando no celular)
-  var alvo=document.getElementById('calc');
-  if(alvo){
-    var suave=!window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var destino=function(){var h=document.querySelector('header');return Math.max(0,alvo.getBoundingClientRect().top+window.pageYOffset-(h?h.offsetHeight:0))};
-    document.querySelectorAll('a[href="#calc"]').forEach(function(a){
-      a.addEventListener('click',function(e){
-        e.preventDefault();
-        window.scrollTo({top:destino(),behavior:suave?'smooth':'auto'});
-        [900,1600,2600].forEach(function(t){setTimeout(function(){
-          if(Math.abs(destino()-window.pageYOffset)>4) window.scrollTo({top:destino(),behavior:suave?'smooth':'auto'});
-        },t)});
-      });
-    });
-  }
-
-  // Revela os elementos ao entrar na tela
-  var els=document.querySelectorAll('.reveal,.reveal-scale');
-  var semMovimento=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(!('IntersectionObserver' in window)||semMovimento){
-    els.forEach(function(el){el.classList.add('active')});
-    return;
-  }
-  var io=new IntersectionObserver(function(entradas){
-    entradas.forEach(function(e){
-      if(e.isIntersecting){e.target.classList.add('active');io.unobserve(e.target)}
-    });
-  },{threshold:0.12,rootMargin:'0px 0px -6% 0px'});
-  els.forEach(function(el){io.observe(el)});
-})();
-</script>
-
-<script>
-/* Esconde o botão flutuante no celular enquanto a calculadora está visível */
-(function(){
-  var b=document.getElementById('zap-flutuante'),c=document.getElementById('calc-form');
-  if(!b||!c||!('IntersectionObserver' in window))return;
-  new IntersectionObserver(function(e){b.classList.toggle('oculto',e[0].isIntersecting)}).observe(c);
-})();
-</script>
-
 </body>
 </html>
