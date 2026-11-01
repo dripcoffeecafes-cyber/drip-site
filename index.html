@@ -326,22 +326,14 @@
   @media (hover:hover){.leque .caso:hover{transform:rotateY(0) rotate(0) translateY(-8px) scale(1.08);z-index:10}}
   @keyframes flutua{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
   @media (prefers-reduced-motion:reduce){.leque .flut,.leque .chao{animation:none}}
-  /* Clientes: foto ampliada ao tocar (a seção continua igual) */
-  .leque .caso{cursor:zoom-in}
-  .zoom{position:fixed;inset:0;z-index:60;display:none;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:64px 16px 32px;background:rgba(29,29,27,.96)}
-  .zoom.aberto{display:flex}
-  .zoom img{display:block;width:auto;height:auto;max-width:min(88vw,560px);max-height:calc(100vh - 170px);filter:drop-shadow(0 18px 30px rgba(0,0,0,.45));animation:zoomin .22s ease-out}
-  @keyframes zoomin{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
-  .zoom p{color:#fff;font-weight:700;font-size:16px;letter-spacing:.01em}
-  .zoom button{position:absolute;display:grid;place-items:center;width:44px;height:44px;border:0;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;cursor:pointer}
-  .zoom button:hover{background:rgba(255,255,255,.26)}
-  .zoom button svg{width:22px;height:22px}
-  .zoom .fechar{top:14px;right:14px}
-  .zoom .ant{left:12px;top:50%;margin-top:-22px}
-  .zoom .prox{right:12px;top:50%;margin-top:-22px}
-  body.travado{overflow:hidden}
-  @media (max-width:639px){.zoom{padding:64px 16px 96px}.zoom img{max-width:calc(100vw - 40px);max-height:calc(100vh - 190px)}.zoom p{position:absolute;left:0;right:0;bottom:36px;text-align:center}.zoom .ant,.zoom .prox{top:auto;bottom:24px;margin-top:0}.zoom .ant{left:calc(50% - 132px)}.zoom .prox{right:calc(50% - 132px)}}
-  @media (prefers-reduced-motion:reduce){.zoom img{animation:none}}
+  /* Clientes: toque amplia o sachê no lugar, até o dobro, sem sair da seção */
+  .leque .caso{cursor:zoom-in;-webkit-tap-highlight-color:transparent}
+  .leque .flut img{transform-origin:50% 100%;transition:transform .45s cubic-bezier(.2,.8,.2,1),filter .45s}
+  .leque .caso.ampliado{position:relative;z-index:30;cursor:zoom-out;transform:rotateY(0) rotate(0) translateY(var(--y))}
+  .leque .caso.ampliado .flut{animation-play-state:paused}
+  .leque .caso.ampliado img{transform:translate(var(--zx,0),var(--zy,0)) scale(var(--zs,2));filter:drop-shadow(0 16px 24px rgba(29,29,27,.26)) drop-shadow(0 2px 4px rgba(29,29,27,.14))}
+  .leque .caso.ampliado .chao{opacity:0}
+  .leque .caso:focus{outline:none}.leque .caso:focus-visible{outline:2px solid var(--cafe);outline-offset:4px}
   .dica-rolar{margin-top:14px;text-align:center;font-size:12.5px;color:var(--apoio)}
   @media (min-width:900px){.dica-rolar.some{display:none}}
 
@@ -741,13 +733,6 @@ fbq('track','PageView');
   <div class="wrap legal">Blooming Club Cafés Especiais Ltda · CNPJ 62.660.408/0001-47 · Compras finalizadas na loja Blooming Club. Cenas com “sua marca aqui” são ilustrativas.</div>
 </footer>
 
-<div class="zoom" id="zoom" role="dialog" aria-modal="true" aria-label="Foto do cliente">
-  <button type="button" class="fechar" aria-label="Fechar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-  <button type="button" class="ant" aria-label="Foto anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
-  <img alt="">
-  <p></p>
-  <button type="button" class="prox" aria-label="Próxima foto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
-</div>
 <a class="zap-fixo js-zap" data-origem="flutuante" href="#" target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45c6.55 0 11.89-5.34 11.89-11.89A11.82 11.82 0 0 0 12.05 0Zm6.98 16.9c-.29.82-1.7 1.57-2.37 1.62-.6.05-1.19.27-4.03-.84-3.4-1.34-5.57-4.83-5.74-5.06-.17-.22-1.37-1.83-1.37-3.49 0-1.66.87-2.48 1.18-2.82.3-.33.67-.42.89-.42h.64c.2 0 .48-.08.75.57.29.69.97 2.37 1.05 2.54.09.17.14.37.03.6-.11.22-.17.36-.33.56-.17.2-.35.44-.5.59-.17.17-.34.35-.15.68.2.33.87 1.43 1.86 2.32 1.28 1.14 2.36 1.5 2.69 1.66.33.17.53.14.72-.08.2-.22.84-.98 1.06-1.31.22-.33.44-.28.75-.17.3.11 1.95.92 2.28 1.09.33.17.55.25.64.39.08.14.08.82-.2 1.63Z"/></svg></a>
 
 <script>
@@ -775,20 +760,22 @@ fbq('track','PageView');
   // Setas das ocasiões (computador)
   var tr=document.getElementById('ocasioes-trilho');
   document.querySelectorAll('.setas button').forEach(function(b){b.onclick=function(){tr.scrollBy({left:(+b.dataset.dir)*tr.clientWidth/2,behavior:'smooth'})}});
-  // Clientes: toque na foto abre a versão grande (cli-g-*.webp), com setas, Esc e deslizar
-  var cs=[].slice.call(document.querySelectorAll('.leque .caso')),z=document.getElementById('zoom'),zi=z.querySelector('img'),zp=z.querySelector('p'),at=0,x0=null;
-  function grande(i){return i.getAttribute('src').replace(/\?.*$/,'').replace('/cli-','/cli-g-')}
-  function mostra(i){at=(i+cs.length)%cs.length;var c=cs[at],im=c.querySelector('img');zi.src=grande(im);zi.alt=im.alt;zp.textContent=c.querySelector('.nome').textContent;
-    [at-1,at+1].forEach(function(j){var n=cs[(j+cs.length)%cs.length].querySelector('img');(new Image()).src=grande(n)})}
-  function abre(i){mostra(i);z.classList.add('aberto');document.body.classList.add('travado');z.querySelector('.fechar').focus()}
-  function fecha(){z.classList.remove('aberto');document.body.classList.remove('travado');cs[at].focus()}
-  cs.forEach(function(c,i){var n=c.querySelector('.nome').textContent;c.tabIndex=0;c.setAttribute('role','button');c.setAttribute('aria-label','Ampliar a foto do drip da '+n);
-    c.addEventListener('click',function(){abre(i)});c.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();abre(i)}})});
-  z.querySelector('.fechar').onclick=fecha;z.querySelector('.ant').onclick=function(){mostra(at-1)};z.querySelector('.prox').onclick=function(){mostra(at+1)};
-  z.addEventListener('click',function(e){if(e.target===z)fecha()});
-  document.addEventListener('keydown',function(e){if(!z.classList.contains('aberto'))return;if(e.key==='Escape')fecha();else if(e.key==='ArrowLeft')mostra(at-1);else if(e.key==='ArrowRight')mostra(at+1)});
-  z.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
-  z.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;x0=null;if(Math.abs(dx)>45)mostra(at+(dx<0?1:-1))});
+  // Clientes: toque amplia o sachê no lugar (até 2x, sem sair da tela), troca pela foto em alta e volta ao tocar de novo, rolar ou Esc
+  var cs=[].slice.call(document.querySelectorAll('.leque .caso')),ab=null,y0=0;
+  function alta(im){if(im.dataset.alta)return;im.dataset.alta=1;var g=im.getAttribute('src').replace(/\?.*$/,'').replace('/cli-','/cli-g-'),p=new Image();p.onload=function(){im.src=g};p.src=g}
+  function fecha(){if(!ab)return;ab.classList.remove('ampliado');ab.setAttribute('aria-expanded','false');ab=null}
+  function abre(c){fecha();var im=c.querySelector('img'),r=im.getBoundingClientRect(),vw=document.documentElement.clientWidth,vh=window.innerHeight,m=12,topo=76;
+    var s=Math.min(2,(vw-2*m)/r.width,(vh-topo-m)/r.height),w=r.width*s,h=r.height*s,cx=r.left+r.width/2,base=r.bottom;
+    var nx=Math.min(Math.max(cx,m+w/2),vw-m-w/2),nb=Math.min(Math.max(base,topo+h),vh-m);
+    c.style.setProperty('--zs',s.toFixed(3));c.style.setProperty('--zx',(nx-cx).toFixed(1)+'px');c.style.setProperty('--zy',(nb-base).toFixed(1)+'px');
+    alta(im);c.classList.add('ampliado');c.setAttribute('aria-expanded','true');ab=c;y0=window.scrollY}
+  cs.forEach(function(c){var n=c.querySelector('.nome').textContent;c.tabIndex=0;c.setAttribute('role','button');c.setAttribute('aria-expanded','false');c.setAttribute('aria-label','Ampliar o drip da '+n);
+    c.addEventListener('click',function(e){e.stopPropagation();if(ab===c)fecha();else abre(c)});
+    c.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();if(ab===c)fecha();else abre(c)}})});
+  document.addEventListener('click',fecha);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')fecha()});
+  window.addEventListener('scroll',function(){if(ab&&Math.abs(window.scrollY-y0)>40)fecha()},{passive:true});
+  window.addEventListener('resize',fecha);
   // Pixel: os dois pixels recebem tudo, menos o clique para a loja, que no Pixel_Nuvem vira IrParaLoja
   var PX_DRIP='1636404041306148',PX_NUVEM='29552796950978987';
   function ev(nome,dados){try{if(!window.fbq)return;dados=dados||{};
