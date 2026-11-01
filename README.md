@@ -12,7 +12,7 @@ Página estática (HTML, CSS e JS puros), pronta para GitHub Pages com domínio 
 5. Depois que o DNS propagar, marque Enforce HTTPS.
 
 ## Onde mudar as coisas
-- Número do WhatsApp e produtos: bloco `<script>` no fim do index.html (constantes ZAP e MODELOS). Cada modelo tem a `variante` do produto na loja Nuvemshop do clube; os botões de compra abrem `https://clube.bloomingclub.com.br/comprar/VARIANTE-KITS` (1 kit = 50 drips), que cria um carrinho novo e vai direto ao pagamento. Os produtos ficam "Não listado" na loja.
+- Número do WhatsApp e produtos: bloco `<script>` no fim do index.html (constantes ZAP e MODELOS). Cada modelo tem a `variante` do produto na loja Nuvemshop do clube; os botões de compra abrem `https://clube.bloomingclub.com.br/cart-link/VARIANTE-KITS` (1 kit = 50 drips), que soma os kits ao carrinho da loja e abre a página do carrinho. Os produtos ficam "Não listado" na loja.
 - Preços da calculadora: arrays `precos` em MODELOS (faixas 50, 100, 150, 200, 250 e 300+).
 - Todos os links para o site levam UTM (`utm_source=drip-landing`) para separar as vendas vindas da página no relatório da loja.
 
