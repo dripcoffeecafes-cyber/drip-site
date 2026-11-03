@@ -781,10 +781,16 @@ fbq('track','PageView');
   function ev(nome,dados){try{if(!window.fbq)return;dados=dados||{};
     if(nome==='InitiateCheckout'){fbq('trackSingle',PX_DRIP,nome,dados);fbq('trackSingleCustom',PX_NUVEM,'IrParaLoja',dados)}
     else{fbq('track',nome,dados)}}catch(e){}}
+  // Lead (só no Pixel_Nuvem): base da conversão Lead Drip da campanha DripNuvem.
+  // Vai no 1º clique de interesse da visita (WhatsApp ou Comprar), uma vez só, para não contar a mesma pessoa várias vezes.
+  var leadFeito=false;
+  function lead(nome){try{if(leadFeito)return;try{if(sessionStorage.getItem('drip_lead')){leadFeito=true;return}}catch(x){}
+    if(!window.fbq)return;fbq('trackSingle',PX_NUVEM,'Lead',{content_name:nome});leadFeito=true;
+    try{sessionStorage.setItem('drip_lead','1')}catch(x){}}catch(e){}}
   document.addEventListener('click',function(e){
     var a=e.target.closest&&e.target.closest('a');if(!a)return;
-    if(a.classList.contains('js-zap')){ev('Contact',{content_name:a.getAttribute('data-origem')||'whatsapp'})}
-    else if(a.hasAttribute('data-produto')){ev('InitiateCheckout',{content_type:'product',content_ids:[a.getAttribute('data-produto')],content_name:'card-'+a.getAttribute('data-produto')})}
+    if(a.classList.contains('js-zap')){var o=a.getAttribute('data-origem')||'whatsapp';ev('Contact',{content_name:o});lead('whatsapp-'+o)}
+    else if(a.hasAttribute('data-produto')){var pr=a.getAttribute('data-produto');ev('InitiateCheckout',{content_type:'product',content_ids:[pr],content_name:'card-'+pr});lead('loja-'+pr)}
   },true);
 })();
 </script>

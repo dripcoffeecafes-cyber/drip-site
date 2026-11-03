@@ -26,4 +26,5 @@ Página estática (HTML, CSS e JS puros), pronta para GitHub Pages com domínio 
 ## Medição (Meta)
 - Dois pixels durante a troca: Pixel_DripCoffee (1636404041306148, portfólio Drip Coffee Label) e Pixel_Nuvem (29552796950978987, Grupo Blooming), o pixel único do grupo, o mesmo da loja Nuvemshop.
 - O clique para a loja vai como InitiateCheckout só no Pixel_DripCoffee; no Pixel_Nuvem vira o evento próprio IrParaLoja, porque o checkout da Nuvemshop já envia o InitiateCheckout.
+- Lead (só no Pixel_Nuvem): enviado no primeiro clique de interesse da visita, num botão de WhatsApp (content_name whatsapp-<origem>) ou num Comprar (loja-<modelo>), uma vez por sessão. É a base da conversão personalizada "Lead Drip" (evento Lead, URL contém driplabel), na qual a campanha DripNuvem otimiza. Contact e IrParaLoja continuam como antes.
 - O Pixel_DripCoffee sai 2 a 3 semanas depois de as compras da Drip aparecerem no Pixel_Nuvem.
