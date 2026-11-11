@@ -12,7 +12,7 @@ Página estática (HTML, CSS e JS puros), pronta para GitHub Pages com domínio 
 5. Depois que o DNS propagar, marque Enforce HTTPS.
 
 ## Onde mudar as coisas
-- Número do WhatsApp e produtos: bloco `<script>` no fim do index.html (constantes ZAP e M). Cada modelo tem a variante `v` do produto na loja Nuvemshop do clube; os botões "Comprar" abrem `https://clube.bloomingclub.com.br/cart-link/VARIANTE-KITS` (1 kit = 50 drips), que soma os kits ao carrinho da loja e abre a página do carrinho. Os produtos ficam "Não listado" na loja.
+- Número do WhatsApp e produtos: bloco `<script>` no fim do index.html (constantes ZAP e M). Cada modelo tem em `v` o número do produto na loja da Betalabs (www.bloomingclub.com.br): Kraft Clássico 33, Branco Premium 278, Kraft Premium 281. Os botões "Comprar" abrem `https://www.bloomingclub.com.br/checkout/cart/item/add/NÚMERO?quantity=KITS`; conta e carrinho do topo também vão para o www (desde 11/11/2026; antes era a loja Nuvemshop).
 - Preços: arrays `p` em M (faixas 50, 100, 150, 200, 250 e 300+). A tabela de preços é montada a partir deles.
 - Todos os links para a loja levam UTM (`utm_source=drip-landing`) para separar as vendas vindas da página no relatório da loja.
 - Cabeçalho: logo da Drip, "by" e logo do Blooming Club (assets/img/blooming.webp, feito do blooming.png); ícones de conta (/account/) e carrinho (/comprar/) da loja.

@@ -512,8 +512,8 @@ fbq('track','PageView');
       <a href="#duvidas">Dúvidas</a>
     </nav>
     <div class="acoes">
-      <a class="ico" href="https://clube.bloomingclub.com.br/account/" target="_blank" rel="noopener" data-origem="topo-conta" aria-label="Minha conta ou cadastro na loja Blooming Club" title="Minha conta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3.75"/><path d="M4.75 20c.9-3.6 3.8-5.5 7.25-5.5s6.35 1.9 7.25 5.5"/></svg></a>
-      <a class="ico" href="https://clube.bloomingclub.com.br/comprar/" target="_blank" rel="noopener" data-origem="topo-carrinho" aria-label="Carrinho na loja Blooming Club" title="Carrinho"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 8h13l-1 12.25H6.5L5.5 8Z"/><path d="M9 10.5V7a3 3 0 0 1 6 0v3.5"/></svg></a>
+      <a class="ico" href="https://www.bloomingclub.com.br/account" target="_blank" rel="noopener" data-origem="topo-conta" aria-label="Minha conta ou cadastro na loja Blooming Club" title="Minha conta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3.75"/><path d="M4.75 20c.9-3.6 3.8-5.5 7.25-5.5s6.35 1.9 7.25 5.5"/></svg></a>
+      <a class="ico" href="https://www.bloomingclub.com.br/checkout/cart" target="_blank" rel="noopener" data-origem="topo-carrinho" aria-label="Carrinho na loja Blooming Club" title="Carrinho"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 8h13l-1 12.25H6.5L5.5 8Z"/><path d="M9 10.5V7a3 3 0 0 1 6 0v3.5"/></svg></a>
       <a class="btn btn-ink js-zap" data-origem="topo" href="#" target="_blank" rel="noopener">Fale com a gente</a>
     </div>
   </div>
@@ -737,9 +737,9 @@ fbq('track','PageView');
 
 <script>
 (function(){
-  var M={kraft:{n:'Kraft Clássico',p:[5.9,5.7,5.5,5.3,5.1,4.9],v:'1630810245'},
-         branco:{n:'Branco Premium',p:[6.9,6.7,6.5,6.3,6.1,5.9],v:'1630819984'},
-         kraftp:{n:'Kraft Premium',p:[6.9,6.7,6.5,6.3,6.1,5.9],v:'1630823691'}};
+  var M={kraft:{n:'Kraft Clássico',p:[5.9,5.7,5.5,5.3,5.1,4.9],v:'33'},
+         branco:{n:'Branco Premium',p:[6.9,6.7,6.5,6.3,6.1,5.9],v:'278'},
+         kraftp:{n:'Kraft Premium',p:[6.9,6.7,6.5,6.3,6.1,5.9],v:'281'}};
   var UTM='utm_source=drip-landing&utm_medium=site&utm_campaign=brindes';
   var ZAP='https://wa.me/5554997081666?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Drip%20Coffee%20Label%20e%20quero%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20drip%20personalizado.';
   var brl=function(v){return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'})};
@@ -750,7 +750,7 @@ fbq('track','PageView');
     function mostra(){var p=m.p[Math.min(k-1,5)],n=k*50;
       c.querySelector('.js-n').textContent=n+' sachês';c.querySelector('.js-tot').textContent=brl(p*n);c.querySelector('.js-un').textContent=brl(p);
       menos.disabled=k<=1;mais.disabled=k>=20;
-      c.querySelector('.js-comprar').href='https://clube.bloomingclub.com.br/cart-link/'+m.v+'-'+k+'?'+UTM+'&utm_content=card-'+c.dataset.modelo;}
+      c.querySelector('.js-comprar').href='https://www.bloomingclub.com.br/checkout/cart/item/add/'+m.v+'?quantity='+k+'&'+UTM+'&utm_content=card-'+c.dataset.modelo;}
     c.addEventListener('click',function(e){var b=e.target.closest('[data-passo]');if(!b)return;k=Math.max(1,Math.min(20,k+(+b.dataset.passo)));mostra()});
     mostra();
   });
