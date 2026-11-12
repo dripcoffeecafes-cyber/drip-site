@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100mm" height="150mm" viewBox="0 0 100 150">
+  <!-- Drip Coffee Label · arte ilustrativa da impressão colorida (face 10 x 15 cm).
+       Área segura: 8 mm das bordas. O miolo (y 42 a 118) fica livre para logo e texto. -->
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round" style="mix-blend-mode:multiply">
+    <path d="M12 38 C12 22 23 13 40 14" stroke="#C4583A" stroke-width="6.5"/>
+    <path d="M30 27 C44 17 60 15 72 22 S88 31 90 14" stroke="#E2A62B" stroke-width="4.6"/>
+    <circle cx="82" cy="37" r="2.6" fill="#1F3A60" stroke="none"/>
+    <path d="M89 54 C84 67 84 85 89 99" stroke="#23756E" stroke-width="3.6"/>
+    <path d="M12 132 C23 121 42 123 55 130 S78 138 88 123" stroke="#23756E" stroke-width="6.5"/>
+    <path d="M15 124 C21 120 27 119 33 121" stroke="#1F3A60" stroke-width="3"/>
+    <path d="M58 138 C65 135 72 135 78 137" stroke="#C4583A" stroke-width="3.6"/>
+  </g>
+</svg>

@@ -376,6 +376,27 @@
   .prod .btn{margin-top:16px;width:100%;max-width:300px}
   .prod .duv{margin-top:10px;font-size:13px;font-weight:600;color:var(--apoio)}
   .prod .duv:hover{color:var(--cafe)}
+  /* Impressão (só nos Premium): escolha obrigatória entre Preto e Colorido */
+  .imp{margin-top:18px;border:0;padding:0;min-width:0;width:100%;max-width:300px}
+  .imp legend{display:block;width:100%;margin-bottom:8px;font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--apoio)}
+  .imp legend span{letter-spacing:0;text-transform:none;font-weight:600}
+  .imp-op{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .imp-op.um{grid-template-columns:1fr;max-width:146px;margin:0 auto}
+  .imp-op label{position:relative;cursor:pointer}
+  .imp-op input{position:absolute;opacity:0;pointer-events:none}
+  .imp-op .op{display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 6px;border-radius:14px;background:#fff;border:1.5px solid var(--borda);font-weight:700;font-size:14px;line-height:1.2;transition:border-color .2s,background .2s,color .2s}
+  .imp-op .op small{font-size:12px;font-weight:600;color:var(--apoio)}
+  .imp-op .bola{width:16px;height:16px;border-radius:50%;background:#1D1D1B;box-shadow:0 0 0 2px #fff,0 0 0 3px var(--borda)}
+  .imp-op .bola.cor{background:conic-gradient(#00A3E0 0 25%,#E6007E 0 50%,#FFDD00 0 75%,#1D1D1B 0)}
+  .imp-op input:checked+.op{border-color:var(--ink);background:var(--ink);color:#fff}
+  .imp-op input:checked+.op small{color:#CFCFCB}
+  .imp-op input:focus-visible+.op{outline:2px solid var(--cafe);outline-offset:2px}
+  .imp-nota{margin-top:8px;font-size:12px;line-height:1.4;color:var(--apoio)}
+  .imp-aviso{display:none;margin-top:8px;font-size:12.5px;font-weight:700;color:#B3261E}
+  .imp.falta .imp-op .op{border-color:#B3261E}
+  .imp.falta .imp-aviso{display:block}
+  .imp.falta{animation:treme .35s}
+  @keyframes treme{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
 
   /* Caminhos */
   .caminhos{display:grid;gap:14px;margin-top:40px}
@@ -565,30 +586,56 @@ fbq('track','PageView');
         <p class="preco tnum"><span class="js-un">R$ 5,90</span><small>/sachê</small></p>
         <p class="min">Mínimo: 50 sachês</p>
         <p class="faixa">A partir de R$ 4,90 com 300 ou mais</p>
+        <fieldset class="imp">
+          <legend>Impressão <span>· escolha para continuar</span></legend>
+          <div class="imp-op um">
+            <label><input type="radio" name="imp-kraft" value="preto"><span class="op"><i class="bola"></i>Preto<small>incluso</small></span></label>
+          </div>
+          <p class="imp-nota">No Kraft Clássico a impressão é só em preto.</p>
+          <p class="imp-aviso" role="alert">Escolha a impressão para continuar.</p>
+        </fieldset>
         <div class="qtd"><div class="stepper"><button type="button" data-passo="-1" aria-label="Menos 50 sachês">−</button><output class="js-n tnum">50 sachês</output><button type="button" data-passo="1" aria-label="Mais 50 sachês">+</button></div><div class="tot">Total<b class="js-tot tnum">R$ 295,00</b></div></div>
         <a class="btn btn-cafe js-comprar" data-produto="kraft" href="#" target="_blank" rel="noopener">Comprar</a>
         <a class="duv js-zap" data-origem="modelo-kraft" href="#" target="_blank" rel="noopener">Dúvidas? Fale com a gente</a>
       </article>
       <article class="prod d3" data-modelo="branco">
-        <div class="img"><img src="assets/img/p-branco-cut.webp?v=3" alt="Drip Branco Premium com a sua marca" width="416" height="605" loading="lazy"></div>
+        <div class="img"><img src="assets/img/p-branco-cut.webp?v=3" data-cor="assets/img/p-branco-cor-cut.webp?v=1" alt="Drip Branco Premium com a sua marca" width="416" height="605" loading="lazy"></div>
         <h3>Branco Premium</h3>
         <p class="med">10 × 15 cm · papel branco</p>
         <p class="desc">Maior, com contraste máximo para a logo e espaço para uma mensagem.</p>
         <p class="preco tnum"><span class="js-un">R$ 6,90</span><small>/sachê</small></p>
         <p class="min">Mínimo: 50 sachês</p>
         <p class="faixa">A partir de R$ 5,90 com 300 ou mais</p>
+        <fieldset class="imp">
+          <legend>Impressão <span>· escolha uma</span></legend>
+          <div class="imp-op">
+            <label><input type="radio" name="imp-branco" value="preto"><span class="op"><i class="bola"></i>Preto<small>incluso</small></span></label>
+            <label><input type="radio" name="imp-branco" value="cor"><span class="op"><i class="bola cor"></i>Colorido<small>+ R$ 0,60/sachê</small></span></label>
+          </div>
+          <p class="imp-nota">Colorido: a logo ou o texto em cores. Sem foto e sem fundo preenchido.</p>
+          <p class="imp-aviso" role="alert">Escolha a impressão para continuar.</p>
+        </fieldset>
         <div class="qtd"><div class="stepper"><button type="button" data-passo="-1" aria-label="Menos 50 sachês">−</button><output class="js-n tnum">50 sachês</output><button type="button" data-passo="1" aria-label="Mais 50 sachês">+</button></div><div class="tot">Total<b class="js-tot tnum">R$ 345,00</b></div></div>
         <a class="btn btn-cafe js-comprar" data-produto="branco" href="#" target="_blank" rel="noopener">Comprar</a>
         <a class="duv js-zap" data-origem="modelo-branco" href="#" target="_blank" rel="noopener">Dúvidas? Fale com a gente</a>
       </article>
       <article class="prod d3" data-modelo="kraftp">
-        <div class="img"><img src="assets/img/p-kraft-premium-cut.webp?v=3" alt="Drip Kraft Premium com a sua marca" width="417" height="606" loading="lazy"></div>
+        <div class="img"><img src="assets/img/p-kraft-premium-cut.webp?v=3" data-cor="assets/img/p-kraft-premium-cor-cut.webp?v=1" alt="Drip Kraft Premium com a sua marca" width="417" height="606" loading="lazy"></div>
         <h3>Kraft Premium</h3>
         <p class="med">10 × 15 cm · kraft liso</p>
         <p class="desc">O tamanho do premium com o kraft liso. Impressão mais nítida.</p>
         <p class="preco tnum"><span class="js-un">R$ 6,90</span><small>/sachê</small></p>
         <p class="min">Mínimo: 50 sachês</p>
         <p class="faixa">A partir de R$ 5,90 com 300 ou mais</p>
+        <fieldset class="imp">
+          <legend>Impressão <span>· escolha uma</span></legend>
+          <div class="imp-op">
+            <label><input type="radio" name="imp-kraftp" value="preto"><span class="op"><i class="bola"></i>Preto<small>incluso</small></span></label>
+            <label><input type="radio" name="imp-kraftp" value="cor"><span class="op"><i class="bola cor"></i>Colorido<small>+ R$ 0,60/sachê</small></span></label>
+          </div>
+          <p class="imp-nota">Colorido: a logo ou o texto em cores. Sem foto e sem fundo preenchido.</p>
+          <p class="imp-aviso" role="alert">Escolha a impressão para continuar.</p>
+        </fieldset>
         <div class="qtd"><div class="stepper"><button type="button" data-passo="-1" aria-label="Menos 50 sachês">−</button><output class="js-n tnum">50 sachês</output><button type="button" data-passo="1" aria-label="Mais 50 sachês">+</button></div><div class="tot">Total<b class="js-tot tnum">R$ 345,00</b></div></div>
         <a class="btn btn-cafe js-comprar" data-produto="kraftp" href="#" target="_blank" rel="noopener">Comprar</a>
         <a class="duv js-zap" data-origem="modelo-kraft-premium" href="#" target="_blank" rel="noopener">Dúvidas? Fale com a gente</a>
@@ -690,7 +737,7 @@ fbq('track','PageView');
         <tbody id="tabela"></tbody>
       </table>
     </div></div>
-    <p class="nota-precos">O desconto entra sozinho no carrinho. Frete calculado pelo CEP antes do pagamento. Acima de 1.000 sachês, fale com a gente.</p>
+    <p class="nota-precos">Premium com impressão colorida: + R$ 0,60 por sachê em todas as faixas. O desconto entra sozinho no carrinho. Frete calculado pelo CEP antes do pagamento. Acima de 1.000 sachês, fale com a gente.</p>
   </div>
 </section>
 
@@ -738,20 +785,31 @@ fbq('track','PageView');
 <script>
 (function(){
   var M={kraft:{n:'Kraft Clássico',p:[5.9,5.7,5.5,5.3,5.1,4.9],v:'33'},
-         branco:{n:'Branco Premium',p:[6.9,6.7,6.5,6.3,6.1,5.9],v:'278'},
-         kraftp:{n:'Kraft Premium',p:[6.9,6.7,6.5,6.3,6.1,5.9],v:'281'}};
+         branco:{n:'Branco Premium',p:[6.9,6.7,6.5,6.3,6.1,5.9],v:'278',vp:'278',vc:'278'},
+         kraftp:{n:'Kraft Premium',p:[6.9,6.7,6.5,6.3,6.1,5.9],v:'281',vp:'281',vc:'281'}};
   var UTM='utm_source=drip-landing&utm_medium=site&utm_campaign=brindes';
   var ZAP='https://wa.me/5554997081666?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Drip%20Coffee%20Label%20e%20quero%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20drip%20personalizado.';
   var brl=function(v){return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'})};
   document.querySelectorAll('.js-zap').forEach(function(a){a.href=ZAP});
-  // Vitrine: quantidade em kits de 50, preço da faixa e link direto para o carrinho
+  // Vitrine: quantidade em kits de 50, preço da faixa e link direto para o carrinho.
+  // Premium: impressão obrigatória (Preto ou Colorido, + R$ 0,60/sachê). Cada impressão é uma variação com número próprio (vp, vc).
+  var COR=0.6;
   document.querySelectorAll('.prod').forEach(function(c){
-    var m=M[c.dataset.modelo],k=1,menos=c.querySelector('[data-passo="-1"]'),mais=c.querySelector('[data-passo="1"]');
-    function mostra(){var p=m.p[Math.min(k-1,5)],n=k*50;
+    var m=M[c.dataset.modelo],k=1,menos=c.querySelector('[data-passo="-1"]'),mais=c.querySelector('[data-passo="1"]'),
+        fs=c.querySelector('.imp'),bt=c.querySelector('.js-comprar');
+    function imp(){var r=c.querySelector('.imp input:checked');return r?r.value:''}
+    function mostra(){var i=imp(),a=i==='cor'?COR:0,p=m.p[Math.min(k-1,5)]+a,n=k*50,v=!i?'':i==='cor'?m.vc:(m.vp||m.v);
       c.querySelector('.js-n').textContent=n+' sachês';c.querySelector('.js-tot').textContent=brl(p*n);c.querySelector('.js-un').textContent=brl(p);
+      var f=c.querySelector('.faixa');if(f)f.textContent='A partir de '+brl(m.p[5]+a)+' com 300 ou mais';
       menos.disabled=k<=1;mais.disabled=k>=20;
-      c.querySelector('.js-comprar').href='https://www.bloomingclub.com.br/checkout/cart/item/add/'+m.v+'?quantity='+k+'&'+UTM+'&utm_content=card-'+c.dataset.modelo;}
+      var im=c.querySelector('.img img');if(im&&im.dataset.cor){if(!im.dataset.base)im.dataset.base=im.getAttribute('src');var alvo=i==='cor'?im.dataset.cor:im.dataset.base;if(im.getAttribute('src')!==alvo)im.setAttribute('src',alvo)}
+      bt.dataset.imp=i;
+      bt.href=v?'https://www.bloomingclub.com.br/checkout/cart/item/add/'+v+'?quantity='+k+'&'+UTM+'&utm_content=card-'+c.dataset.modelo+(i?'-'+i:''):'#';}
     c.addEventListener('click',function(e){var b=e.target.closest('[data-passo]');if(!b)return;k=Math.max(1,Math.min(20,k+(+b.dataset.passo)));mostra()});
+    var ic=c.querySelector('.img img[data-cor]');if(ic){var pre=new Image();pre.src=ic.dataset.cor}
+    if(fs){fs.addEventListener('change',function(){fs.classList.remove('falta');mostra()});
+      bt.addEventListener('click',function(e){if(imp())return;e.preventDefault();e.stopImmediatePropagation();
+        fs.classList.remove('falta');void fs.offsetWidth;fs.classList.add('falta');fs.scrollIntoView({behavior:'smooth',block:'center'})},true);}
     mostra();
   });
   // Tabela de preços
@@ -790,7 +848,7 @@ fbq('track','PageView');
   document.addEventListener('click',function(e){
     var a=e.target.closest&&e.target.closest('a');if(!a)return;
     if(a.classList.contains('js-zap')){var o=a.getAttribute('data-origem')||'whatsapp';ev('Contact',{content_name:o});lead('whatsapp-'+o)}
-    else if(a.hasAttribute('data-produto')){var pr=a.getAttribute('data-produto');ev('InitiateCheckout',{content_type:'product',content_ids:[pr],content_name:'card-'+pr});lead('loja-'+pr)}
+    else if(a.hasAttribute('data-produto')){if(a.getAttribute('href')==='#')return;var pr=a.getAttribute('data-produto')+(a.dataset.imp?'-'+a.dataset.imp:'');ev('InitiateCheckout',{content_type:'product',content_ids:[pr],content_name:'card-'+pr});lead('loja-'+pr)}
   },true);
 })();
 </script>
