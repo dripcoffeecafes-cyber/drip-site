@@ -589,7 +589,7 @@ fbq('track','PageView');
         <fieldset class="imp">
           <legend>Impressão <span>· escolha para continuar</span></legend>
           <div class="imp-op um">
-            <label><input type="radio" name="imp-kraft" value="preto"><span class="op"><i class="bola"></i>Preto<small>incluso</small></span></label>
+            <label><input type="radio" name="imp-kraft" value="preto"><span class="op"><i class="bola"></i>Preto<small>1 cor</small></span></label>
           </div>
           <p class="imp-nota">No Kraft Clássico a impressão é só em preto.</p>
           <p class="imp-aviso" role="alert">Escolha a impressão para continuar.</p>
@@ -609,8 +609,8 @@ fbq('track','PageView');
         <fieldset class="imp">
           <legend>Impressão <span>· escolha uma</span></legend>
           <div class="imp-op">
-            <label><input type="radio" name="imp-branco" value="preto"><span class="op"><i class="bola"></i>Preto<small>incluso</small></span></label>
-            <label><input type="radio" name="imp-branco" value="cor"><span class="op"><i class="bola cor"></i>Colorido<small>+ R$ 0,60/sachê</small></span></label>
+            <label><input type="radio" name="imp-branco" value="preto"><span class="op"><i class="bola"></i>Preto<small>1 cor</small></span></label>
+            <label><input type="radio" name="imp-branco" value="cor"><span class="op"><i class="bola cor"></i>Colorido<small>mesmo preço</small></span></label>
           </div>
           <p class="imp-nota">Colorido: a logo ou o texto em cores. Sem foto e sem fundo preenchido.</p>
           <p class="imp-aviso" role="alert">Escolha a impressão para continuar.</p>
@@ -630,8 +630,8 @@ fbq('track','PageView');
         <fieldset class="imp">
           <legend>Impressão <span>· escolha uma</span></legend>
           <div class="imp-op">
-            <label><input type="radio" name="imp-kraftp" value="preto"><span class="op"><i class="bola"></i>Preto<small>incluso</small></span></label>
-            <label><input type="radio" name="imp-kraftp" value="cor"><span class="op"><i class="bola cor"></i>Colorido<small>+ R$ 0,60/sachê</small></span></label>
+            <label><input type="radio" name="imp-kraftp" value="preto"><span class="op"><i class="bola"></i>Preto<small>1 cor</small></span></label>
+            <label><input type="radio" name="imp-kraftp" value="cor"><span class="op"><i class="bola cor"></i>Colorido<small>mesmo preço</small></span></label>
           </div>
           <p class="imp-nota">Colorido: a logo ou o texto em cores. Sem foto e sem fundo preenchido.</p>
           <p class="imp-aviso" role="alert">Escolha a impressão para continuar.</p>
@@ -737,7 +737,7 @@ fbq('track','PageView');
         <tbody id="tabela"></tbody>
       </table>
     </div></div>
-    <p class="nota-precos">Premium com impressão colorida: + R$ 0,60 por sachê em todas as faixas. O desconto entra sozinho no carrinho. Frete calculado pelo CEP antes do pagamento. Acima de 1.000 sachês, fale com a gente.</p>
+    <p class="nota-precos">Nos Premium, impressão preta ou colorida pelo mesmo preço. O desconto entra sozinho no carrinho. Frete calculado pelo CEP antes do pagamento. Acima de 1.000 sachês, fale com a gente.</p>
   </div>
 </section>
 
@@ -792,8 +792,8 @@ fbq('track','PageView');
   var brl=function(v){return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'})};
   document.querySelectorAll('.js-zap').forEach(function(a){a.href=ZAP});
   // Vitrine: quantidade em kits de 50, preço da faixa e link direto para o carrinho.
-  // Premium: impressão obrigatória (Preto ou Colorido, + R$ 0,60/sachê). Cada impressão é uma variação com número próprio (vp, vc).
-  var COR=0.6;
+  // Premium: impressão obrigatória (Preto ou Colorido, mesmo preço). Cada impressão é uma variação com número próprio (vp, vc).
+  var COR=0;
   document.querySelectorAll('.prod').forEach(function(c){
     var m=M[c.dataset.modelo],k=1,menos=c.querySelector('[data-passo="-1"]'),mais=c.querySelector('[data-passo="1"]'),
         fs=c.querySelector('.imp'),bt=c.querySelector('.js-comprar');
