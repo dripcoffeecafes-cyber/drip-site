@@ -236,7 +236,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   /* Paleta do kit de marca do clube (tokens do Blooming Club). Acento: cafe-canela, o tom do logo da Drip. */
   :root{--ink:#1D1D1B;--texto:#3F3D3B;--apoio:#716F6E;--borda:#CDCCCC;--fundo:#F0EEEC;--papel:#F9F6F4;--escuro:#2A2927;--apoio-escuro:#A9A6A2;--cafe:#854734;--cafe-esc:#6E3A2A;--cafe-claro:#D6917B;--amarelo:#EEBC4A;--r:20px}
@@ -593,6 +593,76 @@
   .passos li,.faq details{border:0;box-shadow:var(--sombra)}
   .tabela{border:0;box-shadow:var(--sombra)}
   .fecho{border-radius:var(--r)}
+
+  /* ===== Camada premium (16/11): foto real, títulos leves em Outfit, alinhamento à esquerda, cantos discretos, sem enfeite ===== */
+  :root{--r:10px;--sombra:none;--fio:#E5E1DC}
+  h1,h2,h3,.cab h2,.prod h3,.caminho h3,.passos h3,.raiz h2,.fecho h2,.categoria h3,.prod .preco,.selo-sca b{font-family:'Outfit','Open Sans',sans-serif;font-weight:500;letter-spacing:-.02em}
+  .btn{font-weight:600}
+  header{border-bottom:1px solid var(--fio)}
+  .cab{text-align:left;max-width:none;margin:0 0 32px}
+  @media (min-width:1024px){.cab{margin-bottom:48px}}
+  .cab h2{margin-top:0;font-size:32px;line-height:1.08;letter-spacing:-.03em;max-width:16em}
+  @media (min-width:1024px){.cab h2{font-size:52px}}
+  .cab p{max-width:36rem;font-size:16px}
+  .cab .olho{display:none}
+  .cafe-grid .cab{text-align:center}.cafe-grid .cab h2{margin:0 auto;font-size:30px}
+  @media (min-width:1024px){.cafe-grid .cab h2{font-size:38px}}
+
+  .capa{background:var(--ink);color:#fff;display:grid}
+  .capa-foto{margin:0;position:relative;overflow:hidden;aspect-ratio:4/5;order:-1}
+  .capa-foto img{width:100%;height:100%;object-fit:cover;object-position:50% 35%}
+  .capa-foto figcaption{position:absolute;left:16px;bottom:12px;font-size:12px;color:rgba(255,255,255,.85);text-shadow:0 1px 6px rgba(0,0,0,.6)}
+  .capa-txt{padding:36px 20px 44px;align-self:center}
+  @media (min-width:900px){.capa{grid-template-columns:1fr 1fr;min-height:min(88vh,780px)}
+    .capa-foto{aspect-ratio:auto;order:0}
+    .capa-txt{padding:64px 56px 64px max(20px,calc((100vw - 1120px)/2 + 20px))}}
+  .capa h1{color:#fff;font-size:44px;line-height:1.02;letter-spacing:-.035em;max-width:8.5em}
+  @media (min-width:1024px){.capa h1{font-size:76px}}
+  .capa .sub{margin-top:18px;color:#CFCBC6;font-size:17px;line-height:1.55;max-width:27rem}
+  .capa .ctas{display:flex;flex-wrap:wrap;gap:10px;margin:28px 0 0;max-width:none}
+  .btn-vazado{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.5)}.btn-vazado:hover{box-shadow:inset 0 0 0 1.5px #fff}
+  .capa .quem{margin-top:32px;font-size:13.5px;color:#A9A6A2}.capa .quem b{color:#fff;font-weight:600}
+
+  .fatos{border-bottom:1px solid var(--fio)}
+  .fatos ul{list-style:none;margin:0 auto;display:grid;grid-template-columns:1fr 1fr}
+  .fatos li{padding:20px 12px 20px 0;border-top:1px solid var(--fio)}
+  .fatos li:nth-child(-n+2){border-top:0}
+  .fatos b{display:block;font:500 16px/1.25 'Outfit','Open Sans',sans-serif;letter-spacing:-.01em}
+  .fatos span{display:block;margin-top:3px;font-size:13px;color:var(--apoio)}
+  @media (min-width:900px){.fatos ul{grid-template-columns:repeat(4,1fr)}.fatos li{padding:26px 24px;border-top:0;border-left:1px solid var(--fio)}.fatos li:first-child{border-left:0;padding-left:0}.fatos b{font-size:18px}}
+
+  .dif{display:grid;gap:28px}
+  @media (min-width:900px){.dif{grid-template-columns:5fr 7fr;gap:72px;align-items:start}.dif-foto{position:sticky;top:96px}}
+  .dif-foto{margin:0}
+  .dif-foto img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--r)}
+  .dif-lista{list-style:none;margin:0;padding:0;border-bottom:1px solid var(--fio)}
+  .dif-lista li{padding:24px 0;border-top:1px solid var(--fio)}
+  .dif-lista h3{font-size:23px;line-height:1.2}
+  @media (min-width:1024px){.dif-lista h3{font-size:28px}.dif-lista li{padding:30px 0}}
+  .dif-lista p{margin-top:8px;font-size:15.5px;color:var(--apoio);max-width:34rem}
+
+  .galeria{display:grid;grid-auto-flow:column;grid-auto-columns:68%;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 20px 6px;margin:0 -20px;scrollbar-width:none}
+  .galeria::-webkit-scrollbar{display:none}
+  .galeria figure{margin:0;scroll-snap-align:center}
+  .galeria img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--r)}
+  .galeria figcaption{margin-top:10px;font-size:14px;font-weight:600;color:var(--ink)}
+  @media (min-width:860px){.galeria{grid-auto-flow:row;grid-template-columns:repeat(3,1fr);gap:20px 20px;overflow:visible;padding:0;margin:0}}
+
+  .prod{box-shadow:none;border-radius:var(--r);padding:30px 22px 24px}
+  .prod.d3 .img::before,.prod.d3 .img::after{display:none}
+  .prod.d3 .img img{animation:none;transform:none}
+  .prod:hover .img{transform:none!important}
+  .prod .selo{background:var(--ink);color:#fff;border-radius:4px;font-weight:600;font-size:11px;padding:4px 9px}
+  .prod h3{font-size:24px}.prod .preco{font-size:30px}
+  .caminho,.passos li,.faq details,.tabela,.categoria{box-shadow:none;border:1px solid var(--fio)}
+  .caminho.escuro{border-color:var(--ink)}
+  .categoria{text-align:left}.categoria img{aspect-ratio:4/5}
+  .categoria .c{align-items:flex-start;padding:20px 20px 24px}
+  .categoria h3{font-size:22px;text-transform:none;letter-spacing:-.02em}
+  .categoria .btn{min-width:0}
+  .raiz h2{font-size:30px}@media (min-width:1024px){.raiz h2{font-size:44px}}
+  .fecho h2{font-size:30px}@media (min-width:1024px){.fecho h2{font-size:46px}}
+  .faq summary{font-weight:600}
 </style>
 <!-- Meta Pixel -->
 <script>
@@ -605,7 +675,7 @@ fbq('track','PageView');
 </head>
 <body>
 
-<div class="aviso">Pedido mínimo de 50 sachês · Você aprova a arte antes da impressão · <a href="#modelos">Ver preços</a></div>
+
 
 <header>
   <div class="wrap in">
@@ -615,6 +685,7 @@ fbq('track','PageView');
     </div>
     <nav aria-label="Menu">
       <a href="#modelos">Modelos</a>
+      <a href="#diferenciais">Diferenciais</a>
       <a href="#clientes">Clientes</a>
       <a href="#ocasioes">Ocasiões</a>
       <a href="#precos">Preços</a>
@@ -628,69 +699,22 @@ fbq('track','PageView');
   </div>
 </header>
 
-<!-- Topo: banners -->
-<section class="topo">
-  <div class="wrap">
-    <div class="moldura" id="moldura">
-      <div class="banners" id="banners" aria-roledescription="carrossel" aria-label="Destaques">
-        <div class="banner claro" aria-roledescription="slide" aria-label="1 de 3">
-          <div class="txt">
-            <span class="olho">Drip coffee personalizado</span>
-            <h1>Sua marca na pausa do café.</h1>
-            <p>A sua logo impressa direto no sachê e café especial de origem única dentro. A partir de 50 sachês.</p>
-            <div class="ctas"><a class="btn btn-cafe" href="#modelos">Comprar</a><a class="btn btn-linha js-zap" data-origem="heroi" href="#" target="_blank" rel="noopener">Pedir orçamento</a></div>
-          </div>
-          <img class="prod-img" src="assets/img/hero-drips.webp?v=3" alt="Três modelos de drip coffee com a área para a sua marca: branco, kraft clássico e kraft premium" width="1250" height="892" fetchpriority="high">
-        </div>
-        <div class="banner foto" aria-roledescription="slide" aria-label="2 de 3">
-          <img class="bg" src="assets/img/o2.webp" alt="Drip com a sua marca entregue em reunião com cliente" width="900" height="1204" loading="lazy">
-          <div class="txt">
-            <span class="olho">Empresas</span>
-            <span class="h">Um brinde que vai para a xícara, não para a gaveta.</span>
-            <p>Endomarketing, visita a clientes, feiras e fim de ano. Com nota fiscal em todo pedido.</p>
-            <div class="ctas"><a class="btn btn-branco" href="#modelos">Ver modelos</a></div>
-          </div>
-        </div>
-        <div class="banner foto" aria-roledescription="slide" aria-label="3 de 3">
-          <img class="bg" src="assets/img/o5.webp" alt="Drip com a marca do casal no prato do casamento" width="900" height="1204" loading="lazy">
-          <div class="txt">
-            <span class="olho">Casamentos e eventos</span>
-            <span class="h">A lembrança que os convidados usam no dia seguinte.</span>
-            <p>Arte com o nome do casal ou do evento, impressa em preto ou colorida.</p>
-            <div class="ctas"><a class="btn btn-branco js-zap" data-origem="banner-casamento" href="#" target="_blank" rel="noopener">Pedir orçamento</a></div>
-          </div>
-        </div>
-      </div>
-      <button class="seta esq" type="button" data-b="-1" aria-label="Destaque anterior">‹</button>
-      <button class="seta dir" type="button" data-b="1" aria-label="Próximo destaque">›</button>
-      <div class="pontos" id="pontos"></div>
-    </div>
-    <p class="prova">Escolhido por <b>Unimed, Termolar, Uniprime e Brastelha</b></p>
-    <div class="beneficios">
-      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7.5 12 3l8 4.5v9L12 21l-8-4.5v-9Z"/><path d="M4 7.5 12 12l8-4.5M12 12v9"/></svg><b>A partir de 50 sachês</b><span>Desconto automático por quantidade</span></div>
-      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 12h5M10 16h5"/></svg><b>Nota fiscal</b><span>Em todo pedido</span></div>
-      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 15h3"/></svg><b>Pix, boleto ou cartão</b><span>Compra direto na loja</span></div>
-      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><b>Arte aprovada antes</b><span>Só imprimimos com o seu ok</span></div>
-    </div>
+<!-- Capa -->
+<section class="capa">
+  <div class="capa-txt">
+    <h1>Sua marca na pausa do café.</h1>
+    <p class="sub">Drip coffee com a sua arte impressa direto no sachê e café especial de origem única dentro. A partir de 50 sachês.</p>
+    <div class="ctas"><a class="btn btn-branco" href="#modelos">Ver modelos e preços</a><a class="btn btn-vazado js-zap" data-origem="heroi" href="#" target="_blank" rel="noopener">Pedir orçamento</a></div>
+    <p class="quem">Já servem o próprio drip: <b>Unimed, Termolar, Uniprime e Brastelha</b></p>
   </div>
+  <figure class="capa-foto"><img src="assets/img/r-capa.webp" alt="Drip Branco Premium com a marca da Casa de la Madre, em pé sobre um tronco de madeira" width="1100" height="1540" fetchpriority="high"><figcaption>Drip feito para a Casa de la Madre</figcaption></figure>
 </section>
-
-<!-- Clientes -->
-<section class="sec" id="clientes">
-  <div class="wrap">
-    <div class="cab"><h2>Empresas que já servem a própria marca no café</h2></div>
-    <div class="leque">
-      <figure class="caso" style="--ry:10deg;--rz:-5deg;--y:6px;--d:-0.0s"><div class="flut"><img src="assets/img/cli-termolar.webp?v=2" alt="Drip kraft com a logo da Termolar" width="300" height="381" loading="lazy"></div><span class="chao" aria-hidden="true"></span><figcaption class="nome">Termolar</figcaption></figure>
-      <figure class="caso" style="--ry:4deg;--rz:3deg;--y:0px;--d:-0.8s"><div class="flut"><img src="assets/img/cli-conceito.webp" alt="Drip branco da Conceito Joias e Acessórios" width="300" height="449" loading="lazy"></div><span class="chao" aria-hidden="true"></span><figcaption class="nome">Conceito</figcaption></figure>
-      <figure class="caso" style="--ry:-4deg;--rz:-3deg;--y:8px;--d:-1.6s"><div class="flut"><img src="assets/img/cli-uniprime.webp" alt="Drip kraft com a logo da Uniprime" width="300" height="383" loading="lazy"></div><span class="chao" aria-hidden="true"></span><figcaption class="nome">Uniprime</figcaption></figure>
-      <figure class="caso" style="--ry:-10deg;--rz:5deg;--y:0px;--d:-2.4s"><div class="flut"><img src="assets/img/cli-brastelha.webp" alt="Drip kraft da Brastelha: Uma boa conversa começa com café" width="300" height="373" loading="lazy"></div><span class="chao" aria-hidden="true"></span><figcaption class="nome">Brastelha</figcaption></figure>
-      <figure class="caso" style="--ry:10deg;--rz:-4deg;--y:0px;--d:-3.2s"><div class="flut"><img src="assets/img/cli-nieto.webp" alt="Drip kraft da Nieto Atelier de Molduras" width="300" height="446" loading="lazy"></div><span class="chao" aria-hidden="true"></span><figcaption class="nome">Nieto</figcaption></figure>
-      <figure class="caso" style="--ry:4deg;--rz:2deg;--y:8px;--d:-4.0s"><div class="flut"><img src="assets/img/cli-moido.webp" alt="Drip kraft da Moído: O dia pede coisas boas" width="300" height="374" loading="lazy"></div><span class="chao" aria-hidden="true"></span><figcaption class="nome">Moído</figcaption></figure>
-      <figure class="caso" style="--ry:-4deg;--rz:-3deg;--y:0px;--d:-4.8s"><div class="flut"><img src="assets/img/cli-glfibra.webp?v=2" alt="Drip kraft da GL Fibra" width="300" height="378" loading="lazy"></div><span class="chao" aria-hidden="true"></span><figcaption class="nome">GL Fibra</figcaption></figure>
-      <figure class="caso" style="--ry:-10deg;--rz:4deg;--y:6px;--d:-5.6s"><div class="flut"><img src="assets/img/cli-unimed.webp" alt="Drip kraft da Unimed Erechim, Saúde Ocupacional" width="300" height="378" loading="lazy"></div><span class="chao" aria-hidden="true"></span><figcaption class="nome">Unimed</figcaption></figure>
-    </div>
-  </div>
-</section>
+<div class="fatos"><ul class="wrap">
+  <li><b>Impresso direto no sachê</b><span>Sem etiqueta colada</span></li>
+  <li><b>Café com 80+ pontos SCA</b><span>Origem única, nunca blend</span></li>
+  <li><b>A partir de 50 sachês</b><span>E cada lote pode ter uma arte</span></li>
+  <li><b>Pronto em 5 dias úteis</b><span>Depois da arte aprovada</span></li>
+</ul></div>
 
 <!-- Produtos -->
 <section class="sec cinza" id="modelos">
@@ -772,16 +796,48 @@ fbq('track','PageView');
   </div>
 </section>
 
+<!-- Diferenciais -->
+<section class="sec" id="diferenciais">
+  <div class="wrap">
+    <div class="cab"><h2>Por que não é um brinde comum</h2><p>Brinde com logo todo mundo faz. O que muda aqui é o que vai impresso, o que vai dentro e quanto você precisa pedir.</p></div>
+    <div class="dif">
+      <figure class="dif-foto"><img src="assets/img/r-close.webp" alt="Detalhe da impressão direta no papel kraft de um drip da Provin Joias" width="800" height="1000" loading="lazy"></figure>
+      <ul class="dif-lista">
+        <li><h3>A sua arte é a embalagem</h3><p>Imprimimos direto no sachê. Não é etiqueta colada em cima de um pacote pronto, então a marca que aparece é só a sua.</p></li>
+        <li><h3>Café especial de verdade</h3><p>Origem única do Sul de Minas, 80+ pontos SCA e laudo de Q-Grader em cada lote. É o mesmo café que mandamos aos assinantes do Blooming Club.</p></li>
+        <li><h3>Dá para começar com 50</h3><p>Um lote pequeno já sai com a sua marca. Pedindo mais, cada lote de 50 pode ter uma arte diferente: uma por equipe, por evento ou por data.</p></li>
+        <li><h3>A arte fica por nossa conta</h3><p>Você manda a logo e nós montamos. Nada é impresso antes do seu ok.</p></li>
+        <li><h3>Colorido pelo mesmo preço</h3><p>Nos modelos Premium, a logo ou o texto podem sair em cores sem pagar mais. Você decide na aprovação da arte.</p></li>
+        <li><h3>Tudo feito na mesma casa</h3><p>Café, arte, impressão, envase e selagem com a mesma equipe. Por isso fica pronto em 5 dias úteis depois da arte aprovada.</p></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Clientes -->
+<section class="sec cinza" id="clientes">
+  <div class="wrap">
+    <div class="cab"><h2>Quem já serve a própria marca</h2><p>Fotos reais de pedidos entregues.</p></div>
+    <div class="galeria">
+      <figure><img src="assets/img/r-termolar.webp" alt="Drip kraft com a logo da Termolar" width="640" height="800" loading="lazy"><figcaption>Termolar</figcaption></figure>
+      <figure><img src="assets/img/r-clrd.webp" alt="Drip kraft premium colorido da CLRD: Cafeína, por favor" width="640" height="800" loading="lazy"><figcaption>CLRD</figcaption></figure>
+      <figure><img src="assets/img/r-nieto.webp" alt="Drip kraft premium da Nieto Atelier de Molduras" width="640" height="800" loading="lazy"><figcaption>Nieto</figcaption></figure>
+      <figure><img src="assets/img/r-provin.webp" alt="Drip kraft da Provin Joias" width="640" height="800" loading="lazy"><figcaption>Provin Joias</figcaption></figure>
+      <figure><img src="assets/img/r-urica.webp" alt="Drip kraft da Úrica Maison" width="640" height="800" loading="lazy"><figcaption>Úrica Maison</figcaption></figure>
+      <figure><img src="assets/img/r-moido.webp" alt="Drip kraft da Moído: O dia pede coisas boas" width="640" height="800" loading="lazy"><figcaption>Moído</figcaption></figure>
+    </div>
+  </div>
+</section>
+
 <!-- Ocasiões -->
 <section class="sec" id="ocasioes">
   <div class="wrap">
     <div class="cab"><span class="olho">Para cada ocasião</span><h2>Onde a sua marca aparece</h2><p>Leve, útil e aberto na hora. O drip não vai para a gaveta.</p></div>
     <div class="categorias">
-      <article class="categoria"><img src="assets/img/o1.webp" alt="Drip com a sua marca na mesa do escritório" width="900" height="1204" loading="lazy"><div class="c"><h3>Empresas</h3><p>Endomarketing, onboarding, visita a clientes e kits de fim de ano.</p><a class="btn btn-linha" href="#modelos">Comprar kit</a></div></article>
-      <article class="categoria"><img src="assets/img/o4.webp" alt="Drips com a sua marca em estande de feira" width="900" height="1204" loading="lazy"><div class="c"><h3>Feiras e eventos</h3><p>Cabe em qualquer sacola e é aberto na hora, no estande ou no hotel.</p><a class="btn btn-linha" href="#modelos">Ver modelos</a></div></article>
-      <article class="categoria"><img src="assets/img/o5.webp" alt="Drip com a marca do casal no prato do casamento" width="900" height="1204" loading="lazy"><div class="c"><h3>Casamentos</h3><p>Lembrança com o nome do casal para o café da manhã seguinte.</p><a class="btn btn-linha js-zap" data-origem="ocasiao-casamento" href="#" target="_blank" rel="noopener">Pedir orçamento</a></div></article>
+      <article class="categoria"><img src="assets/img/r-empresa.webp" alt="Drip kraft da Brastelha: Uma boa conversa começa com café" width="640" height="800" loading="lazy"><div class="c"><h3>Empresas</h3><p>Endomarketing, onboarding, visita a clientes e kits de fim de ano.</p><a class="btn btn-linha" href="#modelos">Comprar kit</a></div></article>
+      <article class="categoria"><img src="assets/img/r-evento.webp" alt="Drip kraft da IsoInvest na mão de uma convidada, em um evento" width="640" height="800" loading="lazy"><div class="c"><h3>Feiras e eventos</h3><p>Cabe em qualquer sacola e é aberto na hora, no estande ou no hotel.</p><a class="btn btn-linha" href="#modelos">Ver modelos</a></div></article>
+      <article class="categoria"><img src="assets/img/r-casamento.webp" alt="Drip branco premium com arte de casamento" width="640" height="800" loading="lazy"><div class="c"><h3>Casamentos</h3><p>Lembrança com o nome do casal para o café da manhã seguinte.</p><a class="btn btn-linha js-zap" data-origem="ocasiao-casamento" href="#" target="_blank" rel="noopener">Pedir orçamento</a></div></article>
     </div>
-    <p class="nota-il">*Imagens ilustrativas. A sua marca entra no lugar de “sua marca aqui”.</p>
   </div>
 </section>
 
