@@ -100,7 +100,7 @@
         "priceCurrency": "BRL",
         "lowPrice": "4.90",
         "highPrice": "5.90",
-        "offerCount": 6,
+        "offerCount": 3,
         "url": "https://driplabel.bloomingclub.com.br/#modelos",
         "seller": {
           "@id": "https://driplabel.bloomingclub.com.br/#organization"
@@ -125,7 +125,7 @@
         "priceCurrency": "BRL",
         "lowPrice": "5.90",
         "highPrice": "6.90",
-        "offerCount": 6,
+        "offerCount": 3,
         "url": "https://driplabel.bloomingclub.com.br/#modelos",
         "seller": {
           "@id": "https://driplabel.bloomingclub.com.br/#organization"
@@ -150,7 +150,7 @@
         "priceCurrency": "BRL",
         "lowPrice": "5.90",
         "highPrice": "6.90",
-        "offerCount": 6,
+        "offerCount": 3,
         "url": "https://driplabel.bloomingclub.com.br/#modelos",
         "seller": {
           "@id": "https://driplabel.bloomingclub.com.br/#organization"
@@ -790,7 +790,7 @@ fbq('track','PageView');
         <a class="btn btn-cafe js-comprar" data-produto="kraftp" href="#" target="_blank" rel="noopener">Comprar</a>
       </article>
     </div>
-    <p class="nota-prod">Mínimo de 50 sachês, com desconto automático por quantidade. Nos Premium, você escolhe preto ou colorido na aprovação da arte, pelo mesmo preço. <a class="js-zap" data-origem="modelos" href="#" target="_blank" rel="noopener">Dúvidas? Fale com a gente</a></p>
+    <p class="nota-prod">Mínimo de 50 sachês. Desconto automático a partir de 150 e de 300 sachês. Nos Premium, você escolhe preto ou colorido na aprovação da arte, pelo mesmo preço. <a class="js-zap" data-origem="modelos" href="#" target="_blank" rel="noopener">Dúvidas? Fale com a gente</a></p>
         <div class="cab" style="margin-top:64px;margin-bottom:0"><span class="olho">Como comprar</span><h2>Qual caminho é o seu?</h2></div>
     <div class="caminhos" style="margin-top:24px">
       <div class="caminho">
@@ -959,9 +959,9 @@ fbq('track','PageView');
 
 <script>
 (function(){
-  var M={kraft:{n:'Kraft Clássico',p:[5.9,5.7,5.5,5.3,5.1,4.9],v:'33'},
-         branco:{n:'Branco Premium',p:[6.9,6.7,6.5,6.3,6.1,5.9],v:'278'},
-         kraftp:{n:'Kraft Premium',p:[6.9,6.7,6.5,6.3,6.1,5.9],v:'281'}};
+  var M={kraft:{n:'Kraft Clássico',p:[5.9,5.9,5.5,5.5,5.5,4.9],v:'33'},
+         branco:{n:'Branco Premium',p:[6.9,6.9,6.5,6.5,6.5,5.9],v:'278'},
+         kraftp:{n:'Kraft Premium',p:[6.9,6.9,6.5,6.5,6.5,5.9],v:'281'}};
   var UTM='utm_source=drip-landing&utm_medium=site&utm_campaign=brindes';
   var ZAP='https://wa.me/5554997081666?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Drip%20Coffee%20Label%20e%20quero%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20drip%20personalizado.';
   var brl=function(v){return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'})};
@@ -983,7 +983,7 @@ fbq('track','PageView');
     mostra();
   });
   // Tabela de preços
-  var h='';for(var i=0;i<6;i++){h+='<tr><td>'+(i<5?(i+1)*50:'300 ou mais')+'</td><td>'+brl(M.kraft.p[i])+'</td><td>'+brl(M.branco.p[i])+'</td><td>'+brl(M.kraftp.p[i])+'</td></tr>'}
+  var h='';[[0,'50 ou 100'],[2,'150 a 250'],[5,'300 ou mais']].forEach(function(f){var i=f[0];h+='<tr><td>'+f[1]+'</td><td>'+brl(M.kraft.p[i])+'</td><td>'+brl(M.branco.p[i])+'</td><td>'+brl(M.kraftp.p[i])+'</td></tr>'});
   document.getElementById('tabela').innerHTML=h;
   // Banners do topo: arrastar, pontos, setas e troca automática a cada 6 s (para quando a pessoa mexe)
   (function(){var bn=document.getElementById('banners');if(!bn)return;var sl=[].slice.call(bn.children),pt=document.getElementById('pontos'),mol=document.getElementById('moldura'),at=0,auto=null,
