@@ -663,6 +663,39 @@
   .raiz h2{font-size:30px}@media (min-width:1024px){.raiz h2{font-size:44px}}
   .fecho h2{font-size:30px}@media (min-width:1024px){.fecho h2{font-size:46px}}
   .faq summary{font-weight:600}
+
+  /* Produtos compactos (16/11): foto, nome, uma linha, preço, quantidade e Comprar */
+  @media (max-width:859px){.produtos{grid-auto-columns:72%}}
+  .prod{padding:22px 18px 18px}
+  .prod .img{height:190px;order:0}
+  .prod .img img{max-height:190px}
+  .prod .selo{top:12px;left:12px}
+  .ver-cor{order:1;margin-top:12px;display:inline-flex;align-items:center;gap:7px;height:30px;padding:0 12px 0 9px;border-radius:999px;border:1px solid var(--fio);background:#fff;font:600 12.5px/1 'Open Sans',sans-serif;color:var(--ink);cursor:pointer}
+  .ver-cor .bola{width:14px;height:14px;border-radius:50%;background:conic-gradient(#E2574C 0 33%,#EEBC4A 0 66%,#2E86AB 0)}
+  .ver-cor[aria-pressed="true"] .bola{background:#1D1D1B}
+  .ver-cor:focus-visible{outline:2px solid var(--cafe);outline-offset:2px}
+  .prod h3{margin-top:14px;font-size:20px}
+  .prod[data-modelo="kraft"] h3{margin-top:56px}
+  .prod .med{font-weight:400;font-size:13px}
+  .prod .preco{margin-top:10px;font-size:22px}
+  .prod .preco small{font-size:13px;font-weight:400}
+  .prod .qtd{margin-top:14px;padding-top:0;gap:12px}
+  .stepper button{width:32px;height:32px;box-shadow:none;border:1px solid var(--fio)}
+  .stepper output{min-width:76px;font-size:13px;font-weight:600}
+  .qtd .tot b{font-size:15px}
+  .prod .btn{margin-top:14px;height:46px}
+  .nota-prod{margin-top:18px;font-size:13px;color:var(--apoio);max-width:44rem}
+  .nota-prod a{color:var(--ink);font-weight:600;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+  .usos{display:grid;border-bottom:1px solid var(--fio)}
+  .usos article{padding:24px 0;border-top:1px solid var(--fio)}
+  @media (min-width:860px){.usos{grid-template-columns:repeat(3,1fr);border-bottom:0}.usos article{padding:28px 32px 8px 0;border-top:1px solid var(--ink)}.usos article+article{padding-left:0}.usos{gap:32px}}
+  .usos h3{font-size:24px}
+  .usos p{margin-top:8px;font-size:15px;color:var(--apoio);max-width:22rem}
+  .usos a{display:inline-block;margin-top:14px;font-weight:600;font-size:14px;color:var(--ink);text-decoration:underline;text-underline-offset:4px}
+  .capa-foto img{object-position:50% 50%}
+  .capa-foto::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,#1D1D1B 0%,rgba(29,29,27,0) 22%)}
+  @media (min-width:900px){.capa-foto::after{background:linear-gradient(90deg,#1D1D1B 0%,rgba(29,29,27,0) 26%)}}
+  .capa-foto figcaption{z-index:1}
 </style>
 <!-- Meta Pixel -->
 <script>
@@ -707,7 +740,7 @@ fbq('track','PageView');
     <div class="ctas"><a class="btn btn-branco" href="#modelos">Ver modelos e preços</a><a class="btn btn-vazado js-zap" data-origem="heroi" href="#" target="_blank" rel="noopener">Pedir orçamento</a></div>
     <p class="quem">Já servem o próprio drip: <b>Unimed, Termolar, Uniprime e Brastelha</b></p>
   </div>
-  <figure class="capa-foto"><img src="assets/img/r-capa.webp" alt="Drip Branco Premium com a marca da Casa de la Madre, em pé sobre um tronco de madeira" width="1100" height="1540" fetchpriority="high"><figcaption>Drip feito para a Casa de la Madre</figcaption></figure>
+  <figure class="capa-foto"><img src="assets/img/s-capa.webp" alt="Três drips reais: CLRD em kraft premium colorido, Casa de la Madre em branco premium e Termolar em kraft" width="1200" height="1500" fetchpriority="high"><figcaption>Drips feitos para CLRD, Casa de la Madre e Termolar</figcaption></figure>
 </section>
 <div class="fatos"><ul class="wrap">
   <li><b>Impresso direto no sachê</b><span>Sem etiqueta colada</span></li>
@@ -721,64 +754,36 @@ fbq('track','PageView');
   <div class="wrap">
     <div class="cab"><span class="olho">Nossos produtos</span><h2>Três sachês, o mesmo café especial</h2><p>Escolha o modelo e a quantidade e compre direto na loja. O desconto por quantidade entra sozinho no carrinho.</p></div>
     <div class="produtos">
-      <article class="prod d3" data-modelo="kraft">
+      <article class="prod" data-modelo="kraft">
         <span class="selo">Mais vendido</span>
         <div class="img"><img src="assets/img/p-kraft-cut.webp?v=3" alt="Drip Kraft Clássico com a sua marca" width="456" height="558" loading="lazy"></div>
         <h3>Kraft Clássico</h3>
-        <p class="med">10 × 12 cm · papel kraft</p>
-        <p class="desc">Tom terroso e natural. Combina com marcas de impressão simples.</p>
+        <p class="med">10 × 12 cm · impressão em preto</p>
         <p class="preco tnum"><span class="js-un">R$ 5,90</span><small>/sachê</small></p>
-        <p class="min">Mínimo: 50 sachês</p>
-        <p class="faixa">A partir de R$ 4,90 com 300 ou mais</p>
-        <p class="imp-so">Impressão em preto (1 cor).</p>
         <div class="qtd"><div class="stepper"><button type="button" data-passo="-1" aria-label="Menos 50 sachês">−</button><output class="js-n tnum">50 sachês</output><button type="button" data-passo="1" aria-label="Mais 50 sachês">+</button></div><div class="tot">Total<b class="js-tot tnum">R$ 295,00</b></div></div>
         <a class="btn btn-cafe js-comprar" data-produto="kraft" href="#" target="_blank" rel="noopener">Comprar</a>
-        <a class="duv js-zap" data-origem="modelo-kraft" href="#" target="_blank" rel="noopener">Dúvidas? Fale com a gente</a>
       </article>
-      <article class="prod d3" data-modelo="branco">
-        <div class="img"><img src="assets/img/p-branco-cut.webp?v=3" data-cor="assets/img/p-branco-cor-cut.webp?v=4" alt="Drip Branco Premium com a sua marca" width="416" height="605" loading="lazy"></div>
+      <article class="prod" data-modelo="branco">
+        <div class="img"><img src="assets/img/p-branco-pb-cut.webp" data-cor="assets/img/p-branco-cor-cut.webp?v=5" alt="Drip Branco Premium com a sua marca" width="416" height="605" loading="lazy"></div>
+        <button class="ver-cor" type="button" aria-pressed="false"><i class="bola cor"></i><span>Ver colorido</span></button>
         <h3>Branco Premium</h3>
-        <p class="med">10 × 15 cm · papel branco</p>
-        <p class="desc">Maior, com contraste máximo para a logo e espaço para uma mensagem.</p>
+        <p class="med">10 × 15 cm · preto ou colorido</p>
         <p class="preco tnum"><span class="js-un">R$ 6,90</span><small>/sachê</small></p>
-        <p class="min">Mínimo: 50 sachês</p>
-        <p class="faixa">A partir de R$ 5,90 com 300 ou mais</p>
-        <fieldset class="imp">
-          <legend>Impressão <span>· preto ou colorido</span></legend>
-          <div class="imp-op">
-            <label><input type="radio" name="imp-branco" value="preto" checked><span class="op"><i class="bola"></i>Preto<small>1 cor</small></span></label>
-            <label><input type="radio" name="imp-branco" value="cor"><span class="op"><i class="bola cor"></i>Colorido<small>mesmo preço</small></span></label>
-          </div>
-          <p class="imp-nota">Você escolhe na aprovação da arte, depois do pedido. Colorido: logo ou texto em cores, sem foto e sem fundo preenchido.</p>
-        </fieldset>
         <div class="qtd"><div class="stepper"><button type="button" data-passo="-1" aria-label="Menos 50 sachês">−</button><output class="js-n tnum">50 sachês</output><button type="button" data-passo="1" aria-label="Mais 50 sachês">+</button></div><div class="tot">Total<b class="js-tot tnum">R$ 345,00</b></div></div>
         <a class="btn btn-cafe js-comprar" data-produto="branco" href="#" target="_blank" rel="noopener">Comprar</a>
-        <a class="duv js-zap" data-origem="modelo-branco" href="#" target="_blank" rel="noopener">Dúvidas? Fale com a gente</a>
       </article>
-      <article class="prod d3" data-modelo="kraftp">
-        <div class="img"><img src="assets/img/p-kraft-premium-cut.webp?v=3" data-cor="assets/img/p-kraft-premium-cor-cut.webp?v=4" alt="Drip Kraft Premium com a sua marca" width="417" height="606" loading="lazy"></div>
+      <article class="prod" data-modelo="kraftp">
+        <div class="img"><img src="assets/img/p-kraft-premium-pb-cut.webp" data-cor="assets/img/p-kraft-premium-cor-cut.webp?v=5" alt="Drip Kraft Premium com a sua marca" width="417" height="606" loading="lazy"></div>
+        <button class="ver-cor" type="button" aria-pressed="false"><i class="bola cor"></i><span>Ver colorido</span></button>
         <h3>Kraft Premium</h3>
-        <p class="med">10 × 15 cm · kraft liso</p>
-        <p class="desc">O tamanho do premium com o kraft liso. Impressão mais nítida.</p>
+        <p class="med">10 × 15 cm · preto ou colorido</p>
         <p class="preco tnum"><span class="js-un">R$ 6,90</span><small>/sachê</small></p>
-        <p class="min">Mínimo: 50 sachês</p>
-        <p class="faixa">A partir de R$ 5,90 com 300 ou mais</p>
-        <fieldset class="imp">
-          <legend>Impressão <span>· preto ou colorido</span></legend>
-          <div class="imp-op">
-            <label><input type="radio" name="imp-kraftp" value="preto" checked><span class="op"><i class="bola"></i>Preto<small>1 cor</small></span></label>
-            <label><input type="radio" name="imp-kraftp" value="cor"><span class="op"><i class="bola cor"></i>Colorido<small>mesmo preço</small></span></label>
-          </div>
-          <p class="imp-nota">Você escolhe na aprovação da arte, depois do pedido. Colorido: logo ou texto em cores, sem foto e sem fundo preenchido.</p>
-        </fieldset>
         <div class="qtd"><div class="stepper"><button type="button" data-passo="-1" aria-label="Menos 50 sachês">−</button><output class="js-n tnum">50 sachês</output><button type="button" data-passo="1" aria-label="Mais 50 sachês">+</button></div><div class="tot">Total<b class="js-tot tnum">R$ 345,00</b></div></div>
         <a class="btn btn-cafe js-comprar" data-produto="kraftp" href="#" target="_blank" rel="noopener">Comprar</a>
-        <a class="duv js-zap" data-origem="modelo-kraft-premium" href="#" target="_blank" rel="noopener">Dúvidas? Fale com a gente</a>
       </article>
     </div>
-
-    <p class="dica-prod">Arraste para ver os três modelos</p>
-    <div class="cab" style="margin-top:64px;margin-bottom:0"><span class="olho">Como comprar</span><h2>Qual caminho é o seu?</h2></div>
+    <p class="nota-prod">Mínimo de 50 sachês, com desconto automático por quantidade. Nos Premium, você escolhe preto ou colorido na aprovação da arte, pelo mesmo preço. <a class="js-zap" data-origem="modelos" href="#" target="_blank" rel="noopener">Dúvidas? Fale com a gente</a></p>
+        <div class="cab" style="margin-top:64px;margin-bottom:0"><span class="olho">Como comprar</span><h2>Qual caminho é o seu?</h2></div>
     <div class="caminhos" style="margin-top:24px">
       <div class="caminho">
         <span class="olho">Kit pronto · a partir de 50 sachês</span>
@@ -801,14 +806,14 @@ fbq('track','PageView');
   <div class="wrap">
     <div class="cab"><h2>Por que não é um brinde comum</h2><p>Brinde com logo todo mundo faz. O que muda aqui é o que vai impresso, o que vai dentro e quanto você precisa pedir.</p></div>
     <div class="dif">
-      <figure class="dif-foto"><img src="assets/img/r-close.webp" alt="Detalhe da impressão direta no papel kraft de um drip da Provin Joias" width="800" height="1000" loading="lazy"></figure>
+      <figure class="dif-foto"><img src="assets/img/s-moido.webp" alt="Drip kraft da Moído, com a arte impressa direto no sachê" width="900" height="1125" loading="lazy"></figure>
       <ul class="dif-lista">
         <li><h3>A sua arte é a embalagem</h3><p>Imprimimos direto no sachê. Não é etiqueta colada em cima de um pacote pronto, então a marca que aparece é só a sua.</p></li>
-        <li><h3>Café especial de verdade</h3><p>Origem única do Sul de Minas, 80+ pontos SCA e laudo de Q-Grader em cada lote. É o mesmo café que mandamos aos assinantes do Blooming Club.</p></li>
+        <li><h3>Café especial com laudo</h3><p>Origem única do Sul de Minas, Região Vulcânica, com mais de 80 pontos SCA avaliados por Q-Grader. É o mesmo café que mandamos aos assinantes do Blooming Club.</p></li>
+        <li><h3>Premium 10 × 15 cm, exclusivo da Drip</h3><p>Um formato produzido só por nós, com 25% mais área para a sua arte que o drip tradicional. Em preto ou colorido, pelo mesmo preço.</p></li>
         <li><h3>Dá para começar com 50</h3><p>Um lote pequeno já sai com a sua marca. Pedindo mais, cada lote de 50 pode ter uma arte diferente: uma por equipe, por evento ou por data.</p></li>
         <li><h3>A arte fica por nossa conta</h3><p>Você manda a logo e nós montamos. Nada é impresso antes do seu ok.</p></li>
-        <li><h3>Colorido pelo mesmo preço</h3><p>Nos modelos Premium, a logo ou o texto podem sair em cores sem pagar mais. Você decide na aprovação da arte.</p></li>
-        <li><h3>Tudo feito na mesma casa</h3><p>Café, arte, impressão, envase e selagem com a mesma equipe. Por isso fica pronto em 5 dias úteis depois da arte aprovada.</p></li>
+        <li><h3>Feito um a um</h3><p>Café dosado, sachê selado e conferido um a um, em pequenos lotes, pela mesma equipe que cuida da arte e da impressão. Pronto em 5 dias úteis depois da arte aprovada.</p></li>
       </ul>
     </div>
   </div>
@@ -817,14 +822,14 @@ fbq('track','PageView');
 <!-- Clientes -->
 <section class="sec cinza" id="clientes">
   <div class="wrap">
-    <div class="cab"><h2>Quem já serve a própria marca</h2><p>Fotos reais de pedidos entregues.</p></div>
+    <div class="cab"><h2>Quem já serve a própria marca</h2><p>Sachês reais de pedidos entregues.</p></div>
     <div class="galeria">
-      <figure><img src="assets/img/r-termolar.webp" alt="Drip kraft com a logo da Termolar" width="640" height="800" loading="lazy"><figcaption>Termolar</figcaption></figure>
-      <figure><img src="assets/img/r-clrd.webp" alt="Drip kraft premium colorido da CLRD: Cafeína, por favor" width="640" height="800" loading="lazy"><figcaption>CLRD</figcaption></figure>
-      <figure><img src="assets/img/r-nieto.webp" alt="Drip kraft premium da Nieto Atelier de Molduras" width="640" height="800" loading="lazy"><figcaption>Nieto</figcaption></figure>
-      <figure><img src="assets/img/r-provin.webp" alt="Drip kraft da Provin Joias" width="640" height="800" loading="lazy"><figcaption>Provin Joias</figcaption></figure>
-      <figure><img src="assets/img/r-urica.webp" alt="Drip kraft da Úrica Maison" width="640" height="800" loading="lazy"><figcaption>Úrica Maison</figcaption></figure>
-      <figure><img src="assets/img/r-moido.webp" alt="Drip kraft da Moído: O dia pede coisas boas" width="640" height="800" loading="lazy"><figcaption>Moído</figcaption></figure>
+      <figure><img src="assets/img/s-termolar.webp" alt="Drip kraft com a logo da Termolar" width="800" height="1000" loading="lazy"><figcaption>Termolar</figcaption></figure>
+      <figure><img src="assets/img/s-clrd.webp" alt="Drip kraft premium colorido da CLRD: Cafeína, por favor" width="800" height="1000" loading="lazy"><figcaption>CLRD</figcaption></figure>
+      <figure><img src="assets/img/s-conceito.webp" alt="Drip branco premium da Conceito Joias" width="800" height="1000" loading="lazy"><figcaption>Conceito</figcaption></figure>
+      <figure><img src="assets/img/s-nieto.webp" alt="Drip kraft premium da Nieto Atelier de Molduras" width="800" height="1000" loading="lazy"><figcaption>Nieto</figcaption></figure>
+      <figure><img src="assets/img/s-brastelha.webp" alt="Drip kraft da Brastelha: Uma boa conversa começa com café" width="800" height="1000" loading="lazy"><figcaption>Brastelha</figcaption></figure>
+      <figure><img src="assets/img/s-glfibra.webp" alt="Drip kraft da GL Fibra" width="800" height="1000" loading="lazy"><figcaption>GL Fibra</figcaption></figure>
     </div>
   </div>
 </section>
@@ -833,10 +838,10 @@ fbq('track','PageView');
 <section class="sec" id="ocasioes">
   <div class="wrap">
     <div class="cab"><span class="olho">Para cada ocasião</span><h2>Onde a sua marca aparece</h2><p>Leve, útil e aberto na hora. O drip não vai para a gaveta.</p></div>
-    <div class="categorias">
-      <article class="categoria"><img src="assets/img/r-empresa.webp" alt="Drip kraft da Brastelha: Uma boa conversa começa com café" width="640" height="800" loading="lazy"><div class="c"><h3>Empresas</h3><p>Endomarketing, onboarding, visita a clientes e kits de fim de ano.</p><a class="btn btn-linha" href="#modelos">Comprar kit</a></div></article>
-      <article class="categoria"><img src="assets/img/r-evento.webp" alt="Drip kraft da IsoInvest na mão de uma convidada, em um evento" width="640" height="800" loading="lazy"><div class="c"><h3>Feiras e eventos</h3><p>Cabe em qualquer sacola e é aberto na hora, no estande ou no hotel.</p><a class="btn btn-linha" href="#modelos">Ver modelos</a></div></article>
-      <article class="categoria"><img src="assets/img/r-casamento.webp" alt="Drip branco premium com arte de casamento" width="640" height="800" loading="lazy"><div class="c"><h3>Casamentos</h3><p>Lembrança com o nome do casal para o café da manhã seguinte.</p><a class="btn btn-linha js-zap" data-origem="ocasiao-casamento" href="#" target="_blank" rel="noopener">Pedir orçamento</a></div></article>
+    <div class="usos">
+      <article><h3>Empresas</h3><p>Endomarketing, onboarding, visita a clientes e kits de fim de ano.</p><a href="#modelos">Comprar kit</a></article>
+      <article><h3>Feiras e eventos</h3><p>Cabe em qualquer sacola e é aberto na hora, no estande ou no hotel.</p><a href="#modelos">Ver modelos</a></article>
+      <article><h3>Casamentos</h3><p>Lembrança com o nome do casal para o café da manhã seguinte.</p><a class="js-zap" data-origem="ocasiao-casamento" href="#" target="_blank" rel="noopener">Pedir orçamento</a></article>
     </div>
   </div>
 </section>
@@ -958,7 +963,7 @@ fbq('track','PageView');
   document.querySelectorAll('.prod').forEach(function(c){
     var m=M[c.dataset.modelo],k=1,menos=c.querySelector('[data-passo="-1"]'),mais=c.querySelector('[data-passo="1"]'),
         fs=c.querySelector('.imp'),bt=c.querySelector('.js-comprar');
-    function imp(){var r=c.querySelector('.imp input:checked');return r?r.value:''}
+    function imp(){return c.dataset.cor==='1'?'cor':''}
     function mostra(){var i=imp(),p=m.p[Math.min(k-1,5)],n=k*50;
       c.querySelector('.js-n').textContent=n+' sachês';c.querySelector('.js-tot').textContent=brl(p*n);c.querySelector('.js-un').textContent=brl(p);
       var f=c.querySelector('.faixa');if(f)f.textContent='A partir de '+brl(m.p[5])+' com 300 ou mais';
@@ -967,7 +972,7 @@ fbq('track','PageView');
       bt.href='https://www.bloomingclub.com.br/checkout/cart/item/add/'+m.v+'?quantity='+k+'&'+UTM+'&utm_content=card-'+c.dataset.modelo;}
     c.addEventListener('click',function(e){var b=e.target.closest('[data-passo]');if(!b)return;k=Math.max(1,Math.min(20,k+(+b.dataset.passo)));mostra()});
     var ic=c.querySelector('.img img[data-cor]');if(ic){var pre=new Image();pre.src=ic.dataset.cor}
-    if(fs)fs.addEventListener('change',mostra);
+    var vc=c.querySelector('.ver-cor');if(vc)vc.addEventListener('click',function(){var on=c.dataset.cor!=='1';c.dataset.cor=on?'1':'';vc.setAttribute('aria-pressed',on?'true':'false');vc.querySelector('span').textContent=on?'Ver em preto':'Ver colorido';mostra()});
     mostra();
   });
   // Tabela de preços
