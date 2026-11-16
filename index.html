@@ -675,7 +675,11 @@
   .ver-cor[aria-pressed="true"] .bola{background:#1D1D1B}
   .ver-cor:focus-visible{outline:2px solid var(--cafe);outline-offset:2px}
   .prod h3{margin-top:14px;font-size:20px}
-  .prod[data-modelo="kraft"] h3{margin-top:56px}
+  .prod .img.par{display:flex;justify-content:center;align-items:flex-end;gap:14px;height:auto}
+  .prod .img.par figure{margin:0}
+  .prod .img.par img{height:164px;width:auto;max-height:none}
+  .prod .img.par figcaption{margin-top:8px;font-size:12px;font-weight:600;color:var(--apoio)}
+  .prod[data-modelo="kraft"] .img{height:192px}
   .prod .med{font-weight:400;font-size:13px}
   .prod .preco{margin-top:10px;font-size:22px}
   .prod .preco small{font-size:13px;font-weight:400}
@@ -764,8 +768,10 @@ fbq('track','PageView');
         <a class="btn btn-cafe js-comprar" data-produto="kraft" href="#" target="_blank" rel="noopener">Comprar</a>
       </article>
       <article class="prod" data-modelo="branco">
-        <div class="img"><img src="assets/img/p-branco-pb-cut.webp" data-cor="assets/img/p-branco-cor-cut.webp?v=5" alt="Drip Branco Premium com a sua marca" width="416" height="605" loading="lazy"></div>
-        <button class="ver-cor" type="button" aria-pressed="false"><i class="bola cor"></i><span>Ver colorido</span></button>
+        <div class="img par">
+          <figure><img src="assets/img/p-branco-pb-cut.webp" alt="Drip Branco Premium com a sua marca impressa em preto" width="416" height="605" loading="lazy"><figcaption>Preto</figcaption></figure>
+          <figure><img src="assets/img/p-branco-cor-cut.webp?v=5" alt="Drip Branco Premium com a sua marca impressa em cores" width="416" height="605" loading="lazy"><figcaption>Colorido</figcaption></figure>
+        </div>
         <h3>Branco Premium</h3>
         <p class="med">10 × 15 cm · preto ou colorido</p>
         <p class="preco tnum"><span class="js-un">R$ 6,90</span><small>/sachê</small></p>
@@ -773,8 +779,10 @@ fbq('track','PageView');
         <a class="btn btn-cafe js-comprar" data-produto="branco" href="#" target="_blank" rel="noopener">Comprar</a>
       </article>
       <article class="prod" data-modelo="kraftp">
-        <div class="img"><img src="assets/img/p-kraft-premium-pb-cut.webp" data-cor="assets/img/p-kraft-premium-cor-cut.webp?v=5" alt="Drip Kraft Premium com a sua marca" width="417" height="606" loading="lazy"></div>
-        <button class="ver-cor" type="button" aria-pressed="false"><i class="bola cor"></i><span>Ver colorido</span></button>
+        <div class="img par">
+          <figure><img src="assets/img/p-kraft-premium-pb-cut.webp" alt="Drip Kraft Premium com a sua marca impressa em preto" width="417" height="606" loading="lazy"><figcaption>Preto</figcaption></figure>
+          <figure><img src="assets/img/p-kraft-premium-cor-cut.webp?v=5" alt="Drip Kraft Premium com a sua marca impressa em cores" width="417" height="606" loading="lazy"><figcaption>Colorido</figcaption></figure>
+        </div>
         <h3>Kraft Premium</h3>
         <p class="med">10 × 15 cm · preto ou colorido</p>
         <p class="preco tnum"><span class="js-un">R$ 6,90</span><small>/sachê</small></p>
@@ -972,7 +980,6 @@ fbq('track','PageView');
       bt.href='https://www.bloomingclub.com.br/checkout/cart/item/add/'+m.v+'?quantity='+k+'&'+UTM+'&utm_content=card-'+c.dataset.modelo;}
     c.addEventListener('click',function(e){var b=e.target.closest('[data-passo]');if(!b)return;k=Math.max(1,Math.min(20,k+(+b.dataset.passo)));mostra()});
     var ic=c.querySelector('.img img[data-cor]');if(ic){var pre=new Image();pre.src=ic.dataset.cor}
-    var vc=c.querySelector('.ver-cor');if(vc)vc.addEventListener('click',function(){var on=c.dataset.cor!=='1';c.dataset.cor=on?'1':'';vc.setAttribute('aria-pressed',on?'true':'false');vc.querySelector('span').textContent=on?'Ver em preto':'Ver colorido';mostra()});
     mostra();
   });
   // Tabela de preços
