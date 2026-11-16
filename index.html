@@ -422,8 +422,8 @@
 
   /* Feito por nós */
   .raiz{background:var(--ink);color:#fff}
-  .raiz .in{display:grid;gap:32px;align-items:center}
-  @media (min-width:900px){.raiz .in{grid-template-columns:1fr 320px;gap:72px}}
+  .raiz .in,.raiz.in{display:grid;gap:32px;align-items:center}
+  @media (min-width:900px){.raiz .in,.raiz.in{grid-template-columns:1fr 320px;gap:72px}}
   .raiz .olho{color:var(--cafe-claro)}
   .raiz h2{color:#fff}
   .raiz h2{margin-top:10px;font:800 28px/1.2 'Open Sans',sans-serif;letter-spacing:-.01em}
@@ -500,6 +500,99 @@
   /* WhatsApp flutuante */
   .zap-fixo{position:fixed;right:18px;bottom:18px;z-index:50;display:grid;place-items:center;width:58px;height:58px;border-radius:50%;background:#25D366;box-shadow:0 0 0 8px rgba(37,211,102,.18),0 8px 20px rgba(0,0,0,.18)}
   .zap-fixo svg{width:30px;height:30px;fill:#fff}
+
+  /* ===== Visual 2026 (referência: lojas de café premium) ===== 
+     Cartões brancos arredondados com sombra leve, banners arredondados em carrossel,
+     faixa de benefícios com ícones, títulos maiores e mais leves, pílulas pretas. */
+  :root{--r:24px;--sombra:0 1px 2px rgba(29,29,27,.04),0 10px 30px rgba(29,29,27,.07)}
+  .cab h2{font-weight:700;font-size:28px;letter-spacing:-.025em}
+  @media (min-width:1024px){.cab h2{font-size:42px}}
+  .sec{padding:64px 0}
+  @media (min-width:1024px){.sec{padding:96px 0}}
+  .cinza{background:var(--papel)}
+
+  /* Banners do topo */
+  .topo{padding:16px 0 8px}
+  @media (min-width:1024px){.topo{padding:24px 0 12px}}
+  .banners{display:grid;grid-auto-flow:column;grid-auto-columns:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;border-radius:var(--r);scroll-behavior:smooth}
+  .banners::-webkit-scrollbar{display:none}
+  .banner{position:relative;scroll-snap-align:start;min-height:560px;border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end}
+  @media (min-width:900px){.banner{min-height:520px;justify-content:center}}
+  .banner .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .banner.foto::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,18,16,0) 35%,rgba(20,18,16,.78) 100%)}
+  @media (min-width:900px){.banner.foto::after{background:linear-gradient(90deg,rgba(20,18,16,.78) 0%,rgba(20,18,16,.35) 50%,rgba(20,18,16,0) 75%)}}
+  .banner .txt{position:relative;z-index:1;padding:28px 24px 64px;max-width:560px}
+  @media (min-width:900px){.banner .txt{padding:56px 64px}}
+  .banner .olho{color:var(--cafe-claro)}
+  .banner h1,.banner .h{display:block;margin-top:10px;font:700 34px/1.08 'Open Sans',sans-serif;letter-spacing:-.03em;color:#fff}
+  @media (min-width:1024px){.banner h1,.banner .h{font-size:54px}}
+  .banner p{margin-top:12px;color:rgba(255,255,255,.86);font-size:16px;max-width:28rem}
+  .banner .ctas{margin:22px 0 0;max-width:none;display:flex;flex-wrap:wrap;gap:10px}
+  .banner .btn{height:50px;padding:0 26px}
+  /* 1º banner: claro, com os três sachês */
+  .banner.claro{background:radial-gradient(120% 90% at 75% 40%,#fff 0%,var(--papel) 60%,#EFE8E2 100%);justify-content:flex-start}
+  @media (min-width:900px){.banner.claro{flex-direction:row;align-items:center;justify-content:space-between}}
+  .banner.claro .olho{color:var(--cafe)}
+  .banner.claro h1{color:var(--ink)}
+  .banner.claro p{color:var(--apoio)}
+  .banner.claro .txt{padding:28px 24px 64px;order:2}
+  @media (min-width:900px){.banner.claro .txt{order:0;padding:56px 0 56px 64px;flex:0 0 46%}}
+  .banner.claro .prod-img{width:100%;max-width:520px;margin:20px auto 0;padding:0 16px}
+  @media (min-width:900px){.banner.claro .prod-img{margin:0 32px 0 0;flex:1;max-width:600px}}
+  .pontos{position:absolute;left:0;right:0;bottom:22px;z-index:2;display:flex;justify-content:center;gap:8px;pointer-events:none}
+  .pontos button{pointer-events:auto;width:8px;height:8px;padding:0;border:0;border-radius:999px;background:rgba(29,29,27,.25);cursor:pointer;transition:width .3s,background .3s}
+  .pontos button[aria-current="true"]{width:24px;background:var(--ink)}
+  .topo .moldura{position:relative}
+  .topo .moldura.escuro .pontos button{background:rgba(255,255,255,.5)}
+  .topo .moldura.escuro .pontos button[aria-current="true"]{background:#fff}
+  .seta{display:none;position:absolute;top:50%;z-index:2;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:0;background:#fff;box-shadow:var(--sombra);font-size:22px;line-height:1;color:var(--ink);cursor:pointer}
+  @media (min-width:900px){.seta{display:grid;place-items:center}}
+  .seta.esq{left:16px}.seta.dir{right:16px}
+  .topo .prova{margin-top:14px;text-align:center;font-size:13.5px;color:var(--apoio)}
+
+  /* Faixa de benefícios */
+  .beneficios{display:grid;grid-template-columns:1fr 1fr;gap:22px 12px;padding:28px 0 8px;text-align:center}
+  @media (min-width:900px){.beneficios{grid-template-columns:repeat(4,1fr);padding:36px 0 8px}}
+  .beneficios svg{width:26px;height:26px;margin:0 auto 8px;color:var(--ink)}
+  .beneficios b{display:block;font-size:13.5px;font-weight:700}
+  .beneficios span{display:block;font-size:12.5px;color:var(--apoio);line-height:1.4}
+
+  /* Produtos em cartões */
+  .produtos{gap:16px}
+  @media (max-width:859px){.produtos{grid-auto-flow:column;grid-auto-columns:86%;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 20px 18px;margin:0 -20px;scrollbar-width:none}
+    .produtos::-webkit-scrollbar{display:none}.produtos>*{scroll-snap-align:center}}
+  @media (min-width:860px){.produtos{gap:24px}}
+  .prod{background:#fff;border-radius:var(--r);box-shadow:var(--sombra);padding:28px 20px 22px}
+  .prod .img{height:240px}
+  .prod .selo{top:16px;left:16px;transform:none}
+  .prod h3{font-weight:700;letter-spacing:-.01em}
+  .prod .preco{font-weight:700}
+  .prod .btn{max-width:none}
+  .prod .qtd{margin-top:auto;padding-top:18px}
+  .banner.claro .prod-img{-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent),linear-gradient(180deg,transparent,#000 8%,#000 92%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent),linear-gradient(180deg,transparent,#000 8%,#000 92%,transparent);mask-composite:intersect}
+  .dica-prod{margin-top:4px;text-align:center;font-size:12.5px;color:var(--apoio)}
+  @media (min-width:860px){.dica-prod{display:none}}
+  .caminho{border:0;box-shadow:var(--sombra)}
+  .caminho.escuro{box-shadow:none}
+
+  /* Para cada ocasião: três cartões */
+  .categorias{display:grid;gap:16px}
+  @media (min-width:860px){.categorias{grid-template-columns:repeat(3,1fr);gap:24px}}
+  .categoria{background:#fff;border-radius:var(--r);overflow:hidden;box-shadow:var(--sombra);display:flex;flex-direction:column;text-align:center}
+  .categoria img{width:100%;aspect-ratio:4/3;object-fit:cover}
+  .categoria .c{padding:22px 22px 26px;display:flex;flex-direction:column;align-items:center;flex:1}
+  .categoria h3{font:700 19px/1.2 'Open Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase}
+  .categoria p{margin-top:8px;font-size:14px;color:var(--apoio);flex:1}
+  .categoria .btn{margin-top:18px;height:46px;min-width:200px}
+
+  /* Feito por nós: banner arredondado */
+  .raiz-sec{padding-top:0}
+  .raiz-sec .raiz{border-radius:var(--r);padding:40px 24px}
+  @media (min-width:900px){.raiz-sec .raiz{padding:64px}}
+  .ficha li{border-color:#E4E1DD}
+  .passos li,.faq details{border:0;box-shadow:var(--sombra)}
+  .tabela{border:0;box-shadow:var(--sombra)}
+  .fecho{border-radius:var(--r)}
 </style>
 <!-- Meta Pixel -->
 <script>
@@ -535,18 +628,50 @@ fbq('track','PageView');
   </div>
 </header>
 
-<!-- Herói -->
-<section class="heroi">
+<!-- Topo: banners -->
+<section class="topo">
   <div class="wrap">
-    <img class="foto" src="assets/img/hero-drips.webp?v=3" alt="Três modelos de drip coffee com a área para a sua marca: branco, kraft clássico e kraft premium" width="1250" height="892" fetchpriority="high">
-    <p class="prova">Escolhido por <b>Unimed, Termolar, Uniprime e Brastelha</b></p>
-    <h1>Sua marca na pausa do café. <span>A partir de 50 sachês.</span></h1>
-    <p class="sub">Drip coffee com a sua logo impressa direto no sachê e café especial dentro. Para brindes, eventos e casamentos.</p>
-    <div class="ctas">
-      <a class="btn btn-cafe" href="#modelos">Comprar</a>
-      <a class="btn btn-linha js-zap" data-origem="heroi" href="#" target="_blank" rel="noopener">Pedir orçamento</a>
+    <div class="moldura" id="moldura">
+      <div class="banners" id="banners" aria-roledescription="carrossel" aria-label="Destaques">
+        <div class="banner claro" aria-roledescription="slide" aria-label="1 de 3">
+          <div class="txt">
+            <span class="olho">Drip coffee personalizado</span>
+            <h1>Sua marca na pausa do café.</h1>
+            <p>A sua logo impressa direto no sachê e café especial de origem única dentro. A partir de 50 sachês.</p>
+            <div class="ctas"><a class="btn btn-cafe" href="#modelos">Comprar</a><a class="btn btn-linha js-zap" data-origem="heroi" href="#" target="_blank" rel="noopener">Pedir orçamento</a></div>
+          </div>
+          <img class="prod-img" src="assets/img/hero-drips.webp?v=3" alt="Três modelos de drip coffee com a área para a sua marca: branco, kraft clássico e kraft premium" width="1250" height="892" fetchpriority="high">
+        </div>
+        <div class="banner foto" aria-roledescription="slide" aria-label="2 de 3">
+          <img class="bg" src="assets/img/o2.webp" alt="Drip com a sua marca entregue em reunião com cliente" width="900" height="1204" loading="lazy">
+          <div class="txt">
+            <span class="olho">Empresas</span>
+            <span class="h">Um brinde que vai para a xícara, não para a gaveta.</span>
+            <p>Endomarketing, visita a clientes, feiras e fim de ano. Com nota fiscal em todo pedido.</p>
+            <div class="ctas"><a class="btn btn-branco" href="#modelos">Ver modelos</a></div>
+          </div>
+        </div>
+        <div class="banner foto" aria-roledescription="slide" aria-label="3 de 3">
+          <img class="bg" src="assets/img/o5.webp" alt="Drip com a marca do casal no prato do casamento" width="900" height="1204" loading="lazy">
+          <div class="txt">
+            <span class="olho">Casamentos e eventos</span>
+            <span class="h">A lembrança que os convidados usam no dia seguinte.</span>
+            <p>Arte com o nome do casal ou do evento, impressa em preto ou colorida.</p>
+            <div class="ctas"><a class="btn btn-branco js-zap" data-origem="banner-casamento" href="#" target="_blank" rel="noopener">Pedir orçamento</a></div>
+          </div>
+        </div>
+      </div>
+      <button class="seta esq" type="button" data-b="-1" aria-label="Destaque anterior">‹</button>
+      <button class="seta dir" type="button" data-b="1" aria-label="Próximo destaque">›</button>
+      <div class="pontos" id="pontos"></div>
     </div>
-    <div class="chips"><span>80+ pontos SCA</span><span>Impressão direta, sem adesivo</span><span>Pix, boleto ou cartão</span><span>Nota fiscal em todo pedido</span></div>
+    <p class="prova">Escolhido por <b>Unimed, Termolar, Uniprime e Brastelha</b></p>
+    <div class="beneficios">
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7.5 12 3l8 4.5v9L12 21l-8-4.5v-9Z"/><path d="M4 7.5 12 12l8-4.5M12 12v9"/></svg><b>A partir de 50 sachês</b><span>Desconto automático por quantidade</span></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4M10 12h5M10 16h5"/></svg><b>Nota fiscal</b><span>Em todo pedido</span></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M3 10h18M7 15h3"/></svg><b>Pix, boleto ou cartão</b><span>Compra direto na loja</span></div>
+      <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><b>Arte aprovada antes</b><span>Só imprimimos com o seu ok</span></div>
+    </div>
   </div>
 </section>
 
@@ -628,6 +753,7 @@ fbq('track','PageView');
       </article>
     </div>
 
+    <p class="dica-prod">Arraste para ver os três modelos</p>
     <div class="cab" style="margin-top:64px;margin-bottom:0"><span class="olho">Como comprar</span><h2>Qual caminho é o seu?</h2></div>
     <div class="caminhos" style="margin-top:24px">
       <div class="caminho">
@@ -650,24 +776,18 @@ fbq('track','PageView');
 <section class="sec" id="ocasioes">
   <div class="wrap">
     <div class="cab"><span class="olho">Para cada ocasião</span><h2>Onde a sua marca aparece</h2><p>Leve, útil e aberto na hora. O drip não vai para a gaveta.</p></div>
-    <div class="trilho ocasioes" id="ocasioes-trilho">
-      <a class="ocasiao" href="#modelos"><img src="assets/img/o1.webp" alt="Drip com a sua marca na mesa do escritório" width="900" height="1204" loading="lazy"><b>Endomarketing</b><span>Onboarding, SIPAT, aniversários</span></a>
-      <a class="ocasiao" href="#modelos"><img src="assets/img/o2.webp" alt="Drip entregue em reunião com cliente" width="900" height="1204" loading="lazy"><b>Visita a clientes</b><span>Deixe na mesa após a reunião</span></a>
-      <a class="ocasiao" href="#modelos"><img src="assets/img/o4.webp" alt="Drips com a sua marca em estande de feira" width="900" height="1204" loading="lazy"><b>Feiras e eventos</b><span>Cabe em qualquer sacola</span></a>
-      <a class="ocasiao" href="#modelos"><img src="assets/img/o5.webp" alt="Drip com a marca do casal no prato do casamento" width="900" height="1204" loading="lazy"><b>Casamentos</b><span>O café da manhã seguinte</span></a>
-      <a class="ocasiao" href="#modelos"><img src="assets/img/o6.webp" alt="Bandeja de drips na recepção" width="900" height="1204" loading="lazy"><b>Clínicas e recepções</b><span>Mimo para pacientes e clientes</span></a>
-      <a class="ocasiao" href="#modelos"><img src="assets/img/o8.webp" alt="Drips com a sua marca em kit de fim de ano" width="900" height="1204" loading="lazy"><b>Fim de ano</b><span>Com chocolate, cartão ou caneca</span></a>
-      <a class="ocasiao" href="#modelos"><img src="assets/img/o7.webp" alt="Drip em caixa enviada para quem trabalha em casa" width="900" height="1204" loading="lazy"><b>Home office</b><span>Vai pelo correio junto com o kit</span></a>
+    <div class="categorias">
+      <article class="categoria"><img src="assets/img/o1.webp" alt="Drip com a sua marca na mesa do escritório" width="900" height="1204" loading="lazy"><div class="c"><h3>Empresas</h3><p>Endomarketing, onboarding, visita a clientes e kits de fim de ano.</p><a class="btn btn-linha" href="#modelos">Comprar kit</a></div></article>
+      <article class="categoria"><img src="assets/img/o4.webp" alt="Drips com a sua marca em estande de feira" width="900" height="1204" loading="lazy"><div class="c"><h3>Feiras e eventos</h3><p>Cabe em qualquer sacola e é aberto na hora, no estande ou no hotel.</p><a class="btn btn-linha" href="#modelos">Ver modelos</a></div></article>
+      <article class="categoria"><img src="assets/img/o5.webp" alt="Drip com a marca do casal no prato do casamento" width="900" height="1204" loading="lazy"><div class="c"><h3>Casamentos</h3><p>Lembrança com o nome do casal para o café da manhã seguinte.</p><a class="btn btn-linha js-zap" data-origem="ocasiao-casamento" href="#" target="_blank" rel="noopener">Pedir orçamento</a></div></article>
     </div>
-    <div class="setas"><button type="button" data-dir="-1" aria-label="Anterior">‹</button><button type="button" data-dir="1" aria-label="Próxima">›</button></div>
-    <p class="dica-rolar oc">Arraste para ver mais</p>
     <p class="nota-il">*Imagens ilustrativas. A sua marca entra no lugar de “sua marca aqui”.</p>
   </div>
 </section>
 
 <!-- Feito por nós -->
-<section class="sec raiz">
-  <div class="wrap in">
+<section class="sec raiz-sec">
+  <div class="wrap"><div class="raiz in">
     <div>
       <span class="olho">Feito por nós</span>
       <h2>Do café à selagem, tudo na mesma casa.</h2>
@@ -679,7 +799,7 @@ fbq('track','PageView');
         <div class="janela"><video src="assets/video/momentos-marcas.mp4" poster="assets/video/momentos-marcas-poster.jpg" width="600" height="800" muted loop playsinline autoplay preload="metadata"></video></div>
       </figure>
     </div>
-  </div>
+  </div></div>
 </section>
 
 <!-- O café -->
@@ -797,9 +917,18 @@ fbq('track','PageView');
   // Tabela de preços
   var h='';for(var i=0;i<6;i++){h+='<tr><td>'+(i<5?(i+1)*50:'300 ou mais')+'</td><td>'+brl(M.kraft.p[i])+'</td><td>'+brl(M.branco.p[i])+'</td><td>'+brl(M.kraftp.p[i])+'</td></tr>'}
   document.getElementById('tabela').innerHTML=h;
-  // Setas das ocasiões (computador)
-  var tr=document.getElementById('ocasioes-trilho');
-  document.querySelectorAll('.setas button').forEach(function(b){b.onclick=function(){tr.scrollBy({left:(+b.dataset.dir)*tr.clientWidth/2,behavior:'smooth'})}});
+  // Banners do topo: arrastar, pontos, setas e troca automática a cada 6 s (para quando a pessoa mexe)
+  (function(){var bn=document.getElementById('banners');if(!bn)return;var sl=[].slice.call(bn.children),pt=document.getElementById('pontos'),mol=document.getElementById('moldura'),at=0,auto=null,
+      calma=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    sl.forEach(function(x,i){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Ir para o destaque '+(i+1));b.onclick=function(){vai(i);para()};pt.appendChild(b)});
+    function marca(i){at=i;[].forEach.call(pt.children,function(b,k){b.setAttribute('aria-current',k===i?'true':'false')});mol.classList.toggle('escuro',sl[i].classList.contains('foto'))}
+    function vai(i){i=(i+sl.length)%sl.length;bn.scrollTo({left:sl[i].offsetLeft-sl[0].offsetLeft,behavior:calma?'auto':'smooth'});marca(i)}
+    function para(){if(auto){clearInterval(auto);auto=null}}
+    bn.addEventListener('scroll',function(){var i=Math.round(bn.scrollLeft/bn.clientWidth);if(i!==at)marca(i)},{passive:true});
+    ['pointerdown','touchstart','wheel'].forEach(function(t){bn.addEventListener(t,para,{passive:true})});
+    document.querySelectorAll('.seta').forEach(function(b){b.onclick=function(){vai(at+(+b.dataset.b));para()}});
+    marca(0);if(!calma)auto=setInterval(function(){if(!document.hidden)vai(at+1)},6000);
+  })();
   // Clientes: toque amplia o sachê no lugar (até 2x, sem sair da tela), troca pela foto em alta e volta ao tocar de novo, rolar ou Esc
   var cs=[].slice.call(document.querySelectorAll('.leque .caso')),ab=null,y0=0;
   function alta(im){if(im.dataset.alta)return;im.dataset.alta=1;var g=im.getAttribute('src').replace(/\?.*$/,'').replace('/cli-','/cli-g-'),p=new Image();p.onload=function(){im.src=g};p.src=g}
