@@ -703,7 +703,8 @@
   .capa-foto::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,#1D1D1B 0%,rgba(29,29,27,0) 22%)}
   @media (min-width:900px){.capa-foto::after{background:linear-gradient(90deg,#1D1D1B 0%,rgba(29,29,27,0) 26%)}}
   .capa-foto figcaption{z-index:1}
-  .prod .btn.orc{margin-top:8px}
+  .prod .btn.orc{margin-top:8px;padding:0 14px;white-space:nowrap}
+  @media (max-width:380px){.prod .btn.orc{font-size:13.5px}}
   /* Kraft Clássico: tarja preta sobre a base do sachê, avisando que a impressão é só em preto */
   .prod .img.tem-tarja{position:relative}
   .prod .tarja{position:absolute;left:50%;bottom:-6px;transform:translateX(-50%);background:var(--ink);color:#fff;font:700 11px/1 'Open Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase;padding:8px 14px;border-radius:4px;white-space:nowrap;box-shadow:0 4px 12px rgba(0,0,0,.18)}
@@ -775,7 +776,7 @@ fbq('track','PageView');
         <p class="preco tnum"><span class="js-un">R$ 5,90</span><small>/sachê</small></p>
         <div class="qtd"><div class="stepper"><button type="button" data-passo="-1" aria-label="Menos 50 sachês">−</button><output class="js-n tnum">50 sachês</output><button type="button" data-passo="1" aria-label="Mais 50 sachês">+</button></div><div class="tot">Total<b class="js-tot tnum">R$ 295,00</b></div></div>
         <a class="btn btn-cafe js-comprar" data-produto="kraft" href="#" target="_blank" rel="noopener">Comprar</a>
-        <a class="btn btn-linha js-zap orc" data-origem="card-kraft" href="#" target="_blank" rel="noopener">Pedir orçamento</a>
+        <a class="btn btn-linha js-zap orc" data-origem="card-kraft" href="#" target="_blank" rel="noopener">Falar com um especialista</a>
       </article>
       <article class="prod" data-modelo="branco">
         <div class="img par">
@@ -787,7 +788,7 @@ fbq('track','PageView');
         <p class="preco tnum"><span class="js-un">R$ 6,90</span><small>/sachê</small></p>
         <div class="qtd"><div class="stepper"><button type="button" data-passo="-1" aria-label="Menos 50 sachês">−</button><output class="js-n tnum">50 sachês</output><button type="button" data-passo="1" aria-label="Mais 50 sachês">+</button></div><div class="tot">Total<b class="js-tot tnum">R$ 345,00</b></div></div>
         <a class="btn btn-cafe js-comprar" data-produto="branco" href="#" target="_blank" rel="noopener">Comprar</a>
-        <a class="btn btn-linha js-zap orc" data-origem="card-branco" href="#" target="_blank" rel="noopener">Pedir orçamento</a>
+        <a class="btn btn-linha js-zap orc" data-origem="card-branco" href="#" target="_blank" rel="noopener">Falar com um especialista</a>
       </article>
       <article class="prod" data-modelo="kraftp">
         <div class="img par">
@@ -799,7 +800,7 @@ fbq('track','PageView');
         <p class="preco tnum"><span class="js-un">R$ 6,90</span><small>/sachê</small></p>
         <div class="qtd"><div class="stepper"><button type="button" data-passo="-1" aria-label="Menos 50 sachês">−</button><output class="js-n tnum">50 sachês</output><button type="button" data-passo="1" aria-label="Mais 50 sachês">+</button></div><div class="tot">Total<b class="js-tot tnum">R$ 345,00</b></div></div>
         <a class="btn btn-cafe js-comprar" data-produto="kraftp" href="#" target="_blank" rel="noopener">Comprar</a>
-        <a class="btn btn-linha js-zap orc" data-origem="card-kraftp" href="#" target="_blank" rel="noopener">Pedir orçamento</a>
+        <a class="btn btn-linha js-zap orc" data-origem="card-kraftp" href="#" target="_blank" rel="noopener">Falar com um especialista</a>
       </article>
     </div>
     <p class="nota-prod">Mínimo de 50 sachês. Desconto automático a partir de 150 e de 300 sachês. Nos Premium, você escolhe preto ou colorido na aprovação da arte, pelo mesmo preço. <a class="js-zap" data-origem="modelos" href="#" target="_blank" rel="noopener">Dúvidas? Fale com a gente</a></p>
@@ -980,6 +981,9 @@ fbq('track','PageView');
   var ZAP='https://wa.me/5554997081666?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Drip%20Coffee%20Label%20e%20quero%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20drip%20personalizado.';
   var brl=function(v){return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'})};
   document.querySelectorAll('.js-zap').forEach(function(a){a.href=ZAP});
+  // Botão dos cartões: a mensagem já diz o modelo, para o atendimento saber de qual produto a pessoa veio
+  document.querySelectorAll('.prod .orc').forEach(function(a){var m=M[a.closest('.prod').dataset.modelo];
+    a.href='https://wa.me/5554997081666?text='+encodeURIComponent('Olá! Vim pelo site da Drip Coffee Label e quero falar com um especialista sobre o drip '+m.n+'.')});
   // Vitrine: quantidade em kits de 50, preço da faixa e link direto para o carrinho.
   // Premium: Preto ou Colorido só troca a foto (mesmo preço e mesmo produto; a impressão é definida na aprovação da arte).
   document.querySelectorAll('.prod').forEach(function(c){
