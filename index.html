@@ -703,6 +703,9 @@
   .capa-foto::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,#1D1D1B 0%,rgba(29,29,27,0) 22%)}
   @media (min-width:900px){.capa-foto::after{background:linear-gradient(90deg,#1D1D1B 0%,rgba(29,29,27,0) 26%)}}
   .capa-foto figcaption{z-index:1}
+  .prod .btn.orc{margin-top:8px}
+  /* Celular: foto da capa mais baixa, cortando o fundo vazio acima dos sachês, para o título e o botão caberem na 1ª tela */
+  @media (max-width:899px){.capa-foto{aspect-ratio:1/1}.capa-foto img{object-position:50% 85%}.capa-txt{padding-top:24px}}
 </style>
 <!-- Meta Pixel -->
 <script>
@@ -769,6 +772,7 @@ fbq('track','PageView');
         <p class="preco tnum"><span class="js-un">R$ 5,90</span><small>/sachê</small></p>
         <div class="qtd"><div class="stepper"><button type="button" data-passo="-1" aria-label="Menos 50 sachês">−</button><output class="js-n tnum">50 sachês</output><button type="button" data-passo="1" aria-label="Mais 50 sachês">+</button></div><div class="tot">Total<b class="js-tot tnum">R$ 295,00</b></div></div>
         <a class="btn btn-cafe js-comprar" data-produto="kraft" href="#" target="_blank" rel="noopener">Comprar</a>
+        <a class="btn btn-linha js-zap orc" data-origem="card-kraft" href="#" target="_blank" rel="noopener">Pedir orçamento</a>
       </article>
       <article class="prod" data-modelo="branco">
         <div class="img par">
@@ -780,6 +784,7 @@ fbq('track','PageView');
         <p class="preco tnum"><span class="js-un">R$ 6,90</span><small>/sachê</small></p>
         <div class="qtd"><div class="stepper"><button type="button" data-passo="-1" aria-label="Menos 50 sachês">−</button><output class="js-n tnum">50 sachês</output><button type="button" data-passo="1" aria-label="Mais 50 sachês">+</button></div><div class="tot">Total<b class="js-tot tnum">R$ 345,00</b></div></div>
         <a class="btn btn-cafe js-comprar" data-produto="branco" href="#" target="_blank" rel="noopener">Comprar</a>
+        <a class="btn btn-linha js-zap orc" data-origem="card-branco" href="#" target="_blank" rel="noopener">Pedir orçamento</a>
       </article>
       <article class="prod" data-modelo="kraftp">
         <div class="img par">
@@ -791,6 +796,7 @@ fbq('track','PageView');
         <p class="preco tnum"><span class="js-un">R$ 6,90</span><small>/sachê</small></p>
         <div class="qtd"><div class="stepper"><button type="button" data-passo="-1" aria-label="Menos 50 sachês">−</button><output class="js-n tnum">50 sachês</output><button type="button" data-passo="1" aria-label="Mais 50 sachês">+</button></div><div class="tot">Total<b class="js-tot tnum">R$ 345,00</b></div></div>
         <a class="btn btn-cafe js-comprar" data-produto="kraftp" href="#" target="_blank" rel="noopener">Comprar</a>
+        <a class="btn btn-linha js-zap orc" data-origem="card-kraftp" href="#" target="_blank" rel="noopener">Pedir orçamento</a>
       </article>
     </div>
     <p class="nota-prod">Mínimo de 50 sachês. Desconto automático a partir de 150 e de 300 sachês. Nos Premium, você escolhe preto ou colorido na aprovação da arte, pelo mesmo preço. <a class="js-zap" data-origem="modelos" href="#" target="_blank" rel="noopener">Dúvidas? Fale com a gente</a></p>
