@@ -500,6 +500,9 @@
   /* WhatsApp flutuante */
   .zap-fixo{position:fixed;right:18px;bottom:18px;z-index:50;display:grid;place-items:center;width:58px;height:58px;border-radius:50%;background:#25D366;box-shadow:0 0 0 8px rgba(37,211,102,.18),0 8px 20px rgba(0,0,0,.18)}
   .zap-fixo svg{width:30px;height:30px;fill:#fff}
+  /* WhatsApp flutuante só aparece depois que a pessoa vê os produtos */
+  .zap-fixo{opacity:0;transform:translateY(16px) scale(.9);pointer-events:none;transition:opacity .35s,transform .35s}
+  .zap-fixo.on{opacity:1;transform:none;pointer-events:auto}
 
   /* ===== Visual 2026 (referência: lojas de café premium) ===== 
      Cartões brancos arredondados com sombra leve, banners arredondados em carrossel,
@@ -741,7 +744,7 @@ fbq('track','PageView');
   <div class="capa-txt">
     <h1>Sua marca na pausa do café.</h1>
     <p class="sub">Drip coffee com a sua arte impressa direto no sachê e café especial de origem única dentro. A partir de 50 sachês.</p>
-    <div class="ctas"><a class="btn btn-branco" href="#modelos">Ver modelos e preços</a><a class="btn btn-vazado js-zap" data-origem="heroi" href="#" target="_blank" rel="noopener">Pedir orçamento</a></div>
+    <div class="ctas"><a class="btn btn-branco" href="#modelos">Ver modelos e preços</a></div>
     <p class="quem">Já servem o próprio drip: <b>Unimed, Termolar, Uniprime e Brastelha</b></p>
   </div>
   <figure class="capa-foto"><img src="assets/img/s-capa.webp?v=2" alt="Três drips reais: CLRD em kraft premium colorido, Nieto em branco premium e Termolar em kraft" width="1200" height="1500" fetchpriority="high"><figcaption>Drips feitos para CLRD, Nieto e Termolar</figcaption></figure>
@@ -1021,14 +1024,20 @@ fbq('track','PageView');
     if(nome==='InitiateCheckout'){fbq('trackSingle',PX_DRIP,nome,dados);fbq('trackSingleCustom',PX_NUVEM,'IrParaLoja',dados)}
     else{fbq('track',nome,dados)}}catch(e){}}
   // Lead (só no Pixel_Nuvem): base da conversão Lead Drip da campanha DripNuvem.
-  // Vai no 1º clique de interesse da visita (WhatsApp ou Comprar), uma vez só, para não contar a mesma pessoa várias vezes.
+  // Vai no 1º clique de interesse da visita (WhatsApp só depois de ver os produtos; Comprar sempre), uma vez só, para não contar a mesma pessoa várias vezes.
+  // Viu os produtos: metade do 1º cartão de produto na tela. Só depois disso aparece o WhatsApp flutuante e o clique conta como Lead.
+  var viu=false,zf=document.querySelector('.zap-fixo');
+  function marcaViu(){viu=true;if(zf)zf.classList.add('on');try{sessionStorage.setItem('drip_viu','1')}catch(x){}}
+  try{if(sessionStorage.getItem('drip_viu'))marcaViu()}catch(x){}
+  var p1=document.querySelector('.prod');
+  if(!viu){if(p1&&'IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting||e.boundingClientRect.bottom<0){marcaViu();io.disconnect()}})},{threshold:.5});io.observe(p1)}else marcaViu()}
   var leadFeito=false;
   function lead(nome){try{if(leadFeito)return;try{if(sessionStorage.getItem('drip_lead')){leadFeito=true;return}}catch(x){}
     if(!window.fbq)return;fbq('trackSingle',PX_NUVEM,'Lead',{content_name:nome});leadFeito=true;
     try{sessionStorage.setItem('drip_lead','1')}catch(x){}}catch(e){}}
   document.addEventListener('click',function(e){
     var a=e.target.closest&&e.target.closest('a');if(!a)return;
-    if(a.classList.contains('js-zap')){var o=a.getAttribute('data-origem')||'whatsapp';ev('Contact',{content_name:o});lead('whatsapp-'+o)}
+    if(a.classList.contains('js-zap')){var o=a.getAttribute('data-origem')||'whatsapp';ev('Contact',{content_name:o});if(viu)lead('whatsapp-'+o)}
     else if(a.hasAttribute('data-produto')){var pr=a.getAttribute('data-produto');ev('InitiateCheckout',{content_type:'product',content_ids:[pr],content_name:'card-'+pr});lead('loja-'+pr)}
   },true);
 })();
