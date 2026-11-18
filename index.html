@@ -704,6 +704,9 @@
   @media (min-width:900px){.capa-foto::after{background:linear-gradient(90deg,#1D1D1B 0%,rgba(29,29,27,0) 26%)}}
   .capa-foto figcaption{z-index:1}
   .prod .btn.orc{margin-top:8px}
+  /* Kraft Clássico: tarja preta sobre a base do sachê, avisando que a impressão é só em preto */
+  .prod .img.tem-tarja{position:relative}
+  .prod .tarja{position:absolute;left:50%;bottom:-6px;transform:translateX(-50%);background:var(--ink);color:#fff;font:700 11px/1 'Open Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase;padding:8px 14px;border-radius:4px;white-space:nowrap;box-shadow:0 4px 12px rgba(0,0,0,.18)}
   /* Celular: foto da capa mais baixa, cortando o fundo vazio acima dos sachês, para o título e o botão caberem na 1ª tela */
   @media (max-width:899px){.capa-foto{aspect-ratio:1/1}.capa-foto img{object-position:50% 85%}.capa-txt{padding-top:24px}}
 </style>
@@ -766,7 +769,7 @@ fbq('track','PageView');
     <div class="produtos">
       <article class="prod" data-modelo="kraft">
         <span class="selo">Mais vendido</span>
-        <div class="img"><img src="assets/img/p-kraft-cut.webp?v=3" alt="Drip Kraft Clássico com a sua marca" width="456" height="558" loading="lazy"></div>
+        <div class="img tem-tarja"><img src="assets/img/p-kraft-cut.webp?v=3" alt="Drip Kraft Clássico com a sua marca, impressão só em preto" width="456" height="558" loading="lazy"><span class="tarja">Impressão só em preto</span></div>
         <h3>Kraft Clássico</h3>
         <p class="med">10 × 12 cm · impressão em preto</p>
         <p class="preco tnum"><span class="js-un">R$ 5,90</span><small>/sachê</small></p>
