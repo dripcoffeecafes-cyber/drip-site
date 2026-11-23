@@ -271,7 +271,9 @@
   /* Rodapé */
   footer{background:var(--papel);border-top:1px solid var(--borda);font-size:14px;color:var(--apoio)}
   footer .cols{display:grid;gap:28px;padding-top:44px;padding-bottom:28px}
-  @media (min-width:900px){footer .cols{grid-template-columns:1.4fr 1fr 1fr}}
+  footer .cols{grid-template-columns:1fr 1fr}footer .marca-rod{grid-column:1/-1}
+  @media (min-width:900px){footer .cols{grid-template-columns:1.6fr 1fr 1fr 1fr}footer .marca-rod{grid-column:auto}}
+  footer .rod-fatos{margin-top:12px;font-size:12.5px;color:var(--ink)}
   footer h4{margin:0 0 10px;font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ink)}
   footer ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
   footer a:hover{color:var(--cafe)}
@@ -620,9 +622,14 @@ fbq('track','PageView');
 </section>
 <footer>
   <div class="wrap cols">
-    <div><img src="../../assets/img/logo.png" alt="Drip Coffee Label" width="605" height="294" style="height:30px;width:auto"><p style="margin-top:14px;max-width:24rem">Drip coffee personalizado com café especial de origem única, do Sul de Minas. Uma marca Blooming Club.</p></div>
-    <div><h4>Navegação</h4><ul><li><a href="../../#modelos">Modelos</a></li><li><a href="../../#clientes">Clientes</a></li><li><a href="../../#ocasioes">Ocasiões</a></li><li><a href="../../#precos">Preços</a></li><li><a href="../../#duvidas">Dúvidas</a></li></ul></div>
-    <div><h4>Contato</h4><ul><li><a class="js-zap" data-origem="rodape" href="#" target="_blank" rel="noopener">WhatsApp (54) 99708-1666</a></li><li>dripcoffee@bloomingclub.com.br</li><li><a href="https://www.instagram.com/driplabel.cafes/" target="_blank" rel="noopener">@driplabel.cafes</a></li></ul></div>
+    <div class="marca-rod">
+      <img src="../../assets/img/logo.png" alt="Drip Coffee Label" width="605" height="294" style="height:34px;width:auto">
+      <p style="margin-top:14px;max-width:24rem">Drip coffee personalizado com a sua arte impressa no sachê e café especial de origem única, 80+ pontos SCA, da Região Vulcânica (Sul de Minas). Uma marca do grupo Blooming.</p>
+      <p class="rod-fatos">A partir de 50 sachês · Pix, boleto ou cartão · pronto em 5 dias úteis após a arte</p>
+    </div>
+    <div><h4>Modelos</h4><ul><li><a href="../../modelos/kraft-classico/">Kraft Clássico</a></li><li><a href="../../modelos/kraft-premium/">Kraft Premium</a></li><li><a href="../../modelos/branco-premium/">Branco Premium</a></li><li><a href="../../#precos">Tabela de preços</a></li></ul></div>
+    <div><h4>Drip Label</h4><ul><li><a href="../../#diferenciais">Diferenciais</a></li><li><a href="../../#clientes">Clientes</a></li><li><a href="../../#ocasioes">Ocasiões</a></li><li><a href="../../#duvidas">Dúvidas</a></li></ul></div>
+    <div><h4>Atendimento</h4><ul><li><a class="js-zap" data-origem="rodape" href="#" target="_blank" rel="noopener">WhatsApp (54) 99708-1666</a></li><li><a href="mailto:dripcoffee@bloomingclub.com.br">dripcoffee@bloomingclub.com.br</a></li><li><a href="https://www.instagram.com/driplabel.cafes/" target="_blank" rel="noopener">Instagram @driplabel.cafes</a></li><li><a href="https://www.bloomingclub.com.br/contato?entrar=1" target="_blank" rel="noopener">Minha conta e pedidos</a></li></ul></div>
   </div>
   <div class="wrap legal">Blooming Club Cafés Especiais Ltda · CNPJ 62.660.408/0001-47 · Erechim/RS · Compras finalizadas na loja Blooming Club. Cenas com “sua marca aqui” são ilustrativas.</div>
 </footer>

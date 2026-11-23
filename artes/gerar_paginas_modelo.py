@@ -18,6 +18,7 @@ zap = entre('<a class="zap-fixo', '</a>')
 def rel(x):
     x = re.sub(r'(src|href)="assets/', r'\1="../../assets/', x)
     x = re.sub(r'href="#([a-z]+)"', r'href="../../#\1"', x)
+    x = x.replace('href="modelos/', 'href="../../modelos/')
     return x.replace('class="logo" href="../../#"', 'class="logo" href="../../"').replace('class="logo" href="#"', 'class="logo" href="../../"')
 
 topo, rodape, zap = rel(topo), rel(rodape), rel(zap)
