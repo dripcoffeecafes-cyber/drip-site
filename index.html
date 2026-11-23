@@ -792,7 +792,7 @@
   /* Celular (22/11): texto em cima da foto, no espaço da parede; sachês aparecem embaixo */
   @media (max-width:899px){.capa{position:relative;min-height:138vw}
     .capa-foto{aspect-ratio:auto;position:absolute;inset:0;order:0}
-    .capa-foto img{object-position:50% 100%}
+    .capa-foto picture{display:contents}.capa-foto img{object-position:50% 100%}
     .capa-foto::after{background:linear-gradient(180deg,rgba(23,22,20,.92) 0%,rgba(23,22,20,.7) 34%,rgba(23,22,20,.1) 58%,rgba(23,22,20,0) 100%)!important}
     .capa-txt{position:relative;z-index:2;align-self:start;padding:28px 20px 0}
     .capa h1{font-size:40px;max-width:8.2em}.capa .sub{font-size:15.5px;margin-top:12px}.capa .ctas{margin-top:18px}
@@ -839,7 +839,7 @@ fbq('track','PageView');
     <div class="ctas"><a class="btn btn-branco" href="#modelos">Ver modelos e preços</a></div>
     <p class="quem">Já servem o próprio drip: <b>Unimed, Termolar, Uniprime e Brastelha</b></p>
   </div>
-  <figure class="capa-foto"><img src="assets/img/capa-drips-clientes.webp?v=2" alt="Drips reais sobre a mesa: DKJ Psicologia, MatriKem e um sachê de agradecimento" width="1350" height="1688" fetchpriority="high"></figure>
+  <figure class="capa-foto"><picture><source media="(max-width:899px)" srcset="assets/img/capa-drips-clientes-m.webp"><img src="assets/img/capa-drips-clientes.webp?v=3" alt="Drips reais sobre a mesa: DKJ Psicologia, MatriKem e um sachê de agradecimento" width="1350" height="1688" fetchpriority="high"></picture></figure>
 </section>
 <div class="fatos"><ul class="wrap">
   <li><b>Impresso direto no sachê</b><span>Sem etiqueta colada</span></li>

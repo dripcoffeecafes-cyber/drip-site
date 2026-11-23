@@ -541,7 +541,7 @@
   /* Celular (22/11): texto em cima da foto, no espaço da parede; sachês aparecem embaixo */
   @media (max-width:899px){.capa{position:relative;min-height:138vw}
     .capa-foto{aspect-ratio:auto;position:absolute;inset:0;order:0}
-    .capa-foto img{object-position:50% 100%}
+    .capa-foto picture{display:contents}.capa-foto img{object-position:50% 100%}
     .capa-foto::after{background:linear-gradient(180deg,rgba(23,22,20,.92) 0%,rgba(23,22,20,.7) 34%,rgba(23,22,20,.1) 58%,rgba(23,22,20,0) 100%)!important}
     .capa-txt{position:relative;z-index:2;align-self:start;padding:28px 20px 0}
     .capa h1{font-size:40px;max-width:8.2em}.capa .sub{font-size:15.5px;margin-top:12px}.capa .ctas{margin-top:18px}
