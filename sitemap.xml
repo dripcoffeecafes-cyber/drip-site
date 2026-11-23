@@ -32,4 +32,24 @@
     <image:image><image:loc>https://driplabel.bloomingclub.com.br/assets/img/ml/branco-premium-01.webp</image:loc></image:image>
     <image:image><image:loc>https://driplabel.bloomingclub.com.br/assets/img/ml/branco-premium-03.webp</image:loc></image:image>
   </url>
+  <url>
+    <loc>https://driplabel.bloomingclub.com.br/empresas/</loc>
+    <lastmod>2026-11-22</lastmod>
+  </url>
+  <url>
+    <loc>https://driplabel.bloomingclub.com.br/casamentos/</loc>
+    <lastmod>2026-11-22</lastmod>
+  </url>
+  <url>
+    <loc>https://driplabel.bloomingclub.com.br/eventos/</loc>
+    <lastmod>2026-11-22</lastmod>
+  </url>
+  <url>
+    <loc>https://driplabel.bloomingclub.com.br/fim-de-ano/</loc>
+    <lastmod>2026-11-22</lastmod>
+  </url>
+  <url>
+    <loc>https://driplabel.bloomingclub.com.br/consultorios-e-escritorios/</loc>
+    <lastmod>2026-11-22</lastmod>
+  </url>
 </urlset>
