@@ -67,7 +67,8 @@ def faq(k, d):
     q = [('A impressão pode ser colorida?', COR_FAQ[k]),
          ('Posso colocar uma foto ou um fundo colorido?', 'Não fazemos fundo colorido nem foto ou arte cobrindo o sachê. Imprimimos a sua logo, nome, frase ou data sobre o próprio sachê.'),
          ('Qual arquivo da logo devo enviar?', 'Em vetor: PDF vetorial, AI, EPS ou SVG, com os textos convertidos em curvas. É o arquivo original da sua marca, feito no Illustrator, CorelDRAW ou Canva. Foto, print ou imagem salva como PDF não servem. Você envia pelo WhatsApp depois da compra.'),
-         ('Não tenho a logo em vetor. E agora?', 'Peça o arquivo original a quem criou a sua marca (designer ou gráfica). Ele costuma estar em PDF, AI ou CDR. Se não conseguir, fale com a gente pelo WhatsApp que avaliamos o seu caso.'),
+         ('Não tenho a logo em vetor. E agora?', 'Peça o arquivo original a quem criou a sua marca (designer ou gráfica). Ele costuma estar em PDF, AI ou CDR. Se não conseguir, ou se você não tem logo nem arte, criamos a arte do seu sachê sem custo. Fale com a gente pelo WhatsApp.'),
+         ('Não tenho logo nem arte. Vocês criam?', 'Sim, sem custo. Criamos a arte do sachê com o nome, uma frase ou uma data que você escolher, e mandamos a prova digital para você aprovar, com 2 ajustes incluídos.'),
          ('Posso usar mais de uma arte?', 'Sim. Cada kit de 50 sai com uma arte. Com 3 kits, por exemplo, você pode ter três artes diferentes.'),
          ('Qual é o prazo?', 'Produzimos em 5 dias úteis depois da aprovação da arte. Em seguida vem o prazo da transportadora, calculado pelo CEP no carrinho.'),
          ('Qual é a validade do café?', '6 meses. O café é 100% arábica, torra média, moído na medida para o preparo em drip.'),
@@ -194,7 +195,7 @@ for k, d in M.items():
       <a class="btn btn-cafe js-comprar" data-produto="{k}" href="#" target="_blank" rel="noopener">Comprar</a>
       <a class="btn btn-linha js-zap" data-origem="pagina-{k}" href="#" target="_blank" rel="noopener">Falar com um especialista</a>
       <ul class="gar">
-        <li>{OK}<span>Você manda a logo e nós montamos a arte. Nada é impresso antes do seu ok.</span></li>
+        <li>{OK}<span>Você manda a logo e nós montamos a arte, sem custo. Não tem logo nem arte? Criamos do zero, também sem custo. Nada é impresso antes do seu ok.</span></li>
         {cor}
         <li>{OK}<span>Uma arte diferente a cada 50 sachês.</span></li>
         <li>{OK}<span>Pronto em 5 dias úteis depois da aprovação. Frete calculado pelo CEP no carrinho.</span></li>
@@ -209,7 +210,7 @@ for k, d in M.items():
       <div><h3>Para quem é</h3><ul class="lst">{''.join('<li>%s</li>' % x for x in PARA_QUEM[k])}</ul></div>
       <div><h3>{SACHE[k][0]}</h3><ul class="lst">{''.join('<li>%s</li>' % x for x in SACHE[k][1])}</ul></div>
       <div><h3>O café</h3><ul class="lst"><li>Café especial com laudo: 80+ pontos SCA, avaliado por Q-Grader.</li><li>Origem única: Sul de Minas, Região Vulcânica.</li><li>100% arábica, torra média, moído na medida para o drip.</li><li>10 g por sachê. Validade de 6 meses.</li><li>Dosado, selado e conferido um a um, em pequenos lotes.</li></ul></div>
-      <div><h3>O que vem no kit</h3><ul class="lst"><li>50 drips personalizados em {KIT[k]}, enviados em caixa.</li><li>Arte criada por nós, sem custo, com prova digital para você aprovar.</li></ul><h3 style="margin-top:22px">Como preparar</h3><p>Abra o sachê, encaixe as abas na borda da xícara, despeje água quente aos poucos e aguarde coar. Retire o filtro e aproveite. Não precisa de cafeteira.</p></div>
+      <div><h3>O que vem no kit</h3><ul class="lst"><li>50 drips personalizados em {KIT[k]}, enviados em caixa.</li><li>Arte criada por nós, sem custo, mesmo para quem não tem logo, com prova digital e 2 ajustes incluídos.</li></ul><h3 style="margin-top:22px">Como preparar</h3><p>Abra o sachê, encaixe as abas na borda da xícara, despeje água quente aos poucos e aguarde coar. Retire o filtro e aproveite. Não precisa de cafeteira.</p></div>
     </div>
   </div>
 </section>
@@ -220,8 +221,8 @@ for k, d in M.items():
     <div class="cab" style="margin-top:56px"><span class="olho">Como funciona</span><h2>Do pedido à caixa em 4 passos</h2></div>
     <div class="passos4">
       <div><b>01</b><h3>Escolha e pague</h3><p>Quantidade aqui e pagamento na loja, com Pix, boleto ou cartão.</p></div>
-      <div><b>02</b><h3>Envie a sua logo</h3><p>Em vetor (AI, EPS, SVG ou PDF), pelo WhatsApp.</p></div>
-      <div><b>03</b><h3>Aprove a arte</h3><p>Mandamos a prova digital e ajustamos até ficar do seu jeito.</p></div>
+      <div><b>02</b><h3>Envie a sua logo</h3><p>Em vetor (AI, EPS, SVG ou PDF), pelo WhatsApp. Sem logo? Criamos a arte sem custo.</p></div>
+      <div><b>03</b><h3>Aprove a arte</h3><p>Mandamos a prova digital, com 2 ajustes incluídos.</p></div>
       <div><b>04</b><h3>Receba</h3><p>Produção em 5 dias úteis depois da aprovação, mais o prazo da entrega.</p></div>
     </div>
   </div>
