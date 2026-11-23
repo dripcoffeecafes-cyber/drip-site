@@ -236,7 +236,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Open+Sans:wght@400;600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   /* Paleta do kit de marca do clube (tokens do Blooming Club). Acento: cafe-canela, o tom do logo da Drip. */
   :root{--ink:#1D1D1B;--texto:#3F3D3B;--apoio:#716F6E;--borda:#CDCCCC;--fundo:#F0EEEC;--papel:#F9F6F4;--escuro:#2A2927;--apoio-escuro:#A9A6A2;--cafe:#854734;--cafe-esc:#6E3A2A;--cafe-claro:#D6917B;--amarelo:#EEBC4A;--r:20px}
@@ -719,6 +719,29 @@
     .prod.mini{flex-direction:row;align-items:center;gap:16px;text-align:left;padding:14px 16px}.prod.mini .img{flex:0 0 36%;height:150px;place-items:center}.prod.mini .img img{max-height:150px}
     .prod.mini .tx{align-items:flex-start}.prod.mini h3{font-size:21px}.prod.mini .selo{top:10px;left:10px}.prod.mini .tarja{font-size:9px;padding:5px 7px;bottom:-2px}}
   .aviso{background:var(--ink);color:#CFCBC6;font-size:12.5px;text-align:center;padding:8px 16px;letter-spacing:.02em}.aviso b{color:#fff;font-weight:600}
+  /* Tipografia e cartões do modelo de teste (Adriano, 22/11): títulos em Cormorant Garamond, texto em Outfit leve, botões retos em caixa alta */
+  body{font-family:'Outfit','Open Sans',sans-serif;font-weight:300}
+  b,strong{font-weight:500}
+  h1,h2,h3,.cab h2,.prod h3,.caminho h3,.passos h3,.raiz h2,.fecho h2,.categoria h3,.prod .preco,.selo-sca b{font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;letter-spacing:-.005em}
+  .cab h2{font-size:clamp(34px,4.4vw,52px);line-height:1.06;max-width:none}
+  .olho{font-family:'Outfit',sans-serif;font-weight:400;font-size:11px;letter-spacing:.22em;color:var(--apoio)}
+  .btn{border-radius:2px;font:500 12px/1 'Outfit',sans-serif;letter-spacing:.18em;text-transform:uppercase;height:50px}
+  header .btn{height:40px;font-size:11px;letter-spacing:.14em}
+  .prod.mini{background:#fff;border-radius:0;box-shadow:none;padding:0;text-align:left;align-items:stretch}
+  .prod.mini:hover{box-shadow:0 22px 50px -28px rgba(30,20,10,.35)}
+  .prod.mini .img{background:#EDE6DC;aspect-ratio:1/1;height:auto;display:flex;align-items:center;justify-content:center;position:relative;margin:0;overflow:hidden}
+  .prod.mini .img img{height:80%;max-height:80%;width:auto;transition:transform .6s}
+  .prod.mini:hover .img img{transform:scale(1.05)}
+  .prod.mini .tx{padding:22px 22px 24px;align-items:flex-start}
+  .prod.mini h3{margin:0;font-size:28px;line-height:1.1}
+  .prod.mini .med{margin-top:4px;font-size:12.5px;font-weight:300;color:var(--apoio)}
+  .prod.mini .de{margin-top:12px;font-size:13px;font-weight:300}
+  .prod.mini .de b{font-family:'Cormorant Garamond',Georgia,serif;font-size:25px;font-weight:500}
+  .prod.mini .ver{margin-top:14px;font-size:11.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;border-bottom:1px solid var(--ink);padding-bottom:3px}
+  .prod.mini .selo{top:18px;left:18px;transform:none;border-radius:0;background:var(--ink);color:#fff;font:400 10px/1 'Outfit',sans-serif;letter-spacing:.2em;text-transform:uppercase;padding:7px 10px;z-index:1}
+  .prod.mini .tarja{border-radius:0;font-family:'Outfit',sans-serif;font-weight:500;bottom:14px}
+  @media (max-width:859px){.prod.mini{flex-direction:row;padding:0;gap:0}.prod.mini .img{flex:0 0 42%;aspect-ratio:auto;min-height:180px;height:auto}.prod.mini .img img{height:78%;max-height:150px}
+    .prod.mini .tx{padding:18px 16px}.prod.mini h3{font-size:24px}.prod.mini .selo{top:10px;left:10px;font-size:9px;padding:5px 7px}.prod.mini .tarja{font-size:9px;padding:5px 7px;bottom:8px}}
 </style>
 <!-- Meta Pixel -->
 <script>

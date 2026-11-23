@@ -16,7 +16,7 @@
 <link rel="icon" href="../../favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Open+Sans:wght@400;600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Product", "name": "Drip Kraft Clássico personalizado", "description": "O drip clássico, em kraft natural, com a sua marca impressa em preto direto no sachê. O mais pedido para empresas e eventos.", "image": "https://driplabel.bloomingclub.com.br/assets/img/p-kraft-cut.webp", "brand": {"@type": "Brand", "name": "Drip Coffee Label"}, "offers": {"@type": "AggregateOffer", "priceCurrency": "BRL", "lowPrice": 4.9, "highPrice": 5.9, "availability": "https://schema.org/InStock", "url": "https://driplabel.bloomingclub.com.br/modelos/kraft-classico/"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Início", "item": "https://driplabel.bloomingclub.com.br/"}, {"@type": "ListItem", "position": 2, "name": "Modelos", "item": "https://driplabel.bloomingclub.com.br/#modelos"}, {"@type": "ListItem", "position": 3, "name": "Kraft Clássico", "item": "https://driplabel.bloomingclub.com.br/modelos/kraft-classico/"}]}]}</script>
 <style>
   /* Paleta do kit de marca do clube (tokens do Blooming Club). Acento: cafe-canela, o tom do logo da Drip. */
@@ -500,30 +500,53 @@
     .prod.mini{flex-direction:row;align-items:center;gap:16px;text-align:left;padding:14px 16px}.prod.mini .img{flex:0 0 36%;height:150px;place-items:center}.prod.mini .img img{max-height:150px}
     .prod.mini .tx{align-items:flex-start}.prod.mini h3{font-size:21px}.prod.mini .selo{top:10px;left:10px}.prod.mini .tarja{font-size:9px;padding:5px 7px;bottom:-2px}}
   .aviso{background:var(--ink);color:#CFCBC6;font-size:12.5px;text-align:center;padding:8px 16px;letter-spacing:.02em}.aviso b{color:#fff;font-weight:600}
+  /* Tipografia e cartões do modelo de teste (Adriano, 22/11): títulos em Cormorant Garamond, texto em Outfit leve, botões retos em caixa alta */
+  body{font-family:'Outfit','Open Sans',sans-serif;font-weight:300}
+  b,strong{font-weight:500}
+  h1,h2,h3,.cab h2,.prod h3,.caminho h3,.passos h3,.raiz h2,.fecho h2,.categoria h3,.prod .preco,.selo-sca b{font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;letter-spacing:-.005em}
+  .cab h2{font-size:clamp(34px,4.4vw,52px);line-height:1.06;max-width:none}
+  .olho{font-family:'Outfit',sans-serif;font-weight:400;font-size:11px;letter-spacing:.22em;color:var(--apoio)}
+  .btn{border-radius:2px;font:500 12px/1 'Outfit',sans-serif;letter-spacing:.18em;text-transform:uppercase;height:50px}
+  header .btn{height:40px;font-size:11px;letter-spacing:.14em}
+  .prod.mini{background:#fff;border-radius:0;box-shadow:none;padding:0;text-align:left;align-items:stretch}
+  .prod.mini:hover{box-shadow:0 22px 50px -28px rgba(30,20,10,.35)}
+  .prod.mini .img{background:#EDE6DC;aspect-ratio:1/1;height:auto;display:flex;align-items:center;justify-content:center;position:relative;margin:0;overflow:hidden}
+  .prod.mini .img img{height:80%;max-height:80%;width:auto;transition:transform .6s}
+  .prod.mini:hover .img img{transform:scale(1.05)}
+  .prod.mini .tx{padding:22px 22px 24px;align-items:flex-start}
+  .prod.mini h3{margin:0;font-size:28px;line-height:1.1}
+  .prod.mini .med{margin-top:4px;font-size:12.5px;font-weight:300;color:var(--apoio)}
+  .prod.mini .de{margin-top:12px;font-size:13px;font-weight:300}
+  .prod.mini .de b{font-family:'Cormorant Garamond',Georgia,serif;font-size:25px;font-weight:500}
+  .prod.mini .ver{margin-top:14px;font-size:11.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;border-bottom:1px solid var(--ink);padding-bottom:3px}
+  .prod.mini .selo{top:18px;left:18px;transform:none;border-radius:0;background:var(--ink);color:#fff;font:400 10px/1 'Outfit',sans-serif;letter-spacing:.2em;text-transform:uppercase;padding:7px 10px;z-index:1}
+  .prod.mini .tarja{border-radius:0;font-family:'Outfit',sans-serif;font-weight:500;bottom:14px}
+  @media (max-width:859px){.prod.mini{flex-direction:row;padding:0;gap:0}.prod.mini .img{flex:0 0 42%;aspect-ratio:auto;min-height:180px;height:auto}.prod.mini .img img{height:78%;max-height:150px}
+    .prod.mini .tx{padding:18px 16px}.prod.mini h3{font-size:24px}.prod.mini .selo{top:10px;left:10px;font-size:9px;padding:5px 7px}.prod.mini .tarja{font-size:9px;padding:5px 7px;bottom:8px}}
 </style>
 <style>
 .migalha{font-size:13px;color:var(--apoio);padding:22px 0 8px}.migalha a:hover{color:var(--cafe)}
 .pp{display:grid;gap:28px;padding-bottom:64px}
 @media(min-width:900px){.pp{grid-template-columns:1.05fr 1fr;gap:56px;align-items:start}.pp .gal{position:sticky;top:96px}}
-.gal .pr{position:relative;background:var(--papel);border-radius:var(--r);aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.gal .pr{position:relative;background:#EDE6DC;border-radius:0;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .gal .pr img{max-height:84%;max-width:84%;width:auto;height:auto;object-fit:contain}
 .gal .pr img.cena{max-width:100%;max-height:100%;width:100%;height:100%;object-fit:cover}
 .gal .pr .tarja{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);background:var(--ink);color:#fff;font:700 11px/1 'Open Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase;padding:8px 14px;border-radius:4px;white-space:nowrap}
 .gal .mi{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}
-.gal .mi button{background:var(--papel);border-radius:12px;aspect-ratio:1/1;border:2px solid transparent;cursor:pointer;padding:0;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.gal .mi button{background:#EDE6DC;border-radius:0;aspect-ratio:1/1;border:2px solid transparent;cursor:pointer;padding:0;overflow:hidden;display:flex;align-items:center;justify-content:center}
 .gal .mi button[aria-current="true"]{border-color:var(--ink)}
 .gal .mi img{max-height:80%;width:auto}.gal .mi img.cena{max-height:none;width:100%;height:100%;object-fit:cover}
-.info h1{font-size:clamp(34px,4.2vw,48px);line-height:1.08;margin:10px 0 6px}
+.info h1{font-size:clamp(40px,4.6vw,58px);line-height:1.08;margin:10px 0 6px}
 .info .med{color:var(--apoio);font-size:15px}
 .info .res{font-size:16.5px;margin:18px 0 22px}
-.fx{border:1.5px solid var(--borda);border-radius:16px;overflow:hidden;margin-bottom:16px}
-.fx button{display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%;padding:14px 18px;background:#fff;border:0;border-bottom:1px solid var(--fundo);font:400 15px 'Open Sans',sans-serif;color:var(--texto);cursor:pointer;text-align:left}
+.fx{border:1px solid var(--borda);border-radius:0;overflow:hidden;margin-bottom:16px}
+.fx button{display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%;padding:14px 18px;background:#fff;border:0;border-bottom:1px solid var(--fundo);font:300 15px 'Outfit',sans-serif;color:var(--texto);cursor:pointer;text-align:left}
 .fx button:last-child{border-bottom:0}
-.fx button b{font-weight:700;color:var(--ink);font-size:17px}
-.fx button small{display:inline-block;margin-left:8px;font-size:12px;font-weight:700;color:var(--cafe)}
+.fx button b{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;color:var(--ink);font-size:23px}
+.fx button small{display:inline-block;margin-left:8px;font-size:12px;font-weight:500;color:var(--cafe)}
 .fx button[aria-pressed="true"]{background:var(--papel);box-shadow:inset 4px 0 0 var(--cafe)}
-.linha-q{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--papel);border-radius:16px;padding:12px 16px}
-.linha-q .tot{text-align:right;font-size:13px;color:var(--apoio)}.linha-q .tot b{display:block;font-size:24px;color:var(--ink)}
+.linha-q{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--papel);border-radius:0;padding:12px 16px}
+.linha-q .tot{text-align:right;font-size:13px;color:var(--apoio)}.linha-q .tot b{display:block;font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-size:32px;color:var(--ink)}
 .info .btn{width:100%;margin-top:12px}
 .gar{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:10px}
 .gar li{display:flex;gap:10px;font-size:14.5px}
@@ -531,13 +554,13 @@
 .ficha{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:1px solid var(--borda)}
 @media(min-width:900px){.ficha{grid-template-columns:repeat(3,1fr)}}
 .ficha div{padding:20px 16px 20px 0;border-bottom:1px solid var(--borda)}
-.ficha span{display:block;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--apoio);margin-bottom:4px}
-.ficha b{font-size:17px;color:var(--ink)}
+.ficha span{display:block;font-size:11px;font-weight:400;letter-spacing:.16em;text-transform:uppercase;color:var(--apoio);margin-bottom:4px}
+.ficha b{font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;font-size:23px;color:var(--ink)}
 .passos4{display:grid;gap:20px;counter-reset:p}
 @media(min-width:900px){.passos4{grid-template-columns:repeat(4,1fr)}}
-.passos4 div{background:#fff;border-radius:var(--r);padding:22px}
-.passos4 b{display:block;font-size:28px;color:var(--cafe);line-height:1}
-.passos4 h3{font-size:17px;margin:10px 0 6px}.passos4 p{font-size:14.5px;color:var(--apoio)}
+.passos4 div{background:#fff;border-radius:0;padding:22px}
+.passos4 b{display:block;font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;font-size:44px;color:var(--cafe);line-height:1}
+.passos4 h3{font-family:'Outfit',sans-serif;font-weight:500;letter-spacing:.14em;text-transform:uppercase;font-size:13px;margin:10px 0 6px}.passos4 p{font-size:14.5px;color:var(--apoio)}
 .outros{display:grid;gap:16px;max-width:760px;margin:0 auto}
 @media(min-width:700px){.outros{grid-template-columns:1fr 1fr}}
 </style>
