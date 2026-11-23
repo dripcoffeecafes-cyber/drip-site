@@ -30,7 +30,7 @@ def ML(sl, alts):
 
 # Fotos reais de clientes (Adriano, 22/11), em assets/img/real/ (recorte quadrado *-q.webp): entram logo depois da capa.
 def MIX(ml, reais):
-    return ml[:1] + [('real/%s-q.webp' % f, 1, a) for f, a in reais] + ml[1:]
+    return ml[:1] + [('real/%s-q.webp?v=2' % f, 1, a) for f, a in reais] + ml[1:]
 
 M = {
  'kraft':  dict(sl='kraft-classico', n='Kraft Clássico', v='33', p=[5.9,5.9,5.5,5.5,5.5,4.9], med='10 × 12 cm · impressão em preto',
