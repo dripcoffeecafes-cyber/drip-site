@@ -707,6 +707,16 @@
   .prod .tarja{position:absolute;left:50%;bottom:-6px;transform:translateX(-50%);background:var(--ink);color:#fff;font:700 11px/1 'Open Sans',sans-serif;letter-spacing:.12em;text-transform:uppercase;padding:8px 14px;border-radius:4px;white-space:nowrap;box-shadow:0 4px 12px rgba(0,0,0,.18)}
   /* Celular: foto da capa mais baixa, cortando o fundo vazio acima dos sachês, para o título e o botão caberem na 1ª tela */
   @media (max-width:899px){.capa-foto{aspect-ratio:1/1}.capa-foto img{object-position:50% 85%}.capa-txt{padding-top:24px}}
+  /* Cartões menores dos modelos: levam à página de cada modelo */
+  .prod.mini{display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:transform .2s,box-shadow .2s}
+  .prod.mini:hover{transform:translateY(-3px);box-shadow:0 14px 34px -18px rgba(29,29,27,.35)}
+  .prod.mini .tx{display:flex;flex-direction:column;align-items:center}
+  .prod.mini .de{margin-top:8px;font-size:14px;color:var(--apoio)}.prod.mini .de b{font-size:22px;color:var(--ink);margin:0 2px;white-space:nowrap}
+  .prod.mini .ver{margin-top:12px;font-weight:700;font-size:14px;color:var(--ink);border-bottom:1.5px solid var(--ink);padding-bottom:2px}
+  @media (max-width:859px){.produtos.minis{grid-auto-flow:row;grid-template-columns:1fr;grid-auto-columns:auto;overflow:visible;padding:0;margin:0;gap:12px}
+    .prod.mini{flex-direction:row;align-items:center;gap:16px;text-align:left;padding:14px 16px}.prod.mini .img{flex:0 0 36%;height:150px;place-items:center}.prod.mini .img img{max-height:150px}
+    .prod.mini .tx{align-items:flex-start}.prod.mini h3{font-size:21px}.prod.mini .selo{top:10px;left:10px}.prod.mini .tarja{font-size:9px;padding:5px 7px;bottom:-2px}}
+  .aviso{background:var(--ink);color:#CFCBC6;font-size:12.5px;text-align:center;padding:8px 16px;letter-spacing:.02em}.aviso b{color:#fff;font-weight:600}
 </style>
 <!-- Meta Pixel -->
 <script>
@@ -718,9 +728,7 @@ fbq('track','PageView');
 <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1636404041306148&ev=PageView&noscript=1"><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=29552796950978987&ev=PageView&noscript=1"></noscript>
 </head>
 <body>
-
-
-
+<div class="aviso">A partir de <b>50 sachês</b> · arte montada por nós · <b>pronto em 5 dias úteis</b> após a aprovação</div>
 <header>
   <div class="wrap in">
     <div class="marcas">
@@ -763,42 +771,21 @@ fbq('track','PageView');
 <!-- Produtos -->
 <section class="sec cinza" id="modelos">
   <div class="wrap">
-    <div class="cab"><span class="olho">Nossos produtos</span><h2>Três sachês, o mesmo café especial</h2><p>Escolha o modelo e a quantidade e compre direto na loja. O desconto por quantidade entra sozinho no carrinho.</p></div>
-    <div class="produtos">
-      <article class="prod" data-modelo="kraft">
+    <div class="cab"><span class="olho">Nossos produtos</span><h2>Três sachês, o mesmo café especial</h2><p>Toque no modelo para ver fotos, preço por quantidade e comprar. O desconto entra sozinho no carrinho.</p></div>
+    <div class="produtos minis">
+      <a class="prod mini" data-modelo="kraft" href="modelos/kraft-classico/">
         <span class="selo">Mais vendido</span>
-        <div class="img tem-tarja"><img src="assets/img/p-kraft-cut.webp?v=3" alt="Drip Kraft Clássico com a sua marca, impressão só em preto" width="456" height="558" loading="lazy"><span class="tarja">Impressão só em preto</span></div>
-        <h3>Kraft Clássico</h3>
-        <p class="med">10 × 12 cm · impressão em preto</p>
-        <p class="preco tnum"><span class="js-un">R$ 5,90</span><small>/sachê</small></p>
-        <div class="qtd"><div class="stepper"><button type="button" data-passo="-1" aria-label="Menos 50 sachês">−</button><output class="js-n tnum">50 sachês</output><button type="button" data-passo="1" aria-label="Mais 50 sachês">+</button></div><div class="tot">Total<b class="js-tot tnum">R$ 295,00</b></div></div>
-        <a class="btn btn-cafe js-comprar" data-produto="kraft" href="#" target="_blank" rel="noopener">Comprar</a>
-        <a class="btn btn-linha js-zap orc" data-origem="card-kraft" href="#" target="_blank" rel="noopener">Falar com um especialista</a>
-      </article>
-      <article class="prod" data-modelo="branco">
-        <div class="img par">
-          <figure><img src="assets/img/p-branco-pb-cut.webp" alt="Drip Branco Premium com a sua marca impressa em preto" width="416" height="605" loading="lazy"><figcaption>Preto</figcaption></figure>
-          <figure><img src="assets/img/p-branco-cor-cut.webp?v=5" alt="Drip Branco Premium com a sua marca impressa em cores" width="416" height="605" loading="lazy"><figcaption>Colorido</figcaption></figure>
-        </div>
-        <h3>Branco Premium</h3>
-        <p class="med">10 × 15 cm · preto ou colorido</p>
-        <p class="preco tnum"><span class="js-un">R$ 6,90</span><small>/sachê</small></p>
-        <div class="qtd"><div class="stepper"><button type="button" data-passo="-1" aria-label="Menos 50 sachês">−</button><output class="js-n tnum">50 sachês</output><button type="button" data-passo="1" aria-label="Mais 50 sachês">+</button></div><div class="tot">Total<b class="js-tot tnum">R$ 345,00</b></div></div>
-        <a class="btn btn-cafe js-comprar" data-produto="branco" href="#" target="_blank" rel="noopener">Comprar</a>
-        <a class="btn btn-linha js-zap orc" data-origem="card-branco" href="#" target="_blank" rel="noopener">Falar com um especialista</a>
-      </article>
-      <article class="prod" data-modelo="kraftp">
-        <div class="img par">
-          <figure><img src="assets/img/p-kraft-premium-pb-cut.webp" alt="Drip Kraft Premium com a sua marca impressa em preto" width="417" height="606" loading="lazy"><figcaption>Preto</figcaption></figure>
-          <figure><img src="assets/img/p-kraft-premium-cor-cut.webp?v=5" alt="Drip Kraft Premium com a sua marca impressa em cores" width="417" height="606" loading="lazy"><figcaption>Colorido</figcaption></figure>
-        </div>
-        <h3>Kraft Premium</h3>
-        <p class="med">10 × 15 cm · preto ou colorido</p>
-        <p class="preco tnum"><span class="js-un">R$ 6,90</span><small>/sachê</small></p>
-        <div class="qtd"><div class="stepper"><button type="button" data-passo="-1" aria-label="Menos 50 sachês">−</button><output class="js-n tnum">50 sachês</output><button type="button" data-passo="1" aria-label="Mais 50 sachês">+</button></div><div class="tot">Total<b class="js-tot tnum">R$ 345,00</b></div></div>
-        <a class="btn btn-cafe js-comprar" data-produto="kraftp" href="#" target="_blank" rel="noopener">Comprar</a>
-        <a class="btn btn-linha js-zap orc" data-origem="card-kraftp" href="#" target="_blank" rel="noopener">Falar com um especialista</a>
-      </article>
+        <div class="img tem-tarja"><img src="assets/img/p-kraft-cut.webp?v=3" alt="Drip Kraft Clássico com a sua marca, impressão só em preto" width="456" height="558" loading="lazy"><span class="tarja">Só em preto</span></div>
+        <div class="tx"><h3>Kraft Clássico</h3><p class="med">10 × 12 cm · impressão em preto</p><p class="de">a partir de <b class="tnum">R$ 4,90</b>/sachê</p><span class="ver">Ver modelo e preços</span></div>
+      </a>
+      <a class="prod mini" data-modelo="branco" href="modelos/branco-premium/">
+        <div class="img"><img src="assets/img/p-branco-cor-cut.webp?v=5" alt="Drip Branco Premium com a sua marca impressa em cores" width="416" height="605" loading="lazy"></div>
+        <div class="tx"><h3>Branco Premium</h3><p class="med">10 × 15 cm · preto ou colorido</p><p class="de">a partir de <b class="tnum">R$ 5,90</b>/sachê</p><span class="ver">Ver modelo e preços</span></div>
+      </a>
+      <a class="prod mini" data-modelo="kraftp" href="modelos/kraft-premium/">
+        <div class="img"><img src="assets/img/p-kraft-premium-cor-cut.webp?v=5" alt="Drip Kraft Premium com a sua marca impressa em cores" width="417" height="606" loading="lazy"></div>
+        <div class="tx"><h3>Kraft Premium</h3><p class="med">10 × 15 cm · preto ou colorido</p><p class="de">a partir de <b class="tnum">R$ 5,90</b>/sachê</p><span class="ver">Ver modelo e preços</span></div>
+      </a>
     </div>
     <p class="nota-prod">Mínimo de 50 sachês. Desconto automático a partir de 150 e de 300 sachês. Nos Premium, você escolhe preto ou colorido na aprovação da arte, pelo mesmo preço. <a class="js-zap" data-origem="modelos" href="#" target="_blank" rel="noopener">Dúvidas? Fale com a gente</a></p>
         <div class="cab" style="margin-top:64px;margin-bottom:0"><span class="olho">Como comprar</span><h2>Qual caminho é o seu?</h2></div>
@@ -952,7 +939,7 @@ fbq('track','PageView');
       <details><summary>Posso ter mais de uma arte no mesmo pedido?</summary><p>Sim. Cada lote de 50 sai com uma arte. Com 150 sachês, você pode ter três artes diferentes.</p></details>
       <details><summary>Qual é o prazo?</summary><p>Produzimos em 5 dias úteis depois da aprovação da arte. Em seguida vem o prazo da transportadora.</p></details>
       <details><summary>Quanto custa o frete?</summary><p>É calculado pelo CEP no carrinho, antes do pagamento.</p></details>
-      <details><summary>A impressão é colorida?</summary><p>O padrão é 1 cor, em preto. Detalhes em cor passam pela avaliação da produção; peça no WhatsApp.</p></details>
+      <details><summary>A impressão é colorida?</summary><p>Nos modelos Premium (Branco e Kraft), sim, pelo mesmo preço: você escolhe preto ou colorido na aprovação da arte. O colorido vale para logo ou texto, sem foto nem fundo cheio. O Kraft Clássico é impresso só em preto.</p></details>
       <details><summary>Emitem nota fiscal?</summary><p>Sim, em todo pedido, para empresa ou pessoa física. Para nota no nome da empresa, informe o CNPJ no pagamento.</p></details>
     </div>
   </div>
@@ -984,6 +971,7 @@ fbq('track','PageView');
   // Vitrine: quantidade em kits de 50, preço da faixa e link direto para o carrinho.
   // Premium: Preto ou Colorido só troca a foto (mesmo preço e mesmo produto; a impressão é definida na aprovação da arte).
   document.querySelectorAll('.prod').forEach(function(c){
+    if(!c.querySelector('.js-comprar'))return;
     var m=M[c.dataset.modelo],k=1,menos=c.querySelector('[data-passo="-1"]'),mais=c.querySelector('[data-passo="1"]'),
         fs=c.querySelector('.imp'),bt=c.querySelector('.js-comprar');
     function imp(){return c.dataset.cor==='1'?'cor':''}
