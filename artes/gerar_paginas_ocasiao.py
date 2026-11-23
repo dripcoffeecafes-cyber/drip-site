@@ -22,7 +22,7 @@ zap = entre('<a class="zap-fixo', '</a>')
 def rel(x):
     x = re.sub(r'(src|href)="assets/', r'\1="../assets/', x)
     x = re.sub(r'href="#([a-z]+)"', r'href="../#\1"', x)
-    x = re.sub(r'href="(modelos|empresas|casamentos|eventos|fim-de-ano|consultorios-e-escritorios)/', r'href="../\1/', x)
+    x = re.sub(r'href="(modelos|empresas|casamentos|eventos|fim-de-ano|consultorios-e-escritorios|sobre|contato|trocas-e-devolucoes|privacidade|condicoes-de-compra)/', r'href="../\1/', x)
     return x.replace('class="logo" href="#"', 'class="logo" href="../"')
 
 
