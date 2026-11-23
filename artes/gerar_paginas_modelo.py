@@ -28,14 +28,18 @@ topo, rodape, zap = rel(topo), rel(rodape), rel(zap)
 def ML(sl, alts):
     return [('ml/%s-%s.webp' % (sl, n), 1, a) for n, a in zip(['01', '02', '03', '04', '07', '08'], alts)]
 
+# Fotos reais de clientes (Adriano, 22/11), em assets/img/real/ (recorte quadrado *-q.webp): entram logo depois da capa.
+def MIX(ml, reais):
+    return ml[:1] + [('real/%s-q.webp' % f, 1, a) for f, a in reais] + ml[1:]
+
 M = {
  'kraft':  dict(sl='kraft-classico', n='Kraft Clássico', v='33', p=[5.9,5.9,5.5,5.5,5.5,4.9], med='10 × 12 cm · impressão em preto',
    res='O drip clássico, em kraft natural, com a sua marca impressa em preto direto no sachê. O mais pedido para empresas e eventos.',
-   fotos=ML('kraft-classico', ['Kraft Clássico com a sua marca', 'Diferenciais da Drip', 'Impressão em preto direto no kraft', 'Também temos a linha Premium', 'O que vem no kit', 'Marcas que já servem o Kraft Clássico']),
+   fotos=MIX(ML('kraft-classico', ['Kraft Clássico com a sua marca', 'Diferenciais da Drip', 'Impressão em preto direto no kraft', 'Também temos a linha Premium', 'O que vem no kit', 'Marcas que já servem o Kraft Clássico']), [('floema', 'Drip Kraft Clássico da Floema Arquitetura'), ('binotto', 'Drip Kraft Clássico da Binotto & Zanette'), ('necta', 'Drip Kraft Clássico da Necta Negócios')]),
    ficha=[('Tamanho','10 × 12 cm'),('Material','Kraft natural'),('Impressão','Preto, 1 cor'),('Café','10 g · 80+ pontos SCA'),('Origem','Sul de Minas, Região Vulcânica'),('Produção','5 dias úteis após a arte')]),
  'kraftp': dict(sl='kraft-premium', n='Kraft Premium', v='281', p=[6.9,6.9,6.5,6.5,6.5,5.9], med='10 × 15 cm · preto ou colorido',
    res='Formato maior, produzido só por nós, com 25% mais área para a sua arte que o drip tradicional. Em preto ou colorido, pelo mesmo preço.',
-   fotos=ML('kraft-premium', ['Kraft Premium com a sua marca', 'Diferenciais da Drip', 'Impressão em preto ou colorida', 'Formato 10 x 15 cm exclusivo da Drip', 'O que vem no kit', 'Marcas que já servem o Kraft Premium']),
+   fotos=MIX(ML('kraft-premium', ['Kraft Premium com a sua marca', 'Diferenciais da Drip', 'Impressão em preto ou colorida', 'Formato 10 x 15 cm exclusivo da Drip', 'O que vem no kit', 'Marcas que já servem o Kraft Premium']), [('dkj', 'Drip Kraft Premium da DKJ Psicologia'), ('matrikem', 'Drip Kraft Premium da MatriKem')]),
    ficha=[('Tamanho','10 × 15 cm'),('Material','Kraft premium'),('Impressão','Preto ou colorido'),('Café','10 g · 80+ pontos SCA'),('Origem','Sul de Minas, Região Vulcânica'),('Produção','5 dias úteis após a arte')]),
  'branco': dict(sl='branco-premium', n='Branco Premium', v='278', p=[6.9,6.9,6.5,6.5,6.5,5.9], med='10 × 15 cm · preto ou colorido',
    res='O sachê branco no formato maior, para marcas que pedem um visual limpo. Em preto ou colorido, pelo mesmo preço.',

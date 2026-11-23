@@ -523,6 +523,19 @@
   .prod.mini .tarja{border-radius:0;font-family:'Outfit',sans-serif;font-weight:500;bottom:14px}
   @media (max-width:859px){.prod.mini{flex-direction:row;padding:0;gap:0}.prod.mini .img{flex:0 0 42%;aspect-ratio:auto;min-height:180px;height:auto}.prod.mini .img img{height:78%;max-height:150px}
     .prod.mini .tx{padding:18px 16px}.prod.mini h3{font-size:24px}.prod.mini .selo{top:10px;left:10px;font-size:9px;padding:5px 7px}.prod.mini .tarja{font-size:9px;padding:5px 7px;bottom:8px}}
+  /* Fotos reais em faixa (22/11) */
+  .trilho-reais{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:20px;padding:0 0 12px;scrollbar-width:thin}
+  .trilho-reais:before,.trilho-reais:after{content:"";flex:0 0 max(4px,calc((100vw - 1180px)/2 - 12px))}
+  .trilho-reais figure{flex:0 0 min(62vw,260px);margin:0;scroll-snap-align:start}
+  .trilho-reais img,.trilho-reais video{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;background:#EDE6DC}
+  .trilho-reais figcaption{margin-top:10px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--apoio)}
+  /* Rodapé escuro do modelo de teste (22/11) */
+  footer{background:#0F0E0D;border-top:0;color:#9C958C}
+  footer h4{color:#fff;font-weight:400;font-size:11px;letter-spacing:.2em}
+  footer a{color:#9C958C}footer a:hover{color:#fff}
+  footer .rod-fatos{color:#CFC8BE}
+  footer .legal{border-top:1px solid #2A2826;color:#6E6964}
+  footer .cols{padding-top:64px}
 </style>
 <style>
 .migalha{font-size:13px;color:var(--apoio);padding:22px 0 8px}.migalha a:hover{color:var(--cafe)}
@@ -670,7 +683,7 @@ fbq('track','PageView');
 <footer>
   <div class="wrap cols">
     <div class="marca-rod">
-      <img src="../../assets/img/logo.png" alt="Drip Coffee Label" width="605" height="294" style="height:34px;width:auto">
+      <img src="../../assets/img/logo-claro.png" alt="Drip Coffee Label" width="605" height="294" style="height:34px;width:auto">
       <p style="margin-top:14px;max-width:24rem">Drip coffee personalizado com a sua arte impressa no sachê e café especial de origem única, 80+ pontos SCA, da Região Vulcânica (Sul de Minas). Uma marca do grupo Blooming.</p>
       <p class="rod-fatos">A partir de 50 sachês · Pix, boleto ou cartão · pronto em 5 dias úteis após a arte</p>
     </div>
