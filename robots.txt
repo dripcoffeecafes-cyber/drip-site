@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /fotos/
+Disallow: /artes/
 
 Sitemap: https://driplabel.bloomingclub.com.br/sitemap.xml

@@ -1,19 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://driplabel.bloomingclub.com.br/</loc>
     <lastmod>2026-11-22</lastmod>
+    <image:image><image:loc>https://driplabel.bloomingclub.com.br/assets/img/capa-drips-clientes.webp</image:loc></image:image>
+    <image:image><image:loc>https://driplabel.bloomingclub.com.br/assets/img/real/floema.webp</image:loc></image:image>
+    <image:image><image:loc>https://driplabel.bloomingclub.com.br/assets/img/real/dkj.webp</image:loc></image:image>
+    <image:image><image:loc>https://driplabel.bloomingclub.com.br/assets/img/real/necta.webp</image:loc></image:image>
+    <image:image><image:loc>https://driplabel.bloomingclub.com.br/assets/img/real/matrikem.webp</image:loc></image:image>
+    <image:image><image:loc>https://driplabel.bloomingclub.com.br/assets/img/real/onofre.webp</image:loc></image:image>
+    <image:image><image:loc>https://driplabel.bloomingclub.com.br/assets/img/real/binotto.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://driplabel.bloomingclub.com.br/modelos/kraft-classico/</loc>
     <lastmod>2026-11-22</lastmod>
+    <image:image><image:loc>https://driplabel.bloomingclub.com.br/assets/img/ml/kraft-classico-01.webp</image:loc></image:image>
+    <image:image><image:loc>https://driplabel.bloomingclub.com.br/assets/img/real/floema-q.webp</image:loc></image:image>
+    <image:image><image:loc>https://driplabel.bloomingclub.com.br/assets/img/real/binotto-q.webp</image:loc></image:image>
+    <image:image><image:loc>https://driplabel.bloomingclub.com.br/assets/img/real/necta-q.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://driplabel.bloomingclub.com.br/modelos/kraft-premium/</loc>
     <lastmod>2026-11-22</lastmod>
+    <image:image><image:loc>https://driplabel.bloomingclub.com.br/assets/img/ml/kraft-premium-01.webp</image:loc></image:image>
+    <image:image><image:loc>https://driplabel.bloomingclub.com.br/assets/img/real/dkj-q.webp</image:loc></image:image>
+    <image:image><image:loc>https://driplabel.bloomingclub.com.br/assets/img/real/matrikem-q.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://driplabel.bloomingclub.com.br/modelos/branco-premium/</loc>
     <lastmod>2026-11-22</lastmod>
+    <image:image><image:loc>https://driplabel.bloomingclub.com.br/assets/img/ml/branco-premium-01.webp</image:loc></image:image>
+    <image:image><image:loc>https://driplabel.bloomingclub.com.br/assets/img/ml/branco-premium-03.webp</image:loc></image:image>
   </url>
 </urlset>

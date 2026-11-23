@@ -75,6 +75,7 @@ def faq(k, d):
          ('Precisa de cafeteira?', 'Não. Abra o sachê, encaixe as abas na borda da xícara, despeje água quente aos poucos e aguarde coar.')]
     return ''.join('<details><summary>%s</summary><p>%s</p></details>' % x for x in q), q
 
+SKU = {'kraft': '4001', 'kraftp': '5005', 'branco': '5001'}
 CARD = {'kraft': 'p-kraft-cut.webp?v=3', 'kraftp': 'p-kraft-premium-cor-cut.webp?v=5', 'branco': 'p-branco-cor-cut.webp?v=5'}
 brl = lambda v: ('R$ %.2f' % v).replace('.', ',')
 OK = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>'
@@ -130,7 +131,7 @@ CSS = '''<style>
 for k, d in M.items():
     f0 = d['fotos'][0]
     tarja = ''
-    mi = ''.join('<button type="button" aria-current="%s" data-src="../../assets/img/%s" data-cena="%d" data-alt="%s" aria-label="Foto %d"><img src="../../assets/img/%s" alt="" class="%s" loading="lazy"></button>'
+    mi = ''.join('<button type="button" aria-current="%s" data-src="../../assets/img/%s" data-cena="%d" data-alt="%s" aria-label="Foto %d"><img src="../../assets/img/%s" alt="" class="%s" width="120" height="120" loading="lazy"></button>'
                  % ('true' if i == 0 else 'false', f, c, a, i + 1, f, 'cena' if c else '') for i, (f, c, a) in enumerate(d['fotos']))
     fx = ('<button type="button" data-k="1"><span>50 ou 100 sachês</span><b>%s</b></button>'
           '<button type="button" data-k="3"><span>150 a 250 sachês<small>desconto</small></span><b>%s</b></button>'
@@ -140,12 +141,13 @@ for k, d in M.items():
     outros = ''.join('''<a class="prod mini" href="../%s/"><div class="img"><img src="../../assets/img/%s" alt="Drip %s" loading="lazy"></div><div class="tx"><h3>%s</h3><p class="med">%s</p><p class="de">a partir de <b>%s</b>/sachê</p><span class="ver">Ver modelo</span></div></a>'''
                      % (d2['sl'], CARD[k2], d2['n'], d2['n'], d2['med'], brl(d2['p'][5])) for k2, d2 in M.items() if k2 != k)
     url = 'https://driplabel.bloomingclub.com.br/modelos/%s/' % d['sl']
-    desc = '%s A partir de 50 sachês, de %s a %s por sachê.' % (d['res'], brl(d['p'][5]), brl(d['p'][0]))
+    desc = 'Drip coffee %s personalizado com a sua marca, café especial 80+ SCA. A partir de 50 sachês, de %s a %s por sachê. Arte sem custo.' % (d['n'], brl(d['p'][5]), brl(d['p'][0]))
     ld = {"@context": "https://schema.org", "@graph": [
-        {"@type": "Product", "name": "Drip " + d['n'] + " personalizado", "description": d['res'],
-         "image": "https://driplabel.bloomingclub.com.br/assets/img/" + f0[0],
+        {"@type": "Product", "@id": url + "#produto", "url": url, "sku": SKU[k], "name": "Drip " + d['n'] + " personalizado", "description": d['res'],
+         "category": "Café especial personalizado", "material": d['ficha'][1][1],
+         "image": ["https://driplabel.bloomingclub.com.br/assets/img/" + f[0].split('?')[0] for f in d['fotos']],
          "brand": {"@type": "Brand", "name": "Drip Coffee Label"},
-         "offers": {"@type": "AggregateOffer", "priceCurrency": "BRL", "lowPrice": d['p'][5], "highPrice": d['p'][0], "availability": "https://schema.org/InStock", "url": url}},
+         "offers": {"@type": "AggregateOffer", "priceCurrency": "BRL", "lowPrice": d['p'][5], "highPrice": d['p'][0], "availability": "https://schema.org/InStock", "itemCondition": "https://schema.org/NewCondition", "url": url, "offerCount": 3, "seller": {"@id": "https://driplabel.bloomingclub.com.br/#organization"}}},
         {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": a, "acceptedAnswer": {"@type": "Answer", "text": b}} for a, b in faq(k, d)[1]]},
         {"@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "Início", "item": "https://driplabel.bloomingclub.com.br/"},
@@ -159,13 +161,23 @@ for k, d in M.items():
 <title>Drip {d['n']} personalizado com a sua marca | Drip Coffee Label</title>
 <meta name="description" content="{desc}">
 <link rel="canonical" href="{url}">
-<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta property="og:type" content="product">
 <meta property="og:site_name" content="Drip Coffee Label">
 <meta property="og:url" content="{url}">
 <meta property="og:title" content="Drip {d['n']} personalizado | Drip Coffee Label">
 <meta property="og:description" content="{desc}">
-<meta property="og:image" content="https://driplabel.bloomingclub.com.br/assets/img/og-drip-coffee-label.jpg">
+<meta property="og:image" content="https://driplabel.bloomingclub.com.br/assets/img/og/{d['sl']}.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="pt_BR">
+<meta property="product:price:amount" content="{d['p'][5]:.2f}">
+<meta property="product:price:currency" content="BRL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Drip {d['n']} personalizado | Drip Coffee Label">
+<meta name="twitter:description" content="{desc}">
+<meta name="twitter:image" content="https://driplabel.bloomingclub.com.br/assets/img/og/{d['sl']}.jpg">
+<link rel="preload" as="image" href="../../assets/img/{f0[0]}" fetchpriority="high">
 <link rel="icon" href="../../favicon.ico">
 {fontes}
 <script type="application/ld+json">{json.dumps(ld, ensure_ascii=False)}</script>
