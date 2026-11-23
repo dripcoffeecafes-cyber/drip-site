@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drip Coffee Label · nova inicial (estilo Nespresso)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1D1D1B;--escuro:#171614;--escuro2:#24221F;--papel:#F7F3EE;--areia:#EDE6DC;--fio:#E2DBD1;--texto:#3F3D3B;--apoio:#7A7672;--cafe:#854734;--dourado:#C9A36A;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Outfit',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);font-weight:300;color:var(--texto);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+.sobre{font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:400;color:var(--apoio)}
+.titulo{font-family:var(--serif);font-weight:400;color:var(--ink);line-height:1.08;letter-spacing:-.01em}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:50px;padding:0 30px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:500;border-radius:2px;transition:.25s;cursor:pointer;border:0;font-family:var(--sans)}
+.btn-claro{background:#fff;color:var(--ink)}.btn-claro:hover{background:var(--areia)}
+.btn-linha{border:1px solid rgba(255,255,255,.55);color:#fff;background:transparent}.btn-linha:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+.btn-escuro{background:var(--ink);color:#fff}.btn-escuro:hover{background:var(--cafe)}
+.btn-linha-esc{border:1px solid var(--ink);color:var(--ink);background:transparent}.btn-linha-esc:hover{background:var(--ink);color:#fff}
+
+.aviso{background:var(--escuro);color:#CFC8BE;font-size:12px;letter-spacing:.06em;text-align:center;padding:9px 16px}
+.aviso b{color:#fff;font-weight:400}
+header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--fio)}
+.topo{display:flex;align-items:center;justify-content:space-between;height:72px}
+.topo nav{display:flex;gap:34px}
+.topo nav a{font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:400;color:var(--ink);position:relative;padding:6px 0}
+.topo nav a:after{content:"";position:absolute;left:0;right:100%;bottom:0;height:1px;background:var(--ink);transition:.3s}
+.topo nav a:hover:after{right:0}
+.icones{display:flex;gap:20px;align-items:center}
+.icones svg{width:21px;height:21px;stroke:var(--ink);fill:none;stroke-width:1.4}
+.menu-bt{display:none;background:none;border:0}
+
+.hero{position:relative;background:var(--escuro);color:#fff;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1fr 1.15fr;min-height:640px;align-items:center;gap:40px}
+.hero-txt{padding:80px 0;position:relative;z-index:2}
+.hero .sobre{color:var(--dourado)}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(44px,5.6vw,80px);line-height:1.02;margin:22px 0 24px}
+.hero h1 em{font-style:italic;color:var(--dourado)}
+.hero p{font-size:18px;color:#CFC8BE;max-width:30rem;margin-bottom:38px}
+.hero .acoes{display:flex;gap:14px;flex-wrap:wrap}
+.hero-img{align-self:stretch;position:relative}
+.hero-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+.hero-img:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,var(--escuro) 0%,rgba(23,22,20,0) 28%)}
+
+.selos{border-bottom:1px solid var(--fio)}
+.selos .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+.selo{padding:30px 22px;text-align:center;border-left:1px solid var(--fio)}
+.selo:first-child{border-left:0}
+.selo b{display:block;font-family:var(--serif);font-size:30px;font-weight:400;color:var(--ink);line-height:1.1}
+.selo span{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--apoio)}
+
+.sec{padding:110px 0}
+.cab{text-align:center;max-width:44rem;margin:0 auto 64px}
+.cab .titulo{font-size:clamp(36px,4.2vw,56px);margin:16px 0 18px}
+.cab p{font-size:17px;color:var(--apoio)}
+
+.colecao{background:var(--papel)}
+.prods{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.prod{background:#fff;display:flex;flex-direction:column;transition:.35s}
+.prod:hover{transform:translateY(-4px);box-shadow:0 22px 50px -28px rgba(30,20,10,.35)}
+.prod .foto{background:var(--areia);aspect-ratio:1/1.02;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.prod .foto img{height:84%;width:auto;object-fit:contain;transition:transform .6s}
+.prod:hover .foto img{transform:scale(1.04)}
+.etq{position:absolute;top:18px;left:18px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;background:var(--ink);color:#fff;padding:6px 10px}
+.prod .corpo{padding:30px 30px 32px;display:flex;flex-direction:column;flex:1}
+.prod h3{font-family:var(--serif);font-weight:400;font-size:32px;color:var(--ink);line-height:1.1}
+.prod .med{font-size:13px;color:var(--apoio);margin:6px 0 18px;letter-spacing:.04em}
+.fichas{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:22px}
+.fichas span{font-size:11px;letter-spacing:.08em;border:1px solid var(--fio);padding:5px 10px;color:var(--texto)}
+.preco{display:flex;align-items:baseline;gap:8px;margin-top:auto;padding-top:18px;border-top:1px solid var(--fio)}
+.preco small{font-size:12px;color:var(--apoio);letter-spacing:.06em}
+.preco b{font-family:var(--serif);font-size:34px;font-weight:500;color:var(--ink)}
+.faixa{font-size:12.5px;color:var(--cafe);margin:4px 0 20px}
+.qtd{display:flex;align-items:center;justify-content:space-between;border:1px solid var(--fio);height:50px;margin-bottom:12px}
+.qtd button{width:50px;height:100%;background:none;border:0;font-size:20px;color:var(--ink);cursor:pointer;font-family:var(--sans);font-weight:300}
+.qtd button:disabled{opacity:.25;cursor:default}
+.qtd .n{font-size:14px;color:var(--ink);text-align:center;line-height:1.25}
+.qtd .n small{display:block;font-size:11.5px;color:var(--apoio)}
+.prod .btn{width:100%}
+.prod .mais{font-size:12px;letter-spacing:.14em;text-transform:uppercase;text-align:center;margin-top:16px;color:var(--ink);text-decoration:underline;text-underline-offset:5px;text-decoration-color:var(--fio)}
+.nota{text-align:center;font-size:13px;color:var(--apoio);margin-top:36px}
+
+.duplo{display:grid;grid-template-columns:1fr 1fr;min-height:620px}
+.duplo .img{position:relative}
+.duplo .img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.duplo .txt{display:flex;flex-direction:column;justify-content:center;padding:90px 8vw 90px 7vw}
+.duplo.escuro .txt{background:var(--escuro2);color:#CFC8BE}
+.duplo.escuro .titulo{color:#fff}
+.duplo.escuro .sobre{color:var(--dourado)}
+.duplo .titulo{font-size:clamp(34px,3.8vw,52px);margin:16px 0 22px}
+.duplo p{font-size:17px;max-width:30rem}
+.lista{margin:30px 0 38px;display:grid;gap:0}
+.lista div{display:flex;justify-content:space-between;gap:20px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.12);font-size:14px}
+.lista div span:first-child{letter-spacing:.14em;text-transform:uppercase;font-size:11.5px;color:#9C958C}
+.lista div span:last-child{color:#fff;text-align:right}
+.claro .lista div{border-color:var(--fio)}.claro .lista div span:last-child{color:var(--ink)}
+
+.ocas{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.oca{position:relative;aspect-ratio:3/4.1;overflow:hidden;display:block;color:#fff}
+.oca img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .9s}
+.oca:hover img{transform:scale(1.05)}
+.oca:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(15,12,10,.78) 100%)}
+.oca div{position:absolute;left:30px;right:30px;bottom:30px;z-index:2}
+.oca h3{font-family:var(--serif);font-weight:400;font-size:36px;line-height:1.05}
+.oca p{font-size:14.5px;color:#E5DED4;margin:8px 0 16px}
+.oca span{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.6);padding-bottom:4px}
+
+.clientes{background:var(--escuro);color:#CFC8BE}
+.clientes .cab .titulo{color:#fff}.clientes .cab .sobre{color:var(--dourado)}.clientes .cab p{color:#9C958C}
+.trilho{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 24px 18px;max-width:1240px;margin:0 auto;scrollbar-width:thin;scrollbar-color:#444 transparent}
+.cli{flex:0 0 250px;scroll-snap-align:start}
+.cli .f{background:#2D2A26;aspect-ratio:4/5;display:flex;align-items:center;justify-content:center}
+.cli img{height:88%;width:auto;object-fit:contain}
+.cli p{font-size:12px;letter-spacing:.18em;text-transform:uppercase;margin-top:14px;color:#CFC8BE;text-align:center}
+
+.passos{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--fio)}
+.passo{padding:40px 30px 10px;border-left:1px solid var(--fio)}
+.passo:first-child{border-left:0;padding-left:0}
+.passo b{font-family:var(--serif);font-size:56px;font-weight:400;color:var(--dourado);line-height:1}
+.passo h3{font-size:15px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;color:var(--ink);margin:16px 0 10px}
+.passo p{font-size:15px;color:var(--apoio)}
+
+.faq{max-width:820px;margin:0 auto}
+.faq details{border-bottom:1px solid var(--fio)}
+.faq summary{list-style:none;cursor:pointer;padding:26px 0;display:flex;justify-content:space-between;gap:20px;font-family:var(--serif);font-size:24px;color:var(--ink)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:after{content:"+";font-family:var(--sans);font-weight:300;font-size:26px;transition:.3s}
+.faq details[open] summary:after{transform:rotate(45deg)}
+.faq details p{padding:0 0 26px;font-size:16px;max-width:40rem}
+
+.final{position:relative;color:#fff;text-align:center;padding:150px 24px;overflow:hidden;background:var(--escuro)}
+.final img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.38}
+.final .in{position:relative;max-width:40rem;margin:0 auto}
+.final .titulo{color:#fff;font-size:clamp(38px,4.6vw,62px);margin:18px 0 20px}
+.final .sobre{color:var(--dourado)}
+.final p{color:#E0D9CF;font-size:17px;margin-bottom:36px}
+
+footer{background:#0F0E0D;color:#9C958C;padding:70px 0 34px;font-size:14px}
+.rod{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
+footer h4{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:#fff;font-weight:400;margin-bottom:18px}
+footer li{list-style:none;margin-bottom:10px}
+footer a:hover{color:#fff}
+.legal{border-top:1px solid #2A2826;margin-top:50px;padding-top:24px;font-size:12px;color:#6E6964}
+
+.zap{position:fixed;right:22px;bottom:22px;z-index:30;width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px -8px rgba(0,0,0,.4)}
+.zap svg{width:28px;height:28px;fill:#fff}
+
+@media(max-width:980px){
+ .topo nav{display:none}.menu-bt{display:block}
+ .hero .wrap{grid-template-columns:1fr;min-height:auto;padding:0}
+ .hero-txt{padding:56px 24px 40px;order:2}
+ .hero-img{height:62vw;min-height:300px;order:1}
+ .hero-img:before{background:linear-gradient(0deg,var(--escuro) 0%,rgba(23,22,20,0) 40%)}
+ .selos .wrap{grid-template-columns:1fr 1fr;padding:0}
+ .selo{padding:22px 12px}.selo b{font-size:23px}.selo span{font-size:10.5px}
+ .selo:nth-child(3){border-left:0}.selo:nth-child(n+3){border-top:1px solid var(--fio)}
+ .sec{padding:76px 0}.cab{margin-bottom:44px}
+ .prods,.ocas{grid-template-columns:1fr;gap:22px}
+ .duplo{grid-template-columns:1fr}.duplo .img{height:100vw;max-height:520px}.duplo .txt{padding:60px 24px}
+ .duplo.inv .img{order:-1}
+ .passos{grid-template-columns:1fr 1fr}.passo{padding:30px 18px 20px 0;border-left:0;border-top:1px solid var(--fio)}
+ .rod{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="aviso">A partir de <b>50 sachês</b> · arte montada por nós · <b>pronto em 5 dias úteis</b> após a aprovação</div>
+
+<header>
+ <div class="wrap topo">
+  <a href="#inicio" aria-label="Drip Coffee Label, início"><img src="assets/img/logo.png" alt="Drip Coffee Label" style="height:30px;width:auto"></a>
+  <nav aria-label="Principal">
+   <a href="#colecao">Modelos</a><a href="#ocasioes">Ocasiões</a><a href="#clientes">Clientes</a><a href="#como">Como pedir</a><a href="#duvidas">Dúvidas</a>
+  </nav>
+  <div class="icones">
+   <a href="https://www.bloomingclub.com.br/contato?entrar=1" aria-label="Minha conta"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></a>
+   <a href="https://www.bloomingclub.com.br/checkout/cart" aria-label="Carrinho"><svg viewBox="0 0 24 24"><path d="M5 7h14l-1.2 12.2a1 1 0 0 1-1 .8H7.2a1 1 0 0 1-1-.8L5 7Z"/><path d="M9 7V6a3 3 0 0 1 6 0v1"/></svg></a>
+   <button class="menu-bt" aria-label="Menu"><svg viewBox="0 0 24 24" style="width:24px;height:24px;stroke:#1D1D1B;fill:none;stroke-width:1.4"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+ </div>
+</header>
+
+<section class="hero" id="inicio">
+ <div class="wrap">
+  <div class="hero-txt">
+   <span class="sobre">Drip coffee personalizado</span>
+   <h1>O café que leva <em>a sua marca.</em></h1>
+   <p>A sua arte impressa direto no sachê e café especial de origem única dentro. Para empresas, eventos e casamentos.</p>
+   <div class="acoes">
+    <a class="btn btn-claro" href="#colecao">Escolher modelo</a>
+    <a class="btn btn-linha js-zap" href="#">Falar com especialista</a>
+   </div>
+  </div>
+  <div class="hero-img"><img src="assets/img/hero-drips.webp" alt="Três drips personalizados, em kraft e branco, sobre fundo escuro"></div>
+ </div>
+</section>
+
+<section class="selos" aria-label="Diferenciais">
+ <div class="wrap">
+  <div class="selo"><b>Origem única</b><span>Região Vulcânica, MG</span></div>
+  <div class="selo"><b>Laudo Q-Grader</b><span>em cada café</span></div>
+  <div class="selo"><b>Impresso no sachê</b><span>sem etiqueta colada</span></div>
+  <div class="selo"><b>50 sachês</b><span>pedido mínimo</span></div>
+ </div>
+</section>
+
+<section class="sec colecao" id="colecao">
+ <div class="wrap">
+  <div class="cab">
+   <span class="sobre">A coleção</span>
+   <h2 class="titulo">Três sachês. O mesmo café especial.</h2>
+   <p>Escolha o modelo e a quantidade e compre direto. O desconto por quantidade entra sozinho no carrinho.</p>
+  </div>
+  <div class="prods">
+   <article class="prod" data-modelo="kraft">
+    <div class="foto"><span class="etq">Mais vendido</span><img src="assets/img/p-kraft-cut.webp" alt="Drip Kraft Clássico com sua marca"></div>
+    <div class="corpo">
+     <h3>Kraft Clássico</h3>
+     <div class="med">10 × 12 cm · impressão em preto</div>
+     <div class="fichas"><span>Kraft natural</span><span>10 g de café</span><span>1 cor</span></div>
+     <div class="preco"><small>por sachê</small><b class="js-un">R$ 5,90</b></div>
+     <div class="faixa js-faixa"></div>
+     <div class="qtd"><button data-passo="-1" aria-label="Menos 50">−</button><div class="n"><span class="js-n">50 sachês</span><small class="js-tot">Total R$ 295,00</small></div><button data-passo="1" aria-label="Mais 50">+</button></div>
+     <a class="btn btn-escuro js-comprar" href="#">Comprar</a>
+     <a class="mais" href="#como">Ver detalhes</a>
+    </div>
+   </article>
+   <article class="prod" data-modelo="kraftp">
+    <div class="foto"><span class="etq">Exclusivo</span><img src="assets/img/p-kraft-premium-cut.webp" alt="Drip Kraft Premium com sua marca"></div>
+    <div class="corpo">
+     <h3>Kraft Premium</h3>
+     <div class="med">10 × 15 cm · preto ou colorido</div>
+     <div class="fichas"><span>25% mais área</span><span>10 g de café</span><span>Cor sem custo</span></div>
+     <div class="preco"><small>por sachê</small><b class="js-un">R$ 6,90</b></div>
+     <div class="faixa js-faixa"></div>
+     <div class="qtd"><button data-passo="-1" aria-label="Menos 50">−</button><div class="n"><span class="js-n">50 sachês</span><small class="js-tot">Total R$ 345,00</small></div><button data-passo="1" aria-label="Mais 50">+</button></div>
+     <a class="btn btn-escuro js-comprar" href="#">Comprar</a>
+     <a class="mais" href="#como">Ver detalhes</a>
+    </div>
+   </article>
+   <article class="prod" data-modelo="branco">
+    <div class="foto"><span class="etq">Exclusivo</span><img src="assets/img/p-branco-cut.webp" alt="Drip Branco Premium com sua marca"></div>
+    <div class="corpo">
+     <h3>Branco Premium</h3>
+     <div class="med">10 × 15 cm · preto ou colorido</div>
+     <div class="fichas"><span>25% mais área</span><span>10 g de café</span><span>Cor sem custo</span></div>
+     <div class="preco"><small>por sachê</small><b class="js-un">R$ 6,90</b></div>
+     <div class="faixa js-faixa"></div>
+     <div class="qtd"><button data-passo="-1" aria-label="Menos 50">−</button><div class="n"><span class="js-n">50 sachês</span><small class="js-tot">Total R$ 345,00</small></div><button data-passo="1" aria-label="Mais 50">+</button></div>
+     <a class="btn btn-escuro js-comprar" href="#">Comprar</a>
+     <a class="mais" href="#como">Ver detalhes</a>
+    </div>
+   </article>
+  </div>
+  <p class="nota">Pedido em kits de 50. Cada kit pode ter uma arte diferente. Frete calculado pelo CEP no carrinho.</p>
+ </div>
+</section>
+
+<section class="duplo escuro">
+ <div class="img"><img src="assets/img/s-capa.webp" alt="Drips de clientes impressos direto no sachê"></div>
+ <div class="txt">
+  <span class="sobre">A embalagem é a sua marca</span>
+  <h2 class="titulo">Impresso no sachê. Nunca colado.</h2>
+  <p>Não é etiqueta em cima de um pacote pronto. A sua arte sai impressa direto no drip, então a única marca que aparece é a sua. Você manda a logo, nós montamos a arte e nada é impresso antes do seu ok.</p>
+  <div class="lista">
+   <div><span>Arte</span><span>Montada por nós, com prova digital</span></div>
+   <div><span>Lotes</span><span>Uma arte a cada 50 sachês</span></div>
+   <div><span>Premium</span><span>Preto ou colorido, mesmo preço</span></div>
+  </div>
+  <div><a class="btn btn-linha" href="#clientes">Ver drips de clientes</a></div>
+ </div>
+</section>
+
+<section class="duplo claro inv">
+ <div class="txt" style="background:var(--papel)">
+  <span class="sobre">O que vai dentro</span>
+  <h2 class="titulo">Café especial de origem única. Nunca blend.</h2>
+  <p>O café também fala por você. Cada lote vem do Sul de Minas, da Região Vulcânica, com laudo de Q-Grader. É o mesmo café que vai para os assinantes do Blooming Club.</p>
+  <div class="lista">
+   <div><span>Origem</span><span>Sul de Minas, Região Vulcânica</span></div>
+   <div><span>Espécie</span><span>100% Arábica</span></div>
+   <div><span>Torra</span><span>Média</span></div>
+   <div><span>Dose</span><span>10 g por sachê</span></div>
+  </div>
+  <div><a class="btn btn-linha-esc" href="#como">Como funciona</a></div>
+ </div>
+ <div class="img"><img src="assets/img/hero-sache.webp" alt="Drip sendo preparado numa caneca com vista para o mar"></div>
+</section>
+
+<section class="sec" id="ocasioes">
+ <div class="wrap">
+  <div class="cab">
+   <span class="sobre">Para cada ocasião</span>
+   <h2 class="titulo">Onde a sua marca é aberta na hora</h2>
+   <p>Leve, útil e feito para ser usado. O drip não vai para a gaveta.</p>
+  </div>
+  <div class="ocas">
+   <a class="oca" href="#colecao"><img src="assets/img/o1.webp" alt="Drip com sua marca numa mesa de escritório"><div><h3>Empresas</h3><p>Onboarding, visita a clientes, endomarketing e fim de ano.</p><span>Escolher modelo</span></div></a>
+   <a class="oca" href="#colecao"><img src="assets/img/o4.webp" alt="Drips com sua marca em sacolas de evento"><div><h3>Feiras e eventos</h3><p>Cabe em qualquer sacola e é aberto no estande ou no hotel.</p><span>Escolher modelo</span></div></a>
+   <a class="oca js-zap" href="#"><img src="assets/img/evento.webp" alt="Drip com nome do casal numa mesa decorada com flores"><div><h3>Casamentos</h3><p>Lembrança com o nome do casal para o café da manhã seguinte.</p><span>Pedir orçamento</span></div></a>
+  </div>
+ </div>
+</section>
+
+<section class="sec clientes" id="clientes">
+ <div class="wrap">
+  <div class="cab">
+   <span class="sobre">Quem já serve a própria marca</span>
+   <h2 class="titulo">Drips que já saíram daqui</h2>
+   <p>Arraste para ver.</p>
+  </div>
+ </div>
+ <div class="trilho">
+  <div class="cli"><div class="f"><img src="assets/img/cli-g-unimed.webp" alt="Drip Unimed" loading="lazy"></div><p>Unimed</p></div>
+  <div class="cli"><div class="f"><img src="assets/img/cli-g-termolar.webp" alt="Drip Termolar" loading="lazy"></div><p>Termolar</p></div>
+  <div class="cli"><div class="f"><img src="assets/img/cli-g-uniprime.webp" alt="Drip Uniprime" loading="lazy"></div><p>Uniprime</p></div>
+  <div class="cli"><div class="f"><img src="assets/img/cli-g-brastelha.webp" alt="Drip Brastelha" loading="lazy"></div><p>Brastelha</p></div>
+  <div class="cli"><div class="f"><img src="assets/img/cli-g-nieto.webp" alt="Drip Nieto" loading="lazy"></div><p>Nieto</p></div>
+  <div class="cli"><div class="f"><img src="assets/img/cli-g-moido.webp" alt="Drip Moído" loading="lazy"></div><p>Moído</p></div>
+  <div class="cli"><div class="f"><img src="assets/img/cli-g-glfibra.webp" alt="Drip GL Fibra" loading="lazy"></div><p>GL Fibra</p></div>
+  <div class="cli"><div class="f"><img src="assets/img/cli-g-conceito.webp" alt="Drip Conceito" loading="lazy"></div><p>Conceito</p></div>
+ </div>
+</section>
+
+<section class="sec" id="como">
+ <div class="wrap">
+  <div class="cab">
+   <span class="sobre">Como pedir</span>
+   <h2 class="titulo">Do pedido à caixa em 4 passos</h2>
+  </div>
+  <div class="passos">
+   <div class="passo"><b>01</b><h3>Escolha e pague</h3><p>Modelo e quantidade na loja, com Pix, boleto ou cartão.</p></div>
+   <div class="passo"><b>02</b><h3>Envie a logo</h3><p>Em vetor (AI, EPS, SVG ou PDF), pelo WhatsApp. Frase ou QR code, se quiser.</p></div>
+   <div class="passo"><b>03</b><h3>Aprove a arte</h3><p>Mandamos a prova digital e ajustamos até ficar do seu jeito.</p></div>
+   <div class="passo"><b>04</b><h3>Receba</h3><p>Pronto em 5 dias úteis depois da aprovação, mais o prazo da entrega.</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="sec" id="duvidas" style="background:var(--papel)">
+ <div class="wrap">
+  <div class="cab"><span class="sobre">Dúvidas</span><h2 class="titulo">Antes de pedir</h2></div>
+  <div class="faq">
+   <details><summary>Qual é o pedido mínimo?</summary><p>50 sachês. Você pede em kits de 50 e o preço por sachê cai a partir de 150 e de 300.</p></details>
+   <details><summary>Vocês criam a arte?</summary><p>Sim. Você envia a logo e montamos a arte do sachê. Só produzimos depois da sua aprovação.</p></details>
+   <details><summary>Posso ter mais de uma arte no mesmo pedido?</summary><p>Sim. Cada kit de 50 sai com uma arte. Com 150 sachês, você pode ter três artes diferentes.</p></details>
+   <details><summary>A impressão pode ser colorida?</summary><p>Nos modelos Premium, sim, pelo mesmo preço, para logo ou texto, sem foto nem fundo cheio. Você escolhe preto ou colorido na aprovação da arte. O Kraft Clássico é impresso em preto.</p></details>
+   <details><summary>Qual é o prazo?</summary><p>5 dias úteis depois da aprovação da arte, mais o prazo da transportadora.</p></details>
+   <details><summary>Quanto custa o frete?</summary><p>É calculado pelo CEP no carrinho, antes do pagamento.</p></details>
+  </div>
+ </div>
+</section>
+
+<section class="final">
+ <img src="assets/img/o8.webp" alt="" aria-hidden="true">
+ <div class="in">
+  <span class="sobre">Pedido especial</span>
+  <h2 class="titulo">Casamento, evento ou mais de 1.000 sachês?</h2>
+  <p>Conte o que você precisa e respondemos pelo WhatsApp com modelo, arte, quantidade e prazo.</p>
+  <a class="btn btn-claro js-zap" href="#">Falar com especialista</a>
+ </div>
+</section>
+
+<footer>
+ <div class="wrap">
+  <div class="rod">
+   <div><img src="assets/img/logo-claro.png" alt="Drip Coffee Label" style="height:30px;width:auto"><p style="margin-top:16px;max-width:22rem">Drip coffee personalizado com café especial de origem única. Uma marca do grupo Blooming.</p></div>
+   <div><h4>Modelos</h4><ul><li><a href="#colecao">Kraft Clássico</a></li><li><a href="#colecao">Kraft Premium</a></li><li><a href="#colecao">Branco Premium</a></li></ul></div>
+   <div><h4>Drip Label</h4><ul><li><a href="#ocasioes">Ocasiões</a></li><li><a href="#clientes">Clientes</a></li><li><a href="#como">Como pedir</a></li><li><a href="#duvidas">Dúvidas</a></li></ul></div>
+   <div><h4>Contato</h4><ul><li><a class="js-zap" href="#">WhatsApp (54) 99708-1666</a></li><li>dripcoffee@bloomingclub.com.br</li><li><a href="https://www.instagram.com/driplabel.cafes/">@driplabel.cafes</a></li></ul></div>
+  </div>
+  <div class="legal">Blooming Club Cafés Especiais Ltda · CNPJ 62.660.408/0001-47 · Erechim/RS · Compras finalizadas na loja Blooming Club.</div>
+ </div>
+</footer>
+
+<a class="zap js-zap" href="#" aria-label="Falar no WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45c6.55 0 11.89-5.34 11.89-11.89A11.82 11.82 0 0 0 12.05 0Zm6.98 16.9c-.29.82-1.7 1.57-2.37 1.62-.6.05-1.19.27-4.03-.84-3.4-1.34-5.57-4.83-5.74-5.06-.17-.22-1.37-1.83-1.37-3.49 0-1.66.87-2.48 1.18-2.82.3-.33.67-.42.89-.42h.64c.2 0 .48-.08.75.57.29.69.97 2.37 1.05 2.54.09.17.14.37.03.6-.11.22-.17.36-.33.56-.17.2-.35.44-.5.59-.17.17-.34.35-.15.68.2.33.87 1.43 1.86 2.32 1.28 1.14 2.36 1.5 2.69 1.66.33.17.53.14.72-.08.2-.22.84-.98 1.06-1.31.22-.33.44-.28.75-.17.3.11 1.95.92 2.28 1.09.33.17.55.25.64.39.08.14.08.82-.2 1.63Z"/></svg></a>
+
+<script>
+(function(){
+ var M={kraft:{p:[5.9,5.9,5.5,5.5,5.5,4.9],v:'33'},branco:{p:[6.9,6.9,6.5,6.5,6.5,5.9],v:'278'},kraftp:{p:[6.9,6.9,6.5,6.5,6.5,5.9],v:'281'}};
+ var UTM='utm_source=drip-landing&utm_medium=site&utm_campaign=brindes';
+ var ZAP='https://wa.me/5554997081666?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Drip%20Coffee%20Label%20e%20quero%20saber%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20drip%20personalizado.';
+ var brl=function(v){return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'})};
+ document.querySelectorAll('.js-zap').forEach(function(a){a.href=ZAP;a.target='_blank';a.rel='noopener'});
+ document.querySelectorAll('.prod').forEach(function(c){
+  var m=M[c.dataset.modelo],k=1,menos=c.querySelector('[data-passo="-1"]'),mais=c.querySelector('[data-passo="1"]');
+  function mostra(){var p=m.p[Math.min(k-1,5)],n=k*50;
+   c.querySelector('.js-n').textContent=n+' sachês';
+   c.querySelector('.js-tot').textContent='Total '+brl(p*n);
+   c.querySelector('.js-un').textContent=brl(p);
+   c.querySelector('.js-faixa').textContent=k<6?'A partir de '+brl(m.p[5])+' com 300 sachês ou mais':'Melhor preço da faixa';
+   menos.disabled=k<=1;mais.disabled=k>=20;
+   c.querySelector('.js-comprar').href='https://www.bloomingclub.com.br/checkout/cart/item/add/'+m.v+'?quantity='+k+'&'+UTM+'&utm_content=card-'+c.dataset.modelo;}
+  c.addEventListener('click',function(e){var b=e.target.closest('[data-passo]');if(!b)return;k=Math.max(1,Math.min(20,k+(+b.dataset.passo)));mostra()});
+  mostra();
+ });
+})();
+</script>
+</body>
+</html>
