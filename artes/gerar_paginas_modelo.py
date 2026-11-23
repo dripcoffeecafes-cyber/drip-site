@@ -26,15 +26,15 @@ M = {
  'kraft':  dict(sl='kraft-classico', n='Kraft Clássico', v='33', p=[5.9,5.9,5.5,5.5,5.5,4.9], med='10 × 12 cm · impressão em preto',
    res='O drip clássico, em kraft natural, com a sua marca impressa em preto direto no sachê. O mais pedido para empresas e eventos.',
    fotos=[('p-kraft-cut.webp?v=3', 0, 'Drip Kraft Clássico com a sua marca'), ('p-kraft.webp', 0, 'Drip Kraft Clássico'), ('o2.webp', 1, 'Drip entregue em mãos numa reunião'), ('o3.webp', 1, 'Drip numa mesa de café')],
-   ficha=[('Tamanho','10 × 12 cm'),('Material','Kraft natural'),('Impressão','Preto, 1 cor'),('Café','10 g, 100% Arábica'),('Origem','Sul de Minas, Região Vulcânica'),('Produção','5 dias úteis após a arte')]),
+   ficha=[('Tamanho','10 × 12 cm'),('Material','Kraft natural'),('Impressão','Preto, 1 cor'),('Café','10 g · 80+ pontos SCA'),('Origem','Sul de Minas, Região Vulcânica'),('Produção','5 dias úteis após a arte')]),
  'kraftp': dict(sl='kraft-premium', n='Kraft Premium', v='281', p=[6.9,6.9,6.5,6.5,6.5,5.9], med='10 × 15 cm · preto ou colorido',
    res='Formato maior, produzido só por nós, com 25% mais área para a sua arte que o drip tradicional. Em preto ou colorido, pelo mesmo preço.',
    fotos=[('p-kraft-premium-pb-cut.webp', 0, 'Drip Kraft Premium impresso em preto'), ('p-kraft-premium-cor-cut.webp?v=5', 0, 'Drip Kraft Premium impresso em cores'), ('o5.webp', 1, 'Drip Kraft Premium num prato de evento'), ('o7.webp', 1, 'Drip Kraft Premium em kit de boas-vindas')],
-   ficha=[('Tamanho','10 × 15 cm'),('Material','Kraft premium'),('Impressão','Preto ou colorido'),('Café','10 g, 100% Arábica'),('Origem','Sul de Minas, Região Vulcânica'),('Produção','5 dias úteis após a arte')]),
+   ficha=[('Tamanho','10 × 15 cm'),('Material','Kraft premium'),('Impressão','Preto ou colorido'),('Café','10 g · 80+ pontos SCA'),('Origem','Sul de Minas, Região Vulcânica'),('Produção','5 dias úteis após a arte')]),
  'branco': dict(sl='branco-premium', n='Branco Premium', v='278', p=[6.9,6.9,6.5,6.5,6.5,5.9], med='10 × 15 cm · preto ou colorido',
    res='O sachê branco no formato maior, para marcas que pedem um visual limpo. Em preto ou colorido, pelo mesmo preço.',
    fotos=[('p-branco-pb-cut.webp', 0, 'Drip Branco Premium impresso em preto'), ('p-branco-cor-cut.webp?v=5', 0, 'Drip Branco Premium impresso em cores'), ('o6.webp', 1, 'Drips em caixa de presente'), ('manha.webp', 1, 'Drip na mão pela manhã')],
-   ficha=[('Tamanho','10 × 15 cm'),('Material','Branco premium'),('Impressão','Preto ou colorido'),('Café','10 g, 100% Arábica'),('Origem','Sul de Minas, Região Vulcânica'),('Produção','5 dias úteis após a arte')]),
+   ficha=[('Tamanho','10 × 15 cm'),('Material','Branco premium'),('Impressão','Preto ou colorido'),('Café','10 g · 80+ pontos SCA'),('Origem','Sul de Minas, Região Vulcânica'),('Produção','5 dias úteis após a arte')]),
 }
 brl = lambda v: ('R$ %.2f' % v).replace('.', ',')
 OK = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>'
