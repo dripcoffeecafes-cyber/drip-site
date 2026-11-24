@@ -18,6 +18,42 @@ esc = lambda s: html.escape(s or '', quote=True)
 brl = lambda v: ('R$ %.2f' % v).replace('.', ',')
 SITE = 'https://driplabel.bloomingclub.com.br/'
 
+CARD_CSS = """.cc{display:flex;flex-direction:column;min-width:0}.cc[hidden]{display:none}
+.cc-img{position:relative;background:#EDE6DC;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.cc-img img{height:80%;width:auto;max-width:86%;object-fit:contain;transition:transform .6s}.cc:hover .cc-img img{transform:scale(1.05)}
+.cc-selos{position:absolute;top:8px;left:8px;z-index:1;display:flex;flex-direction:column;align-items:flex-start;gap:4px}
+.cc-off{background:var(--cafe);color:#fff;font:500 10.5px/1 'Outfit',sans-serif;letter-spacing:.06em;text-transform:uppercase;padding:6px 8px}
+.cc-selo{background:var(--ink);color:#fff;font:400 9.5px/1 'Outfit',sans-serif;letter-spacing:.16em;text-transform:uppercase;padding:6px 8px}
+.cc-tarja{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);background:var(--ink);color:#fff;font:500 9.5px/1 'Outfit',sans-serif;letter-spacing:.12em;text-transform:uppercase;padding:6px 9px;white-space:nowrap}
+.cc-tx{display:flex;flex-direction:column;flex:1;padding:12px 0 0;text-align:center;align-items:center}
+.cc-qt{font-size:9.5px;letter-spacing:.08em;white-space:nowrap;text-transform:uppercase;color:var(--cafe)}
+.cc h3{font-family:'Outfit',sans-serif!important;font-weight:500!important;font-size:13.5px;line-height:1.3;letter-spacing:.06em;text-transform:uppercase;margin:6px 0 2px;overflow-wrap:anywhere}.cc h3 a{color:var(--ink)}
+.cc-med{font-size:12px;color:var(--apoio)}
+.cc-de{margin-top:8px;font-size:12px;color:var(--apoio)}.cc-de b{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-size:24px;color:var(--ink);white-space:nowrap}
+.cc-kit{font-size:11.5px;color:var(--apoio)}
+.cc-bt{margin-top:auto;width:100%;height:42px;font-size:11px}.cc-kit{margin-bottom:12px}
+.grade-ini{padding:0}.grade-ini .cc{background:transparent}
+@media(min-width:760px){.grade-ini.tres{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1100px){.grade-ini.tres{grid-template-columns:repeat(3,1fr);max-width:1000px;margin:0 auto}}"""
+
+def card(i, ini=False):
+    # Cartão de loja (referência: cafepds.com.br/personalizados): selo de desconto, nome, preço por sachê e Comprar
+    off = round((1 - i['preco_de'] / i['preco_cheio']) * 100) if i.get('preco_cheio') else 0
+    selo = esc(i.get('selo') or ('Novo' if i.get('novo') else ''))
+    if ini: url, pre = i['url'], ''
+    else: url, pre = (i['url'].replace('modelos/', '', 1) if i['url'].startswith('modelos/') else '../' + i['url']), '../'
+    sub = esc(i['med']) if i.get('med') else esc(SACHE.get(i['sache'], ''))
+    return ('<article class="cc" data-temas="%s" data-sache="%s" data-preco="%.2f" data-ordem="%d" data-novo="%d" data-nome="%s">'
+            '<a class="cc-img" href="%s"><span class="cc-selos">%s%s</span><img src="%sassets/img/%s" alt="%s" width="%d" height="%d" loading="lazy">%s</a>'
+            '<div class="cc-tx"><p class="cc-qt">Comprando em quantidade</p><h3><a href="%s">%s</a></h3><p class="cc-med">%s</p>'
+            '<p class="cc-de">a partir de <b class="tnum">%s</b><small> /sachê</small></p><p class="cc-kit">Kit de 50 sachês</p>'
+            '<a class="btn btn-cafe cc-bt" href="%s">Comprar</a></div></article>') % (
+        ' '.join(i.get('temas', [])), i['sache'], i['preco_de'], i.get('ordem', 999), 1 if i.get('novo') else 0, esc(i['nome'].lower()),
+        url, '<span class="cc-off">Até %d%% off</span>' % off if off > 0 else '', '<span class="cc-selo">%s</span>' % selo if selo else '',
+        pre, i['img'], esc(i['alt']), i['w'], i['h'], '<span class="cc-tarja">%s</span>' % esc(i['tarja']) if i.get('tarja') else '',
+        url, esc(i['nome']), sub, brl(i['preco_de']), url)
+
+
 # ---------- 1. Inicial: destaques ----------
 ip = os.path.join(RAIZ, 'index.html')
 H = open(ip, encoding='utf-8').read()
@@ -32,18 +68,14 @@ def mini(i):
             ) % (dm, i['url'], selo, ' tem-tarja' if tarja else '', i['img'], esc(i['alt']), i['w'], i['h'], tarja, esc(i['nome']), esc(i['med']), brl(i['preco_de']))
 
 dest = [i for i in IT if i.get('destaque')][:4]
-todos = ''
-if len(IT) > len(dest):
-    todos = '    <p class="ver-todos"><a class="btn btn-linha" href="modelos/">Ver todos os %d modelos</a></p>\n' % len(IT)
-bloco = '    <div class="produtos minis%s">\n%s    </div>\n%s' % (' quatro' if len(dest) == 4 else '', ''.join(mini(i) for i in dest), todos)
-t = '<span class="olho">Nossos produtos</span><h2>'
-a = H.index(t, H.index('id="modelos"')) + len(t)
-H = H[:a] + ('Três sachês, o mesmo café especial' if len(IT) <= 3 else 'Com a sua marca ou com arte pronta') + H[H.index('</h2>', a):]
+todos = '    <p class="ver-todos"><a class="btn btn-linha" href="modelos/">Ver todos os modelos</a></p>\n'
+bloco = '    <div class="grade grade-ini%s">\n%s\n    </div>\n%s' % (' tres' if len(dest) == 3 else '', '\n'.join('      ' + card(i, True) for i in dest), todos)
+i0 = H.find('  /* Catálogo (gerar_catalogo.py) */')
+if i0 >= 0: H = H[:i0] + H[H.index('/* fim catálogo */', i0) + len('/* fim catálogo */\n'):]
+H = H.replace('</style>', '  /* Catálogo (gerar_catalogo.py) */\n.ver-todos{text-align:center;margin:28px 0 0}.ver-todos .btn{min-width:260px}\n.grade{display:grid;grid-template-columns:repeat(2,1fr);gap:22px 12px;padding:18px 0 64px}\n@media(min-width:760px){.grade{grid-template-columns:repeat(3,1fr);gap:36px 22px}}\n@media(min-width:1100px){.grade{grid-template-columns:repeat(4,1fr)}}\n' + CARD_CSS + '\n/* fim catálogo */\n</style>', 1)
 a = H.index('<!-- CATALOGO:INICIO'); a = H.index('\n', a) + 1
 b = H.index('    <!-- CATALOGO:FIM -->')
 H = H[:a] + bloco + H[b:]
-if '.ver-todos{' not in H:
-    H = H.replace('</style>', '  /* Catálogo (gerar_catalogo.py) */\n  .ver-todos{text-align:center;margin:28px 0 0}.ver-todos .btn{min-width:260px}\n  @media (min-width:860px){.produtos.minis.quatro{grid-template-columns:repeat(4,1fr)}}\n</style>', 1)
 open(ip, 'w', encoding='utf-8').write(H)
 
 # ---------- 2. Página do catálogo ----------
@@ -62,22 +94,6 @@ def rel(x):  # a página fica em /modelos/: um nível abaixo da raiz
     x = re.sub(r'href="(modelos|empresas|casamentos|eventos|fim-de-ano|consultorios-e-escritorios|sobre|contato|trocas-e-devolucoes|privacidade|condicoes-de-compra)/', r'href="../\1/', x)
     return x.replace('class="logo" href="../#"', 'class="logo" href="../"').replace('class="logo" href="#"', 'class="logo" href="../"')
 topo, rodape, zap = rel(topo), rel(rodape), rel(zap)
-
-def card(i):
-    # Cartão de loja (referência: cafepds.com.br/personalizados): selo de desconto, nome, preço por sachê e Comprar
-    off = round((1 - i['preco_de'] / i['preco_cheio']) * 100) if i.get('preco_cheio') else 0
-    selo = esc(i.get('selo') or ('Novo' if i.get('novo') else ''))
-    url = i['url'].replace('modelos/', '', 1) if i['url'].startswith('modelos/') else '../' + i['url']
-    sub = esc(i['med']) if i.get('med') else esc(SACHE.get(i['sache'], ''))
-    return ('<article class="cc" data-temas="%s" data-sache="%s" data-preco="%.2f" data-ordem="%d" data-novo="%d" data-nome="%s">'
-            '<a class="cc-img" href="%s"><span class="cc-selos">%s%s</span><img src="../assets/img/%s" alt="%s" width="%d" height="%d" loading="lazy">%s</a>'
-            '<div class="cc-tx"><p class="cc-qt">Comprando em quantidade</p><h3><a href="%s">%s</a></h3><p class="cc-med">%s</p>'
-            '<p class="cc-de">a partir de <b class="tnum">%s</b><small> /sachê</small></p><p class="cc-kit">Kit de 50 sachês</p>'
-            '<a class="btn btn-cafe cc-bt" href="%s">Comprar</a></div></article>') % (
-        ' '.join(i.get('temas', [])), i['sache'], i['preco_de'], i.get('ordem', 999), 1 if i.get('novo') else 0, esc(i['nome'].lower()),
-        url, '<span class="cc-off">Até %d%% off</span>' % off if off > 0 else '', '<span class="cc-selo">%s</span>' % selo if selo else '',
-        i['img'], esc(i['alt']), i['w'], i['h'], '<span class="cc-tarja">%s</span>' % esc(i['tarja']) if i.get('tarja') else '',
-        url, esc(i['nome']), sub, brl(i['preco_de']), url)
 
 usados_t = [t['id'] for t in C['temas'] if any(t['id'] in i.get('temas', []) for i in IT)]
 usados_s = [s['id'] for s in C['saches'] if any(i['sache'] == s['id'] for i in IT)]
@@ -112,23 +128,6 @@ CSS = """<style>
 .op{display:flex;justify-content:space-between;align-items:center;width:100%;padding:13px 2px;background:none;border:0;border-bottom:1px solid var(--fundo);font:300 15px 'Outfit',sans-serif;color:var(--texto);cursor:pointer;text-align:left}
 .op small{margin-left:8px;font-size:12px;color:var(--apoio)}.op[aria-pressed="true"]{font-weight:500;color:var(--ink)}.op[aria-pressed="true"]:before{content:"";order:2;width:8px;height:8px;background:var(--cafe);margin-left:auto;margin-right:10px}
 .painel .ver{width:100%;margin-top:20px}
-.grade{display:grid;grid-template-columns:repeat(2,1fr);gap:22px 12px;padding:18px 0 64px}
-@media(min-width:760px){.grade{grid-template-columns:repeat(3,1fr);gap:36px 22px}}
-@media(min-width:1100px){.grade{grid-template-columns:repeat(4,1fr)}}
-.cc{display:flex;flex-direction:column;min-width:0}.cc[hidden]{display:none}
-.cc-img{position:relative;background:#EDE6DC;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.cc-img img{height:80%;width:auto;max-width:86%;object-fit:contain;transition:transform .6s}.cc:hover .cc-img img{transform:scale(1.05)}
-.cc-selos{position:absolute;top:8px;left:8px;z-index:1;display:flex;flex-direction:column;align-items:flex-start;gap:4px}
-.cc-off{background:var(--cafe);color:#fff;font:500 10.5px/1 'Outfit',sans-serif;letter-spacing:.06em;text-transform:uppercase;padding:6px 8px}
-.cc-selo{background:var(--ink);color:#fff;font:400 9.5px/1 'Outfit',sans-serif;letter-spacing:.16em;text-transform:uppercase;padding:6px 8px}
-.cc-tarja{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);background:var(--ink);color:#fff;font:500 9.5px/1 'Outfit',sans-serif;letter-spacing:.12em;text-transform:uppercase;padding:6px 9px;white-space:nowrap}
-.cc-tx{display:flex;flex-direction:column;flex:1;padding:12px 0 0;text-align:center;align-items:center}
-.cc-qt{font-size:9.5px;letter-spacing:.08em;white-space:nowrap;text-transform:uppercase;color:var(--cafe)}
-.cc h3{font-family:'Outfit',sans-serif!important;font-weight:500!important;font-size:13.5px;line-height:1.3;letter-spacing:.06em;text-transform:uppercase;margin:6px 0 2px;overflow-wrap:anywhere}.cc h3 a{color:var(--ink)}
-.cc-med{font-size:12px;color:var(--apoio)}
-.cc-de{margin-top:8px;font-size:12px;color:var(--apoio)}.cc-de b{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-size:24px;color:var(--ink);white-space:nowrap}
-.cc-kit{font-size:11.5px;color:var(--apoio)}
-.cc-bt{margin-top:auto;width:100%;height:42px;font-size:11px}.cc-kit{margin-bottom:12px}
 @media(min-width:760px){.cc h3{font-size:14.5px}.cc-de b{font-size:27px}}
 .vazio{grid-column:1/-1;text-align:center;padding:40px 0;color:var(--apoio)}.vazio button{background:none;border:0;color:var(--ink);text-decoration:underline;font:inherit;cursor:pointer}
 .cat-nota{font-size:14px;color:var(--apoio);text-align:center;padding:0 0 56px}
