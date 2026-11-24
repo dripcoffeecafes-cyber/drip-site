@@ -12,6 +12,10 @@ if '--exemplo' in sys.argv:
     C['itens'] += json.load(open(os.path.join(RAIZ, 'catalogo', 'exemplo-artes-prontas.json'), encoding='utf-8'))
 IT = sorted([i for i in C['itens'] if i.get('publicado', True)], key=lambda i: (i.get('ordem', 999), i['nome']))
 TEMA = {t['id']: t['nome'] for t in C['temas']}
+# Arte pronta entra sozinha na categoria "Artes prontas" (filtro e link ?tema=arte-pronta da inicial)
+for _i in C['itens']:
+    if _i.get('linha') == 'pronta' and 'arte-pronta' not in _i.get('temas', []):
+        _i['temas'] = ['arte-pronta'] + _i.get('temas', [])
 SACHE = {s['id']: s['nome'] for s in C['saches']}
 LINHA = C['linhas']
 esc = lambda s: html.escape(s or '', quote=True)
@@ -75,12 +79,24 @@ def mini(i):
             '        <div class="tx"><h3>%s</h3><p class="med">%s</p><p class="de">a partir de <b class="tnum">%s</b>/sachê</p><span class="ver">Ver modelo e preços</span></div>\n      </a>\n'
             ) % (dm, i['url'], selo, ' tem-tarja' if tarja else '', i['img'], esc(i['alt']), i['w'], i['h'], tarja, esc(i['nome']), esc(i['med']), brl(i['preco_de']))
 
-dest = [i for i in IT if i.get('destaque')][:4]
+dest = [i for i in IT if i.get('destaque') and i.get('linha') != 'pronta'][:4]
+# Artes prontas na inicial (24/11): faixa própria logo abaixo dos personalizados, as mais novas primeiro, até 4
+# A mais nova entra na grade principal (3 personalizados + 1 arte pronta = grade cheia no celular e no computador);
+# as outras, até 4, numa faixa própria logo abaixo.
+prontas = sorted([i for i in IT if i.get('linha') == 'pronta'], key=lambda i: (not i.get('novo'), i.get('ordem', 999)))
+dest = dest[:3] + prontas[:1]
+prontas = prontas[1:5]
 todos = '    <p class="ver-todos"><a class="btn btn-linha" href="modelos/">Ver todos os modelos</a></p>\n'
-bloco = '    <div class="grade grade-ini%s">\n%s\n    </div>\n%s' % (' tres' if len(dest) == 3 else '', '\n'.join('      ' + card(i, True) for i in dest), todos)
+bloco = '    <div class="grade grade-ini%s">\n%s\n    </div>\n' % (' tres' if len(dest) == 3 else '', '\n'.join('      ' + card(i, True) for i in dest))
+if prontas:
+    bloco += ('    <div class="cab cab-ap"><span class="olho">Artes prontas · a partir de %d sachês</span><h3>Escolha a arte, a gente envia</h3><p>Drip com arte da Drip Coffee Label, pronta para presentear: sem arquivo para mandar.</p></div>\n'
+              '    <div class="grade grade-ini grade-ap">\n%s\n    </div>\n'
+              '    <p class="ver-todos ver-ap"><a class="btn btn-linha" href="modelos/?tema=arte-pronta">Ver todas as artes prontas</a></p>\n') % (
+        C.get('artes_prontas', {}).get('min_sache', 20), '\n'.join('      ' + card(i, True) for i in prontas))
+bloco += todos
 i0 = H.find('  /* Catálogo (gerar_catalogo.py) */')
 if i0 >= 0: H = H[:i0] + H[H.index('/* fim catálogo */', i0) + len('/* fim catálogo */\n'):]
-H = H.replace('</style>', '  /* Catálogo (gerar_catalogo.py) */\n.ver-todos{text-align:center;margin:28px 0 0}.ver-todos .btn{min-width:260px}\n.grade{display:grid;grid-template-columns:repeat(2,1fr);gap:22px 12px;padding:18px 0 64px}\n@media(min-width:760px){.grade{grid-template-columns:repeat(3,1fr);gap:36px 22px}}\n@media(min-width:1100px){.grade{grid-template-columns:repeat(4,1fr)}}\n' + CARD_CSS + '\n/* fim catálogo */\n</style>', 1)
+H = H.replace('</style>', '  /* Catálogo (gerar_catalogo.py) */\n.ver-todos{text-align:center;margin:28px 0 0}.ver-todos .btn{min-width:260px}\n.cab-ap{margin:40px 0 0}.cab-ap h3{font:500 clamp(26px,4vw,34px)/1.1 \'Cormorant Garamond\',Georgia,serif;margin:6px 0 8px}.grade-ap{padding-bottom:0}.ver-ap{margin-top:8px}\n.grade{display:grid;grid-template-columns:repeat(2,1fr);gap:22px 12px;padding:18px 0 64px}\n@media(min-width:760px){.grade{grid-template-columns:repeat(3,1fr);gap:36px 22px}}\n@media(min-width:1100px){.grade{grid-template-columns:repeat(4,1fr)}}\n' + CARD_CSS + '\n/* fim catálogo */\n</style>', 1)
 a = H.index('<!-- CATALOGO:INICIO'); a = H.index('\n', a) + 1
 b = H.index('    <!-- CATALOGO:FIM -->')
 H = H[:a] + bloco + H[b:]

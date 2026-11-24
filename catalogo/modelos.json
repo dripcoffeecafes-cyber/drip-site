@@ -16,6 +16,10 @@
       "nome": "Com a sua marca"
     },
     {
+      "id": "arte-pronta",
+      "nome": "Artes prontas"
+    },
+    {
       "id": "empresa",
       "nome": "Empresas"
     },
