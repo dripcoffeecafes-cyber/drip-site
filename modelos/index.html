@@ -714,7 +714,7 @@ fbq('track','PageView');
   // ---------- Seletor das artes prontas ----------
   // Seleção guardada no navegador (drip_artes). "Ir para o carrinho" leva tudo de uma vez para o www em ?drip_artes=;
   // o script do carrinho (checkout-drip.js) põe cada sachê no carrinho e grava a lista no campo extra "arte".
-  var AP={"min_arte": 20, "min_sache": 20, "passo": 10, "produtos": {"kraft-classico": "", "kraft-premium": "", "branco-premium": ""}, "faixas": {"kraft-classico": [[20, 5.9], [150, 5.5], [300, 4.9]], "kraft-premium": [[20, 6.9], [150, 6.5], [300, 5.9]], "branco-premium": [[20, 6.9], [150, 6.5], [300, 5.9]]}};
+  var AP={"min_arte": 20, "min_sache": 20, "passo": 10, "produtos": {"kraft-classico": "279", "kraft-premium": "286", "branco-premium": "283"}, "faixas": {"kraft-classico": [[20, 5.9], [150, 5.5], [300, 4.9]], "kraft-premium": [[20, 6.9], [150, 6.5], [300, 5.9]], "branco-premium": [[20, 6.9], [150, 6.5], [300, 5.9]]}};
   var S={};try{S=JSON.parse(localStorage.getItem('drip_artes')||'{}')||{}}catch(e){S={}}
   var cap={};cs.forEach(function(c){if(c.dataset.arte)cap[c.dataset.arte]={n:c.dataset.titulo,s:c.dataset.sache,c:c}});
   Object.keys(S).forEach(function(k){if(!cap[k])delete S[k]});

@@ -158,9 +158,9 @@
     "min_arte": 20,
     "passo": 10,
     "produtos": {
-      "kraft-classico": "",
-      "kraft-premium": "",
-      "branco-premium": ""
+      "kraft-classico": "279",
+      "kraft-premium": "286",
+      "branco-premium": "283"
     },
     "faixas": {
       "kraft-classico": [
