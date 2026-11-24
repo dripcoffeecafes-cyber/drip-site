@@ -150,6 +150,32 @@
       "publicado": true,
       "preco_cheio": 6.9,
       "cheia": true
+    },
+    {
+      "slug": "pitagoras",
+      "nome": "Pitágoras",
+      "linha": "pronta",
+      "sache": "branco-premium",
+      "temas": [
+        "engracadas",
+        "profissoes"
+      ],
+      "med": "Branco Premium 10 × 15 · colorido, frente e verso",
+      "preco_de": 5.9,
+      "img": "catalogo/pitagoras.webp",
+      "w": 1100,
+      "h": 1100,
+      "alt": "Drip coffee Pitágoras: sachê branco com a bronca do teorema de Pitágoras, frente e verso",
+      "selo": "",
+      "tarja": "",
+      "url": "modelos/",
+      "destaque": false,
+      "ordem": 20,
+      "novo": true,
+      "publicado": true,
+      "preco_cheio": 6.9,
+      "cheia": true,
+      "codigo": "DCL-PD-VIR01-BP"
     }
   ],
   "artes_prontas": {
