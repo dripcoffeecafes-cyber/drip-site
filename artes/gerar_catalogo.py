@@ -22,6 +22,7 @@ CARD_CSS = """.cc{display:flex;flex-direction:column;min-width:0;background:#fff
 .cc:hover{transform:translateY(-3px);box-shadow:0 2px 4px rgba(30,20,10,.06),0 22px 40px -18px rgba(30,20,10,.38)}.cc[hidden]{display:none}
 .cc-img{position:relative;background:#EDE6DC;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .cc-img img{height:80%;width:auto;max-width:86%;object-fit:contain;transition:transform .6s}.cc:hover .cc-img img{transform:scale(1.05)}
+.cc-img img.cheia{width:100%;height:100%;max-width:none;object-fit:cover}
 .cc-selos{position:absolute;top:8px;left:8px;z-index:1;display:flex;flex-direction:column;align-items:flex-start;gap:4px}
 .cc-off{background:var(--cafe);color:#fff;font:500 10.5px/1 'Outfit',sans-serif;letter-spacing:.06em;text-transform:uppercase;padding:6px 8px}
 .cc-selo{background:var(--ink);color:#fff;font:400 9.5px/1 'Outfit',sans-serif;letter-spacing:.16em;text-transform:uppercase;padding:6px 8px}
@@ -45,13 +46,13 @@ def card(i, ini=False):
     else: url, pre = (i['url'].replace('modelos/', '', 1) if i['url'].startswith('modelos/') else '../' + i['url']), '../'
     sub = esc(i['med']) if i.get('med') else esc(SACHE.get(i['sache'], ''))
     return ('<article class="cc" data-temas="%s" data-sache="%s" data-preco="%.2f" data-ordem="%d" data-novo="%d" data-nome="%s">'
-            '<a class="cc-img" href="%s"><span class="cc-selos">%s%s</span><img src="%sassets/img/%s" alt="%s" width="%d" height="%d" loading="lazy">%s</a>'
+            '<a class="cc-img" href="%s"><span class="cc-selos">%s%s</span><img src="%sassets/img/%s" alt="%s" width="%d" height="%d" loading="lazy"%s>%s</a>'
             '<div class="cc-tx"><p class="cc-qt">Comprando em quantidade</p><h3><a href="%s">%s</a></h3><p class="cc-med">%s</p>'
             '<p class="cc-de">a partir de<span><b class="tnum">%s</b><small> /sachê</small></span></p><p class="cc-kit">Kit de 50 sachês</p>'
             '<a class="btn btn-cafe cc-bt" href="%s">Comprar</a></div></article>') % (
         ' '.join(i.get('temas', [])), i['sache'], i['preco_de'], i.get('ordem', 999), 1 if i.get('novo') else 0, esc(i['nome'].lower()),
         url, '<span class="cc-off">Até %d%% off</span>' % off if off > 0 else '', '<span class="cc-selo">%s</span>' % selo if selo else '',
-        pre, i['img'], esc(i['alt']), i['w'], i['h'], '<span class="cc-tarja">%s</span>' % esc(i['tarja']) if i.get('tarja') else '',
+        pre, i['img'], esc(i['alt']), i['w'], i['h'], ' class="cheia"' if i.get('cheia') else '', '<span class="cc-tarja">%s</span>' % esc(i['tarja']) if i.get('tarja') else '',
         url, esc(i['nome']), sub, brl(i['preco_de']), url)
 
 

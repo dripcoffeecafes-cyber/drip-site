@@ -83,9 +83,9 @@
       ],
       "med": "10 × 12 cm · impressão em preto",
       "preco_de": 4.9,
-      "img": "p-kraft-cut.webp?v=3",
-      "w": 456,
-      "h": 558,
+      "img": "ml/kraft-classico-01.webp",
+      "w": 1100,
+      "h": 1100,
       "alt": "Drip Kraft Clássico com a sua marca, impressão só em preto",
       "selo": "Mais vendido",
       "tarja": "Só em preto",
@@ -94,7 +94,8 @@
       "ordem": 1,
       "novo": false,
       "publicado": true,
-      "preco_cheio": 5.9
+      "preco_cheio": 5.9,
+      "cheia": true
     },
     {
       "slug": "branco-premium",
@@ -110,9 +111,9 @@
       ],
       "med": "10 × 15 cm · preto ou colorido",
       "preco_de": 5.9,
-      "img": "p-branco-cor-cut.webp?v=5",
-      "w": 416,
-      "h": 605,
+      "img": "ml/branco-premium-01.webp",
+      "w": 1100,
+      "h": 1100,
       "alt": "Drip Branco Premium com a sua marca impressa em cores",
       "selo": "",
       "tarja": "",
@@ -121,7 +122,8 @@
       "ordem": 2,
       "novo": false,
       "publicado": true,
-      "preco_cheio": 6.9
+      "preco_cheio": 6.9,
+      "cheia": true
     },
     {
       "slug": "kraft-premium",
@@ -135,9 +137,9 @@
       ],
       "med": "10 × 15 cm · preto ou colorido",
       "preco_de": 5.9,
-      "img": "p-kraft-premium-cor-cut.webp?v=5",
-      "w": 417,
-      "h": 606,
+      "img": "ml/kraft-premium-01.webp",
+      "w": 1100,
+      "h": 1100,
       "alt": "Drip Kraft Premium com a sua marca impressa em cores",
       "selo": "",
       "tarja": "",
@@ -146,7 +148,8 @@
       "ordem": 3,
       "novo": false,
       "publicado": true,
-      "preco_cheio": 6.9
+      "preco_cheio": 6.9,
+      "cheia": true
     }
   ]
 }
