@@ -39,7 +39,7 @@ SITE = 'https://driplabel.bloomingclub.com.br/'
 def faq(i, pg):
     q = [('A arte é igual às fotos?', 'Sim. A arte é da Drip Coffee Label e vai exatamente como nas fotos. Não é personalizada e você não precisa enviar nenhum arquivo.'),
          ('Qual é a quantidade mínima?', 'A partir de %d sachês, de %d em %d.' % (AP['min_sache'], AP['passo'], AP['passo'])),
-         ('Posso juntar artes diferentes no mesmo pedido?', 'Sim. Volte aos modelos e coloque outras artes no carrinho. Artes do mesmo sachê somam para a faixa de preço: 150 ou mais e 300 ou mais saem mais barato por sachê.'),
+         ('Posso juntar artes diferentes no mesmo pedido?', 'Sim. Volte aos modelos e coloque outras artes no carrinho. Artes do mesmo sachê somam para a faixa de preço: o preço por sachê cai em %s sachês.' % (lambda l: ', '.join(l[:-1]) + ' e ' + l[-1] if len(l) > 1 else l[0])([str(x[0]) for x in AP['faixas'][i['sache']][1:]])),
          ('Dá para colocar a minha marca?', 'Na arte pronta, não. Para drip com a sua logo, nome ou frase, veja os modelos personalizados, a partir de 50 sachês, com a arte criada por nós sem custo.'),
          ('Qual é a validade do café?', '6 meses. O café é 100% arábica, torra média, moído na medida para o preparo em drip.'),
          ('Precisa de cafeteira?', 'Não. Abra o sachê, encaixe as abas na borda da xícara, despeje água quente aos poucos e aguarde coar.'),
@@ -59,8 +59,8 @@ for i in [x for x in C['itens'] if x.get('linha') == 'pronta' and x.get('publica
     def faixa_txt(k):
         de = fx_[k][0]; ate = fx_[k + 1][0] - 1 if k + 1 < len(fx_) else None
         return '%d a %d sachês' % (de, ate) if ate else '%d sachês ou mais' % de
-    tags = ['', '<small>desconto</small>', '<small>melhor preço</small>']
-    fx = ''.join('<button type="button" data-q="%d"><span>%s%s</span><b>%s</b></button>' % (fx_[k][0], faixa_txt(k), tags[min(k, 2)], brl(fx_[k][1])) for k in range(len(fx_)))
+    tag = lambda k: '' if k == 0 else ('<small>melhor preço</small>' if k == len(fx_) - 1 else '<small>desconto</small>')
+    fx = ''.join('<button type="button" data-q="%d"><span>%s%s</span><b>%s</b></button>' % (fx_[k][0], faixa_txt(k), tag(k), brl(fx_[k][1])) for k in range(len(fx_)))
     tam, mat = MAT[sa]
     ficha = ''.join('<div><span>%s</span><b>%s</b></div>' % x for x in [('Tamanho', tam), ('Material', mat), ('Impressão', pg.get('impressao', 'Colorida')), ('Café', '10 g · 80+ pontos SCA'), ('Origem', 'Sul de Minas, Região Vulcânica'), ('Validade', '6 meses')])
     url = SITE + 'modelos/%s/' % sl
