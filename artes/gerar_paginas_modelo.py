@@ -204,7 +204,7 @@ for k, d in M.items():
         <div class="stepper"><button type="button" data-passo="-1" aria-label="Menos 50 sachês">−</button><output class="js-n tnum">50 sachês</output><button type="button" data-passo="1" aria-label="Mais 50 sachês">+</button></div>
         <div class="tot"><span class="js-un">{brl(d['p'][0])} por sachê</span><b class="js-tot tnum">{brl(d['p'][0]*50)}</b></div>
       </div>
-      <a class="btn btn-cafe js-comprar" data-produto="{k}" href="#" target="_blank" rel="noopener">Comprar</a>
+      <a class="btn btn-cafe js-comprar" data-produto="{k}" href="#">Comprar</a>
       <a class="btn btn-linha js-zap" data-origem="pagina-{k}" href="#" target="_blank" rel="noopener">Falar com um especialista</a>
       <ul class="gar">
         <li>{OK}<span>Você manda a logo e nós montamos a arte, sem custo. Não tem logo nem arte? Criamos do zero, também sem custo. Nada é impresso antes do seu ok.</span></li>

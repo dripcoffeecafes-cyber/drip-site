@@ -53,7 +53,7 @@ P = {
 <h2>Onde estamos</h2>
 <p>Blooming Club Cafés Especiais Ltda, CNPJ 62.660.408/0001-47, Erechim/RS. Enviamos para todo o Brasil.</p>
 <h2>Já comprou?</h2>
-<p>Os pedidos são finalizados na loja Blooming Club. Para ver o seu pedido, acesse <a href="https://www.bloomingclub.com.br/contato?entrar=1" target="_blank" rel="noopener">Minha conta</a>. Para mandar a logo ou aprovar a arte, use o WhatsApp.</p>''' % (WA % 'contato')),
+<p>Os pedidos são finalizados na loja Blooming Club. Para ver o seu pedido, acesse <a href="https://www.bloomingclub.com.br/contato?entrar=1">Minha conta</a>. Para mandar a logo ou aprovar a arte, use o WhatsApp.</p>''' % (WA % 'contato')),
  'trocas-e-devolucoes': dict(tipo='WebPage', nome='Trocas e devoluções', titulo='Trocas e devoluções | Drip Coffee Label',
    desc='Política de trocas e devoluções da Drip Coffee Label para drip coffee personalizado: defeito de fabricação, avaria no transporte, prazos e como pedir.',
    olho='Políticas', h1='Trocas e devoluções',
