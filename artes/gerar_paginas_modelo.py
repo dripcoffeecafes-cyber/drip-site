@@ -26,22 +26,23 @@ topo, rodape, zap = rel(topo), rel(rodape), rel(zap)
 # Galeria: artes da pasta "Arte ML" do Drive (geradas por drip-acervo/identidade/scripts/2026-11-15/ml_imagens.py e
 # 2026-11-22/ml_capa_v6.py), convertidas para assets/img/ml/. Ficam fora a 05 e a 06, que falam do prazo de 24 h do Mercado Livre.
 def ML(sl, alts):
-    return [('ml/%s-%s.webp' % (sl, n), 1, a) for n, a in zip(['01', '02', '03', '04', '07', '08'], alts)]
+    # A 07 ("O que vem no kit: 50 drips") saiu em 24/11: a venda passou a ser por unidade, a partir de 50
+    return [('ml/%s-%s.webp' % (sl, n), 1, a) for n, a in zip(['01', '02', '03', '04', '07', '08'], alts) if n != '07']
 
 # Fotos reais de clientes (Adriano, 22/11), em assets/img/real/ (recorte quadrado *-q.webp): entram logo depois da capa.
 def MIX(ml, reais):
     return ml[:1] + [('real/%s-q.webp?v=3' % f, 1, a) for f, a in reais] + ml[1:]
 
 M = {
- 'kraft':  dict(sl='kraft-classico', n='Kraft Clássico', v='33', p=[5.9,5.9,5.5,5.5,5.5,4.9], med='10 × 12 cm · impressão em preto',
+ 'kraft':  dict(sl='kraft-classico', n='Kraft Clássico', v='33', f=[[50,5.9],[100,5.7],[150,5.5],[200,5.3],[250,5.1],[300,4.9]], med='10 × 12 cm · impressão em preto',
    res='O drip clássico, em kraft natural, com a sua marca impressa em preto direto no sachê. O mais pedido para empresas e eventos.',
    fotos=MIX(ML('kraft-classico', ['Kraft Clássico com a sua marca', 'Diferenciais da Drip', 'Impressão em preto direto no kraft', 'Também temos a linha Premium', 'O que vem no kit', 'Marcas que já servem o Kraft Clássico']), [('floema', 'Drip Kraft Clássico da Floema Arquitetura'), ('binotto', 'Drip Kraft Clássico da Binotto & Zanette'), ('necta', 'Drip Kraft Clássico da Necta Negócios')]),
    ficha=[('Tamanho','10 × 12 cm'),('Material','Kraft natural'),('Impressão','Preto, 1 cor'),('Café','10 g · 80+ pontos SCA'),('Origem','Sul de Minas, Região Vulcânica'),('Produção','5 dias úteis após a arte')]),
- 'kraftp': dict(sl='kraft-premium', n='Kraft Premium', v='281', p=[6.9,6.9,6.5,6.5,6.5,5.9], med='10 × 15 cm · preto ou colorido',
+ 'kraftp': dict(sl='kraft-premium', n='Kraft Premium', v='281', f=[[50,6.9],[100,6.7],[150,6.5],[200,6.3],[250,6.1],[300,5.9]], med='10 × 15 cm · preto ou colorido',
    res='Formato maior, produzido só por nós, com 25% mais área para a sua arte que o drip tradicional. Em preto ou colorido, pelo mesmo preço.',
    fotos=MIX(ML('kraft-premium', ['Kraft Premium com a sua marca', 'Diferenciais da Drip', 'Impressão em preto ou colorida', 'Formato 10 x 15 cm exclusivo da Drip', 'O que vem no kit', 'Marcas que já servem o Kraft Premium']), [('dkj', 'Drip Kraft Premium da DKJ Psicologia'), ('matrikem', 'Drip Kraft Premium da MatriKem')]),
    ficha=[('Tamanho','10 × 15 cm'),('Material','Kraft premium'),('Impressão','Preto ou colorido'),('Café','10 g · 80+ pontos SCA'),('Origem','Sul de Minas, Região Vulcânica'),('Produção','5 dias úteis após a arte')]),
- 'branco': dict(sl='branco-premium', n='Branco Premium', v='278', p=[6.9,6.9,6.5,6.5,6.5,5.9], med='10 × 15 cm · preto ou colorido',
+ 'branco': dict(sl='branco-premium', n='Branco Premium', v='278', f=[[50,6.9],[100,6.7],[150,6.5],[200,6.3],[250,6.1],[300,5.9]], med='10 × 15 cm · preto ou colorido',
    res='O sachê branco no formato maior, para marcas que pedem um visual limpo. Em preto ou colorido, pelo mesmo preço.',
    fotos=ML('branco-premium', ['Branco Premium com a sua marca', 'Diferenciais da Drip', 'Impressão em preto ou colorida', 'Formato 10 x 15 cm exclusivo da Drip', 'O que vem no kit', 'Marcas que já servem o Branco Premium']),
    ficha=[('Tamanho','10 × 15 cm'),('Material','Branco premium'),('Impressão','Preto ou colorido'),('Café','10 g · 80+ pontos SCA'),('Origem','Sul de Minas, Região Vulcânica'),('Produção','5 dias úteis após a arte')]),
@@ -69,7 +70,7 @@ def faq(k, d):
          ('Qual arquivo da logo devo enviar?', 'Em vetor: PDF vetorial, AI, EPS ou SVG, com os textos convertidos em curvas. É o arquivo original da sua marca, feito no Illustrator, CorelDRAW ou Canva. Foto, print ou imagem salva como PDF não servem. Você envia pelo WhatsApp depois da compra.'),
          ('Não tenho a logo em vetor. E agora?', 'Peça o arquivo original a quem criou a sua marca (designer ou gráfica). Ele costuma estar em PDF, AI ou CDR. Se não conseguir, ou se você não tem logo nem arte, criamos a arte do seu sachê sem custo. Fale com a gente pelo WhatsApp.'),
          ('Não tenho logo nem arte. Vocês criam?', 'Sim, sem custo. Criamos a arte do sachê com o nome, uma frase ou uma data que você escolher, e mandamos a prova digital para você aprovar, com 2 ajustes incluídos.'),
-         ('Posso usar mais de uma arte?', 'Sim. Cada kit de 50 sai com uma arte. Com 3 kits, por exemplo, você pode ter três artes diferentes.'),
+         ('Posso usar mais de uma arte?', 'Sim. Uma arte diferente a cada 50 sachês. Com 150 sachês, por exemplo, você pode ter três artes diferentes.'),
          ('Qual é o prazo?', 'Produzimos em 5 dias úteis depois da aprovação da arte. Em seguida vem o prazo da transportadora, calculado pelo CEP no carrinho.'),
          ('Qual é a validade do café?', '6 meses. O café é 100% arábica, torra média, moído na medida para o preparo em drip.'),
          ('Precisa de cafeteira?', 'Não. Abra o sachê, encaixe as abas na borda da xícara, despeje água quente aos poucos e aguarde coar.')]
@@ -133,21 +134,23 @@ for k, d in M.items():
     tarja = ''
     mi = ''.join('<button type="button" aria-current="%s" data-src="../../assets/img/%s" data-cena="%d" data-alt="%s" aria-label="Foto %d"><img src="../../assets/img/%s" alt="" class="%s" width="120" height="120" loading="lazy"></button>'
                  % ('true' if i == 0 else 'false', f, c, a, i + 1, f, 'cena' if c else '') for i, (f, c, a) in enumerate(d['fotos']))
-    fx = ('<button type="button" data-k="1"><span>50 ou 100 sachês</span><b>%s</b></button>'
-          '<button type="button" data-k="3"><span>150 a 250 sachês<small>desconto</small></span><b>%s</b></button>'
-          '<button type="button" data-k="6"><span>300 sachês ou mais<small>melhor preço</small></span><b>%s</b></button>') % (brl(d['p'][0]), brl(d['p'][2]), brl(d['p'][5]))
+    # Faixas por quantidade (Adriano, 24/11): por unidade, mínimo 50, R$ 0,20 a menos a cada 50 até 300 (Precificação 31)
+    F = d['f']
+    fx = ''.join('<button type="button" data-q="%d"><span>%s%s</span><b>%s</b></button>' % (
+        F[j][0], ('%d a %d sachês' % (F[j][0], F[j + 1][0] - 1)) if j + 1 < len(F) else '%d sachês ou mais' % F[j][0],
+        '' if j == 0 else ('<small>melhor preço</small>' if j == len(F) - 1 else '<small>desconto</small>'), brl(F[j][1])) for j in range(len(F)))
     cor = '' if k == 'kraft' else '<li>%s<span>Preto ou colorido pelo mesmo preço, escolhido na aprovação da arte. Colorido para logo ou texto, sem foto nem fundo cheio.</span></li>' % OK
     ficha = ''.join('<div><span>%s</span><b>%s</b></div>' % x for x in d['ficha'])
     outros = ''.join('''<a class="prod mini" href="../%s/"><div class="img"><img src="../../assets/img/%s" alt="Drip %s" loading="lazy"></div><div class="tx"><h3>%s</h3><p class="med">%s</p><p class="de">a partir de <b>%s</b>/sachê</p><span class="ver">Ver modelo</span></div></a>'''
-                     % (d2['sl'], CARD[k2], d2['n'], d2['n'], d2['med'], brl(d2['p'][5])) for k2, d2 in M.items() if k2 != k)
+                     % (d2['sl'], CARD[k2], d2['n'], d2['n'], d2['med'], brl(d2['f'][-1][1])) for k2, d2 in M.items() if k2 != k)
     url = 'https://driplabel.bloomingclub.com.br/modelos/%s/' % d['sl']
-    desc = 'Drip coffee %s personalizado com a sua marca, café especial 80+ SCA. A partir de 50 sachês, de %s a %s por sachê. Arte sem custo.' % (d['n'], brl(d['p'][5]), brl(d['p'][0]))
+    desc = 'Drip coffee %s personalizado com a sua marca, café especial 80+ SCA. A partir de 50 sachês, de %s a %s por sachê. Arte sem custo.' % (d['n'], brl(d['f'][-1][1]), brl(d['f'][0][1]))
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "Product", "@id": url + "#produto", "url": url, "sku": SKU[k], "name": "Drip " + d['n'] + " personalizado", "description": d['res'],
          "category": "Café especial personalizado", "material": d['ficha'][1][1],
          "image": ["https://driplabel.bloomingclub.com.br/assets/img/" + f[0].split('?')[0] for f in d['fotos']],
          "brand": {"@type": "Brand", "name": "Drip Coffee Label"},
-         "offers": {"@type": "AggregateOffer", "priceCurrency": "BRL", "lowPrice": d['p'][5], "highPrice": d['p'][0], "availability": "https://schema.org/InStock", "itemCondition": "https://schema.org/NewCondition", "url": url, "offerCount": 3, "seller": {"@id": "https://driplabel.bloomingclub.com.br/#organization"}}},
+         "offers": {"@type": "AggregateOffer", "priceCurrency": "BRL", "lowPrice": d['f'][-1][1], "highPrice": d['f'][0][1], "availability": "https://schema.org/InStock", "itemCondition": "https://schema.org/NewCondition", "url": url, "offerCount": len(d['f']), "seller": {"@id": "https://driplabel.bloomingclub.com.br/#organization"}}},
         {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": a, "acceptedAnswer": {"@type": "Answer", "text": b}} for a, b in faq(k, d)[1]]},
         {"@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "Início", "item": "https://driplabel.bloomingclub.com.br/"},
@@ -171,7 +174,7 @@ for k, d in M.items():
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:locale" content="pt_BR">
-<meta property="product:price:amount" content="{d['p'][5]:.2f}">
+<meta property="product:price:amount" content="{d['f'][-1][1]:.2f}">
 <meta property="product:price:currency" content="BRL">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Drip {d['n']} personalizado | Drip Coffee Label">
@@ -201,8 +204,8 @@ for k, d in M.items():
       <p class="res">{d['res']}</p>
       <div class="fx" role="group" aria-label="Preço por quantidade">{fx}</div>
       <div class="linha-q">
-        <div class="stepper"><button type="button" data-passo="-1" aria-label="Menos 50 sachês">−</button><output class="js-n tnum">50 sachês</output><button type="button" data-passo="1" aria-label="Mais 50 sachês">+</button></div>
-        <div class="tot"><span class="js-un">{brl(d['p'][0])} por sachê</span><b class="js-tot tnum">{brl(d['p'][0]*50)}</b></div>
+        <div class="stepper"><button type="button" data-passo="-1" aria-label="Menos 10 sachês">−</button><output class="js-n tnum">50 sachês</output><button type="button" data-passo="1" aria-label="Mais 10 sachês">+</button></div>
+        <div class="tot"><span class="js-un">{brl(d['f'][0][1])} por sachê</span><b class="js-tot tnum">{brl(d['f'][0][1]*50)}</b></div>
       </div>
       <a class="btn btn-cafe js-comprar" data-produto="{k}" href="#">Comprar</a>
       <a class="btn btn-linha js-zap" data-origem="pagina-{k}" href="#" target="_blank" rel="noopener">Falar com um especialista</a>
@@ -222,7 +225,7 @@ for k, d in M.items():
       <div><h3>Para quem é</h3><ul class="lst">{''.join('<li>%s</li>' % x for x in PARA_QUEM[k])}</ul></div>
       <div><h3>{SACHE[k][0]}</h3><ul class="lst">{''.join('<li>%s</li>' % x for x in SACHE[k][1])}</ul></div>
       <div><h3>O café</h3><ul class="lst"><li>Café especial com laudo: 80+ pontos SCA, avaliado por Q-Grader.</li><li>Origem única: Sul de Minas, Região Vulcânica.</li><li>100% arábica, torra média, moído na medida para o drip.</li><li>10 g por sachê. Validade de 6 meses.</li><li>Dosado, selado e conferido um a um, em pequenos lotes.</li></ul></div>
-      <div><h3>O que vem no kit</h3><ul class="lst"><li>50 drips personalizados em {KIT[k]}, enviados em caixa.</li><li>Arte criada por nós, sem custo, mesmo para quem não tem logo, com prova digital e 2 ajustes incluídos.</li></ul><h3 style="margin-top:22px">Como preparar</h3><p>Abra o sachê, encaixe as abas na borda da xícara, despeje água quente aos poucos e aguarde coar. Retire o filtro e aproveite. Não precisa de cafeteira.</p></div>
+      <div><h3>O que vem no pedido</h3><ul class="lst"><li>Os drips personalizados em {KIT[k]}, na quantidade escolhida (a partir de 50, de 10 em 10), enviados em caixa.</li><li>Arte criada por nós, sem custo, mesmo para quem não tem logo, com prova digital e 2 ajustes incluídos.</li></ul><h3 style="margin-top:22px">Como preparar</h3><p>Abra o sachê, encaixe as abas na borda da xícara, despeje água quente aos poucos e aguarde coar. Retire o filtro e aproveite. Não precisa de cafeteira.</p></div>
     </div>
   </div>
 </section>
@@ -255,20 +258,22 @@ for k, d in M.items():
 {zap}
 <script>
 (function(){{
-  var M={json.dumps({k: dict(n=d['n'], p=d['p'], v=d['v'])}, ensure_ascii=False)}['{k}'];
+  var M={json.dumps({k: dict(n=d['n'], f=d['f'], v=d['v'])}, ensure_ascii=False)}['{k}'];
   var UTM='utm_source=drip-landing&utm_medium=site&utm_campaign=brindes&utm_content=pagina-{k}';
   var ZAP='https://wa.me/5554997081666?text='+encodeURIComponent('Olá! Vim pelo site da Drip Coffee Label e quero falar com um especialista sobre o drip '+M.n+'.');
   var brl=function(v){{return v.toLocaleString('pt-BR',{{style:'currency',currency:'BRL'}})}};
   document.querySelectorAll('.js-zap').forEach(function(a){{a.href=ZAP}});
-  var c=document.querySelector('.pp'),k=1,menos=c.querySelector('[data-passo="-1"]'),mais=c.querySelector('[data-passo="1"]'),fx=c.querySelectorAll('.fx button');
-  function mostra(){{var u=M.p[Math.min(k-1,5)],n=k*50;
-    c.querySelector('.js-n').textContent=n+' sachês';c.querySelector('.js-un').textContent=brl(u)+' por sachê';c.querySelector('.js-tot').textContent=brl(u*n);
-    menos.disabled=k<=1;mais.disabled=k>=20;
-    fx.forEach(function(b){{var a=+b.dataset.k;b.setAttribute('aria-pressed',String(a===1?k<=2:a===3?(k>=3&&k<=5):k>=6))}});
-    c.querySelector('.js-comprar').href='https://www.bloomingclub.com.br/checkout/cart/item/add/'+M.v+'?quantity='+k+'&'+UTM}}
+  // Quantidade em sachês: mínimo 50, de 10 em 10 (o carrinho trava no mínimo pelo campo Tamanho do produto)
+  var c=document.querySelector('.pp'),MIN=50,PASSO=10,q=MIN,menos=c.querySelector('[data-passo="-1"]'),mais=c.querySelector('[data-passo="1"]'),fx=c.querySelectorAll('.fx button');
+  function preco(n){{var p=M.f[0][1];M.f.forEach(function(x){{if(n>=x[0])p=x[1]}});return p}}
+  function mostra(){{var u=preco(q);
+    c.querySelector('.js-n').textContent=q+' sachês';c.querySelector('.js-un').textContent=brl(u)+' por sachê';c.querySelector('.js-tot').textContent=brl(u*q);
+    menos.disabled=q<=MIN;mais.disabled=q>=5000;
+    fx.forEach(function(b,j){{var de=M.f[j][0],ate=j+1<M.f.length?M.f[j+1][0]:1e9;b.setAttribute('aria-pressed',String(q>=de&&q<ate))}});
+    c.querySelector('.js-comprar').href='https://www.bloomingclub.com.br/checkout/cart/item/add/'+M.v+'?quantity='+q+'&'+UTM}}
   c.addEventListener('click',function(e){{
-    var b=e.target.closest('[data-passo]');if(b){{k=Math.max(1,Math.min(20,k+(+b.dataset.passo)));mostra();return}}
-    var f=e.target.closest('.fx button');if(f){{k=+f.dataset.k;mostra();return}}
+    var b=e.target.closest('[data-passo]');if(b){{q=Math.max(MIN,Math.min(5000,q+(+b.dataset.passo)*PASSO));mostra();return}}
+    var f=e.target.closest('.fx button');if(f){{q=+f.dataset.q;mostra();return}}
     var t=e.target.closest('.mi button');if(t){{var im=document.getElementById('foto'),tj=c.querySelector('.pr .tarja');im.src=t.dataset.src;im.alt=t.dataset.alt;im.className=t.dataset.cena==='1'?'cena':'';
       if(tj)tj.style.display=t.dataset.cena==='1'?'none':'';
       c.querySelectorAll('.mi button').forEach(function(x){{x.setAttribute('aria-current',String(x===t))}})}}}});

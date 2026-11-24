@@ -33,7 +33,7 @@ MODELOS = [('kraft-classico', 'Kraft Clássico', '10 × 12 cm · impressão em p
            ('branco-premium', 'Branco Premium', '10 × 15 cm · preto ou colorido', 'p-branco-cor-cut.webp?v=5', 'R$ 5,90')]
 
 COMUM = [
-    ('Qual é o pedido mínimo?', '50 sachês. Você pede em kits de 50, e o preço por sachê cai a partir de 150 e de 300 sachês.'),
+    ('Qual é o pedido mínimo?', '50 sachês. Acima disso, a quantidade que você quiser, de 10 em 10, e o preço por sachê cai a cada 50 sachês, até 300.'),
     ('Vocês criam a arte?', 'Sim, sem custo, inclusive para quem não tem logo. Mandamos a prova digital com 2 ajustes incluídos e só produzimos depois da sua aprovação.'),
     ('Qual é o prazo?', 'Produzimos em 5 dias úteis depois da aprovação da arte. Depois vem o prazo da transportadora, calculado pelo CEP no carrinho.'),
 ]
@@ -47,11 +47,11 @@ P = {
    foto='real/matrikem-v.webp', alt='Drip personalizado da MatriKem sobre a mesa',
    usos=[('Clientes e parceiros', 'Vai junto da proposta, da entrega ou da visita e fica na mesa de quem recebe.'),
          ('Onboarding e boas-vindas', 'Um café com a marca no primeiro dia, no kit de boas-vindas ou na mesa do novo colaborador.'),
-         ('Endomarketing', 'Datas internas, metas batidas, SIPAT, aniversário da empresa. Cada kit de 50 pode ter uma arte.'),
+         ('Endomarketing', 'Datas internas, metas batidas, SIPAT, aniversário da empresa. Uma arte diferente a cada 50 sachês.'),
          ('Recepção e reuniões', 'O café da sala de espera e das reuniões, já com a sua marca.')],
    modelo='Para a maioria das empresas, o Kraft Clássico resolve. Se a logo tem cor ou você quer mais espaço para a arte, vá de Kraft Premium.',
    fotos=[('real/matrikem.webp', 'MatriKem'), ('real/necta.webp', 'Necta Negócios'), ('real/binotto.webp', 'Binotto & Zanette')],
-   faq=[('Dá para ter uma arte por setor ou filial?', 'Sim. Cada kit de 50 sachês sai com uma arte. Com 150 sachês, por exemplo, você pode ter três artes diferentes.'),
+   faq=[('Dá para ter uma arte por setor ou filial?', 'Sim. Uma arte diferente a cada 50 sachês. Com 150 sachês, por exemplo, você pode ter três artes diferentes.'),
         ('A impressão pode ser colorida?', 'Nos modelos Premium (Kraft e Branco), sim, pelo mesmo preço, para logo ou texto, sem foto nem fundo cheio. O Kraft Clássico é impresso em preto.'),
         ('Que arquivo da logo eu mando?', 'Em vetor: AI, EPS, SVG ou PDF vetorial, pelo WhatsApp depois da compra. Não tem a logo em vetor ou não tem logo? Criamos a arte sem custo.')] + COMUM),
  'casamentos': dict(
@@ -82,7 +82,7 @@ P = {
          ('Kits de hotel e viagem', 'No quarto do hotel ou no kit de quem vem de fora.')],
    modelo='Para volume e distribuição rápida, o Kraft Clássico tem o menor preço por sachê. Para destacar a marca no estande, o Kraft Premium tem 25% mais área para a arte.',
    fotos=[('o4.webp', 'Sacolas de evento'), ('o5.webp', 'Mesa de evento'), ('real/onofre.webp', 'Leonardo Onofre Advocacia')],
-   faq=[('Dá para fazer uma arte por dia de evento ou por patrocinador?', 'Sim. Cada kit de 50 sachês sai com uma arte.'),
+   faq=[('Dá para fazer uma arte por dia de evento ou por patrocinador?', 'Sim. Uma arte diferente a cada 50 sachês.'),
         ('Vocês entregam no local do evento?', 'Enviamos para todo o Brasil, para o endereço que você informar no pedido. O frete e o prazo da transportadora aparecem no carrinho, pelo CEP.'),
         ('Tenho data marcada. Como faço?', 'Fale com a gente pelo WhatsApp com a data e o CEP, e conferimos se o prazo cabe antes de você pagar.'),
         ('Acima de 1.000 sachês tem condição diferente?', 'Para mais de 1.000 sachês, fale com a gente pelo WhatsApp.')] + COMUM),
@@ -95,7 +95,7 @@ P = {
    usos=[('Clientes e parceiros', 'Com uma mensagem de agradecimento e votos para o próximo ano.'),
          ('Equipe', 'Na confraternização, no amigo secreto ou no kit de fim de ano.'),
          ('Cestas e kits de Natal', 'Junto de chocolates, panetone ou cartão.'),
-         ('Mensagem própria', 'Cada kit de 50 pode ter uma mensagem diferente.')],
+         ('Mensagem própria', 'Uma mensagem diferente a cada 50 sachês.')],
    modelo='Para mensagens mais longas ou com cor, o Kraft Premium e o Branco Premium têm 25% mais área. Para volume, o Kraft Clássico tem o menor preço.',
    fotos=[('real/elenir.webp', 'Mensagem de agradecimento'), ('o8.webp', 'Kit de fim de ano'), ('real/necta.webp', 'Necta Negócios')],
    faq=[('Até quando pedir para receber antes do Natal?', 'Em 2026, peça até 27/11 para receber a tempo das confraternizações e do Natal. Depois disso, fale com a gente pelo WhatsApp com a data e o CEP.'),

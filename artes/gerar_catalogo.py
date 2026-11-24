@@ -39,10 +39,10 @@ CARD_CSS = """.cc{display:flex;flex-direction:column;min-width:0;background:#fff
 @media(min-width:1100px){.grade-ini.tres{grid-template-columns:repeat(3,1fr);max-width:1000px;margin:0 auto}}"""
 
 def KIT_TXT(i):
-    # Arte pronta: vendida por unidade, a partir do mínimo do sachê (artes_prontas.min_sache); personalizado: kit de 50
+    # Arte pronta: vendida por unidade, a partir do mínimo do sachê (artes_prontas.min_sache); personalizado: a partir de 50 (por unidade)
     if i.get('linha') == 'pronta':
         return 'A partir de %d sachês' % C.get('artes_prontas', {}).get('min_sache', 20)
-    return 'Kit de 50 sachês'
+    return 'A partir de 50 sachês'
 
 def card(i, ini=False):
     # Cartão de loja (referência: cafepds.com.br/personalizados): selo de desconto, nome, preço por sachê e Comprar

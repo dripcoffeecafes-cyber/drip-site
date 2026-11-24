@@ -87,11 +87,11 @@ P = {
    olho='Políticas', h1='Condições de compra',
    corpo='''<p>O resumo abaixo vale para os pedidos feitos por este site. A compra é finalizada na loja Blooming Club e segue também os <a href="https://www.bloomingclub.com.br/termos-e-condicoes-gerais" target="_blank" rel="noopener">termos e condições gerais da Blooming Club</a>.</p>
 <h2>Pedido e preço</h2>
-<ul class="lst"><li>Pedido mínimo de 50 sachês, em kits de 50.</li><li>O preço por sachê cai a partir de 150 e de 300 sachês, com o desconto aplicado no carrinho.</li><li>Pagamento por Pix, boleto ou cartão, na loja.</li></ul>
+<ul class="lst"><li>Pedido mínimo de 50 sachês; acima disso, a quantidade que você quiser, de 10 em 10.</li><li>O preço por sachê cai a cada 50 sachês, até 300, com o desconto aplicado no carrinho.</li><li>Pagamento por Pix, boleto ou cartão, na loja.</li></ul>
 <h2>Arte</h2>
-<ul class="lst"><li>Criamos a arte sem custo, inclusive para quem não tem logo.</li><li>A logo é enviada em vetor (AI, EPS, SVG ou PDF vetorial), pelo WhatsApp, depois da compra.</li><li>Mandamos a prova digital, com 2 ajustes incluídos. Só produzimos depois da sua aprovação.</li><li>Cada kit de 50 sai com uma arte. Não fazemos fundo colorido nem foto cobrindo o sachê.</li><li>Kraft Clássico: impressão em preto. Kraft Premium e Branco Premium: preto ou colorido, pelo mesmo preço.</li></ul>
+<ul class="lst"><li>Criamos a arte sem custo, inclusive para quem não tem logo.</li><li>A logo é enviada em vetor (AI, EPS, SVG ou PDF vetorial), pelo WhatsApp, depois da compra.</li><li>Mandamos a prova digital, com 2 ajustes incluídos. Só produzimos depois da sua aprovação.</li><li>Uma arte diferente a cada 50 sachês. Não fazemos fundo colorido nem foto cobrindo o sachê.</li><li>Kraft Clássico: impressão em preto. Kraft Premium e Branco Premium: preto ou colorido, pelo mesmo preço.</li></ul>
 <h2>Produção e entrega</h2>
-<ul class="lst"><li>Produção em 5 dias úteis depois da aprovação da arte.</li><li>Frete e prazo da transportadora calculados pelo CEP no carrinho, antes do pagamento. Enviamos para todo o Brasil.</li><li>Os 50 sachês de cada kit seguem em caixa.</li></ul>
+<ul class="lst"><li>Produção em 5 dias úteis depois da aprovação da arte.</li><li>Frete e prazo da transportadora calculados pelo CEP no carrinho, antes do pagamento. Enviamos para todo o Brasil.</li><li>Os sachês seguem em caixa.</li></ul>
 <h2>Trocas</h2>
 <p>Veja a nossa <a href="../trocas-e-devolucoes/">política de trocas e devoluções</a>.</p>'''),
 }
