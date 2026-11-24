@@ -34,15 +34,15 @@ def MIX(ml, reais):
     return ml[:1] + [('real/%s-q.webp?v=3' % f, 1, a) for f, a in reais] + ml[1:]
 
 M = {
- 'kraft':  dict(sl='kraft-classico', n='Kraft Clássico', v='33', f=[[50,5.9],[100,5.7],[150,5.5],[200,5.3],[250,5.1],[300,4.9]], med='10 × 12 cm · impressão em preto',
+ 'kraft':  dict(sl='kraft-classico', n='Kraft Clássico', v='33', f=[[50,5.9],[100,5.8],[150,5.7],[200,5.6],[250,5.5],[300,5.4],[400,5.15],[500,4.9]], med='10 × 12 cm · impressão em preto',
    res='O drip clássico, em kraft natural, com a sua marca impressa em preto direto no sachê. O mais pedido para empresas e eventos.',
    fotos=MIX(ML('kraft-classico', ['Kraft Clássico com a sua marca', 'Diferenciais da Drip', 'Impressão em preto direto no kraft', 'Também temos a linha Premium', 'O que vem no kit', 'Marcas que já servem o Kraft Clássico']), [('floema', 'Drip Kraft Clássico da Floema Arquitetura'), ('binotto', 'Drip Kraft Clássico da Binotto & Zanette'), ('necta', 'Drip Kraft Clássico da Necta Negócios')]),
    ficha=[('Tamanho','10 × 12 cm'),('Material','Kraft natural'),('Impressão','Preto, 1 cor'),('Café','10 g · 80+ pontos SCA'),('Origem','Sul de Minas, Região Vulcânica'),('Produção','5 dias úteis após a arte')]),
- 'kraftp': dict(sl='kraft-premium', n='Kraft Premium', v='281', f=[[50,6.9],[100,6.7],[150,6.5],[200,6.3],[250,6.1],[300,5.9]], med='10 × 15 cm · preto ou colorido',
+ 'kraftp': dict(sl='kraft-premium', n='Kraft Premium', v='281', f=[[50,6.9],[100,6.8],[150,6.7],[200,6.6],[250,6.5],[300,6.4],[400,6.15],[500,5.9]], med='10 × 15 cm · preto ou colorido',
    res='Formato maior, produzido só por nós, com 25% mais área para a sua arte que o drip tradicional. Em preto ou colorido, pelo mesmo preço.',
    fotos=MIX(ML('kraft-premium', ['Kraft Premium com a sua marca', 'Diferenciais da Drip', 'Impressão em preto ou colorida', 'Formato 10 x 15 cm exclusivo da Drip', 'O que vem no kit', 'Marcas que já servem o Kraft Premium']), [('dkj', 'Drip Kraft Premium da DKJ Psicologia'), ('matrikem', 'Drip Kraft Premium da MatriKem')]),
    ficha=[('Tamanho','10 × 15 cm'),('Material','Kraft premium'),('Impressão','Preto ou colorido'),('Café','10 g · 80+ pontos SCA'),('Origem','Sul de Minas, Região Vulcânica'),('Produção','5 dias úteis após a arte')]),
- 'branco': dict(sl='branco-premium', n='Branco Premium', v='278', f=[[50,6.9],[100,6.7],[150,6.5],[200,6.3],[250,6.1],[300,5.9]], med='10 × 15 cm · preto ou colorido',
+ 'branco': dict(sl='branco-premium', n='Branco Premium', v='278', f=[[50,6.9],[100,6.8],[150,6.7],[200,6.6],[250,6.5],[300,6.4],[400,6.15],[500,5.9]], med='10 × 15 cm · preto ou colorido',
    res='O sachê branco no formato maior, para marcas que pedem um visual limpo. Em preto ou colorido, pelo mesmo preço.',
    fotos=ML('branco-premium', ['Branco Premium com a sua marca', 'Diferenciais da Drip', 'Impressão em preto ou colorida', 'Formato 10 x 15 cm exclusivo da Drip', 'O que vem no kit', 'Marcas que já servem o Branco Premium']),
    ficha=[('Tamanho','10 × 15 cm'),('Material','Branco premium'),('Impressão','Preto ou colorido'),('Café','10 g · 80+ pontos SCA'),('Origem','Sul de Minas, Região Vulcânica'),('Produção','5 dias úteis após a arte')]),
@@ -134,7 +134,7 @@ for k, d in M.items():
     tarja = ''
     mi = ''.join('<button type="button" aria-current="%s" data-src="../../assets/img/%s" data-cena="%d" data-alt="%s" aria-label="Foto %d"><img src="../../assets/img/%s" alt="" class="%s" width="120" height="120" loading="lazy"></button>'
                  % ('true' if i == 0 else 'false', f, c, a, i + 1, f, 'cena' if c else '') for i, (f, c, a) in enumerate(d['fotos']))
-    # Faixas por quantidade (Adriano, 24/11): por unidade, mínimo 50, R$ 0,20 a menos a cada 50 até 300 (Precificação 31)
+    # Faixas por quantidade (Adriano, 24/11): por unidade, mínimo 50, R$ 0,10 a menos a cada 50 até 300, R$ 0,25 de 300 a 400 e de 400 a 500 (Precificação 31)
     F = d['f']
     fx = ''.join('<button type="button" data-q="%d"><span>%s%s</span><b>%s</b></button>' % (
         F[j][0], ('%d a %d sachês' % (F[j][0], F[j + 1][0] - 1)) if j + 1 < len(F) else '%d sachês ou mais' % F[j][0],

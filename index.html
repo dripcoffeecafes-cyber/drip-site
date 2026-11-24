@@ -854,7 +854,7 @@ fbq('track','PageView');
     </div>
     <p class="ver-todos"><a class="btn btn-linha" href="modelos/">Ver todos os modelos</a></p>
     <!-- CATALOGO:FIM -->
-    <p class="nota-prod">Mínimo de 50 sachês, na quantidade que você quiser. Desconto automático a cada 50 sachês, até 300. Nos Premium, você escolhe preto ou colorido na aprovação da arte, pelo mesmo preço. <a class="js-zap" data-origem="modelos" href="#" target="_blank" rel="noopener">Dúvidas? Fale com a gente</a></p>
+    <p class="nota-prod">Mínimo de 50 sachês, na quantidade que você quiser. Desconto automático a cada 50 sachês e a partir de 400 e 500. Nos Premium, você escolhe preto ou colorido na aprovação da arte, pelo mesmo preço. <a class="js-zap" data-origem="modelos" href="#" target="_blank" rel="noopener">Dúvidas? Fale com a gente</a></p>
         <div class="cab" style="margin-top:64px;margin-bottom:0"><span class="olho">Como comprar</span><h2>Qual caminho é o seu?</h2></div>
     <div class="caminhos" style="margin-top:24px">
       <div class="caminho">
@@ -1052,11 +1052,11 @@ fbq('track','PageView');
 
 <script>
 (function(){
-  // Preço por sachê a partir de cada quantidade (Adriano, 24/11: por unidade, mínimo 50, de 10 em 10, R$ 0,20 a menos a cada 50 até 300).
+  // Preço por sachê a partir de cada quantidade (Adriano, 24/11: por unidade, mínimo 50, de 10 em 10, R$ 0,10 a menos a cada 50 até 300, R$ 0,25 de 300 a 400 e de 400 a 500).
   // Tem que bater com a Precificação 31 da Betalabs.
-  var M={kraft:{n:'Kraft Clássico',f:[[50,5.9],[100,5.7],[150,5.5],[200,5.3],[250,5.1],[300,4.9]],v:'33'},
-         branco:{n:'Branco Premium',f:[[50,6.9],[100,6.7],[150,6.5],[200,6.3],[250,6.1],[300,5.9]],v:'278'},
-         kraftp:{n:'Kraft Premium',f:[[50,6.9],[100,6.7],[150,6.5],[200,6.3],[250,6.1],[300,5.9]],v:'281'}};
+  var M={kraft:{n:'Kraft Clássico',f:[[50,5.9],[100,5.8],[150,5.7],[200,5.6],[250,5.5],[300,5.4],[400,5.15],[500,4.9]],v:'33'},
+         branco:{n:'Branco Premium',f:[[50,6.9],[100,6.8],[150,6.7],[200,6.6],[250,6.5],[300,6.4],[400,6.15],[500,5.9]],v:'278'},
+         kraftp:{n:'Kraft Premium',f:[[50,6.9],[100,6.8],[150,6.7],[200,6.6],[250,6.5],[300,6.4],[400,6.15],[500,5.9]],v:'281'}};
   var MIN=50,PASSO=10;
   function preco(m,q){var p=m.f[0][1];m.f.forEach(function(x){if(q>=x[0])p=x[1]});return p}
   var UTM='utm_source=drip-landing&utm_medium=site&utm_campaign=brindes';

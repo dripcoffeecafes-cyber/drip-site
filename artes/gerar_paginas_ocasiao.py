@@ -33,7 +33,7 @@ MODELOS = [('kraft-classico', 'Kraft Clássico', '10 × 12 cm · impressão em p
            ('branco-premium', 'Branco Premium', '10 × 15 cm · preto ou colorido', 'p-branco-cor-cut.webp?v=5', 'R$ 5,90')]
 
 COMUM = [
-    ('Qual é o pedido mínimo?', '50 sachês. Acima disso, a quantidade que você quiser, de 10 em 10, e o preço por sachê cai a cada 50 sachês, até 300.'),
+    ('Qual é o pedido mínimo?', '50 sachês. Acima disso, a quantidade que você quiser, de 10 em 10, e o preço por sachê cai a cada 50 sachês até 300, e de novo em 400 e 500.'),
     ('Vocês criam a arte?', 'Sim, sem custo, inclusive para quem não tem logo. Mandamos a prova digital com 2 ajustes incluídos e só produzimos depois da sua aprovação.'),
     ('Qual é o prazo?', 'Produzimos em 5 dias úteis depois da aprovação da arte. Depois vem o prazo da transportadora, calculado pelo CEP no carrinho.'),
 ]
