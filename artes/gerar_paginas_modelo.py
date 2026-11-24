@@ -188,7 +188,7 @@ for k, d in M.items():
 <body>
 {topo}
 <main class="wrap">
-  <nav class="migalha" aria-label="Você está em"><a href="../../">Início</a> / <a href="../../#modelos">Modelos</a> / {d['n']}</nav>
+  <nav class="migalha" aria-label="Você está em"><a href="../../">Início</a> / <a href="../">Modelos</a> / {d['n']}</nav>
   <div class="pp" data-modelo="{k}">
     <div class="gal">
       <div class="pr"><img id="foto" src="../../assets/img/{f0[0]}" alt="{f0[2]}" width="1100" height="1100" class="cena">{tarja}</div>

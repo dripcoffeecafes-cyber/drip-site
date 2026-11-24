@@ -1,0 +1,179 @@
+[
+ {
+  "slug": "exemplo-0",
+  "nome": "[EXEMPLO] Segunda com café",
+  "linha": "pronta",
+  "sache": "kraft-premium",
+  "temas": [
+   "engracadas"
+  ],
+  "med": "",
+  "preco_de": 6.5,
+  "img": "p-kraft-premium-pb-cut.webp",
+  "w": 416,
+  "h": 605,
+  "alt": "Exemplo",
+  "selo": "",
+  "tarja": "",
+  "url": "modelos/",
+  "destaque": false,
+  "ordem": 10,
+  "novo": true,
+  "publicado": true
+ },
+ {
+  "slug": "exemplo-1",
+  "nome": "[EXEMPLO] Feliz Natal",
+  "linha": "pronta",
+  "sache": "branco-premium",
+  "temas": [
+   "natal"
+  ],
+  "med": "",
+  "preco_de": 6.5,
+  "img": "p-branco-cut.webp",
+  "w": 416,
+  "h": 605,
+  "alt": "Exemplo",
+  "selo": "",
+  "tarja": "",
+  "url": "modelos/",
+  "destaque": false,
+  "ordem": 11,
+  "novo": true,
+  "publicado": true
+ },
+ {
+  "slug": "exemplo-2",
+  "nome": "[EXEMPLO] Boas festas kraft",
+  "linha": "pronta",
+  "sache": "kraft-classico",
+  "temas": [
+   "natal"
+  ],
+  "med": "",
+  "preco_de": 5.5,
+  "img": "p-kraft-cut.webp",
+  "w": 416,
+  "h": 605,
+  "alt": "Exemplo",
+  "selo": "",
+  "tarja": "",
+  "url": "modelos/",
+  "destaque": false,
+  "ordem": 12,
+  "novo": false,
+  "publicado": true
+ },
+ {
+  "slug": "exemplo-3",
+  "nome": "[EXEMPLO] Café de dentista",
+  "linha": "pronta",
+  "sache": "kraft-premium",
+  "temas": [
+   "profissoes"
+  ],
+  "med": "",
+  "preco_de": 6.5,
+  "img": "p-kraft-premium-cut.webp",
+  "w": 416,
+  "h": 605,
+  "alt": "Exemplo",
+  "selo": "",
+  "tarja": "",
+  "url": "modelos/",
+  "destaque": false,
+  "ordem": 13,
+  "novo": false,
+  "publicado": true
+ },
+ {
+  "slug": "exemplo-4",
+  "nome": "[EXEMPLO] Dia dos Professores",
+  "linha": "pronta",
+  "sache": "branco-premium",
+  "temas": [
+   "datas"
+  ],
+  "med": "",
+  "preco_de": 6.5,
+  "img": "p-branco-pb-cut.webp",
+  "w": 416,
+  "h": 605,
+  "alt": "Exemplo",
+  "selo": "",
+  "tarja": "",
+  "url": "modelos/",
+  "destaque": false,
+  "ordem": 14,
+  "novo": false,
+  "publicado": true
+ },
+ {
+  "slug": "exemplo-5",
+  "nome": "[EXEMPLO] Reunião que virou café",
+  "linha": "pronta",
+  "sache": "kraft-classico",
+  "temas": [
+   "engracadas"
+  ],
+  "med": "",
+  "preco_de": 5.5,
+  "img": "p-kraft-cut.webp",
+  "w": 416,
+  "h": 605,
+  "alt": "Exemplo",
+  "selo": "",
+  "tarja": "",
+  "url": "modelos/",
+  "destaque": false,
+  "ordem": 15,
+  "novo": true,
+  "publicado": true
+ },
+ {
+  "slug": "exemplo-6",
+  "nome": "[EXEMPLO] Obrigado por vir",
+  "linha": "pronta",
+  "sache": "branco-premium",
+  "temas": [
+   "eventos"
+  ],
+  "med": "",
+  "preco_de": 6.5,
+  "img": "p-branco-cut.webp",
+  "w": 416,
+  "h": 605,
+  "alt": "Exemplo",
+  "selo": "",
+  "tarja": "",
+  "url": "modelos/",
+  "destaque": false,
+  "ordem": 16,
+  "novo": false,
+  "publicado": true
+ },
+ {
+  "slug": "exemplo-7",
+  "nome": "[EXEMPLO] Feliz Ano Novo animado",
+  "linha": "pronta",
+  "sache": "kraft-premium",
+  "temas": [
+   "animadas",
+   "natal"
+  ],
+  "med": "",
+  "preco_de": 6.5,
+  "img": "p-kraft-premium-cut.webp",
+  "w": 416,
+  "h": 605,
+  "alt": "Exemplo",
+  "selo": "",
+  "tarja": "",
+  "url": "modelos/",
+  "destaque": false,
+  "ordem": 17,
+  "novo": true,
+  "publicado": true
+ }
+]
