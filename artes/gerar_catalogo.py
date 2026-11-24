@@ -38,7 +38,23 @@ CARD_CSS = """.cc{display:flex;flex-direction:column;min-width:0;background:#fff
 @media(min-width:760px){.grade-ini.tres{grid-template-columns:repeat(3,1fr)}}
 @media(min-width:1100px){.grade-ini.tres{grid-template-columns:repeat(3,1fr);max-width:1000px;margin:0 auto}}"""
 
+AP = C.get('artes_prontas', {})
+
+def card_pronta(i, pre):
+    # Arte pronta: não tem página própria. "Escolher" põe a arte na seleção (quantidade por arte, preço pela soma do mesmo sachê).
+    selo = esc(i.get('selo') or ('Novo' if i.get('novo') else ''))
+    return ('<article class="cc cc-ap" data-temas="%s" data-sache="%s" data-preco="%.2f" data-ordem="%d" data-novo="%d" data-nome="%s" data-arte="%s" data-titulo="%s">'
+            '<div class="cc-img"><span class="cc-selos">%s</span><img src="%sassets/img/%s" alt="%s" width="%d" height="%d" loading="lazy"%s></div>'
+            '<div class="cc-tx"><p class="cc-qt">Arte pronta</p><h3>%s</h3><p class="cc-med">%s</p>'
+            '<p class="cc-de">a partir de<span><b class="tnum">%s</b><small> /sachê</small></span></p><p class="cc-kit">Mínimo de %d sachês</p>'
+            '<div class="cc-acao"><button type="button" class="btn btn-cafe cc-bt js-escolher">Escolher</button></div></div></article>') % (
+        ' '.join(i.get('temas', [])), i['sache'], i['preco_de'], i.get('ordem', 999), 1 if i.get('novo') else 0, esc(i['nome'].lower()), esc(i['slug']), esc(i['nome']),
+        '<span class="cc-selo">%s</span>' % selo if selo else '', pre, i['img'], esc(i['alt']), i['w'], i['h'], ' class="cheia"' if i.get('cheia') else '',
+        esc(i['nome']), esc(SACHE.get(i['sache'], '')), brl(i['preco_de']), AP.get('min_arte', 20))
+
 def card(i, ini=False):
+    if i.get('linha') == 'pronta':
+        return card_pronta(i, '' if ini else '../')
     # Cartão de loja (referência: cafepds.com.br/personalizados): selo de desconto, nome, preço por sachê e Comprar
     off = round((1 - i['preco_de'] / i['preco_cheio']) * 100) if i.get('preco_cheio') else 0
     selo = esc(i.get('selo') or ('Novo' if i.get('novo') else ''))
@@ -130,6 +146,21 @@ CSS = """<style>
 .op{display:flex;justify-content:space-between;align-items:center;width:100%;padding:13px 2px;background:none;border:0;border-bottom:1px solid var(--fundo);font:300 15px 'Outfit',sans-serif;color:var(--texto);cursor:pointer;text-align:left}
 .op small{margin-left:8px;font-size:12px;color:var(--apoio)}.op[aria-pressed="true"]{font-weight:500;color:var(--ink)}.op[aria-pressed="true"]:before{content:"";order:2;width:8px;height:8px;background:var(--cafe);margin-left:auto;margin-right:10px}
 .painel .ver{width:100%;margin-top:20px}
+.cc-acao{margin-top:auto;width:100%}
+.qt{display:flex;align-items:stretch;height:42px;border:1px solid var(--ink);background:#fff;width:100%}
+.qt button{width:42px;flex:none;background:none;border:0;font:300 20px/1 'Outfit',sans-serif;color:var(--ink);cursor:pointer}.qt button:disabled{opacity:.25;cursor:default}
+.qt input{flex:1;min-width:0;border:0;text-align:center;font:500 15px 'Outfit',sans-serif;color:var(--ink);background:none;-moz-appearance:textfield}.qt input::-webkit-inner-spin-button{-webkit-appearance:none}
+.cc-ap.sel{border-color:var(--cafe)}.cc-ap.sel .cc-img:after{content:"✓";position:absolute;top:8px;right:8px;width:26px;height:26px;border-radius:50%;background:var(--cafe);color:#fff;font:500 14px/26px 'Outfit';text-align:center}
+.sel-bar{position:fixed;left:0;right:0;bottom:0;z-index:55;background:var(--ink);color:#fff;display:none;align-items:center;gap:12px;padding:12px 18px calc(12px + env(safe-area-inset-bottom))}
+.sel-bar.on{display:flex}.sel-bar p{margin:0;font-size:13px;line-height:1.35;flex:1;color:#fff}.sel-bar b{font-weight:500;color:#fff}
+.sel-bar .btn{height:42px;padding:0 16px;font-size:11px;background:#fff;color:var(--ink);border-color:#fff;white-space:nowrap}
+body.com-sel .zap-fixo{bottom:86px}body.com-sel .cat-nota{padding-bottom:110px}
+.sel-g{border-top:1px solid var(--fundo);padding:14px 0 4px}.sel-g h4{font:500 12px/1.3 'Outfit',sans-serif;letter-spacing:.14em;text-transform:uppercase;margin:0 0 10px;color:var(--ink)}
+.sel-l{display:grid;grid-template-columns:1fr 132px 26px;gap:8px;align-items:center;margin:0 0 8px;font-size:14px}.sel-l .qt{height:36px}.sel-l .qt button{width:36px}
+.sel-l .rm{background:none;border:0;font-size:20px;color:var(--apoio);cursor:pointer;line-height:1}
+.sel-s{font-size:13px;color:var(--apoio);margin:4px 0 8px}.sel-s b{color:var(--ink);font-weight:500}.sel-s .dica{display:block;color:var(--cafe)}
+.sel-tot{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--ink);padding:14px 0 0;margin-top:8px}.sel-tot b{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-size:28px}
+.sel-nota{font-size:12.5px;color:var(--apoio);margin:10px 0 0}
 @media(min-width:760px){.cc-tx{padding:18px 16px 16px}.cc h3{font-size:14.5px}.cc-de b{font-size:27px}}
 .vazio{grid-column:1/-1;text-align:center;padding:40px 0;color:var(--apoio)}.vazio button{background:none;border:0;color:var(--ink);text-decoration:underline;font:inherit;cursor:pointer}
 .cat-nota{font-size:14px;color:var(--apoio);text-align:center;padding:0 0 56px}
@@ -173,6 +204,14 @@ pg = f"""<!DOCTYPE html>
   {'<h3>Sachê</h3><div class="ops">' + sac + '</div>' if len(usados_s) > 1 else ''}
   <button type="button" class="btn btn-cafe ver js-fecha">Ver <span class="js-n">{len(IT)}</span> produtos</button>
 </div></div>
+<div class="painel sel-painel" role="dialog" aria-modal="true" aria-label="Sua seleção de artes"><div class="fundo js-sfecha"></div><div class="cx">
+  <h2>Sua seleção <button type="button" class="x js-sfecha" aria-label="Fechar">×</button></h2>
+  <div class="js-sgrupos"></div>
+  <div class="sel-tot"><span>Total</span><b class="tnum js-stotal"></b></div>
+  <a class="btn btn-cafe ver js-ir" href="#">Ir para o carrinho</a>
+  <p class="sel-nota">O preço por sachê vale pela soma das artes do mesmo sachê. Frete calculado no carrinho.</p>
+</div></div>
+<div class="sel-bar" aria-live="polite"><p class="js-sresumo"></p><button type="button" class="btn js-sabre">Ver seleção</button></div>
 {rodape}
 {zap}
 <script>
@@ -207,6 +246,48 @@ pg = f"""<!DOCTYPE html>
   so.addEventListener('change',function(){{F.ordem=so.value;aplica()}});
   vz.querySelector('.js-limpa').addEventListener('click',function(){{F.tema='';F.sache='';aplica()}});
   aplica();
+  // ---------- Seletor das artes prontas ----------
+  // Seleção guardada no navegador (drip_artes). "Ir para o carrinho" leva tudo de uma vez para o www em ?drip_artes=;
+  // o script do carrinho (checkout-drip.js) põe cada sachê no carrinho e grava a lista no campo extra "arte".
+  var AP={json.dumps(dict(min_arte=AP.get('min_arte', 20), min_sache=AP.get('min_sache', 20), passo=AP.get('passo', 10), produtos=AP.get('produtos', {}), faixas=AP.get('faixas', {})), ensure_ascii=False)};
+  var S={{}};try{{S=JSON.parse(localStorage.getItem('drip_artes')||'{{}}')||{{}}}}catch(e){{S={{}}}}
+  var cap={{}};cs.forEach(function(c){{if(c.dataset.arte)cap[c.dataset.arte]={{n:c.dataset.titulo,s:c.dataset.sache,c:c}}}});
+  Object.keys(S).forEach(function(k){{if(!cap[k])delete S[k]}});
+  var brl=function(v){{return 'R$ '+v.toFixed(2).replace('.',',').replace(/\\B(?=(\\d{{3}})+(?!\\d))/g,'.')}};
+  function grava(){{try{{localStorage.setItem('drip_artes',JSON.stringify(S))}}catch(e){{}}}}
+  function preco(sa,q){{var f=AP.faixas[sa]||[],p=f.length?f[0][1]:0,prox=null;f.forEach(function(x){{if(q>=x[0])p=x[1];else if(!prox)prox=x}});return {{p:p,prox:prox}}}}
+  function grupos(){{var g={{}};Object.keys(S).forEach(function(k){{var a=cap[k];(g[a.s]=g[a.s]||{{q:0,a:[]}}).a.push([k,a.n,S[k]]);g[a.s].q+=S[k]}});return g}}
+  function qt(k,v){{return '<div class="qt" data-k="'+k+'"><button type="button" data-d="-1" aria-label="Menos"'+(v<=AP.min_arte?' disabled':'')+'>−</button><input type="number" inputmode="numeric" min="'+AP.min_arte+'" step="'+AP.passo+'" value="'+v+'" aria-label="Quantidade"><button type="button" data-d="1" aria-label="Mais">+</button></div>'}}
+  function poe(k,v){{v=Math.max(AP.min_arte,Math.round(+v||0));S[k]=v;grava();sel()}}
+  function sel(){{
+    var g=grupos(),n=0,tq=0,tv=0,h='',faltaId=false;
+    Object.keys(cap).forEach(function(k){{var a=cap[k],ac=a.c.querySelector('.cc-acao');a.c.classList.toggle('sel',!!S[k]);
+      ac.innerHTML=S[k]?qt(k,S[k]):'<button type="button" class="btn btn-cafe cc-bt js-escolher">Escolher</button>'}});
+    Object.keys(g).forEach(function(sa){{var x=g[sa],pr=preco(sa,x.q),sub=pr.p*x.q;n+=x.a.length;tq+=x.q;tv+=sub;if(!AP.produtos[sa])faltaId=true;
+      h+='<div class="sel-g"><h4>'+(SACHE[sa]||sa)+'</h4>'+x.a.map(function(a){{return '<div class="sel-l"><span>'+a[1]+'</span>'+qt(a[0],a[2])+'<button type="button" class="rm" data-rm="'+a[0]+'" aria-label="Tirar '+a[1]+'">×</button></div>'}}).join('')+
+        '<p class="sel-s"><b>'+x.q+' sachês</b> × '+brl(pr.p)+' = <b>'+brl(sub)+'</b>'+(pr.prox?'<span class="dica">Faltam '+(pr.prox[0]-x.q)+' para '+brl(pr.prox[1])+' /sachê</span>':'')+'</p></div>'}});
+    document.querySelector('.js-sgrupos').innerHTML=h;document.querySelector('.js-stotal').textContent=brl(tv);
+    document.querySelector('.js-sresumo').innerHTML='<b>'+n+(n===1?' arte':' artes')+'</b> · '+tq+' sachês · '+brl(tv);
+    document.querySelector('.sel-bar').classList.toggle('on',n>0);document.body.classList.toggle('com-sel',n>0);
+    var ir=document.querySelector('.js-ir'),lista=Object.keys(g).map(function(sa){{return {{p:AP.produtos[sa]||'',s:SACHE[sa]||sa,q:g[sa].q,a:g[sa].a.map(function(a){{return [a[1],a[2]]}})}}}});
+    if(faltaId){{ // produto ainda sem link na loja: pedido pelo WhatsApp, com a lista pronta
+      ir.textContent='Pedir pelo WhatsApp';ir.target='_blank';ir.rel='noopener';ir.dataset.modo='zap';
+      ir.href='https://wa.me/5554997081666?text='+encodeURIComponent('Olá! Quero estas artes prontas da Drip:\\n'+lista.map(function(l){{return l.s+': '+l.a.map(function(a){{return a[0]+' ×'+a[1]}}).join(' | ')}}).join('\\n'))}}
+    else{{ir.textContent='Ir para o carrinho';ir.removeAttribute('target');ir.dataset.modo='loja';
+      ir.href='https://www.bloomingclub.com.br/checkout/cart?drip_artes='+encodeURIComponent(JSON.stringify(lista))+'&utm_source=drip-landing&utm_medium=site&utm_campaign=brindes&utm_content=artes-prontas'}}
+    if(!n)sp.classList.remove('on');
+  }}
+  var sp=document.querySelector('.sel-painel');
+  g.addEventListener('click',function(e){{var b=e.target.closest('.js-escolher');if(b){{var k=b.closest('.cc').dataset.arte;S[k]=AP.min_arte;grava();sel();return}}}});
+  function qtClick(e){{var b=e.target.closest('.qt button');if(b){{var k=b.parentNode.dataset.k,v=(S[k]||0)+(+b.dataset.d)*AP.passo;if(v<AP.min_arte){{delete S[k];grava();sel()}}else poe(k,v);return true}}
+    var r=e.target.closest('[data-rm]');if(r){{delete S[r.dataset.rm];grava();sel();return true}}}}
+  document.addEventListener('click',function(e){{if(qtClick(e))return;if(e.target.closest('.js-sabre'))sp.classList.add('on');if(e.target.closest('.js-sfecha'))sp.classList.remove('on')}});
+  document.addEventListener('change',function(e){{var i=e.target.closest('.qt input');if(i)poe(i.parentNode.dataset.k,i.value)}});
+  document.querySelector('.js-ir').addEventListener('click',function(){{var m=this.dataset.modo,ids=Object.keys(S);
+    try{{if(!window.fbq)return;if(m==='loja'){{fbq('trackSingle','1636404041306148','InitiateCheckout',{{content_type:'product',content_ids:ids,content_name:'artes-prontas'}});fbq('trackSingleCustom','29552796950978987','IrParaLoja',{{content_name:'artes-prontas'}})}}
+      else fbq('track','Contact',{{content_name:'artes-prontas'}});
+      if(!sessionStorage.getItem('drip_lead')){{fbq('trackSingle','29552796950978987','Lead',{{content_name:(m==='loja'?'loja-':'whatsapp-')+'artes-prontas'}});sessionStorage.setItem('drip_lead','1')}}}}catch(x){{}}}});
+  sel();
   // Pixel: ver o catálogo já é ver os produtos (regra do Lead Drip de 18/11)
   try{{sessionStorage.setItem('drip_viu','1')}}catch(x){{}}
   try{{if(window.fbq)fbq('track','ViewContent',{{content_type:'product_group',content_name:'catalogo'}})}}catch(e){{}}

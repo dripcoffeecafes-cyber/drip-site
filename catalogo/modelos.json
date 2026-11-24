@@ -151,5 +151,60 @@
       "preco_cheio": 6.9,
       "cheia": true
     }
-  ]
+  ],
+  "artes_prontas": {
+    "_como_usar": "Seletor das artes prontas no /modelos/. produtos = ID do link de compra de cada produto padronizado na Betalabs (vazio = botão manda para o WhatsApp). O mínimo vale por sachê (igual ao Tamanho do cadastro); cada arte começa em min_arte e anda de passo em passo. faixas = preço por sachê a partir de cada quantidade total do mesmo sachê.",
+    "min_sache": 20,
+    "min_arte": 20,
+    "passo": 10,
+    "produtos": {
+      "kraft-classico": "",
+      "kraft-premium": "",
+      "branco-premium": ""
+    },
+    "faixas": {
+      "kraft-classico": [
+        [
+          20,
+          5.9
+        ],
+        [
+          150,
+          5.5
+        ],
+        [
+          300,
+          4.9
+        ]
+      ],
+      "kraft-premium": [
+        [
+          20,
+          6.9
+        ],
+        [
+          150,
+          6.5
+        ],
+        [
+          300,
+          5.9
+        ]
+      ],
+      "branco-premium": [
+        [
+          20,
+          6.9
+        ],
+        [
+          150,
+          6.5
+        ],
+        [
+          300,
+          5.9
+        ]
+      ]
+    }
+  }
 }
