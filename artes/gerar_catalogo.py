@@ -64,69 +64,78 @@ def rel(x):  # a página fica em /modelos/: um nível abaixo da raiz
 topo, rodape, zap = rel(topo), rel(rodape), rel(zap)
 
 def card(i):
-    temas = ' '.join(i.get('temas', []))
-    meta = esc(i['med']) if i['linha'] == 'sua-marca' else esc(' · '.join([TEMA.get(t, t) for t in i.get('temas', [])][:2]))
+    # Cartão de loja (referência: cafepds.com.br/personalizados): selo de desconto, nome, preço por sachê e Comprar
+    off = round((1 - i['preco_de'] / i['preco_cheio']) * 100) if i.get('preco_cheio') else 0
     selo = esc(i.get('selo') or ('Novo' if i.get('novo') else ''))
     url = i['url'].replace('modelos/', '', 1) if i['url'].startswith('modelos/') else '../' + i['url']
-    return ('<a class="cc" href="%s" data-linha="%s" data-temas="%s" data-sache="%s" data-preco="%.2f" data-ordem="%d" data-novo="%d">'
-            '<div class="cc-img">%s<img src="../assets/img/%s" alt="%s" width="%d" height="%d" loading="lazy">%s</div>'
-            '<div class="cc-tx"><span class="cc-linha">%s</span><h3>%s</h3><p class="cc-med">%s</p>'
-            '<p class="cc-de">a partir de<b class="tnum">%s<small> /sachê</small></b></p></div></a>') % (
-        url, i['linha'], temas, i['sache'], i['preco_de'], i.get('ordem', 999), 1 if i.get('novo') else 0,
-        '<span class="cc-selo">%s</span>' % selo if selo else '', i['img'], esc(i['alt']), i['w'], i['h'],
-        '<span class="cc-tarja">%s</span>' % esc(i['tarja']) if i.get('tarja') else '',
-        esc(LINHA[i['linha']]['nome']), esc(i['nome']), meta, brl(i['preco_de']))
+    sub = esc(i['med']) if i.get('med') else esc(SACHE.get(i['sache'], ''))
+    return ('<article class="cc" data-temas="%s" data-sache="%s" data-preco="%.2f" data-ordem="%d" data-novo="%d" data-nome="%s">'
+            '<a class="cc-img" href="%s"><span class="cc-selos">%s%s</span><img src="../assets/img/%s" alt="%s" width="%d" height="%d" loading="lazy">%s</a>'
+            '<div class="cc-tx"><p class="cc-qt">Comprando em quantidade</p><h3><a href="%s">%s</a></h3><p class="cc-med">%s</p>'
+            '<p class="cc-de">a partir de <b class="tnum">%s</b><small> /sachê</small></p><p class="cc-kit">Kit de 50 sachês</p>'
+            '<a class="btn btn-cafe cc-bt" href="%s">Comprar</a></div></article>') % (
+        ' '.join(i.get('temas', [])), i['sache'], i['preco_de'], i.get('ordem', 999), 1 if i.get('novo') else 0, esc(i['nome'].lower()),
+        url, '<span class="cc-off">Até %d%% off</span>' % off if off > 0 else '', '<span class="cc-selo">%s</span>' % selo if selo else '',
+        i['img'], esc(i['alt']), i['w'], i['h'], '<span class="cc-tarja">%s</span>' % esc(i['tarja']) if i.get('tarja') else '',
+        url, esc(i['nome']), sub, brl(i['preco_de']), url)
 
-usadas_l = [l for l in LINHA if any(i['linha'] == l for i in IT)]
 usados_t = [t['id'] for t in C['temas'] if any(t['id'] in i.get('temas', []) for i in IT)]
 usados_s = [s['id'] for s in C['saches'] if any(i['sache'] == s['id'] for i in IT)]
-chip = lambda grupo, val, nome, n, on=False: '<button type="button" class="chip" data-f="%s" data-v="%s" aria-pressed="%s">%s<small>%d</small></button>' % (grupo, val, 'true' if on else 'false', esc(nome), n)
-f_linha = chip('linha', '', 'Todos', len(IT), True) + ''.join(chip('linha', l, LINHA[l]['nome'], sum(i['linha'] == l for i in IT)) for l in usadas_l) if len(usadas_l) > 1 else ''
-f_tema = ''.join(chip('tema', t, TEMA[t], sum(t in i.get('temas', []) for i in IT)) for t in usados_t)
-f_sache = ''.join('<option value="%s">%s</option>' % (s, esc(SACHE[s])) for s in usados_s)
+cat = '<button type="button" class="op" data-f="tema" data-v="" aria-pressed="true">Todos<small>%d</small></button>' % len(IT) + ''.join(
+    '<button type="button" class="op" data-f="tema" data-v="%s" aria-pressed="false">%s<small>%d</small></button>' % (t, esc(TEMA[t]), sum(t in i.get('temas', []) for i in IT)) for t in usados_t)
+sac = '<button type="button" class="op" data-f="sache" data-v="" aria-pressed="true">Todos os sachês</button>' + ''.join(
+    '<button type="button" class="op" data-f="sache" data-v="%s" aria-pressed="false">%s</button>' % (s, esc(SACHE[s])) for s in usados_s)
 min_p = min(i['preco_de'] for i in IT)
 
 ld = {"@context": "https://schema.org", "@type": "CollectionPage", "name": "Modelos de drip coffee personalizado", "url": SITE + 'modelos/',
       "mainEntity": {"@type": "ItemList", "numberOfItems": len(IT), "itemListElement": [
           {"@type": "ListItem", "position": n + 1, "name": i['nome'], "url": SITE + i['url']} for n, i in enumerate(IT)]}}
-desc = 'Todos os modelos de drip coffee da Drip Coffee Label: com a sua marca ou com arte pronta, a partir de %s por sachê. Café especial 80+ pontos, pedido a partir de 50 unidades.' % brl(min_p)
+desc = 'Todos os modelos de drip coffee da Drip Coffee Label: com a sua marca ou com arte pronta, para empresas, casamentos e eventos, a partir de %s por sachê. Café especial 80+ pontos, a partir de 50 unidades.' % brl(min_p)
 
-CSS = '''<style>
-.migalha{font-size:13px;color:var(--apoio);padding:22px 0 8px}.migalha a:hover{color:var(--cafe)}
-.cat-cab{padding:8px 0 14px}.cat-cab h1{font-size:clamp(40px,5vw,60px);line-height:1.05;margin:8px 0 10px}.cat-cab p{max-width:620px;font-size:16px}
-.filtros{position:sticky;top:64px;z-index:30;background:rgba(255,255,255,.96);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--fundo);margin:0 -20px;padding:10px 20px}
-.fchips{display:flex;flex-wrap:nowrap;justify-content:flex-start;gap:8px;overflow-x:auto;scrollbar-width:none;padding:2px 0;margin:0 -20px;padding-left:20px;padding-right:20px}.fchips::-webkit-scrollbar{display:none}
-.fchips .sep{flex:0 0 1px;background:var(--borda);margin:4px 4px}
-@media(min-width:900px){.fchips{flex-wrap:wrap;margin:0;padding-left:0;padding-right:0}}
-.chip{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 14px;border:1px solid var(--borda);background:#fff;color:var(--texto);font:400 13px/1 'Outfit',sans-serif;letter-spacing:.02em;cursor:pointer;border-radius:0;white-space:nowrap}
-.chip small{font-size:11px;color:var(--apoio)}
-.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}.chip[aria-pressed="true"] small{color:#CFCBC6}
-.barra{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:10px;font-size:12.5px;color:var(--apoio)}
-.barra .js-cont{white-space:nowrap}
-.barra select{height:34px;border:1px solid var(--borda);background:#fff;font:400 12.5px 'Outfit',sans-serif;color:var(--texto);padding:0 6px;border-radius:0;min-width:0;max-width:48%}
-.barra .sels{display:flex;gap:8px;justify-content:flex-end;flex:1}
-.grade{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;padding:22px 0 64px}
-@media(min-width:760px){.grade{grid-template-columns:repeat(3,1fr);gap:20px}}
+CSS = """<style>
+.migalha{font-size:13px;color:var(--apoio);padding:22px 0 4px}.migalha a:hover{color:var(--cafe)}
+.cat-cab{padding:4px 0 6px}.cat-cab h1{font-size:clamp(34px,4.6vw,52px);line-height:1.05;margin:4px 0 0;text-transform:uppercase;letter-spacing:.02em}
+.ftop{position:sticky;top:64px;z-index:30;background:rgba(255,255,255,.96);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid var(--fundo)}
+.ftop .bf{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 16px;border:1px solid var(--ink);background:#fff;color:var(--ink);font:500 12px/1 'Outfit',sans-serif;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
+.ftop .bf svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.6}
+.ftop .bf b{display:none;min-width:18px;height:18px;border-radius:9px;background:var(--ink);color:#fff;font:500 10px/18px 'Outfit';text-align:center;letter-spacing:0}.ftop .bf b.on{display:inline-block}
+.ftop select{height:40px;border:1px solid var(--borda);background:#fff;font:400 13px 'Outfit',sans-serif;color:var(--texto);padding:0 8px;border-radius:0;margin-left:auto;max-width:52%}
+.cont{font-size:13px;color:var(--apoio);padding:14px 0 0;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.tag{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 10px;background:var(--fundo);border:0;font:400 12px 'Outfit',sans-serif;color:var(--ink);cursor:pointer}.tag:after{content:"×";font-size:15px}
+.painel{position:fixed;inset:0;z-index:60;display:none}.painel.on{display:block}
+.painel .fundo{position:absolute;inset:0;background:rgba(15,14,13,.45)}
+.painel .cx{position:absolute;left:0;right:0;bottom:0;max-height:85vh;overflow:auto;background:#fff;padding:22px 20px calc(20px + env(safe-area-inset-bottom))}
+@media(min-width:760px){.painel .cx{left:auto;top:0;bottom:0;width:380px;max-height:none}}
+.painel h2{font-size:28px;margin:0 0 6px;display:flex;justify-content:space-between;align-items:center}.painel .x{background:none;border:0;font-size:28px;line-height:1;cursor:pointer;color:var(--ink)}
+.painel h3{font:500 11px/1 'Outfit',sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--apoio);margin:22px 0 10px}
+.ops{display:grid;gap:0;border-top:1px solid var(--fundo)}
+.op{display:flex;justify-content:space-between;align-items:center;width:100%;padding:13px 2px;background:none;border:0;border-bottom:1px solid var(--fundo);font:300 15px 'Outfit',sans-serif;color:var(--texto);cursor:pointer;text-align:left}
+.op small{margin-left:8px;font-size:12px;color:var(--apoio)}.op[aria-pressed="true"]{font-weight:500;color:var(--ink)}.op[aria-pressed="true"]:before{content:"";order:2;width:8px;height:8px;background:var(--cafe);margin-left:auto;margin-right:10px}
+.painel .ver{width:100%;margin-top:20px}
+.grade{display:grid;grid-template-columns:repeat(2,1fr);gap:22px 12px;padding:18px 0 64px}
+@media(min-width:760px){.grade{grid-template-columns:repeat(3,1fr);gap:36px 22px}}
 @media(min-width:1100px){.grade{grid-template-columns:repeat(4,1fr)}}
-.cc{display:flex;flex-direction:column;background:#fff;color:inherit;text-decoration:none;transition:box-shadow .2s}
-.cc:hover{box-shadow:0 22px 50px -28px rgba(30,20,10,.35)}
-.cc[hidden]{display:none}
+.cc{display:flex;flex-direction:column;min-width:0}.cc[hidden]{display:none}
 .cc-img{position:relative;background:#EDE6DC;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .cc-img img{height:80%;width:auto;max-width:86%;object-fit:contain;transition:transform .6s}.cc:hover .cc-img img{transform:scale(1.05)}
-.cc-selo{position:absolute;top:10px;left:10px;z-index:1;background:var(--ink);color:#fff;font:400 9.5px/1 'Outfit',sans-serif;letter-spacing:.18em;text-transform:uppercase;padding:6px 8px}
+.cc-selos{position:absolute;top:8px;left:8px;z-index:1;display:flex;flex-direction:column;align-items:flex-start;gap:4px}
+.cc-off{background:var(--cafe);color:#fff;font:500 10.5px/1 'Outfit',sans-serif;letter-spacing:.06em;text-transform:uppercase;padding:6px 8px}
+.cc-selo{background:var(--ink);color:#fff;font:400 9.5px/1 'Outfit',sans-serif;letter-spacing:.16em;text-transform:uppercase;padding:6px 8px}
 .cc-tarja{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);background:var(--ink);color:#fff;font:500 9.5px/1 'Outfit',sans-serif;letter-spacing:.12em;text-transform:uppercase;padding:6px 9px;white-space:nowrap}
-.cc-tx{padding:14px 14px 16px}
-.cc-linha{display:block;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--apoio)}
-.cc h3{font-size:22px;line-height:1.1;margin:6px 0 4px}
-.cc-med{font-size:12.5px;color:var(--apoio);min-height:1.4em}
-.cc-de{margin-top:8px;font-size:12px;color:var(--apoio)}.cc-de b{display:block;font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-size:24px;color:var(--ink);white-space:nowrap;line-height:1.1}.cc-de b small{font:300 12px 'Outfit',sans-serif;color:var(--apoio)}
-.cc{min-width:0}.cc h3{overflow-wrap:anywhere}
-@media(min-width:760px){.cc-tx{padding:18px 18px 20px}.cc h3{font-size:26px}}
+.cc-tx{display:flex;flex-direction:column;flex:1;padding:12px 0 0;text-align:center;align-items:center}
+.cc-qt{font-size:9.5px;letter-spacing:.08em;white-space:nowrap;text-transform:uppercase;color:var(--cafe)}
+.cc h3{font-family:'Outfit',sans-serif!important;font-weight:500!important;font-size:13.5px;line-height:1.3;letter-spacing:.06em;text-transform:uppercase;margin:6px 0 2px;overflow-wrap:anywhere}.cc h3 a{color:var(--ink)}
+.cc-med{font-size:12px;color:var(--apoio)}
+.cc-de{margin-top:8px;font-size:12px;color:var(--apoio)}.cc-de b{font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-size:24px;color:var(--ink);white-space:nowrap}
+.cc-kit{font-size:11.5px;color:var(--apoio)}
+.cc-bt{margin-top:auto;width:100%;height:42px;font-size:11px}.cc-kit{margin-bottom:12px}
+@media(min-width:760px){.cc h3{font-size:14.5px}.cc-de b{font-size:27px}}
 .vazio{grid-column:1/-1;text-align:center;padding:40px 0;color:var(--apoio)}.vazio button{background:none;border:0;color:var(--ink);text-decoration:underline;font:inherit;cursor:pointer}
 .cat-nota{font-size:14px;color:var(--apoio);text-align:center;padding:0 0 56px}
-</style>'''
+</style>"""
 
-pg = f'''<!DOCTYPE html>
+FIL = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg>'
+pg = f"""<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
@@ -149,44 +158,53 @@ pg = f'''<!DOCTYPE html>
 <body>
 {topo}
 <main class="wrap">
-  <nav class="migalha" aria-label="Você está em"><a href="../">Início</a> / Modelos</nav>
-  <div class="cat-cab"><span class="olho">Nossos produtos</span><h1>Modelos</h1><p>Com a sua marca ou com arte pronta, sempre com o mesmo café especial. Pedido a partir de 50 sachês, desconto automático a partir de 150 e de 300.</p></div>
-  <div class="filtros">
-    <div class="fchips" role="group" aria-label="Filtrar modelos">{f_linha}{'<span class="sep" aria-hidden="true"></span>' if f_linha and f_tema else ''}{f_tema}</div>
-    <div class="barra"><span class="js-cont">{len(IT)} modelos</span><span class="sels">
-      {'<select class="js-sache" aria-label="Sachê"><option value="">Todos os sachês</option>' + f_sache + '</select>' if len(usados_s) > 1 else ''}
-      <select class="js-ordem" aria-label="Ordenar"><option value="ordem">Destaques</option><option value="preco">Menor preço</option><option value="novo">Novidades</option></select></span></div>
-  </div>
-  <div class="grade">{''.join(card(i) for i in IT)}<p class="vazio" hidden>Nenhum modelo com esses filtros. <button type="button" class="js-limpa">Ver todos</button></p></div>
+  <nav class="migalha" aria-label="Você está em"><a href="../">Início</a> › Modelos</nav>
+  <div class="cat-cab"><h1 class="js-tit">Modelos</h1></div>
+  <div class="ftop"><button type="button" class="bf js-abre">{FIL}Filtrar<b class="js-nf"></b></button>
+    <select class="js-ordem" aria-label="Ordenar"><option value="ordem">Mais vendidos</option><option value="preco">Menores preços</option><option value="preco-">Maiores preços</option><option value="az">De A a Z</option><option value="novo">Novidades</option></select></div>
+  <div class="cont"><span class="js-cont">Exibindo {len(IT)} produtos</span><span class="js-tags"></span></div>
+  <div class="grade">{''.join(card(i) for i in IT)}<p class="vazio" hidden>Nenhum produto com esses filtros. <button type="button" class="js-limpa">Ver todos</button></p></div>
   <p class="cat-nota">Não achou o que procura? <a class="js-zap" data-origem="catalogo" href="#" target="_blank" rel="noopener">Fale com a gente</a> e criamos a arte com você, sem custo.</p>
 </main>
+<div class="painel" role="dialog" aria-modal="true" aria-label="Filtrar"><div class="fundo js-fecha"></div><div class="cx">
+  <h2>Filtrar <button type="button" class="x js-fecha" aria-label="Fechar">×</button></h2>
+  <h3>Categoria</h3><div class="ops">{cat}</div>
+  {'<h3>Sachê</h3><div class="ops">' + sac + '</div>' if len(usados_s) > 1 else ''}
+  <button type="button" class="btn btn-cafe ver js-fecha">Ver <span class="js-n">{len(IT)}</span> produtos</button>
+</div></div>
 {rodape}
 {zap}
 <script>
 (function(){{
   var ZAP='https://wa.me/5554997081666?text='+encodeURIComponent('Olá! Vim pelo site da Drip Coffee Label e quero ajuda para escolher o modelo de drip.');
   document.querySelectorAll('.js-zap').forEach(function(a){{a.href=ZAP}});
+  var TEMA={json.dumps(TEMA, ensure_ascii=False)},SACHE={json.dumps(SACHE, ensure_ascii=False)};
   var g=document.querySelector('.grade'),cs=[].slice.call(g.querySelectorAll('.cc')),vz=g.querySelector('.vazio'),
-      ss=document.querySelector('.js-sache'),so=document.querySelector('.js-ordem'),ct=document.querySelector('.js-cont'),
-      F={{linha:'',tema:'',sache:'',ordem:'ordem'}};
-  // Filtros na URL (?linha=pronta&tema=natal&sache=kraft-premium), para anúncios e links apontarem direto para um tema
-  try{{var q=new URLSearchParams(location.search);['linha','tema','sache','ordem'].forEach(function(k){{if(q.get(k))F[k]=q.get(k)}})}}catch(e){{}}
+      so=document.querySelector('.js-ordem'),pn=document.querySelector('.painel'),F={{tema:'',sache:'',ordem:'ordem'}};
+  // Filtros na URL (?tema=casamento&sache=branco-premium): anúncios e menus podem apontar direto para uma categoria
+  try{{var q=new URLSearchParams(location.search);['tema','sache','ordem'].forEach(function(k){{if(q.get(k))F[k]=q.get(k)}})}}catch(e){{}}
   function aplica(){{
     var n=0;
-    cs.forEach(function(c){{var ok=(!F.linha||c.dataset.linha===F.linha)&&(!F.tema||(' '+c.dataset.temas+' ').indexOf(' '+F.tema+' ')>=0)&&(!F.sache||c.dataset.sache===F.sache);c.hidden=!ok;if(ok)n++}});
-    var k=F.ordem;cs.slice().sort(function(a,b){{return k==='preco'?a.dataset.preco-b.dataset.preco:k==='novo'?b.dataset.novo-a.dataset.novo||a.dataset.ordem-b.dataset.ordem:a.dataset.ordem-b.dataset.ordem}}).forEach(function(c){{g.insertBefore(c,vz)}});
-    vz.hidden=n>0;ct.textContent=n+(n===1?' modelo':' modelos');
-    document.querySelectorAll('.chip').forEach(function(b){{b.setAttribute('aria-pressed',String(F[b.dataset.f]===b.dataset.v))}});
-    if(ss)ss.value=F.sache;so.value=F.ordem;
-    var at=document.querySelector('.chip[data-f="tema"][aria-pressed="true"]')||document.querySelector('.chip[aria-pressed="true"]');if(at){{var fc=at.parentNode;fc.scrollLeft=at.offsetLeft-fc.offsetLeft-20}}
-    try{{var u=new URLSearchParams();['linha','tema','sache'].forEach(function(k){{if(F[k])u.set(k,F[k])}});if(F.ordem!=='ordem')u.set('ordem',F.ordem);
+    cs.forEach(function(c){{var ok=(!F.tema||(' '+c.dataset.temas+' ').indexOf(' '+F.tema+' ')>=0)&&(!F.sache||c.dataset.sache===F.sache);c.hidden=!ok;if(ok)n++}});
+    var k=F.ordem;cs.slice().sort(function(a,b){{return k==='preco'?a.dataset.preco-b.dataset.preco:k==='preco-'?b.dataset.preco-a.dataset.preco:k==='az'?a.dataset.nome.localeCompare(b.dataset.nome):k==='novo'?b.dataset.novo-a.dataset.novo||a.dataset.ordem-b.dataset.ordem:a.dataset.ordem-b.dataset.ordem}}).forEach(function(c){{g.insertBefore(c,vz)}});
+    vz.hidden=n>0;
+    document.querySelector('.js-cont').textContent='Exibindo '+n+(n===1?' produto':' produtos');
+    document.querySelector('.js-n').textContent=n;
+    document.querySelector('.js-tit').textContent=F.tema?TEMA[F.tema]||'Modelos':'Modelos';
+    var t='',nf=0;if(F.tema){{t+='<button type="button" class="tag" data-f="tema">'+TEMA[F.tema]+'</button>';nf++}}
+    if(F.sache){{t+='<button type="button" class="tag" data-f="sache">'+SACHE[F.sache]+'</button>';nf++}}
+    document.querySelector('.js-tags').innerHTML=t;var b=document.querySelector('.js-nf');b.textContent=nf;b.className='js-nf'+(nf?' on':'');
+    document.querySelectorAll('.op').forEach(function(o){{o.setAttribute('aria-pressed',String(F[o.dataset.f]===o.dataset.v))}});
+    so.value=F.ordem;
+    try{{var u=new URLSearchParams();['tema','sache'].forEach(function(k){{if(F[k])u.set(k,F[k])}});if(F.ordem!=='ordem')u.set('ordem',F.ordem);
       history.replaceState(null,'',location.pathname+(u.toString()?'?'+u:''))}}catch(e){{}}
   }}
-  document.querySelector('.filtros').addEventListener('click',function(e){{var b=e.target.closest('.chip');if(!b)return;
-    var f=b.dataset.f,v=b.dataset.v;if(f==='tema'){{F.tema=F.tema===v?'':v;if(F.tema)F.linha='pronta'}}else{{F.linha=v;F.tema=''}}aplica()}});
-  if(ss)ss.addEventListener('change',function(){{F.sache=ss.value;aplica()}});
+  document.querySelector('.js-abre').addEventListener('click',function(){{pn.classList.add('on')}});
+  pn.addEventListener('click',function(e){{var o=e.target.closest('.op');if(o){{F[o.dataset.f]=o.dataset.v;aplica();return}}
+    if(e.target.closest('.js-fecha'))pn.classList.remove('on')}});
+  document.querySelector('.js-tags').addEventListener('click',function(e){{var t=e.target.closest('.tag');if(t){{F[t.dataset.f]='';aplica()}}}});
   so.addEventListener('change',function(){{F.ordem=so.value;aplica()}});
-  vz.querySelector('.js-limpa').addEventListener('click',function(){{F={{linha:'',tema:'',sache:'',ordem:F.ordem}};aplica()}});
+  vz.querySelector('.js-limpa').addEventListener('click',function(){{F.tema='';F.sache='';aplica()}});
   aplica();
   // Pixel: ver o catálogo já é ver os produtos (regra do Lead Drip de 18/11)
   try{{sessionStorage.setItem('drip_viu','1')}}catch(x){{}}
@@ -198,7 +216,7 @@ pg = f'''<!DOCTYPE html>
 </script>
 </body>
 </html>
-'''
+"""
 os.makedirs(os.path.join(RAIZ, 'modelos'), exist_ok=True)
 open(os.path.join(RAIZ, 'modelos', 'index.html'), 'w', encoding='utf-8').write(pg)
 

@@ -1,34 +1,152 @@
 {
   "_como_usar": "Fonte única dos modelos do site. Modelo novo = 1 item aqui + a imagem em assets/img/catalogo/<slug>.webp (fundo transparente, sachê em pé). Depois rode: python3 artes/gerar_catalogo.py (e os outros três geradores se mexeu no index). publicado=false deixa o item fora do site.",
   "linhas": {
-    "sua-marca": {"nome": "Com a sua marca", "desc": "Sua logo, nome ou frase impressos no sachê. Arte criada por nós, sem custo."},
-    "pronta": {"nome": "Artes prontas", "desc": "Sachês com arte já criada, por tema. É escolher e pedir."}
+    "sua-marca": {
+      "nome": "Com a sua marca",
+      "desc": "Sua logo, nome ou frase impressos no sachê. Arte criada por nós, sem custo."
+    },
+    "pronta": {
+      "nome": "Artes prontas",
+      "desc": "Sachês com arte já criada, por tema. É escolher e pedir."
+    }
   },
   "temas": [
-    {"id": "natal", "nome": "Natal e fim de ano"},
-    {"id": "engracadas", "nome": "Frases engraçadas"},
-    {"id": "profissoes", "nome": "Profissões"},
-    {"id": "datas", "nome": "Datas comemorativas"},
-    {"id": "eventos", "nome": "Eventos"},
-    {"id": "animadas", "nome": "Artes animadas"}
+    {
+      "id": "sua-marca",
+      "nome": "Com a sua marca"
+    },
+    {
+      "id": "empresa",
+      "nome": "Empresas"
+    },
+    {
+      "id": "casamento",
+      "nome": "Casamento"
+    },
+    {
+      "id": "aniversario",
+      "nome": "Aniversário"
+    },
+    {
+      "id": "cha-de-bebe",
+      "nome": "Chá de bebê e nascimento"
+    },
+    {
+      "id": "eventos",
+      "nome": "Eventos"
+    },
+    {
+      "id": "natal",
+      "nome": "Natal e fim de ano"
+    },
+    {
+      "id": "engracadas",
+      "nome": "Frases engraçadas"
+    },
+    {
+      "id": "profissoes",
+      "nome": "Profissões"
+    },
+    {
+      "id": "datas",
+      "nome": "Datas comemorativas"
+    },
+    {
+      "id": "animadas",
+      "nome": "Artes animadas"
+    }
   ],
   "saches": [
-    {"id": "kraft-classico", "nome": "Kraft 10 × 12"},
-    {"id": "kraft-premium", "nome": "Kraft Premium 10 × 15"},
-    {"id": "branco-premium", "nome": "Branco Premium 10 × 15"}
+    {
+      "id": "kraft-classico",
+      "nome": "Kraft 10 × 12"
+    },
+    {
+      "id": "kraft-premium",
+      "nome": "Kraft Premium 10 × 15"
+    },
+    {
+      "id": "branco-premium",
+      "nome": "Branco Premium 10 × 15"
+    }
   ],
   "itens": [
-    {"slug": "kraft-classico", "nome": "Kraft Clássico", "linha": "sua-marca", "sache": "kraft-classico", "temas": [],
-     "med": "10 × 12 cm · impressão em preto", "preco_de": 4.90, "img": "p-kraft-cut.webp?v=3", "w": 456, "h": 558,
-     "alt": "Drip Kraft Clássico com a sua marca, impressão só em preto", "selo": "Mais vendido", "tarja": "Só em preto",
-     "url": "modelos/kraft-classico/", "destaque": true, "ordem": 1, "novo": false, "publicado": true},
-    {"slug": "branco-premium", "nome": "Branco Premium", "linha": "sua-marca", "sache": "branco-premium", "temas": [],
-     "med": "10 × 15 cm · preto ou colorido", "preco_de": 5.90, "img": "p-branco-cor-cut.webp?v=5", "w": 416, "h": 605,
-     "alt": "Drip Branco Premium com a sua marca impressa em cores", "selo": "", "tarja": "",
-     "url": "modelos/branco-premium/", "destaque": true, "ordem": 2, "novo": false, "publicado": true},
-    {"slug": "kraft-premium", "nome": "Kraft Premium", "linha": "sua-marca", "sache": "kraft-premium", "temas": [],
-     "med": "10 × 15 cm · preto ou colorido", "preco_de": 5.90, "img": "p-kraft-premium-cor-cut.webp?v=5", "w": 417, "h": 606,
-     "alt": "Drip Kraft Premium com a sua marca impressa em cores", "selo": "", "tarja": "",
-     "url": "modelos/kraft-premium/", "destaque": true, "ordem": 3, "novo": false, "publicado": true}
+    {
+      "slug": "kraft-classico",
+      "nome": "Kraft Clássico",
+      "linha": "sua-marca",
+      "sache": "kraft-classico",
+      "temas": [
+        "sua-marca",
+        "empresa",
+        "eventos"
+      ],
+      "med": "10 × 12 cm · impressão em preto",
+      "preco_de": 4.9,
+      "img": "p-kraft-cut.webp?v=3",
+      "w": 456,
+      "h": 558,
+      "alt": "Drip Kraft Clássico com a sua marca, impressão só em preto",
+      "selo": "Mais vendido",
+      "tarja": "Só em preto",
+      "url": "modelos/kraft-classico/",
+      "destaque": true,
+      "ordem": 1,
+      "novo": false,
+      "publicado": true,
+      "preco_cheio": 5.9
+    },
+    {
+      "slug": "branco-premium",
+      "nome": "Branco Premium",
+      "linha": "sua-marca",
+      "sache": "branco-premium",
+      "temas": [
+        "sua-marca",
+        "casamento",
+        "aniversario",
+        "cha-de-bebe",
+        "empresa"
+      ],
+      "med": "10 × 15 cm · preto ou colorido",
+      "preco_de": 5.9,
+      "img": "p-branco-cor-cut.webp?v=5",
+      "w": 416,
+      "h": 605,
+      "alt": "Drip Branco Premium com a sua marca impressa em cores",
+      "selo": "",
+      "tarja": "",
+      "url": "modelos/branco-premium/",
+      "destaque": true,
+      "ordem": 2,
+      "novo": false,
+      "publicado": true,
+      "preco_cheio": 6.9
+    },
+    {
+      "slug": "kraft-premium",
+      "nome": "Kraft Premium",
+      "linha": "sua-marca",
+      "sache": "kraft-premium",
+      "temas": [
+        "sua-marca",
+        "empresa",
+        "eventos"
+      ],
+      "med": "10 × 15 cm · preto ou colorido",
+      "preco_de": 5.9,
+      "img": "p-kraft-premium-cor-cut.webp?v=5",
+      "w": 417,
+      "h": 606,
+      "alt": "Drip Kraft Premium com a sua marca impressa em cores",
+      "selo": "",
+      "tarja": "",
+      "url": "modelos/kraft-premium/",
+      "destaque": true,
+      "ordem": 3,
+      "novo": false,
+      "publicado": true,
+      "preco_cheio": 6.9
+    }
   ]
 }

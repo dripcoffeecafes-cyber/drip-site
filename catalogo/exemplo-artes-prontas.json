@@ -19,7 +19,8 @@
   "destaque": false,
   "ordem": 10,
   "novo": true,
-  "publicado": true
+  "publicado": true,
+  "preco_cheio": 6.9
  },
  {
   "slug": "exemplo-1",
@@ -41,7 +42,8 @@
   "destaque": false,
   "ordem": 11,
   "novo": true,
-  "publicado": true
+  "publicado": true,
+  "preco_cheio": 6.9
  },
  {
   "slug": "exemplo-2",
@@ -63,7 +65,8 @@
   "destaque": false,
   "ordem": 12,
   "novo": false,
-  "publicado": true
+  "publicado": true,
+  "preco_cheio": 5.9
  },
  {
   "slug": "exemplo-3",
@@ -85,15 +88,16 @@
   "destaque": false,
   "ordem": 13,
   "novo": false,
-  "publicado": true
+  "publicado": true,
+  "preco_cheio": 6.9
  },
  {
   "slug": "exemplo-4",
-  "nome": "[EXEMPLO] Dia dos Professores",
+  "nome": "[EXEMPLO] Bem-vindo, bebê",
   "linha": "pronta",
   "sache": "branco-premium",
   "temas": [
-   "datas"
+   "cha-de-bebe"
   ],
   "med": "",
   "preco_de": 6.5,
@@ -107,7 +111,8 @@
   "destaque": false,
   "ordem": 14,
   "novo": false,
-  "publicado": true
+  "publicado": true,
+  "preco_cheio": 6.9
  },
  {
   "slug": "exemplo-5",
@@ -129,15 +134,16 @@
   "destaque": false,
   "ordem": 15,
   "novo": true,
-  "publicado": true
+  "publicado": true,
+  "preco_cheio": 5.9
  },
  {
   "slug": "exemplo-6",
-  "nome": "[EXEMPLO] Obrigado por vir",
+  "nome": "[EXEMPLO] Obrigado por celebrar",
   "linha": "pronta",
   "sache": "branco-premium",
   "temas": [
-   "eventos"
+   "casamento"
   ],
   "med": "",
   "preco_de": 6.5,
@@ -151,7 +157,8 @@
   "destaque": false,
   "ordem": 16,
   "novo": false,
-  "publicado": true
+  "publicado": true,
+  "preco_cheio": 6.9
  },
  {
   "slug": "exemplo-7",
@@ -174,6 +181,7 @@
   "destaque": false,
   "ordem": 17,
   "novo": true,
-  "publicado": true
+  "publicado": true,
+  "preco_cheio": 6.9
  }
 ]
