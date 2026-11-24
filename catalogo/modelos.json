@@ -160,22 +160,71 @@
         "engracadas",
         "profissoes"
       ],
-      "med": "Branco Premium 10 × 15 · colorido, frente e verso",
+      "med": "Branco Premium 10 × 15 cm",
       "preco_de": 5.9,
-      "img": "catalogo/pitagoras.webp",
+      "img": "artes/pitagoras/01.webp",
       "w": 1100,
       "h": 1100,
       "alt": "Drip coffee Pitágoras: sachê branco com a bronca do teorema de Pitágoras, frente e verso",
       "selo": "",
       "tarja": "",
-      "url": "modelos/",
+      "url": "modelos/pitagoras/",
       "destaque": false,
       "ordem": 20,
       "novo": true,
       "publicado": true,
       "preco_cheio": 6.9,
       "cheia": true,
-      "codigo": "DCL-PD-VIR01-BP"
+      "codigo": "DCL-PD-VIR01-BP",
+      "pagina": {
+        "titulo_seo": "Drip Coffee Pitágoras, presente engraçado com café especial",
+        "resumo": "Sabe aquele áudio do professor indignado porque o aluno não consegue aplicar o teorema de Pitágoras? Ele virou drip coffee. De um lado, a bronca. Do outro, a sentença final. No meio, um café especial coado na hora, sem cafeteira.",
+        "chamada": "Um presente pequeno que arranca risada na hora de abrir e ainda acorda quem recebe.",
+        "para_quem": [
+          "Professores de matemática, física e de qualquer matéria que já explicou a mesma coisa três vezes",
+          "Engenharia e exatas: estudantes, formandos e profissionais",
+          "Amigo secreto e amigo oculto: presente barato que vira assunto na roda",
+          "Escritório e equipe, para a pausa do café do time",
+          "Lembrancinha de formatura e de semana acadêmica",
+          "Quem ama um meme e sabe o áudio de cor"
+        ],
+        "aviso": "A arte reproduz a bronca com palavrões disfarçados (porr@, merd@). Se o presente for para alguém mais sensível, vale saber antes.",
+        "impressao": "Colorida, frente e verso",
+        "fotos": [
+          [
+            "01",
+            "Drip Pitágoras, frente e verso do sachê branco"
+          ],
+          [
+            "02",
+            "Frente e verso da arte do Pitágoras"
+          ],
+          [
+            "03",
+            "Drip Pitágoras na mesa com café coado"
+          ],
+          [
+            "04",
+            "Para quem é o Drip Pitágoras"
+          ],
+          [
+            "05",
+            "Diferenciais do café da Drip"
+          ],
+          [
+            "06",
+            "Como preparar o drip"
+          ],
+          [
+            "07",
+            "Ficha técnica do Drip Pitágoras"
+          ],
+          [
+            "08",
+            "Também fazemos drip com a sua marca"
+          ]
+        ]
+      }
     }
   ],
   "artes_prontas": {
