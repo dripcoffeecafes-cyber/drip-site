@@ -55,17 +55,17 @@ P = {
 <h2>Já comprou?</h2>
 <p>Os pedidos são finalizados na loja Blooming Club. Para ver o seu pedido, acesse <a href="https://www.bloomingclub.com.br/contato?entrar=1">Minha conta</a>. Para mandar a logo ou aprovar a arte, use o WhatsApp.</p>''' % (WA % 'contato')),
  'trocas-e-devolucoes': dict(tipo='WebPage', nome='Trocas e devoluções', titulo='Trocas e devoluções | Drip Coffee Label',
-   desc='Política de trocas e devoluções da Drip Coffee Label: drip personalizado, arte pronta com 7 dias de arrependimento, avaria no transporte, prazos e como pedir.',
+   desc='Política de trocas e devoluções da Drip Coffee Label: drip personalizado, arte pronta, avaria no transporte, prazos e como pedir.',
    olho='Políticas', h1='Trocas e devoluções',
    corpo='''<p>O drip personalizado é feito sob encomenda, com a sua arte, por isso tem regras próprias de troca. O drip de arte pronta segue as regras de um produto comum comprado pela internet. Esta política segue a <a href="https://www.bloomingclub.com.br/politica-de-troca-e-devolucao" target="_blank" rel="noopener">política de troca e devolução da Blooming Club</a>, loja onde a compra é finalizada.</p>
 <h2>Produto personalizado</h2>
 <ul class="lst"><li>Não há direito de arrependimento depois da aprovação da arte e do início da produção.</li><li>Trocamos o produto em caso de defeito de fabricação ou se ele sair diferente da arte aprovada.</li><li>Erros de grafia ou de conteúdo que já estavam na arte aprovada por você não dão direito a troca ou reembolso. Por isso, confira a prova digital com atenção.</li><li>Se o seu pedido ainda não teve a arte aprovada, fale com a gente pelo WhatsApp.</li></ul>
 <h2>Arte pronta</h2>
-<ul class="lst"><li>Você pode desistir da compra em até 7 dias corridos depois de receber o pedido, sem precisar explicar o motivo (artigo 49 do Código de Defesa do Consumidor).</li><li>Avise pelo WhatsApp ou por e-mail dentro desse prazo. Combinamos a coleta e o frete de volta é por nossa conta.</li><li>Devolvemos todo o valor pago, frete incluído, depois que os sachês chegarem de volta.</li><li>Defeito de fabricação ou sachê diferente das fotos da página: trocamos ou devolvemos o valor.</li></ul>
+<ul class="lst"><li>Direito de arrependimento conforme o artigo 49 do Código de Defesa do Consumidor: até 7 dias corridos depois do recebimento, com aviso pelo WhatsApp ou e-mail dentro desse prazo.</li><li>Defeito de fabricação ou sachê diferente das fotos da página: troca ou devolução do valor.</li></ul>
 <h2>Avaria no transporte</h2>
 <ul class="lst"><li>Mande fotos do dano em até 48 horas depois do recebimento.</li><li>Dano real, como sachê rompido ou vazamento: repomos o item ou estornamos, parcial ou totalmente, conforme a análise.</li><li>Caixa de transporte amassada, sem dano aos sachês, não dá direito a troca.</li></ul>
 <h2>Prazos</h2>
-<ul class="lst"><li>Desistência da arte pronta: até 7 dias corridos depois do recebimento.</li><li>Fotos de avaria: até 48 horas depois do recebimento.</li><li>Reclamação de defeito aparente: até 30 dias depois do recebimento.</li></ul>
+<ul class="lst"><li>Arrependimento da arte pronta: até 7 dias corridos depois do recebimento.</li><li>Fotos de avaria: até 48 horas depois do recebimento.</li><li>Reclamação de defeito aparente: até 30 dias depois do recebimento.</li></ul>
 <h2>Como pedir</h2>
 <p>Envie pelo %s ou pelo e-mail cafes@bloomingclub.com.br: número do pedido, nome completo, o que aconteceu e fotos, quando houver avaria.</p>''' % (WA % 'trocas')),
  'privacidade': dict(tipo='WebPage', nome='Privacidade', titulo='Política de privacidade | Drip Coffee Label',

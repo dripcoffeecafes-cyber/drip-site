@@ -42,7 +42,6 @@ def faq(i, pg):
          ('Posso juntar artes diferentes no mesmo pedido?', 'Sim. Volte aos modelos e coloque outras artes no carrinho. Artes do mesmo sachê somam para a faixa de preço: o preço por sachê cai em %s sachês.' % (lambda l: ', '.join(l[:-1]) + ' e ' + l[-1] if len(l) > 1 else l[0])([str(x[0]) for x in AP['faixas'][i['sache']][1:]])),
          ('Dá para colocar a minha marca?', 'Na arte pronta, não. Para drip com a sua logo, nome ou frase, veja os modelos personalizados, a partir de 50 sachês, com a arte criada por nós sem custo.'),
          ('Qual é o prazo?', 'Produzimos em %d dias úteis depois da confirmação do pagamento. Em seguida vem o prazo da transportadora, que aparece no carrinho junto com o frete, depois de informar o CEP.' % AP.get('prazo_dias', 2)),
-         ('Posso devolver?', 'Sim. Você pode desistir em até 7 dias corridos depois de receber, sem explicar o motivo. O frete de volta é por nossa conta e devolvemos todo o valor pago. Veja a política de trocas e devoluções.'),
          ('Qual é a validade do café?', '6 meses. O café é 100% arábica, torra média, moído na medida para o preparo em drip.'),
          ('Precisa de cafeteira?', 'Não. Abra o sachê, encaixe as abas na borda da xícara, despeje água quente aos poucos e aguarde coar.'),
          ('Tem nota fiscal?', 'Sim, em todos os pedidos, para empresa ou pessoa física.')]
