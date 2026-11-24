@@ -565,6 +565,24 @@
   footer .selos{align-items:flex-start;gap:14px 32px;padding-top:14px;padding-bottom:14px}footer .selos h4{margin-bottom:6px}footer .selos div img{max-width:150px}footer .selos .beta{margin-left:0;display:block}footer .selos .beta img{width:90px}
   footer .legal{padding-top:12px;padding-bottom:64px;font-size:11.5px}footer .inst{margin-bottom:8px}@media (min-width:900px){footer .legal{padding-bottom:18px}}
   @media (max-width:599px){footer .cols{grid-template-columns:1fr;gap:16px;padding-top:28px}footer ul{display:flex;flex-wrap:wrap;gap:2px 16px}footer h4{margin-bottom:6px}footer .marca-rod p:first-of-type{font-size:12.5px}footer .selos{gap:10px 22px}footer .selos div img{max-width:120px}footer .selos div:nth-child(2) img{width:56px}footer .selos .beta img{width:72px}footer .legal{padding-bottom:60px}}
+  /* Menu do celular (24/11) */
+  .menu-bt{border:0;background:none;padding:0;cursor:pointer}
+  .menu-bt path{transition:transform .25s,opacity .2s;transform-origin:12px 12px}
+  .menu-bt[aria-expanded="true"] .l1{transform:translateY(5px) rotate(45deg)}.menu-bt[aria-expanded="true"] .l2{opacity:0}.menu-bt[aria-expanded="true"] .l3{transform:translateY(-5px) rotate(-45deg)}
+  @media (min-width:960px){.menu-bt,.menu-cel{display:none!important}}
+  @media (max-width:959px){.acoes .ico[data-origem="topo-conta"]{display:none}}
+  .menu-cel{position:absolute;left:0;right:0;top:100%;background:#fff;border-top:1px solid var(--fio,#E7E1D8);box-shadow:0 18px 30px -18px rgba(30,20,10,.35);max-height:calc(100vh - 64px);overflow:auto;animation:mc-in .2s ease-out}
+  @keyframes mc-in{from{opacity:0;transform:translateY(-6px)}}
+  .menu-cel .wrap{padding-top:8px;padding-bottom:22px}
+  .mc-prin{display:flex;flex-direction:column}
+  .mc-prin a{display:block;padding:13px 0;border-bottom:1px solid #EFEAE3;font:500 22px/1.15 'Cormorant Garamond',Georgia,serif;color:var(--ink)}
+  .mc-tit{margin:18px 0 8px;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--apoio)}
+  .mc-sec{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14px}
+  .mc-sec a{color:var(--texto)}
+  .mc-inst{margin-top:16px;padding-top:14px;border-top:1px solid #EFEAE3;font-size:13px}
+  .mc-zap{display:flex;width:100%;margin-top:18px;height:46px}
+  html.menu-aberto{overflow:hidden}html.menu-aberto .zap-fixo{display:none}
+  .menu-cel nav{gap:0;font-weight:400}.menu-cel .mc-sec{gap:8px 18px}
   /* Catálogo (gerar_catalogo.py) */
 .ver-todos{text-align:center;margin:28px 0 0}.ver-todos .btn{min-width:260px}
 .cab-ap{margin:40px 0 0}.cab-ap h3{font:500 clamp(26px,4vw,34px)/1.1 'Cormorant Garamond',Georgia,serif;margin:6px 0 8px}.grade-ap{padding-bottom:0}.ver-ap{margin-top:8px}
@@ -639,9 +657,31 @@ fbq('track','PageView');
     <div class="acoes">
       <a class="ico" href="https://www.bloomingclub.com.br/contato?entrar=1" data-origem="topo-conta" aria-label="Minha conta ou cadastro na loja Blooming Club" title="Minha conta"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8.5" r="3.75"/><path d="M4.75 20c.9-3.6 3.8-5.5 7.25-5.5s6.35 1.9 7.25 5.5"/></svg></a>
       <a class="ico" href="https://www.bloomingclub.com.br/checkout/cart" data-origem="topo-carrinho" aria-label="Carrinho na loja Blooming Club" title="Carrinho"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 8h13l-1 12.25H6.5L5.5 8Z"/><path d="M9 10.5V7a3 3 0 0 1 6 0v3.5"/></svg></a>
+      <button class="ico menu-bt" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu-cel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path class="l1" d="M4 7h16"/><path class="l2" d="M4 12h16"/><path class="l3" d="M4 17h16"/></svg></button>
       <a class="btn btn-ink js-zap" data-origem="topo" href="#" target="_blank" rel="noopener">Fale com a gente</a>
     </div>
   </div>
+  <div class="menu-cel" id="menu-cel" hidden>
+    <div class="wrap">
+      <nav class="mc-prin" aria-label="Menu do celular">
+        <a href="../modelos/">Modelos com a sua marca</a>
+        <a href="../modelos/?tema=arte-pronta">Artes prontas</a>
+        <a href="../#precos">Preços</a>
+        <a href="../#diferenciais">Diferenciais</a>
+        <a href="../#clientes">Clientes</a>
+        <a href="../#duvidas">Dúvidas</a>
+      </nav>
+      <p class="mc-tit">Para quem</p>
+      <nav class="mc-sec" aria-label="Ocasiões">
+        <a href="../empresas/">Empresas</a><a href="../casamentos/">Casamentos</a><a href="../eventos/">Eventos</a><a href="../fim-de-ano/">Fim de ano</a><a href="../consultorios-e-escritorios/">Consultórios</a>
+      </nav>
+      <nav class="mc-sec mc-inst" aria-label="Institucional">
+        <a href="https://www.bloomingclub.com.br/contato?entrar=1">Minha conta</a><a href="../sobre/">Sobre a Drip</a><a href="../contato/">Contato</a>
+      </nav>
+      <a class="btn btn-ink js-zap mc-zap" data-origem="menu" href="#" target="_blank" rel="noopener">Fale com a gente no WhatsApp</a>
+    </div>
+  </div>
+  <script>(function(){var b=document.querySelector('.menu-bt'),m=document.getElementById('menu-cel');if(!b||!m)return;function t(a){b.setAttribute('aria-expanded',a?'true':'false');b.setAttribute('aria-label',a?'Fechar menu':'Abrir menu');m.hidden=!a;document.documentElement.classList.toggle('menu-aberto',a)}b.addEventListener('click',function(){t(m.hidden)});m.addEventListener('click',function(e){if(e.target.closest('a'))t(false)});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!m.hidden){t(false);b.focus()}});window.addEventListener('resize',function(){if(innerWidth>=960&&!m.hidden)t(false)})})();</script>
 </header>
 <section class="capa">
   <div class="capa-txt">
