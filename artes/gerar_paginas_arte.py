@@ -221,4 +221,19 @@ for i in [x for x in C['itens'] if x.get('linha') == 'pronta' and x.get('publica
         S = S.replace('</urlset>', '  <url>\n    %s\n    <lastmod>2026-11-24</lastmod>\n  </url>\n</urlset>' % loc, 1)
 with open(sp, 'w', encoding='utf-8') as fh:
     fh.write(S)
+
+# llms.txt: seção "Artes prontas" refeita a partir do modelos.json (entre "## Artes prontas" e "## Para quem")
+lp = os.path.join(RAIZ, 'llms.txt')
+L = open(lp, encoding='utf-8').read()
+if '## Artes prontas' in L and '## Para quem' in L:
+    fxs = AP['faixas']
+    linhas = ['## Artes prontas',
+              '- [Todas as artes prontas](%smodelos/?tema=arte-pronta): drips com arte da Drip, iguais às fotos, sem arquivo para enviar. A partir de %d sachês, de %d em %d; %s a %s nos premium e %s a %s no Kraft Clássico, conforme a quantidade.' % (
+                  SITE, AP['min_sache'], AP['passo'], AP['passo'], brl(fxs['branco-premium'][0][1]), brl(fxs['branco-premium'][-1][1]), brl(fxs['kraft-classico'][0][1]), brl(fxs['kraft-classico'][-1][1]))]
+    for i in [x for x in C['itens'] if x.get('linha') == 'pronta' and x.get('publicado', True) and x.get('pagina')]:
+        linhas.append('- [%s](%smodelos/%s/): %s. %s' % (i['nome'], SITE, i['slug'], i['med'], i['pagina']['chamada']))
+    a = L.index('## Artes prontas'); b = L.index('## Para quem')
+    L = L[:a] + '\n'.join(linhas) + '\n\n' + L[b:]
+    with open(lp, 'w', encoding='utf-8') as fh:
+        fh.write(L)
 print('%d página(s) de arte pronta' % n_pag)

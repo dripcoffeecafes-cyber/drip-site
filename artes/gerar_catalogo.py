@@ -130,7 +130,7 @@ min_p = min(i['preco_de'] for i in IT)
 ld = {"@context": "https://schema.org", "@type": "CollectionPage", "name": "Modelos de drip coffee personalizado", "url": SITE + 'modelos/',
       "mainEntity": {"@type": "ItemList", "numberOfItems": len(IT), "itemListElement": [
           {"@type": "ListItem", "position": n + 1, "name": i['nome'], "url": SITE + i['url']} for n, i in enumerate(IT)]}}
-desc = 'Todos os modelos de drip coffee da Drip Coffee Label: com a sua marca ou com arte pronta, para empresas, casamentos e eventos, a partir de %s por sachê. Café especial 80+ pontos, a partir de 50 unidades.' % brl(min_p)
+desc = 'Todos os modelos de drip coffee da Drip Coffee Label: com a sua marca ou com arte pronta, para empresas, casamentos e eventos, a partir de %s por sachê. Café especial 80+ pontos, a partir de 50 sachês com a sua marca ou 20 com arte pronta.' % brl(min_p)
 
 CSS = """<style>
 .migalha{font-size:13px;color:var(--apoio);padding:22px 0 4px}.migalha a:hover{color:var(--cafe)}
