@@ -41,6 +41,7 @@ def faq(i, pg):
          ('Qual é a quantidade mínima?', 'A partir de %d sachês, de %d em %d.' % (AP['min_sache'], AP['passo'], AP['passo'])),
          ('Posso juntar artes diferentes no mesmo pedido?', 'Sim. Volte aos modelos e coloque outras artes no carrinho. Artes do mesmo sachê somam para a faixa de preço: o preço por sachê cai em %s sachês.' % (lambda l: ', '.join(l[:-1]) + ' e ' + l[-1] if len(l) > 1 else l[0])([str(x[0]) for x in AP['faixas'][i['sache']][1:]])),
          ('Dá para colocar a minha marca?', 'Na arte pronta, não. Para drip com a sua logo, nome ou frase, veja os modelos personalizados, a partir de 50 sachês, com a arte criada por nós sem custo.'),
+         ('Qual é o prazo?', 'Produzimos em %d dias úteis depois da confirmação do pagamento. Em seguida vem o prazo da transportadora, que aparece no carrinho junto com o frete, depois de informar o CEP.' % AP.get('prazo_dias', 2)),
          ('Qual é a validade do café?', '6 meses. O café é 100% arábica, torra média, moído na medida para o preparo em drip.'),
          ('Precisa de cafeteira?', 'Não. Abra o sachê, encaixe as abas na borda da xícara, despeje água quente aos poucos e aguarde coar.'),
          ('Tem nota fiscal?', 'Sim, em todos os pedidos, para empresa ou pessoa física.')]
@@ -62,7 +63,7 @@ for i in [x for x in C['itens'] if x.get('linha') == 'pronta' and x.get('publica
     tag = lambda k: '' if k == 0 else ('<small>melhor preço</small>' if k == len(fx_) - 1 else '<small>desconto</small>')
     fx = ''.join('<button type="button" data-q="%d"><span>%s%s</span><b>%s</b></button>' % (fx_[k][0], faixa_txt(k), tag(k), brl(fx_[k][1])) for k in range(len(fx_)))
     tam, mat = MAT[sa]
-    ficha = ''.join('<div><span>%s</span><b>%s</b></div>' % x for x in [('Tamanho', tam), ('Material', mat), ('Impressão', pg.get('impressao', 'Colorida')), ('Café', '10 g · 80+ pontos SCA'), ('Origem', 'Sul de Minas, Região Vulcânica'), ('Validade', '6 meses')])
+    ficha = ''.join('<div><span>%s</span><b>%s</b></div>' % x for x in [('Tamanho', tam), ('Material', mat), ('Impressão', pg.get('impressao', 'Colorida')), ('Café', '10 g · 80+ pontos SCA'), ('Origem', 'Sul de Minas, Região Vulcânica'), ('Validade', '6 meses'), ('Produção', '%d dias úteis' % AP.get('prazo_dias', 2))])
     url = SITE + 'modelos/%s/' % sl
     nome = i['nome']
     desc = '%s Drip coffee de arte pronta, café especial 80+ SCA, a partir de %d sachês, de %s a %s por sachê.' % (pg['chamada'], AP['min_sache'], brl(p_min), brl(p_max))
@@ -131,7 +132,8 @@ for i in [x for x in C['itens'] if x.get('linha') == 'pronta' and x.get('publica
       <ul class="gar">
         <li>{OK}<span>Arte pronta, exatamente como nas fotos. Você não precisa enviar nenhum arquivo.</span></li>
         <li>{OK}<span>A partir de {AP['min_sache']} sachês. Artes do mesmo sachê somam para a faixa de preço.</span></li>
-        <li>{OK}<span>Café especial 80+ pontos SCA, de origem única. Frete calculado pelo CEP no carrinho.</span></li>
+        <li>{OK}<span>Pronto em {AP.get('prazo_dias', 2)} dias úteis depois da confirmação do pagamento, mais o prazo da transportadora, calculado pelo CEP no carrinho.</span></li>
+        <li>{OK}<span>Café especial 80+ pontos SCA, de origem única.</span></li>
       </ul>
       {aviso}
     </div>

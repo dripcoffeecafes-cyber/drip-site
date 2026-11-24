@@ -766,6 +766,13 @@
     .capa h1{font-size:40px;max-width:8.2em}.capa .sub{font-size:15.5px;margin-top:12px}.capa .ctas{margin-top:18px}
     .capa .quem{display:none}}
   footer .inst{display:flex;flex-wrap:wrap;gap:8px 22px;margin-bottom:14px}footer .inst a{color:#CFC8BE;font-size:12.5px}footer .inst a:hover{color:#fff}
+  /* Tarja do topo em uma linha, andando (Adriano, 24/11); parada para quem pede menos movimento */
+  .aviso{overflow:hidden;white-space:nowrap;text-align:left;padding:8px 0}
+  .av-trilho{display:inline-flex;animation:av-anda 38s linear infinite;will-change:transform}
+  .aviso:hover .av-trilho{animation-play-state:paused}
+  .av-item{flex:none;padding-right:64px}
+  @keyframes av-anda{to{transform:translateX(-50%)}}
+  @media (prefers-reduced-motion:reduce){.av-trilho{animation:none}.av-item[aria-hidden]{display:none}.aviso{text-overflow:ellipsis}}
   /* Catálogo (gerar_catalogo.py) */
 .ver-todos{text-align:center;margin:28px 0 0}.ver-todos .btn{min-width:260px}
 .cab-ap{margin:40px 0 0}.cab-ap h3{font:500 clamp(26px,4vw,34px)/1.1 'Cormorant Garamond',Georgia,serif;margin:6px 0 8px}.grade-ap{padding-bottom:0}.ver-ap{margin-top:8px}
@@ -803,7 +810,7 @@ fbq('track','PageView');
 <noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1636404041306148&ev=PageView&noscript=1"><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=29552796950978987&ev=PageView&noscript=1"></noscript>
 </head>
 <body>
-<div class="aviso">A partir de <b>50 sachês</b> · arte montada por nós · <b>pronto em 5 dias úteis</b> após a aprovação</div>
+<div class="aviso"><span class="av-trilho"><span class="av-item">Com a sua marca: a partir de <b>50 sachês</b> · arte montada por nós · <b>pronto em 5 dias úteis</b> após a aprovação · Artes prontas: a partir de <b>20 sachês</b> · <b>prontas em 2 dias úteis</b></span><span class="av-item" aria-hidden="true">Com a sua marca: a partir de <b>50 sachês</b> · arte montada por nós · <b>pronto em 5 dias úteis</b> após a aprovação · Artes prontas: a partir de <b>20 sachês</b> · <b>prontas em 2 dias úteis</b></span></span></div>
 <header>
   <div class="wrap in">
     <div class="marcas">
@@ -846,7 +853,7 @@ fbq('track','PageView');
 <!-- Produtos -->
 <section class="sec cinza" id="modelos">
   <div class="wrap">
-    <div class="cab"><span class="olho">Nossos produtos</span><h2>Três sachês, o mesmo café especial</h2><p>Toque no modelo para ver fotos, preço por quantidade e comprar. O desconto entra sozinho no carrinho.</p></div>
+    <div class="cab"><span class="olho">Nossos produtos</span><h2>Nossos drips, o mesmo café especial</h2><p>Toque no modelo para ver fotos, preço por quantidade e comprar. O desconto entra sozinho no carrinho.</p></div>
     <!-- CATALOGO:INICIO (gerado por artes/gerar_catalogo.py a partir de catalogo/modelos.json; não edite à mão) -->
     <div class="grade grade-ini">
       <article class="cc" data-temas="sua-marca empresa eventos" data-sache="kraft-classico" data-preco="4.90" data-ordem="1" data-novo="0" data-nome="kraft clássico"><a class="cc-img" href="modelos/kraft-classico/"><span class="cc-selos"><span class="cc-off">Até 17% off</span><span class="cc-selo">Mais vendido</span></span><img src="assets/img/ml/kraft-classico-01.webp" alt="Drip Kraft Clássico com a sua marca, impressão só em preto" width="1100" height="1100" loading="lazy" class="cheia"><span class="cc-tarja">Só em preto</span></a><div class="cc-tx"><p class="cc-qt">Comprando em quantidade</p><h3><a href="modelos/kraft-classico/">Kraft Clássico</a></h3><p class="cc-med">10 × 12 cm · impressão em preto</p><p class="cc-de">a partir de<span><b class="tnum">R$ 4,90</b><small> /sachê</small></span></p><p class="cc-kit">A partir de 50 sachês</p><a class="btn btn-cafe cc-bt" href="modelos/kraft-classico/">Comprar</a></div></article>

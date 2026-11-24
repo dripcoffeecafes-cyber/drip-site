@@ -83,7 +83,7 @@ P = {
 <p>Você pode pedir confirmação de tratamento, acesso, correção, exclusão quando cabível, informação sobre compartilhamento e revogação do consentimento quando cabível, pelo e-mail cafes@bloomingclub.com.br.</p>
 <p class="atual">Atualizada em %s.</p>''' % ATUAL),
  'condicoes-de-compra': dict(tipo='WebPage', nome='Condições de compra', titulo='Condições de compra | Drip Coffee Label',
-   desc='Condições de compra do drip coffee personalizado: pedido mínimo, preços por quantidade, pagamento, arte, prazo de produção, frete e entrega.',
+   desc='Condições de compra do drip coffee personalizado e de arte pronta: pedido mínimo, preços por quantidade, pagamento, arte, prazo de produção, frete e entrega.',
    olho='Políticas', h1='Condições de compra',
    corpo='''<p>O resumo abaixo vale para os pedidos feitos por este site. A compra é finalizada na loja Blooming Club e segue também os <a href="https://www.bloomingclub.com.br/termos-e-condicoes-gerais" target="_blank" rel="noopener">termos e condições gerais da Blooming Club</a>.</p>
 <h2>Pedido e preço</h2>
@@ -92,6 +92,8 @@ P = {
 <ul class="lst"><li>Criamos a arte sem custo, inclusive para quem não tem logo.</li><li>A logo é enviada em vetor (AI, EPS, SVG ou PDF vetorial), pelo WhatsApp, depois da compra.</li><li>Mandamos a prova digital, com 2 ajustes incluídos. Só produzimos depois da sua aprovação.</li><li>Uma arte diferente a cada 50 sachês. Não fazemos fundo colorido nem foto cobrindo o sachê.</li><li>Kraft Clássico: impressão em preto. Kraft Premium e Branco Premium: preto ou colorido, pelo mesmo preço.</li></ul>
 <h2>Produção e entrega</h2>
 <ul class="lst"><li>Produção em 5 dias úteis depois da aprovação da arte.</li><li>Frete e prazo da transportadora calculados pelo CEP no carrinho, antes do pagamento. Enviamos para todo o Brasil.</li><li>Os sachês seguem em caixa.</li></ul>
+<h2>Artes prontas</h2>
+<ul class="lst"><li>Drips com arte da Drip Coffee Label, iguais às fotos do site. Não são personalizados e você não envia nenhum arquivo.</li><li>A partir de 20 sachês por modelo de sachê, de 10 em 10. Artes do mesmo sachê somam para o preço, com o desconto aplicado no carrinho.</li><li>Produção em 2 dias úteis depois da confirmação do pagamento, mais o prazo da transportadora.</li></ul>
 <h2>Trocas</h2>
 <p>Veja a nossa <a href="../trocas-e-devolucoes/">política de trocas e devoluções</a>.</p>'''),
 }
