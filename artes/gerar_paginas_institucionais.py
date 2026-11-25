@@ -91,7 +91,7 @@ P = {
 <h2>Pedido e preço</h2>
 <ul class="lst"><li>Pedido mínimo de 50 sachês; acima disso, a quantidade que você quiser, de 10 em 10.</li><li>O preço por sachê cai a cada 50 sachês até 300, e de novo em 400 e 500, com o desconto aplicado no carrinho.</li><li>Pagamento por Pix, boleto ou cartão, na loja.</li></ul>
 <h2>Arte</h2>
-<ul class="lst"><li>Criamos a arte sem custo, inclusive para quem não tem logo.</li><li>A logo é enviada em vetor (AI, EPS, SVG ou PDF vetorial), pelo WhatsApp, depois da compra.</li><li>Mandamos a prova digital, com 2 ajustes incluídos. Só produzimos depois da sua aprovação.</li><li>Uma arte diferente a cada 50 sachês. Não fazemos fundo colorido nem foto cobrindo o sachê.</li><li>Kraft Clássico: impressão em preto. Kraft Premium e Branco Premium: preto ou colorido, pelo mesmo preço.</li></ul>
+<ul class="lst"><li>Criamos a arte sem custo, inclusive para quem não tem logo.</li><li>A logo é enviada em vetor (AI, EPS, SVG ou PDF vetorial), pelo WhatsApp, depois da compra.</li><li>Mandamos a prova digital, com 2 ajustes incluídos. Só produzimos depois da sua aprovação.</li><li>Uma arte por pedido. Não fazemos fundo colorido nem foto cobrindo o sachê.</li><li>Kraft Clássico: impressão em preto. Kraft Premium e Branco Premium: preto ou colorido, pelo mesmo preço.</li></ul>
 <h2>Produção e entrega</h2>
 <ul class="lst"><li>Produção em 5 dias úteis depois da aprovação da arte.</li><li>Frete e prazo da transportadora calculados pelo CEP no carrinho, antes do pagamento. Enviamos para todo o Brasil.</li><li>Os sachês seguem em caixa.</li></ul>
 <h2>Artes prontas</h2>

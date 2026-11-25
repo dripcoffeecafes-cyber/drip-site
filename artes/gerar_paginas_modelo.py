@@ -70,7 +70,7 @@ def faq(k, d):
          ('Qual arquivo da logo devo enviar?', 'Em vetor: PDF vetorial, AI, EPS ou SVG, com os textos convertidos em curvas. É o arquivo original da sua marca, feito no Illustrator, CorelDRAW ou Canva. Foto, print ou imagem salva como PDF não servem. Você envia pelo WhatsApp depois da compra.'),
          ('Não tenho a logo em vetor. E agora?', 'Peça o arquivo original a quem criou a sua marca (designer ou gráfica). Ele costuma estar em PDF, AI ou CDR. Se não conseguir, ou se você não tem logo nem arte, criamos a arte do seu sachê sem custo. Fale com a gente pelo WhatsApp.'),
          ('Não tenho logo nem arte. Vocês criam?', 'Sim, sem custo. Criamos a arte do sachê com o nome, uma frase ou uma data que você escolher, e mandamos a prova digital para você aprovar, com 2 ajustes incluídos.'),
-         ('Posso usar mais de uma arte?', 'Sim. Uma arte diferente a cada 50 sachês. Com 150 sachês, por exemplo, você pode ter três artes diferentes.'),
+         ('Posso usar mais de uma arte?', 'Não. Cada pedido leva uma arte só, em qualquer quantidade. Para outra arte, faça outro pedido.'),
          ('Qual é o prazo?', 'Produzimos em 5 dias úteis depois da aprovação da arte. Em seguida vem o prazo da transportadora, calculado pelo CEP no carrinho.'),
          ('Qual é a validade do café?', '6 meses. O café é 100% arábica, torra média, moído na medida para o preparo em drip.'),
          ('Precisa de cafeteira?', 'Não. Abra o sachê, encaixe as abas na borda da xícara, despeje água quente aos poucos e aguarde coar.')]
@@ -212,7 +212,7 @@ for k, d in M.items():
       <ul class="gar">
         <li>{OK}<span>Você manda a logo e nós montamos a arte, sem custo. Não tem logo nem arte? Criamos do zero, também sem custo. Nada é impresso antes do seu ok.</span></li>
         {cor}
-        <li>{OK}<span>Uma arte diferente a cada 50 sachês.</span></li>
+        <li>{OK}<span>Uma arte por pedido, a partir de 50 sachês.</span></li>
         <li>{OK}<span>Pronto em 5 dias úteis depois da aprovação. Frete calculado pelo CEP no carrinho.</span></li>
       </ul>
     </div>
