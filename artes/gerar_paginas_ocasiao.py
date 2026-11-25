@@ -41,7 +41,7 @@ COMUM = [
 P = {
  'empresas': dict(
    nome='Empresas', titulo='Brinde corporativo de café com a sua marca | Drip Coffee Label',
-   desc='Drip coffee personalizado como brinde corporativo: para clientes, equipe, onboarding e endomarketing. Café especial 80+ SCA, a partir de 50 sachês.',
+   desc='Drip coffee personalizado como brinde corporativo: para clientes, equipe, onboarding e endomarketing. Café especial 85+ SCA, a partir de 50 sachês.',
    olho='Brinde corporativo', h1='O brinde que a sua equipe e os seus clientes usam de verdade.',
    intro='Drip coffee com a logo da empresa impressa direto no sachê e café especial de origem única dentro. Para presentear clientes, receber quem chega e marcar presença na rotina, sem ir para a gaveta.',
    foto='real/matrikem-v.webp', alt='Drip personalizado da MatriKem sobre a mesa',
@@ -56,7 +56,7 @@ P = {
         ('Que arquivo da logo eu mando?', 'Em vetor: AI, EPS, SVG ou PDF vetorial, pelo WhatsApp depois da compra. Não tem a logo em vetor ou não tem logo? Criamos a arte sem custo.')] + COMUM),
  'casamentos': dict(
    nome='Casamentos', titulo='Lembrancinha de casamento: drip coffee personalizado | Drip Coffee Label',
-   desc='Lembrancinha de casamento em drip coffee com o nome do casal: café especial 80+ SCA para o café da manhã seguinte. Arte sem custo, a partir de 50 sachês.',
+   desc='Lembrancinha de casamento em drip coffee com o nome do casal: café especial 85+ SCA para o café da manhã seguinte. Arte sem custo, a partir de 50 sachês.',
    olho='Lembrancinha de casamento', h1='O café da manhã seguinte, com o nome de vocês.',
    intro='Drip coffee com o nome do casal, a data ou uma frase impressos no sachê e café especial dentro. Uma lembrancinha útil, bonita na mesa e que o convidado usa no dia seguinte.',
    foto='evento.webp', alt='Drip personalizado de casamento numa mesa decorada com flores',
@@ -72,7 +72,7 @@ P = {
         ('Dá para ter fundo colorido ou foto do casal?', 'Não. A impressão é sobre o próprio sachê: nome, data, frase ou desenho, sem foto nem fundo cheio.')] + COMUM),
  'eventos': dict(
    nome='Eventos', titulo='Brinde para eventos, feiras e congressos: drip personalizado | Drip Coffee Label',
-   desc='Drip coffee personalizado para feiras, congressos e eventos corporativos. Leve, cabe na sacola e é aberto na hora. Café especial 80+ SCA, a partir de 50.',
+   desc='Drip coffee personalizado para feiras, congressos e eventos corporativos. Leve, cabe na sacola e é aberto na hora. Café especial 85+ SCA, a partir de 50.',
    olho='Feiras e eventos', h1='O brinde do estande que é aberto na hora.',
    intro='Leve, cabe em qualquer sacola e não ocupa espaço na mala. O drip com a sua marca vira o café do visitante no estande, no hotel ou na volta para casa.',
    foto='o4.webp', alt='Drips personalizados em sacolas de evento',
@@ -88,7 +88,7 @@ P = {
         ('Acima de 1.000 sachês tem condição diferente?', 'Para mais de 1.000 sachês, fale com a gente pelo WhatsApp.')] + COMUM),
  'fim-de-ano': dict(
    nome='Fim de ano', titulo='Brinde de fim de ano e Natal para empresas: drip personalizado | Drip Coffee Label',
-   desc='Brinde de fim de ano e de Natal para clientes e equipe: drip coffee com a sua marca e café especial 80+ SCA. Arte sem custo, a partir de 50 sachês.',
+   desc='Brinde de fim de ano e de Natal para clientes e equipe: drip coffee com a sua marca e café especial 85+ SCA. Arte sem custo, a partir de 50 sachês.',
    olho='Fim de ano e Natal', h1='Um café para agradecer o ano.',
    intro='O presente de fim de ano para clientes, parceiros e equipe: drip coffee com a sua marca e uma mensagem de agradecimento, com café especial de origem única dentro.',
    foto='real/elenir-v.webp', alt='Drip personalizado com mensagem de agradecimento de fim de ano',
@@ -201,7 +201,7 @@ for sl, d in P.items():
 </section>
 <section class="sec cinza" id="modelos">
   <div class="wrap">
-    <div class="cab"><span class="olho">Modelos</span><h2>Escolha o sachê</h2><p>Todos com café especial de origem única, 80+ pontos SCA, Região Vulcânica (Sul de Minas). A partir de 50 sachês.</p></div>
+    <div class="cab"><span class="olho">Modelos</span><h2>Escolha o sachê</h2><p>Todos com café especial de origem única, 85+ pontos SCA, Região Vulcânica (Sul de Minas). A partir de 50 sachês.</p></div>
     <div class="produtos minis">{cards}</div>
     <p class="nota-modelo">{d['modelo']}</p>
   </div>

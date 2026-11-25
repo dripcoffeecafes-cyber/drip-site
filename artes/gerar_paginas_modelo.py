@@ -37,15 +37,15 @@ M = {
  'kraft':  dict(sl='kraft-classico', n='Kraft Clássico', v='33', f=[[50,5.9],[100,5.8],[150,5.7],[200,5.6],[250,5.5],[300,5.4],[400,5.15],[500,4.9]], med='10 × 12 cm · impressão em preto',
    res='O drip clássico, em kraft natural, com a sua marca impressa em preto direto no sachê. O mais pedido para empresas e eventos.',
    fotos=MIX(ML('kraft-classico', ['Kraft Clássico com a sua marca', 'Diferenciais da Drip', 'Impressão em preto direto no kraft', 'Também temos a linha Premium', 'O que vem no kit', 'Marcas que já servem o Kraft Clássico']), [('floema', 'Drip Kraft Clássico da Floema Arquitetura'), ('binotto', 'Drip Kraft Clássico da Binotto & Zanette'), ('necta', 'Drip Kraft Clássico da Necta Negócios')]),
-   ficha=[('Tamanho','10 × 12 cm'),('Material','Kraft natural'),('Impressão','Preto, 1 cor'),('Café','10 g · 80+ pontos SCA'),('Origem','Sul de Minas, Região Vulcânica'),('Produção','5 dias úteis após a arte')]),
+   ficha=[('Tamanho','10 × 12 cm'),('Material','Kraft natural'),('Impressão','Preto, 1 cor'),('Café','10 g · 85+ pontos SCA'),('Origem','Sul de Minas, Região Vulcânica'),('Produção','5 dias úteis após a arte')]),
  'kraftp': dict(sl='kraft-premium', n='Kraft Premium', v='281', f=[[50,6.9],[100,6.8],[150,6.7],[200,6.6],[250,6.5],[300,6.4],[400,6.15],[500,5.9]], med='10 × 15 cm · preto ou colorido',
    res='Formato maior, produzido só por nós, com 25% mais área para a sua arte que o drip tradicional. Em preto ou colorido, pelo mesmo preço.',
    fotos=MIX(ML('kraft-premium', ['Kraft Premium com a sua marca', 'Diferenciais da Drip', 'Impressão em preto ou colorida', 'Formato 10 x 15 cm exclusivo da Drip', 'O que vem no kit', 'Marcas que já servem o Kraft Premium']), [('dkj', 'Drip Kraft Premium da DKJ Psicologia'), ('matrikem', 'Drip Kraft Premium da MatriKem')]),
-   ficha=[('Tamanho','10 × 15 cm'),('Material','Kraft premium'),('Impressão','Preto ou colorido'),('Café','10 g · 80+ pontos SCA'),('Origem','Sul de Minas, Região Vulcânica'),('Produção','5 dias úteis após a arte')]),
+   ficha=[('Tamanho','10 × 15 cm'),('Material','Kraft premium'),('Impressão','Preto ou colorido'),('Café','10 g · 85+ pontos SCA'),('Origem','Sul de Minas, Região Vulcânica'),('Produção','5 dias úteis após a arte')]),
  'branco': dict(sl='branco-premium', n='Branco Premium', v='278', f=[[50,6.9],[100,6.8],[150,6.7],[200,6.6],[250,6.5],[300,6.4],[400,6.15],[500,5.9]], med='10 × 15 cm · preto ou colorido',
    res='O sachê branco no formato maior, para marcas que pedem um visual limpo. Em preto ou colorido, pelo mesmo preço.',
    fotos=ML('branco-premium', ['Branco Premium com a sua marca', 'Diferenciais da Drip', 'Impressão em preto ou colorida', 'Formato 10 x 15 cm exclusivo da Drip', 'O que vem no kit', 'Marcas que já servem o Branco Premium']),
-   ficha=[('Tamanho','10 × 15 cm'),('Material','Branco premium'),('Impressão','Preto ou colorido'),('Café','10 g · 80+ pontos SCA'),('Origem','Sul de Minas, Região Vulcânica'),('Produção','5 dias úteis após a arte')]),
+   ficha=[('Tamanho','10 × 15 cm'),('Material','Branco premium'),('Impressão','Preto ou colorido'),('Café','10 g · 85+ pontos SCA'),('Origem','Sul de Minas, Região Vulcânica'),('Produção','5 dias úteis após a arte')]),
 }
 
 PARA_QUEM = {
@@ -144,7 +144,7 @@ for k, d in M.items():
     outros = ''.join('''<a class="prod mini" href="../%s/"><div class="img"><img src="../../assets/img/%s" alt="Drip %s" loading="lazy"></div><div class="tx"><h3>%s</h3><p class="med">%s</p><p class="de">a partir de <b>%s</b>/sachê</p><span class="ver">Ver modelo</span></div></a>'''
                      % (d2['sl'], CARD[k2], d2['n'], d2['n'], d2['med'], brl(d2['f'][-1][1])) for k2, d2 in M.items() if k2 != k)
     url = 'https://driplabel.bloomingclub.com.br/modelos/%s/' % d['sl']
-    desc = 'Drip coffee %s personalizado com a sua marca, café especial 80+ SCA. A partir de 50 sachês, de %s a %s por sachê. Arte sem custo.' % (d['n'], brl(d['f'][-1][1]), brl(d['f'][0][1]))
+    desc = 'Drip coffee %s personalizado com a sua marca, café especial 85+ SCA. A partir de 50 sachês, de %s a %s por sachê. Arte sem custo.' % (d['n'], brl(d['f'][-1][1]), brl(d['f'][0][1]))
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "Product", "@id": url + "#produto", "url": url, "sku": SKU[k], "name": "Drip " + d['n'] + " personalizado", "description": d['res'],
          "category": "Café especial personalizado", "material": d['ficha'][1][1],
@@ -224,7 +224,7 @@ for k, d in M.items():
     <div class="sobre2">
       <div><h3>Para quem é</h3><ul class="lst">{''.join('<li>%s</li>' % x for x in PARA_QUEM[k])}</ul></div>
       <div><h3>{SACHE[k][0]}</h3><ul class="lst">{''.join('<li>%s</li>' % x for x in SACHE[k][1])}</ul></div>
-      <div><h3>O café</h3><ul class="lst"><li>Café especial com laudo: 80+ pontos SCA, avaliado por Q-Grader.</li><li>Origem única: Sul de Minas, Região Vulcânica.</li><li>100% arábica, torra média, moído na medida para o drip.</li><li>10 g por sachê. Validade de 6 meses.</li><li>Dosado, selado e conferido um a um, em pequenos lotes.</li></ul></div>
+      <div><h3>O café</h3><ul class="lst"><li>Café especial com laudo: 85+ pontos SCA, avaliado por Q-Grader.</li><li>Origem única: Sul de Minas, Região Vulcânica.</li><li>100% arábica, torra média, moído na medida para o drip.</li><li>10 g por sachê. Validade de 6 meses.</li><li>Dosado, selado e conferido um a um, em pequenos lotes.</li></ul></div>
       <div><h3>O que vem no pedido</h3><ul class="lst"><li>Os drips personalizados em {KIT[k]}, na quantidade escolhida (a partir de 50, de 10 em 10), enviados em caixa.</li><li>Arte criada por nós, sem custo, mesmo para quem não tem logo, com prova digital e 2 ajustes incluídos.</li></ul><h3 style="margin-top:22px">Como preparar</h3><p>Abra o sachê, encaixe as abas na borda da xícara, despeje água quente aos poucos e aguarde coar. Retire o filtro e aproveite. Não precisa de cafeteira.</p></div>
     </div>
   </div>

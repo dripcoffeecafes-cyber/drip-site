@@ -63,10 +63,10 @@ for i in [x for x in C['itens'] if x.get('linha') == 'pronta' and x.get('publica
     tag = lambda k: '' if k == 0 else ('<small>melhor preço</small>' if k == len(fx_) - 1 else '<small>desconto</small>')
     fx = ''.join('<button type="button" data-q="%d"><span>%s%s</span><b>%s</b></button>' % (fx_[k][0], faixa_txt(k), tag(k), brl(fx_[k][1])) for k in range(len(fx_)))
     tam, mat = MAT[sa]
-    ficha = ''.join('<div><span>%s</span><b>%s</b></div>' % x for x in [('Tamanho', tam), ('Material', mat), ('Impressão', pg.get('impressao', 'Colorida')), ('Café', '10 g · 80+ pontos SCA'), ('Origem', 'Sul de Minas, Região Vulcânica'), ('Validade', '6 meses'), ('Produção', '%d dias úteis' % AP.get('prazo_dias', 2))])
+    ficha = ''.join('<div><span>%s</span><b>%s</b></div>' % x for x in [('Tamanho', tam), ('Material', mat), ('Impressão', pg.get('impressao', 'Colorida')), ('Café', '10 g · 85+ pontos SCA'), ('Origem', 'Sul de Minas, Região Vulcânica'), ('Validade', '6 meses'), ('Produção', '%d dias úteis' % AP.get('prazo_dias', 2))])
     url = SITE + 'modelos/%s/' % sl
     nome = i['nome']
-    desc = '%s Drip coffee de arte pronta, café especial 80+ SCA, a partir de %d sachês, de %s a %s por sachê.' % (pg['chamada'], AP['min_sache'], brl(p_min), brl(p_max))
+    desc = '%s Drip coffee de arte pronta, café especial 85+ SCA, a partir de %d sachês, de %s a %s por sachê.' % (pg['chamada'], AP['min_sache'], brl(p_min), brl(p_max))
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "Product", "@id": url + "#produto", "url": url, "sku": i.get('codigo', sl), "name": "Drip Coffee " + nome, "description": pg['resumo'],
          "category": "Café especial", "material": mat, "image": [SITE + 'assets/img/' + g for g, p, a in fotos],
@@ -133,7 +133,7 @@ for i in [x for x in C['itens'] if x.get('linha') == 'pronta' and x.get('publica
         <li>{OK}<span>Arte pronta, exatamente como nas fotos. Você não precisa enviar nenhum arquivo.</span></li>
         <li>{OK}<span>A partir de {AP['min_sache']} sachês. Artes do mesmo sachê somam para a faixa de preço.</span></li>
         <li>{OK}<span>Pronto em {AP.get('prazo_dias', 2)} dias úteis depois da confirmação do pagamento, mais o prazo da transportadora, calculado pelo CEP no carrinho.</span></li>
-        <li>{OK}<span>Café especial 80+ pontos SCA, de origem única.</span></li>
+        <li>{OK}<span>Café especial 85+ pontos SCA, de origem única.</span></li>
       </ul>
       {aviso}
     </div>
@@ -144,7 +144,7 @@ for i in [x for x in C['itens'] if x.get('linha') == 'pronta' and x.get('publica
     <div class="cab"><span class="olho">Sobre o produto</span><h2>Drip Coffee {esc(nome)}</h2></div>
     <div class="sobre2">
       <div><h3>Para quem é</h3><ul class="lst">{''.join('<li>%s</li>' % esc(x) for x in pg['para_quem'])}</ul><p style="margin-top:14px">{esc(pg['chamada'])}</p></div>
-      <div><h3>O café é sério</h3><ul class="lst"><li>Café especial com laudo: 80+ pontos SCA, avaliado por Q-Grader.</li><li>Origem única: Sul de Minas, Região Vulcânica.</li><li>100% arábica, torra média, moído na medida para o drip.</li><li>10 g por sachê. Validade de 6 meses.</li><li>Dosado, selado e conferido um a um, em pequenos lotes.</li></ul></div>
+      <div><h3>O café é sério</h3><ul class="lst"><li>Café especial com laudo: 85+ pontos SCA, avaliado por Q-Grader.</li><li>Origem única: Sul de Minas, Região Vulcânica.</li><li>100% arábica, torra média, moído na medida para o drip.</li><li>10 g por sachê. Validade de 6 meses.</li><li>Dosado, selado e conferido um a um, em pequenos lotes.</li></ul></div>
       <div><h3>O sachê</h3><ul class="lst"><li>Sachê {esc(mat.lower())} {tam}, com filtro interno.</li><li>Impressão {esc(pg.get('impressao', 'colorida').lower())}.</li><li>Arte da Drip Coffee Label, igual às fotos. Não é personalizado.</li></ul></div>
       <div><h3>Como preparar</h3><p>Abra o sachê na linha indicada, encaixe as abas na borda da xícara, despeje água quente aos poucos e espere escoar. Não precisa de cafeteira.</p><h3 style="margin-top:22px">Quer com a sua marca?</h3><p>Também personalizamos o sachê com a sua logo, nome ou frase, a partir de 50 unidades, com a arte criada por nós sem custo. <a href="../" style="text-decoration:underline">Veja os modelos personalizados</a>.</p></div>
     </div>
