@@ -45,7 +45,7 @@ CARD_CSS = """.cc{display:flex;flex-direction:column;min-width:0;background:#fff
 def KIT_TXT(i):
     # Arte pronta: vendida por unidade, a partir do mínimo do sachê (artes_prontas.min_sache); personalizado: a partir de 50 (por unidade)
     if i.get('kit'):
-        return 'Kit com %d sachês' % i['kit']['saches']
+        return '%d sachês, %s cada' % (i['kit']['saches'], brl(C['artes_prontas']['faixas'][i['sache']][0][1]))
     if i.get('linha') == 'pronta':
         return 'A partir de %d sachês' % C.get('artes_prontas', {}).get('min_sache', 20)
     return 'A partir de 50 sachês'
@@ -57,15 +57,20 @@ def card(i, ini=False):
     if ini: url, pre = i['url'], ''
     else: url, pre = (i['url'].replace('modelos/', '', 1) if i['url'].startswith('modelos/') else '../' + i['url']), '../'
     sub = esc(i['med']) if i.get('med') else esc(SACHE.get(i['sache'], ''))
+    # Kit (Adriano, 28/11): cartão mostra o valor do kit, não o menor valor por sachê
+    de_txt, de_val, de_un = 'a partir de', brl(i['preco_de']), ' /sachê'
+    if i.get('kit'):
+        un = C['artes_prontas']['faixas'][i['sache']][0][1]
+        de_txt, de_val, de_un = 'o kit', brl(un * i['kit']['saches']), ''
     return ('<article class="cc" data-temas="%s" data-sache="%s" data-preco="%.2f" data-ordem="%d" data-novo="%d" data-nome="%s">'
             '<a class="cc-img" href="%s"><span class="cc-selos">%s%s</span><img src="%sassets/img/%s" alt="%s" width="%d" height="%d" loading="lazy"%s>%s</a>'
             '<div class="cc-tx"><p class="cc-qt">Comprando em quantidade</p><h3><a href="%s">%s</a></h3><p class="cc-med">%s</p>'
-            '<p class="cc-de">a partir de<span><b class="tnum">%s</b><small> /sachê</small></span></p><p class="cc-kit">%s</p>'
+            '<p class="cc-de">%s<span><b class="tnum">%s</b><small>%s</small></span></p><p class="cc-kit">%s</p>'
             '<a class="btn btn-cafe cc-bt" href="%s">Comprar</a></div></article>') % (
         ' '.join(i.get('temas', [])), i['sache'], i['preco_de'], i.get('ordem', 999), 1 if i.get('novo') else 0, esc(i['nome'].lower()),
         url, '<span class="cc-off">Até %d%% off</span>' % off if off > 0 else '', '<span class="cc-selo">%s</span>' % selo if selo else '',
         pre, i['img'], esc(i['alt']), i['w'], i['h'], ' class="cheia"' if i.get('cheia') else '', '<span class="cc-tarja">%s</span>' % esc(i['tarja']) if i.get('tarja') else '',
-        url, esc(i['nome']), sub, brl(i['preco_de']), esc(KIT_TXT(i)), url)
+        url, esc(i['nome']), sub, de_txt, de_val, de_un, esc(KIT_TXT(i)), url)
 
 
 # ---------- 1. Inicial: destaques ----------
