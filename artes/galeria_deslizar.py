@@ -4,7 +4,16 @@ GAL = """<style>.gal .pr{position:relative;touch-action:pan-y;user-select:none}.
 <script>(function(){var im=document.getElementById('foto');if(!im)return;var pr=im.closest('.pr'),bs=[].slice.call(document.querySelectorAll('.mi button'));if(!pr||bs.length<2)return;
 function at(){for(var i=0;i<bs.length;i++){if(bs[i].getAttribute('aria-current')==='true')return i}return 0}
 var n=document.createElement('span');n.className='gal-n';pr.appendChild(n);function conta(){n.textContent=(at()+1)+' / '+bs.length}
-function vai(d){bs[(at()+d+bs.length)%bs.length].click();conta()}
+var calmo=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches,dir=0,ocup=false;
+im.style.transition='opacity .28s ease,transform .32s cubic-bezier(.2,.7,.2,1)';
+function pre(i){var b=bs[(i+bs.length)%bs.length];if(b&&b.dataset.src){var x=new Image();x.src=b.dataset.src}}
+function entra(){if(calmo)return;im.style.transition='none';im.style.transform='translateX('+(dir*24)+'px)';im.style.opacity='0';void im.offsetWidth;im.style.transition='opacity .28s ease,transform .32s cubic-bezier(.2,.7,.2,1)';im.style.transform='translateX(0)';im.style.opacity='1';dir=0}
+im.addEventListener('load',entra);
+function vai(d){if(ocup)return;var alvo=bs[(at()+d+bs.length)%bs.length];if(calmo){alvo.click();conta();return}
+ocup=true;dir=d;im.style.transform='translateX('+(-d*24)+'px)';im.style.opacity='0';
+setTimeout(function(){var antes=im.getAttribute('src');alvo.click();conta();ocup=false;if(im.getAttribute('src')===antes||im.complete){entra()}pre(at()+d)},200)}
+bs.forEach(function(b){b.addEventListener('click',function(){if(!ocup&&!dir&&!calmo){im.style.opacity='0';setTimeout(function(){if(im.complete)entra()},60)}})});
+pre(1);pre(-1);
 [['gal-ant',-1,'M15 5l-7 7 7 7','Foto anterior'],['gal-prox',1,'M9 5l7 7-7 7','Próxima foto']].forEach(function(s){var b=document.createElement('button');b.type='button';b.className='gal-bt '+s[0];b.setAttribute('aria-label',s[3]);b.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="'+s[2]+'"/></svg>';b.addEventListener('click',function(e){e.preventDefault();vai(s[1])});pr.appendChild(b)});
 bs.forEach(function(b){b.addEventListener('click',function(){setTimeout(conta,0)})});
 var x0=null,y0=0;pr.addEventListener('touchstart',function(e){var t=e.touches[0];x0=t.clientX;y0=t.clientY},{passive:true});
