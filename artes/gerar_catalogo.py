@@ -84,21 +84,22 @@ def mini(i):
 dest = [i for i in IT if i.get('destaque') and i.get('linha') != 'pronta'][:4]
 # Artes prontas na inicial (24/11): faixa própria logo abaixo dos personalizados, as mais novas primeiro, até 4
 # A mais nova entra na grade principal (3 personalizados + 1 arte pronta = grade cheia no celular e no computador);
-# as outras, até 4, numa faixa própria logo abaixo.
+# todas elas também na faixa própria logo abaixo, em carrossel.
 prontas = sorted([i for i in IT if i.get('linha') == 'pronta'], key=lambda i: (not i.get('novo'), i.get('ordem', 999)))
 dest = dest[:3] + prontas[:1]
-prontas = prontas[1:5]
+# Faixa "Escolha a arte, a gente envia" (Adriano, 28/11): todas as artes prontas, em carrossel numa linha só
+
 todos = '    <p class="ver-todos"><a class="btn btn-linha" href="modelos/">Ver todos os modelos</a></p>\n'
 bloco = '    <div class="grade grade-ini%s">\n%s\n    </div>\n' % (' tres' if len(dest) == 3 else '', '\n'.join('      ' + card(i, True) for i in dest))
 if prontas:
     bloco += ('    <div class="cab cab-ap"><span class="olho">Artes prontas · a partir de %d sachês</span><h3>Escolha a arte, a gente envia</h3><p>Drip com arte da Drip Coffee Label, pronta para presentear: sem arquivo para mandar.</p></div>\n'
-              '    <div class="grade grade-ini grade-ap">\n%s\n    </div>\n'
+              '    <div class="carr"><button type="button" class="carr-bt carr-ant" aria-label="Anterior">&#8249;</button><div class="grade-ap">\n%s\n    </div><button type="button" class="carr-bt carr-prox" aria-label="Próximo">&#8250;</button></div>\n'
               '    <p class="ver-todos ver-ap"><a class="btn btn-linha" href="modelos/?tema=arte-pronta">Ver todas as artes prontas</a></p>\n') % (
         C.get('artes_prontas', {}).get('min_sache', 20), '\n'.join('      ' + card(i, True) for i in prontas))
 bloco += todos
 i0 = H.find('  /* Catálogo (gerar_catalogo.py) */')
 if i0 >= 0: H = H[:i0] + H[H.index('/* fim catálogo */', i0) + len('/* fim catálogo */\n'):]
-H = H.replace('</style>', '  /* Catálogo (gerar_catalogo.py) */\n.ver-todos{text-align:center;margin:28px 0 0}.ver-todos .btn{min-width:260px}\n.cab-ap{margin:40px 0 0}.cab-ap h3{font:500 clamp(26px,4vw,34px)/1.1 \'Cormorant Garamond\',Georgia,serif;margin:6px 0 8px}.grade-ap{padding-bottom:0}.ver-ap{margin-top:8px}\n.grade{display:grid;grid-template-columns:repeat(2,1fr);gap:22px 12px;padding:18px 0 64px}\n@media(min-width:760px){.grade{grid-template-columns:repeat(3,1fr);gap:36px 22px}}\n@media(min-width:1100px){.grade{grid-template-columns:repeat(4,1fr)}}\n' + CARD_CSS + '\n/* fim catálogo */\n</style>', 1)
+H = H.replace('</style>', '  /* Catálogo (gerar_catalogo.py) */\n.ver-todos{text-align:center;margin:28px 0 0}.ver-todos .btn{min-width:260px}\n.cab-ap{margin:40px 0 0}.cab-ap h3{font:500 clamp(26px,4vw,34px)/1.1 \'Cormorant Garamond\',Georgia,serif;margin:6px 0 8px}.carr{position:relative}.grade-ap{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:6px 2px 14px;margin-top:18px}.grade-ap::-webkit-scrollbar{display:none}.grade-ap>*{flex:0 0 calc(50% - 6px);scroll-snap-align:start;min-width:0}\n.carr-bt{position:absolute;top:40%;z-index:2;width:38px;height:38px;border:1px solid #D9D3CB;background:#fff;color:#1E1410;font:400 26px/1 Georgia,serif;cursor:pointer;display:none;box-shadow:0 2px 8px rgba(0,0,0,.08)}.carr-ant{left:-8px}.carr-prox{right:-8px}.carr.rola .carr-bt{display:block}.carr-bt[disabled]{opacity:.3;cursor:default}\n@media(min-width:760px){.grade-ap{gap:22px}.grade-ap>*{flex-basis:calc((100% - 44px)/3)}}\n@media(min-width:1100px){.grade-ap>*{flex-basis:calc((100% - 66px)/4)}.carr-ant{left:-19px}.carr-prox{right:-19px}}.ver-ap{margin-top:8px}\n.grade{display:grid;grid-template-columns:repeat(2,1fr);gap:22px 12px;padding:18px 0 64px}\n@media(min-width:760px){.grade{grid-template-columns:repeat(3,1fr);gap:36px 22px}}\n@media(min-width:1100px){.grade{grid-template-columns:repeat(4,1fr)}}\n' + CARD_CSS + '\n/* fim catálogo */\n</style>', 1)
 a = H.index('<!-- CATALOGO:INICIO'); a = H.index('\n', a) + 1
 b = H.index('    <!-- CATALOGO:FIM -->')
 H = H[:a] + bloco + H[b:]

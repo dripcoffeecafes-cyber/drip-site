@@ -592,7 +592,10 @@
   .menu-cel nav{gap:0;font-weight:400}.menu-cel .mc-sec{gap:8px 18px}
   /* Catálogo (gerar_catalogo.py) */
 .ver-todos{text-align:center;margin:28px 0 0}.ver-todos .btn{min-width:260px}
-.cab-ap{margin:40px 0 0}.cab-ap h3{font:500 clamp(26px,4vw,34px)/1.1 'Cormorant Garamond',Georgia,serif;margin:6px 0 8px}.grade-ap{padding-bottom:0}.ver-ap{margin-top:8px}
+.cab-ap{margin:40px 0 0}.cab-ap h3{font:500 clamp(26px,4vw,34px)/1.1 'Cormorant Garamond',Georgia,serif;margin:6px 0 8px}.carr{position:relative}.grade-ap{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:6px 2px 14px;margin-top:18px}.grade-ap::-webkit-scrollbar{display:none}.grade-ap>*{flex:0 0 calc(50% - 6px);scroll-snap-align:start;min-width:0}
+.carr-bt{position:absolute;top:40%;z-index:2;width:38px;height:38px;border:1px solid #D9D3CB;background:#fff;color:#1E1410;font:400 26px/1 Georgia,serif;cursor:pointer;display:none;box-shadow:0 2px 8px rgba(0,0,0,.08)}.carr-ant{left:-8px}.carr-prox{right:-8px}.carr.rola .carr-bt{display:block}.carr-bt[disabled]{opacity:.3;cursor:default}
+@media(min-width:760px){.grade-ap{gap:22px}.grade-ap>*{flex-basis:calc((100% - 44px)/3)}}
+@media(min-width:1100px){.grade-ap>*{flex-basis:calc((100% - 66px)/4)}.carr-ant{left:-19px}.carr-prox{right:-19px}}.ver-ap{margin-top:8px}
 .grade{display:grid;grid-template-columns:repeat(2,1fr);gap:22px 12px;padding:18px 0 64px}
 @media(min-width:760px){.grade{grid-template-columns:repeat(3,1fr);gap:36px 22px}}
 @media(min-width:1100px){.grade{grid-template-columns:repeat(4,1fr)}}

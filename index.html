@@ -801,7 +801,10 @@
   .menu-cel nav{gap:0;font-weight:400}.menu-cel .mc-sec{gap:8px 18px}
   /* Catálogo (gerar_catalogo.py) */
 .ver-todos{text-align:center;margin:28px 0 0}.ver-todos .btn{min-width:260px}
-.cab-ap{margin:40px 0 0}.cab-ap h3{font:500 clamp(26px,4vw,34px)/1.1 'Cormorant Garamond',Georgia,serif;margin:6px 0 8px}.grade-ap{padding-bottom:0}.ver-ap{margin-top:8px}
+.cab-ap{margin:40px 0 0}.cab-ap h3{font:500 clamp(26px,4vw,34px)/1.1 'Cormorant Garamond',Georgia,serif;margin:6px 0 8px}.carr{position:relative}.grade-ap{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:6px 2px 14px;margin-top:18px}.grade-ap::-webkit-scrollbar{display:none}.grade-ap>*{flex:0 0 calc(50% - 6px);scroll-snap-align:start;min-width:0}
+.carr-bt{position:absolute;top:40%;z-index:2;width:38px;height:38px;border:1px solid #D9D3CB;background:#fff;color:#1E1410;font:400 26px/1 Georgia,serif;cursor:pointer;display:none;box-shadow:0 2px 8px rgba(0,0,0,.08)}.carr-ant{left:-8px}.carr-prox{right:-8px}.carr.rola .carr-bt{display:block}.carr-bt[disabled]{opacity:.3;cursor:default}
+@media(min-width:760px){.grade-ap{gap:22px}.grade-ap>*{flex-basis:calc((100% - 44px)/3)}}
+@media(min-width:1100px){.grade-ap>*{flex-basis:calc((100% - 66px)/4)}.carr-ant{left:-19px}.carr-prox{right:-19px}}.ver-ap{margin-top:8px}
 .grade{display:grid;grid-template-columns:repeat(2,1fr);gap:22px 12px;padding:18px 0 64px}
 @media(min-width:760px){.grade{grid-template-columns:repeat(3,1fr);gap:36px 22px}}
 @media(min-width:1100px){.grade{grid-template-columns:repeat(4,1fr)}}
@@ -910,9 +913,10 @@ fbq('track','PageView');
       <article class="cc" data-temas="arte-pronta natal empresa datas" data-sache="kraft-premium" data-preco="6.30" data-ordem="10" data-novo="1" data-nome="kit de natal"><a class="cc-img" href="modelos/kit-natal/"><span class="cc-selos"><span class="cc-off">Até 9% off</span><span class="cc-selo">Novo</span></span><img src="assets/img/artes/kit-natal/01.webp" alt="Kit Drip de Natal: as cinco artes de Natal em sachês kraft e branco premium sobre a mesa" width="1100" height="1100" loading="lazy" class="cheia"></a><div class="cc-tx"><p class="cc-qt">Comprando em quantidade</p><h3><a href="modelos/kit-natal/">Kit de Natal</a></h3><p class="cc-med">5 artes · Kraft e Branco Premium 10 × 15 cm</p><p class="cc-de">a partir de<span><b class="tnum">R$ 6,30</b><small> /sachê</small></span></p><p class="cc-kit">Kit com 20 sachês</p><a class="btn btn-cafe cc-bt" href="modelos/kit-natal/">Comprar</a></div></article>
     </div>
     <div class="cab cab-ap"><span class="olho">Artes prontas · a partir de 20 sachês</span><h3>Escolha a arte, a gente envia</h3><p>Drip com arte da Drip Coffee Label, pronta para presentear: sem arquivo para mandar.</p></div>
-    <div class="grade grade-ini grade-ap">
+    <div class="carr"><button type="button" class="carr-bt carr-ant" aria-label="Anterior">&#8249;</button><div class="grade-ap">
+      <article class="cc" data-temas="arte-pronta natal empresa datas" data-sache="kraft-premium" data-preco="6.30" data-ordem="10" data-novo="1" data-nome="kit de natal"><a class="cc-img" href="modelos/kit-natal/"><span class="cc-selos"><span class="cc-off">Até 9% off</span><span class="cc-selo">Novo</span></span><img src="assets/img/artes/kit-natal/01.webp" alt="Kit Drip de Natal: as cinco artes de Natal em sachês kraft e branco premium sobre a mesa" width="1100" height="1100" loading="lazy" class="cheia"></a><div class="cc-tx"><p class="cc-qt">Comprando em quantidade</p><h3><a href="modelos/kit-natal/">Kit de Natal</a></h3><p class="cc-med">5 artes · Kraft e Branco Premium 10 × 15 cm</p><p class="cc-de">a partir de<span><b class="tnum">R$ 6,30</b><small> /sachê</small></span></p><p class="cc-kit">Kit com 20 sachês</p><a class="btn btn-cafe cc-bt" href="modelos/kit-natal/">Comprar</a></div></article>
       <article class="cc" data-temas="arte-pronta engracadas profissoes" data-sache="branco-premium" data-preco="6.30" data-ordem="20" data-novo="1" data-nome="pitágoras"><a class="cc-img" href="modelos/pitagoras/"><span class="cc-selos"><span class="cc-off">Até 9% off</span><span class="cc-selo">Novo</span></span><img src="assets/img/artes/pitagoras/01.webp" alt="Drip coffee Pitágoras: sachê branco com a bronca do teorema de Pitágoras, frente e verso" width="1100" height="1100" loading="lazy" class="cheia"></a><div class="cc-tx"><p class="cc-qt">Comprando em quantidade</p><h3><a href="modelos/pitagoras/">Pitágoras</a></h3><p class="cc-med">Branco Premium 10 × 15 cm</p><p class="cc-de">a partir de<span><b class="tnum">R$ 6,30</b><small> /sachê</small></span></p><p class="cc-kit">A partir de 20 sachês</p><a class="btn btn-cafe cc-bt" href="modelos/pitagoras/">Comprar</a></div></article>
-    </div>
+    </div><button type="button" class="carr-bt carr-prox" aria-label="Próximo">&#8250;</button></div>
     <p class="ver-todos ver-ap"><a class="btn btn-linha" href="modelos/?tema=arte-pronta">Ver todas as artes prontas</a></p>
     <p class="ver-todos"><a class="btn btn-linha" href="modelos/">Ver todos os modelos</a></p>
     <!-- CATALOGO:FIM -->
@@ -1203,5 +1207,11 @@ fbq('track','PageView');
   },true);
 })();
 </script>
+<script>/* Carrossel das artes prontas: setas só quando há mais cartões que cabem */
+(function(){document.querySelectorAll('.carr').forEach(function(c){var g=c.querySelector('.grade-ap'),a=c.querySelector('.carr-ant'),p=c.querySelector('.carr-prox');if(!g)return;
+function passo(){var f=g.firstElementChild;return f?f.getBoundingClientRect().width+parseFloat(getComputedStyle(g).columnGap||12):g.clientWidth}
+function ve(){var r=g.scrollWidth>g.clientWidth+4;c.classList.toggle('rola',r);if(a)a.disabled=g.scrollLeft<4;if(p)p.disabled=g.scrollLeft+g.clientWidth>=g.scrollWidth-4}
+if(a)a.addEventListener('click',function(){g.scrollBy({left:-passo(),behavior:'smooth'})});if(p)p.addEventListener('click',function(){g.scrollBy({left:passo(),behavior:'smooth'})});
+g.addEventListener('scroll',ve,{passive:true});window.addEventListener('resize',ve);ve()})})();</script>
 </body>
 </html>

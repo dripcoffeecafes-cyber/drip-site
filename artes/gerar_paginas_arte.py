@@ -58,6 +58,7 @@ for i in [x for x in C['itens'] if x.get('linha') == 'pronta' and x.get('publica
     p_min, p_max = fx_[-1][1], fx_[0][1]
     pid = AP['produtos'].get(sa, '')
     kit = i.get('kit')
+    if kit and kit.get('produto'): pid = kit['produto']  # produto próprio do kit na Betalabs (carrinho de kit em kit)
     passo = kit['saches'] if kit else AP['passo']
     q_min = kit['saches'] if kit else AP['min_sache']
     un = lambda n: ('%d kit%s · %d sachês' % (n // passo, '' if n // passo == 1 else 's', n)) if kit else '%d sachês' % n
