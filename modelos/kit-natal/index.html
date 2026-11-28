@@ -802,7 +802,7 @@ fbq('track','PageView');
     menos.disabled=q<=A.min;
     fx.forEach(function(b,k){var de=A.f[k][0],ate=k+1<A.f.length?A.f[k+1][0]:1e9;b.setAttribute('aria-pressed',String(q>=de&&q<ate))});
     var bt=c.querySelector('.js-comprar');
-    if(A.p){bt.href='https://www.bloomingclub.com.br/checkout/cart?drip_artes='+encodeURIComponent(JSON.stringify([{p:A.p,s:A.s,q:q,a:[[A.kit?A.n+' (kit de '+A.kit+' sachês, '+(A.kit/A.na)+' de cada arte)':A.n,q]]}]))+'&'+UTM;bt.removeAttribute('target')}
+    if(A.p){bt.href='https://www.bloomingclub.com.br/checkout/cart?drip_artes='+encodeURIComponent(JSON.stringify([{p:A.p,s:A.s,q:q,k:A.kit||undefined,a:[[A.kit?A.n+' (kit de '+A.kit+' sachês, '+(A.kit/A.na)+' de cada arte)':A.n,q]]}]))+'&'+UTM;bt.removeAttribute('target')}
     else{bt.href='https://wa.me/5554997081666?text='+encodeURIComponent('Olá! Quero o drip '+A.n+' ('+A.s+'), '+q+' sachês.');bt.target='_blank'}}
   c.addEventListener('click',function(e){
     var b=e.target.closest('[data-passo]');if(b){q=Math.max(A.min,Math.min(5000,q+(+b.dataset.passo)*A.passo));mostra();return}
