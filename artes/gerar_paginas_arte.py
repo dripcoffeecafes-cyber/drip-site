@@ -6,7 +6,9 @@
 # mesmo preço), com a composição no campo "arte" (kit.nome_carrinho). Adriano, 28/11.
 # Rode depois de mudar o JSON ou o index:
 #   python3 artes/gerar_paginas_arte.py
-import json, os, re
+import json, os, re, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from galeria_deslizar import GAL
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 H = open(os.path.join(RAIZ, 'index.html'), encoding='utf-8').read()
 C = json.load(open(os.path.join(RAIZ, 'catalogo', 'modelos.json'), encoding='utf-8'))
@@ -129,7 +131,7 @@ for i in [x for x in C['itens'] if x.get('linha') == 'pronta' and x.get('publica
     <div class="gal">
       <div class="pr"><img id="foto" src="../../assets/img/{f0[0]}" alt="{esc(f0[2])}" width="1100" height="1100" class="cena"></div>
       <div class="mi">{mi}</div>
-    </div>
+    </div>{GAL}
     <div class="info">
       <span class="olho">{'Kit de arte pronta' if kit else 'Arte pronta'}</span>
       <h1>{esc(nome)}</h1>

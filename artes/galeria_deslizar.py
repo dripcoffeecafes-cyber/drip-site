@@ -1,0 +1,12 @@
+# Galeria das páginas de produto (Adriano, 28/11): deslizar a foto grande para o lado, setas e contador.
+# Usa os botões das miniaturas (.mi button): cada passo é um clique na miniatura seguinte, então o resto da página não muda.
+GAL = """<style>.gal .pr{position:relative;touch-action:pan-y;user-select:none}.gal .gal-bt{position:absolute;top:50%;transform:translateY(-50%);z-index:3;width:42px;height:42px;border-radius:50%;border:0;background:rgba(255,255,255,.94);color:#844C29;box-shadow:0 3px 12px rgba(30,20,16,.2);display:flex;align-items:center;justify-content:center;cursor:pointer;padding:0}.gal .gal-ant{left:10px}.gal .gal-prox{right:10px}.gal .gal-bt svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}.gal .gal-n{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);z-index:3;background:rgba(30,20,16,.55);color:#fff;font-size:11px;letter-spacing:.06em;padding:3px 10px}</style>
+<script>(function(){var im=document.getElementById('foto');if(!im)return;var pr=im.closest('.pr'),bs=[].slice.call(document.querySelectorAll('.mi button'));if(!pr||bs.length<2)return;
+function at(){for(var i=0;i<bs.length;i++){if(bs[i].getAttribute('aria-current')==='true')return i}return 0}
+var n=document.createElement('span');n.className='gal-n';pr.appendChild(n);function conta(){n.textContent=(at()+1)+' / '+bs.length}
+function vai(d){bs[(at()+d+bs.length)%bs.length].click();conta()}
+[['gal-ant',-1,'M15 5l-7 7 7 7','Foto anterior'],['gal-prox',1,'M9 5l7 7-7 7','Próxima foto']].forEach(function(s){var b=document.createElement('button');b.type='button';b.className='gal-bt '+s[0];b.setAttribute('aria-label',s[3]);b.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="'+s[2]+'"/></svg>';b.addEventListener('click',function(e){e.preventDefault();vai(s[1])});pr.appendChild(b)});
+bs.forEach(function(b){b.addEventListener('click',function(){setTimeout(conta,0)})});
+var x0=null,y0=0;pr.addEventListener('touchstart',function(e){var t=e.touches[0];x0=t.clientX;y0=t.clientY},{passive:true});
+pr.addEventListener('touchend',function(e){if(x0===null)return;var t=e.changedTouches[0],dx=t.clientX-x0,dy=t.clientY-y0;x0=null;if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy)*1.2)vai(dx<0?1:-1)},{passive:true});
+conta()})();</script>"""

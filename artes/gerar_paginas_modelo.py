@@ -1,7 +1,9 @@
 # Gera as páginas de cada modelo (modelos/<slug>/index.html) a partir do index.html do site.
 # Cabeçalho, estilos, Pixel, rodapé e WhatsApp saem do index; mudou lá, rode de novo:
 #   python3 artes/gerar_paginas_modelo.py
-import json, os, re
+import json, os, re, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from galeria_deslizar import GAL
 RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 H = open(os.path.join(RAIZ, 'index.html'), encoding='utf-8').read()
 
@@ -196,7 +198,7 @@ for k, d in M.items():
     <div class="gal">
       <div class="pr"><img id="foto" src="../../assets/img/{f0[0]}" alt="{f0[2]}" width="1100" height="1100" class="cena">{tarja}</div>
       <div class="mi">{mi}</div>
-    </div>
+    </div>{GAL}
     <div class="info">
       <span class="olho">Drip personalizado</span>
       <h1>{d['n']}</h1>
