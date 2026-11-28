@@ -44,6 +44,8 @@ CARD_CSS = """.cc{display:flex;flex-direction:column;min-width:0;background:#fff
 
 def KIT_TXT(i):
     # Arte pronta: vendida por unidade, a partir do mínimo do sachê (artes_prontas.min_sache); personalizado: a partir de 50 (por unidade)
+    if i.get('kit'):
+        return 'Kit com %d sachês' % i['kit']['saches']
     if i.get('linha') == 'pronta':
         return 'A partir de %d sachês' % C.get('artes_prontas', {}).get('min_sache', 20)
     return 'A partir de 50 sachês'

@@ -2,6 +2,8 @@
 # Mesmo padrão das páginas dos personalizados (gerar_paginas_modelo.py): galeria, preço por quantidade, Comprar, sobre o produto,
 # o café, ficha, dúvidas. Imagens em assets/img/artes/<slug>/NN.webp (1100 px) e NN-p.webp (miniatura), do drip-arts produtos/<código>/loja/.
 # Comprar leva ao carrinho do www com ?drip_artes= (o checkout-drip.js põe o produto do sachê e grava a arte no campo extra "arte").
+# Kit (bloco "kit" do item, ex.: Kit de Natal): vendido de kit em kit (kit.saches), num só produto do carrinho (o do campo "sache",
+# mesmo preço), com a composição no campo "arte" (kit.nome_carrinho). Adriano, 28/11.
 # Rode depois de mudar o JSON ou o index:
 #   python3 artes/gerar_paginas_arte.py
 import json, os, re
@@ -38,13 +40,15 @@ SITE = 'https://driplabel.bloomingclub.com.br/'
 
 def faq(i, pg):
     q = [('A arte é igual às fotos?', 'Sim. A arte é da Drip Coffee Label e vai exatamente como nas fotos. Não é personalizada e você não precisa enviar nenhum arquivo.'),
-         ('Qual é a quantidade mínima?', 'A partir de %d sachês, de %d em %d.' % (AP['min_sache'], AP['passo'], AP['passo'])),
+         ('Qual é a quantidade mínima?', ('Um kit, com %s. Para mais, é de kit em kit.' % i['kit']['composicao']) if i.get('kit') else 'A partir de %d sachês, de %d em %d.' % (AP['min_sache'], AP['passo'], AP['passo'])),
+         ('Posso escolher só uma arte?', 'O kit vai sempre com as %d artes, na mesma quantidade de cada. Para uma arte só, veja as outras artes prontas ou o drip com a sua marca.' % len(i['kit']['artes'])) if i.get('kit') else None,
          ('Posso juntar artes diferentes no mesmo pedido?', 'Sim. Volte aos modelos e coloque outras artes no carrinho. Artes do mesmo sachê somam para a faixa de preço: o preço por sachê cai em %s sachês.' % (lambda l: ', '.join(l[:-1]) + ' e ' + l[-1] if len(l) > 1 else l[0])([str(x[0]) for x in AP['faixas'][i['sache']][1:]])),
          ('Dá para colocar a minha marca?', 'Na arte pronta, não. Para drip com a sua logo, nome ou frase, veja os modelos personalizados, a partir de 50 sachês, com a arte criada por nós sem custo.'),
          ('Qual é o prazo?', 'Produzimos em %d dias úteis depois da confirmação do pagamento. Em seguida vem o prazo da transportadora, que aparece no carrinho junto com o frete, depois de informar o CEP.' % AP.get('prazo_dias', 2)),
          ('Qual é a validade do café?', '6 meses. O café é 100% arábica, torra média, moído na medida para o preparo em drip.'),
          ('Precisa de cafeteira?', 'Não. Abra o sachê, encaixe as abas na borda da xícara, despeje água quente aos poucos e aguarde coar.'),
          ('Tem nota fiscal?', 'Sim, em todos os pedidos, para empresa ou pessoa física.')]
+    q = [x for x in q if x]
     return ''.join('<details><summary>%s</summary><p>%s</p></details>' % x for x in q), q
 
 n_pag = 0
@@ -53,20 +57,28 @@ for i in [x for x in C['itens'] if x.get('linha') == 'pronta' and x.get('publica
     fx_ = AP['faixas'][sa]
     p_min, p_max = fx_[-1][1], fx_[0][1]
     pid = AP['produtos'].get(sa, '')
+    kit = i.get('kit')
+    passo = kit['saches'] if kit else AP['passo']
+    q_min = kit['saches'] if kit else AP['min_sache']
+    un = lambda n: ('%d kit%s · %d sachês' % (n // passo, '' if n // passo == 1 else 's', n)) if kit else '%d sachês' % n
     fotos = [('artes/%s/%s.webp' % (sl, n), 'artes/%s/%s-p.webp' % (sl, n), a) for n, a in pg['fotos']]
     f0 = fotos[0]
     mi = ''.join('<button type="button" aria-current="%s" data-src="../../assets/img/%s" data-cena="1" data-alt="%s" aria-label="Foto %d"><img src="../../assets/img/%s" alt="" class="cena" width="120" height="120" loading="lazy"></button>'
                  % ('true' if k == 0 else 'false', g, esc(a), k + 1, p) for k, (g, p, a) in enumerate(fotos))
     def faixa_txt(k):
         de = fx_[k][0]; ate = fx_[k + 1][0] - 1 if k + 1 < len(fx_) else None
+        if kit:
+            kd = -(-de // passo); ka = ate // passo if ate else None
+            return ('%d kit%s' % (kd, '' if kd == 1 else 's')) if ka == kd else ('%d a %d kits' % (kd, ka) if ka else '%d kits ou mais' % kd)
         return '%d a %d sachês' % (de, ate) if ate else '%d sachês ou mais' % de
     tag = lambda k: '' if k == 0 else ('<small>melhor preço</small>' if k == len(fx_) - 1 else '<small>desconto</small>')
     fx = ''.join('<button type="button" data-q="%d"><span>%s%s</span><b>%s</b></button>' % (fx_[k][0], faixa_txt(k), tag(k), brl(fx_[k][1])) for k in range(len(fx_)))
     tam, mat = MAT[sa]
+    if kit: mat = kit['material']
     ficha = ''.join('<div><span>%s</span><b>%s</b></div>' % x for x in [('Tamanho', tam), ('Material', mat), ('Impressão', pg.get('impressao', 'Colorida')), ('Café', '10 g · 80+ pontos SCA'), ('Origem', 'Sul de Minas, Região Vulcânica'), ('Validade', '6 meses'), ('Produção', '%d dias úteis' % AP.get('prazo_dias', 2))])
     url = SITE + 'modelos/%s/' % sl
     nome = i['nome']
-    desc = '%s Drip coffee de arte pronta, café especial 80+ SCA, a partir de %d sachês, de %s a %s por sachê.' % (pg['chamada'], AP['min_sache'], brl(p_min), brl(p_max))
+    desc = ('%s Kit de drip coffee com %s. Café especial 80+ SCA, de %s a %s por sachê.' % (pg['chamada'], kit['composicao'], brl(p_min), brl(p_max))) if kit else '%s Drip coffee de arte pronta, café especial 80+ SCA, a partir de %d sachês, de %s a %s por sachê.' % (pg['chamada'], AP['min_sache'], brl(p_min), brl(p_max))
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "Product", "@id": url + "#produto", "url": url, "sku": i.get('codigo', sl), "name": "Drip Coffee " + nome, "description": pg['resumo'],
          "category": "Café especial", "material": mat, "image": [SITE + 'assets/img/' + g for g, p, a in fotos],
@@ -78,7 +90,7 @@ for i in [x for x in C['itens'] if x.get('linha') == 'pronta' and x.get('publica
             {"@type": "ListItem", "position": 2, "name": "Modelos", "item": SITE + "modelos/"},
             {"@type": "ListItem", "position": 3, "name": nome, "item": url}]}]}
     aviso = '<p class="aviso-humor"><b>Aviso de humor:</b> %s</p>' % esc(pg['aviso']) if pg.get('aviso') else ''
-    cfg = {'n': nome, 's': SACHE.get(sa, sa), 'p': pid, 'f': fx_, 'min': AP['min_sache'], 'passo': AP['passo'], 'k': sl}
+    cfg = {'n': kit['nome_carrinho'] if kit else nome, 's': SACHE.get(sa, sa), 'p': pid, 'f': fx_, 'min': q_min, 'passo': passo, 'k': sl, 'kit': passo if kit else 0, 'na': len(kit['artes']) if kit else 0}
     html = f'''<!doctype html>
 <html lang="pt-BR">
 <head>
@@ -118,20 +130,20 @@ for i in [x for x in C['itens'] if x.get('linha') == 'pronta' and x.get('publica
       <div class="mi">{mi}</div>
     </div>
     <div class="info">
-      <span class="olho">Arte pronta</span>
+      <span class="olho">{'Kit de arte pronta' if kit else 'Arte pronta'}</span>
       <h1>{esc(nome)}</h1>
       <p class="med">{esc(i['med'])}</p>
       <p class="res">{esc(pg['resumo'])}</p>
       <div class="fx" role="group" aria-label="Preço por quantidade">{fx}</div>
       <div class="linha-q">
-        <div class="stepper"><button type="button" data-passo="-1" aria-label="Menos {AP['passo']} sachês">−</button><output class="js-n tnum">{AP['min_sache']} sachês</output><button type="button" data-passo="1" aria-label="Mais {AP['passo']} sachês">+</button></div>
-        <div class="tot"><span class="js-un">{brl(p_max)} por sachê</span><b class="js-tot tnum">{brl(p_max * AP['min_sache'])}</b></div>
+        <div class="stepper"><button type="button" data-passo="-1" aria-label="{'Menos 1 kit' if kit else 'Menos %d sachês' % passo}">−</button><output class="js-n tnum">{un(q_min)}</output><button type="button" data-passo="1" aria-label="{'Mais 1 kit' if kit else 'Mais %d sachês' % passo}">+</button></div>
+        <div class="tot"><span class="js-un">{brl(p_max)} por sachê</span><b class="js-tot tnum">{brl(p_max * q_min)}</b></div>
       </div>
       <a class="btn btn-cafe js-comprar" data-produto="{sl}" href="#">Comprar</a>
       <a class="btn btn-linha js-zap" data-origem="pagina-{sl}" href="#" target="_blank" rel="noopener">Falar com a gente</a>
       <ul class="gar">
         <li>{OK}<span>Arte pronta, exatamente como nas fotos. Você não precisa enviar nenhum arquivo.</span></li>
-        <li>{OK}<span>A partir de {AP['min_sache']} sachês. Artes do mesmo sachê somam para a faixa de preço.</span></li>
+        <li>{OK}<span>{('Cada kit tem ' + kit['composicao'] + '. Quanto mais kits, menor o preço por sachê.') if kit else 'A partir de %d sachês. Artes do mesmo sachê somam para a faixa de preço.' % AP['min_sache']}</span></li>
         <li>{OK}<span>Pronto em {AP.get('prazo_dias', 2)} dias úteis depois da confirmação do pagamento, mais o prazo da transportadora, calculado pelo CEP no carrinho.</span></li>
         <li>{OK}<span>Café especial 80+ pontos SCA, de origem única.</span></li>
       </ul>
@@ -145,7 +157,7 @@ for i in [x for x in C['itens'] if x.get('linha') == 'pronta' and x.get('publica
     <div class="sobre2">
       <div><h3>Para quem é</h3><ul class="lst">{''.join('<li>%s</li>' % esc(x) for x in pg['para_quem'])}</ul><p style="margin-top:14px">{esc(pg['chamada'])}</p></div>
       <div><h3>O café é sério</h3><ul class="lst"><li>Café especial com laudo: 80+ pontos SCA, avaliado por Q-Grader.</li><li>Origem única: Sul de Minas, Região Vulcânica.</li><li>100% arábica, torra média, moído na medida para o drip.</li><li>10 g por sachê. Validade de 6 meses.</li><li>Dosado, selado e conferido um a um, em pequenos lotes.</li></ul></div>
-      <div><h3>O sachê</h3><ul class="lst"><li>Sachê {esc(mat.lower())} {tam}, com filtro interno.</li><li>Impressão {esc(pg.get('impressao', 'colorida').lower())}.</li><li>Arte da Drip Coffee Label, igual às fotos. Não é personalizado.</li></ul></div>
+      <div><h3>{'As artes do kit' if kit else 'O sachê'}</h3><ul class="lst">{''.join('<li>%s.</li>' % esc(x) for x in kit['artes']) if kit else ''}<li>Sachê {esc(mat.lower())} {tam}, com filtro interno.</li><li>Impressão {esc(pg.get('impressao', 'colorida').lower())}.</li><li>Arte da Drip Coffee Label, igual às fotos. Não é personalizado.</li></ul></div>
       <div><h3>Como preparar</h3><p>Abra o sachê na linha indicada, encaixe as abas na borda da xícara, despeje água quente aos poucos e espere escoar. Não precisa de cafeteira.</p><h3 style="margin-top:22px">Quer com a sua marca?</h3><p>Também personalizamos o sachê com a sua logo, nome ou frase, a partir de 50 unidades, com a arte criada por nós sem custo. <a href="../" style="text-decoration:underline">Veja os modelos personalizados</a>.</p></div>
     </div>
   </div>
@@ -175,15 +187,15 @@ for i in [x for x in C['itens'] if x.get('linha') == 'pronta' and x.get('publica
   var c=document.querySelector('.pp'),q=A.min,menos=c.querySelector('[data-passo="-1"]'),fx=c.querySelectorAll('.fx button');
   function preco(n){{var p=A.f[0][1];A.f.forEach(function(x){{if(n>=x[0])p=x[1]}});return p}}
   function mostra(){{var u=preco(q);
-    c.querySelector('.js-n').textContent=q+' sachês';c.querySelector('.js-un').textContent=brl(u)+' por sachê';c.querySelector('.js-tot').textContent=brl(u*q);
+    c.querySelector('.js-n').textContent=A.kit?(q/A.kit)+(q/A.kit==1?' kit':' kits')+' · '+q+' sachês':q+' sachês';c.querySelector('.js-un').textContent=brl(u)+' por sachê';c.querySelector('.js-tot').textContent=brl(u*q);
     menos.disabled=q<=A.min;
     fx.forEach(function(b,k){{var de=A.f[k][0],ate=k+1<A.f.length?A.f[k+1][0]:1e9;b.setAttribute('aria-pressed',String(q>=de&&q<ate))}});
     var bt=c.querySelector('.js-comprar');
-    if(A.p){{bt.href='https://www.bloomingclub.com.br/checkout/cart?drip_artes='+encodeURIComponent(JSON.stringify([{{p:A.p,s:A.s,q:q,a:[[A.n,q]]}}]))+'&'+UTM;bt.removeAttribute('target')}}
+    if(A.p){{bt.href='https://www.bloomingclub.com.br/checkout/cart?drip_artes='+encodeURIComponent(JSON.stringify([{{p:A.p,s:A.s,q:q,a:[[A.kit?A.n+' (kit de '+A.kit+' sachês, '+(A.kit/A.na)+' de cada arte)':A.n,q]]}}]))+'&'+UTM;bt.removeAttribute('target')}}
     else{{bt.href='https://wa.me/5554997081666?text='+encodeURIComponent('Olá! Quero o drip '+A.n+' ('+A.s+'), '+q+' sachês.');bt.target='_blank'}}}}
   c.addEventListener('click',function(e){{
     var b=e.target.closest('[data-passo]');if(b){{q=Math.max(A.min,Math.min(5000,q+(+b.dataset.passo)*A.passo));mostra();return}}
-    var f=e.target.closest('.fx button');if(f){{q=Math.max(A.min,+f.dataset.q);mostra();return}}
+    var f=e.target.closest('.fx button');if(f){{q=Math.max(A.min,Math.ceil(+f.dataset.q/A.passo)*A.passo);mostra();return}}
     var t=e.target.closest('.mi button');if(t){{var im=document.getElementById('foto');im.src=t.dataset.src;im.alt=t.dataset.alt;
       c.querySelectorAll('.mi button').forEach(function(x){{x.setAttribute('aria-current',String(x===t))}})}}}});
   mostra();

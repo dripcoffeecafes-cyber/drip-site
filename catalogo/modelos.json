@@ -229,6 +229,109 @@
           ]
         ]
       }
+    },
+    {
+      "slug": "kit-natal",
+      "nome": "Kit de Natal",
+      "linha": "pronta",
+      "sache": "kraft-premium",
+      "temas": [
+        "natal",
+        "empresa",
+        "datas"
+      ],
+      "med": "5 artes · Kraft e Branco Premium 10 × 15 cm",
+      "preco_de": 6.3,
+      "img": "artes/kit-natal/01.webp",
+      "w": 1100,
+      "h": 1100,
+      "alt": "Kit Drip de Natal: as cinco artes de Natal em sachês kraft e branco premium sobre a mesa",
+      "selo": "",
+      "tarja": "",
+      "url": "modelos/kit-natal/",
+      "destaque": false,
+      "ordem": 10,
+      "novo": true,
+      "publicado": true,
+      "preco_cheio": 6.9,
+      "cheia": true,
+      "codigo": "DCL-PD-NAT26-PR",
+      "kit": {
+        "saches": 20,
+        "nome_carrinho": "Kit de Natal",
+        "material": "Kraft premium e branco premium",
+        "composicao": "20 sachês: 4 de cada uma das 5 artes (3 em kraft premium e 2 em branco premium)",
+        "artes": [
+          "Gratidão, em kraft premium",
+          "Papai Noel, em branco premium",
+          "Árvore Boas Festas, em branco premium",
+          "Laço de Natal, em kraft premium",
+          "Caneca Feliz Natal, em kraft premium"
+        ]
+      },
+      "pagina": {
+        "titulo_seo": "Kit Drip Coffee de Natal, 20 sachês com 5 artes e café especial",
+        "resumo": "Um presente de Natal que se escreve à mão e se aprecia numa xícara. São 20 drip coffees de café especial com 5 artes de Natal criadas pela Drip Coffee Label, 4 de cada. Toda arte tem campo De e Para: é só escrever o nome de quem recebe e entregar.",
+        "chamada": "Cinco artes, um presente à altura de quem fez o seu ano melhor.",
+        "para_quem": [
+          "Clientes e parceiros: um agradecimento de fim de ano à altura da parceria",
+          "Equipe e colegas, como brinde de fim de ano",
+          "Amigo secreto e amigo oculto: delicado, bonito e memorável",
+          "Família e vizinhos, para receber bem na ceia ou deixar na porta",
+          "Lojas, consultórios e profissionais liberais: um detalhe que marca o atendimento de dezembro"
+        ],
+        "impressao": "Colorida, com campo De e Para",
+        "fotos": [
+          [
+            "01",
+            "As cinco artes de Natal na mesa"
+          ],
+          [
+            "02",
+            "Kit Drip de Natal com as cinco artes"
+          ],
+          [
+            "03",
+            "As cinco artes do kit de Natal"
+          ],
+          [
+            "04",
+            "Os sachês do kit lado a lado"
+          ],
+          [
+            "05",
+            "Drip de Natal Gratidão, kraft premium"
+          ],
+          [
+            "06",
+            "Drip de Natal Papai Noel, branco premium"
+          ],
+          [
+            "07",
+            "Drip de Natal Árvore Boas Festas, branco premium"
+          ],
+          [
+            "08",
+            "Drip de Natal Laço, kraft premium"
+          ],
+          [
+            "09",
+            "Drip de Natal Caneca Feliz Natal, kraft premium"
+          ],
+          [
+            "10",
+            "Diferenciais do café da Drip"
+          ],
+          [
+            "11",
+            "Como preparar o drip"
+          ],
+          [
+            "12",
+            "Ficha técnica do kit de Natal"
+          ]
+        ]
+      }
     }
   ],
   "artes_prontas": {
